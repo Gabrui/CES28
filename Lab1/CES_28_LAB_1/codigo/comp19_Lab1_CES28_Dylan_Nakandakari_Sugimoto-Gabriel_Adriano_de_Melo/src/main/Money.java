@@ -29,7 +29,7 @@ class Money {
 	public void setAmount(int amount) {
 		if(amount < 0) {
 			
-			throw new ArithmeticException("_amount negativo!");
+			throw new ArithmeticException("amount negativo!");
 		}
 		this._amount = amount;
 	}
