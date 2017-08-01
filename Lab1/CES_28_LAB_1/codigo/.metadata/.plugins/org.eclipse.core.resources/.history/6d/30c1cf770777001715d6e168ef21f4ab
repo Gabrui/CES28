@@ -19,7 +19,7 @@ package main;
  * metodo getAmount: retorna o valor de _amount
  * metodo getCurrency: retorna o valor de _currency
  */
-public class Money {
+class Money {
 	private int _amount;
 	private String _currency;
 	public Money(int amount, String currency) {
