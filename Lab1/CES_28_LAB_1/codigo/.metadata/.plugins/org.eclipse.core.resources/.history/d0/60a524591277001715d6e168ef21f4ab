@@ -59,13 +59,5 @@ public class TesteMoney {
 		assertTrue(USDmax.add(USD11).getAmount() > maxint);
 		assertTrue(USD11.add(USDmax).getAmount() > maxint);
 		assertTrue(USDmax.add(USD0).getAmount() == maxint);
-		
-		//Usando Equals
-		assertEquals(USD0.add(USD1),USD1);
-		assertEquals(USD0.add(USD0),USD0);
-		assertEquals(USDmax.add(USD0),USDmax);
-		assertEquals(USD0.add(null), null);
 	}
-	
-	
 }
