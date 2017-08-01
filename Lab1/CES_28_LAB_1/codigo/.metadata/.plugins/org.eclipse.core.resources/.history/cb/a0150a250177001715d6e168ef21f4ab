@@ -40,7 +40,7 @@ class Money {
 		this._currency = currency;
 	}
 	public Money add(Money money) {
-		if(this.getCurrency().equals(money.getCurrency())){
+		if(getCurrency().equals(money.getCurrency())){
 			money.setAmount(this._amount + money.getAmount());
 			
 		}
