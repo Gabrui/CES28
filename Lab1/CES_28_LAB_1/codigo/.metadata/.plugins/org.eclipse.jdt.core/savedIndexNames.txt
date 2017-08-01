@@ -1,0 +1,5 @@
+INDEX VERSION 1.130+C:\Users\Dylan N. Sugimoto\Desktop\CES_28_LAB_1\codigo\.metadata\.plugins\org.eclipse.jdt.core
+1975104262.index
+1772041446.index
+2874218467.index
+3353442650.index
