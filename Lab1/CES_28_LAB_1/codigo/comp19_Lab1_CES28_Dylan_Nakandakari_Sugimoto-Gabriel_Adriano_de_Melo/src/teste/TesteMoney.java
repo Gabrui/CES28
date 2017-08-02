@@ -33,6 +33,10 @@ public class TesteMoney {
 	private Currency GBP;
 	//Fim da declaracao
 	
+	/**
+	 * Este metodo realiza algumas preparacoes para realizacao do teste
+	 * Pass 4
+	 */
 	@Before
 	//Definindo alguns objetos Money para usar nos testes
 	public void setUp() {
@@ -48,7 +52,7 @@ public class TesteMoney {
 	}
 	/**
 	 * Esse metodo compara money iguais
-	 * 
+	 * Passo 6
 	 */
 	@Test
 	public void VerificarMetodoEqualDaClasseMoney_QuandoCompararMoneyIguaisDevemSerIguais() {
@@ -78,7 +82,7 @@ public class TesteMoney {
 	}
 	/**
 	 * Esse metodo compara money diferentes
-	 * 
+	 * Passo 6
 	 */
 	@Test
 	public void VerificarMetodoEqualDaClasseMoney_QuandoComparaMoneyDiferenteDevemSerDiferentes() {

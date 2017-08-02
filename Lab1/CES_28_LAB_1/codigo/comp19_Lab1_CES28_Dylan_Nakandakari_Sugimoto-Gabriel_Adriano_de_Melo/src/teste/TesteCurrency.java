@@ -14,7 +14,7 @@ import org.junit.Before;
 
 /**
  * Class TesteCurrency: Testa os metodos da classe Currency do pacote main.
- *
+ *Passo 6
  */
 public class TesteCurrency {
 	
@@ -25,7 +25,10 @@ public class TesteCurrency {
 
 	//Fim da declaracao
 	
-	
+	/**
+	 * Este metodo realiza algumas preparacoes para a realizacao do teste
+	 * Passo 4
+	 */
 	@Before
 	//Definindo alguns objetos Money para usar nos testes
 	public void setUp() {
@@ -38,7 +41,7 @@ public class TesteCurrency {
 	
 	/**
 	 * Passo 6
-	 * Esse metodo compara currency iguais
+	 * Este metodo compara currency iguais
 	 * 
 	 */
 	@Test
@@ -54,8 +57,8 @@ public class TesteCurrency {
 		
 	}
 	/**
-	 * Esse metodo compara currency diferentes
-	 * 
+	 * Este metodo compara currency diferentes
+	 * Passo 6
 	 */
 	@Test
 	public void VerificarMetodoEqualsDaClasseCurrency_QuandoComparaCurrencyDiferenteDevemSerDiferentes() {
@@ -70,7 +73,7 @@ public class TesteCurrency {
 	}
 	/**
 	 * Este metodo verifica se o atributo recebe uma string
-	 * 
+	 * Passo 6
 	 */
 	@Test
 	public void VerificarConstrutorDaClasseCurrency_QuandoCriadoDeveAtribuirUmNomeDoTipoString() {
@@ -81,7 +84,7 @@ public class TesteCurrency {
 	}
 	/**
 	 * Este metodo verifica se o atributo possui tamanho 3
-	 * 
+	 * Passo 6
 	 */
 	@Test
 	public void VerificarConstrutorDaClasseCurrency_QuandoCriadoDeveAtribuirUmNomeDeTamanho3() {
@@ -91,7 +94,7 @@ public class TesteCurrency {
 	}
 	/**
 	 * Este metodo verifica se o atributo recebe o parametro passado
-	 * 
+	 * Passo 6
 	 */
 	@Test
 	public void VerificarConstrutorDaClasseCurrency_QuandoCriadoDeveAtribuirParametroPassado() {
@@ -105,7 +108,7 @@ public class TesteCurrency {
 	}
 	/**
 	 * Este metodo verifica se um valor de excecao eh gerado quando um nome maior que 3 eh passado
-	 * 
+	 * Passo 6
 	 */
 	@Test (expected = RuntimeException.class)
 	public void VerificarConstrutorDaClasseCurrency_QuandoCriadoComNomeMaiorQue3DeveGerarUmaExcecao() {
@@ -116,7 +119,7 @@ public class TesteCurrency {
 	}
 	/**
 	 * Este metodo verifica se um valor de excecao eh gerado quando um nome menor que 3 eh passado
-	 * 
+	 * Passo 6 
 	 */
 	@Test (expected = RuntimeException.class)
 	public void VerificarConstrutorDaClasseCurrency_QuandoCriadoComNomeMenorQue3DeveGerarUmaExcecao() {
@@ -126,7 +129,7 @@ public class TesteCurrency {
 	}
 	/**
 	 * Este metodo verifica se um valor de exececao eh gerado quando um nome vazio eh passado
-	 * 
+	 * Passo 6
 	 */
 	@Test (expected = RuntimeException.class)
 	public void VerificarConstrutorDaClasseCurrency_QuandoCriadoComNomeVazioDeveGerarUmaExcecao() {
@@ -136,7 +139,7 @@ public class TesteCurrency {
 	}
 	/**
 	 * Este metodo verifica se o metodo clonar da Classe Currency retorna um currency igual
-	 * 
+	 * Passo 6
 	 */
 	public void VerificarClonarDaClasseCurrency_QuandoClonarRetornaUmCurrencyIgual() {
 		//Clonando
