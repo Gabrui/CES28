@@ -138,7 +138,7 @@ public class TesteMoneyBag {
 			sameBag.add(USD7);
 		}
 		
-		//Verificando se sao iguais pelo metodo Equals
+		//Verificando se sao diferentes pelo metodo False
 		assertFalse(ebagtest.equals(bagtest));
 		assertFalse(bagtest.equals(ebagtest));
 		assertFalse(unibag2.equals(unibag));
