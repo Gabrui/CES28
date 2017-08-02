@@ -22,6 +22,8 @@ public class TesteCurrency {
 	private int maxint;
 	private Currency BRL;
 	private Currency USD;
+	private Currency EUR;
+	private Currency CHF;
 
 	//Fim da declaracao
 	
@@ -35,6 +37,8 @@ public class TesteCurrency {
 
 		BRL = new Currency("BRL");
 		USD = new Currency("USD");
+		EUR = new Currency("EUR");
+		CHF = new Currency("CHF");
 		
 		maxint = 2147483647;
 	}
@@ -141,6 +145,7 @@ public class TesteCurrency {
 	 * Este metodo verifica se o metodo clonar da Classe Currency retorna um currency igual
 	 * Passo 6
 	 */
+	@Test
 	public void VerificarClonarDaClasseCurrency_QuandoClonarRetornaUmCurrencyIgual() {
 		//Clonando
 		Currency BRL2 = BRL.clonar();
@@ -150,6 +155,20 @@ public class TesteCurrency {
 		assertEquals(BRL,BRL2);
 		assertTrue(!(BRL2.equals(USD)));
 		assertNotSame(BRL,BRL2);
+		
+	}
+	/**
+	 * Este metodo verifica o metodo da taxa de cambio da classe Currency
+	 * Passo 6
+	 */
+	@Test
+	public void VerificargetTaxaDeCambioParaReaisDaClasseCurrency_QuandoCambiarRetornaUmInteiro() {
+		
+		//Teste
+		assertTrue(BRL.getTaxaDeCambioParaReais() == 1);
+		assertTrue(USD.getTaxaDeCambioParaReais() == 3);
+		assertTrue(EUR.getTaxaDeCambioParaReais() == 4);
+		assertTrue(CHF.getTaxaDeCambioParaReais() == 2);
 		
 	}
 }
