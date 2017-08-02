@@ -27,7 +27,7 @@ public class TesteMoney {
 	private Currency BRL;
 	private Currency USD;
 	private Currency EUR;
-	private Currenry GBP;
+	private Currency GBP;
 	
 	@Before
 	//Definindo alguns objetos Money para usar nos testes
