@@ -79,7 +79,7 @@ public class TesteCurrency {
 	public void VerificarConstrutorDaClasseCurrency_QuandoCriadoDeveAtribuirUmNomeDoTipoString() {
 	
 		
-		assertTrue(BRL.getNome() instanceof String);
+		assertTrue(BRL.getSigla() instanceof String);
 		
 	}
 	/**
@@ -89,7 +89,7 @@ public class TesteCurrency {
 	@Test
 	public void VerificarConstrutorDaClasseCurrency_QuandoCriadoDeveAtribuirUmNomeDeTamanho3() {
 		
-		assertTrue(BRL.getNome().length() == 3);
+		assertTrue(BRL.getSigla().length() == 3);
 		
 	}
 	/**
@@ -103,8 +103,8 @@ public class TesteCurrency {
 
 		assertEquals(BRL,BRL2);
 		assertTrue(!(BRL.equals(USD)));
-		assertTrue(BRL.getNome().equals("BRL"));
-		assertTrue(!(BRL.getNome().equals("USD")));
+		assertTrue(BRL.getSigla().equals("BRL"));
+		assertTrue(!(BRL.getSigla().equals("USD")));
 	}
 	/**
 	 * Este metodo verifica se um valor de excecao eh gerado quando um nome maior que 3 eh passado
