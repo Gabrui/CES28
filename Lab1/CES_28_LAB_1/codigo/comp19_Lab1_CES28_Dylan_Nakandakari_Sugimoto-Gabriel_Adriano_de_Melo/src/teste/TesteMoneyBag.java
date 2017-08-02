@@ -57,13 +57,14 @@ public class TesteMoneyBag {
 		//Criando objetos para usar no Teste
 		Money USD7 = new Money(7,USD);
 		Money USD0 = new Money(0,USD);
-		Money USDmax = new Money(maxint,USD);
 		Money EUR0 = new Money(0,EUR);
 		Money EUR7 = new Money(7,EUR);
 		Money EURmax = new Money(maxint, EUR);
+		Money EUR14 = new Money(14,EUR);
 		MoneyBag equalbagtest = new MoneyBag();
 		MoneyBag bagtest2 = new MoneyBag();
 		MoneyBag unibag2 = new MoneyBag(); 
+		MoneyBag bagtest3 = new MoneyBag();
 		//Fim da Criacao de Objetos
 		
 		bagtest.add(USD7);
@@ -80,6 +81,8 @@ public class TesteMoneyBag {
 		equalbagtest.add(EUR7);
 		unibag2.add(EURmax);
 		bagtest2 = bagtest;
+		bagtest3.add(USD7);
+		bagtest3.add(EUR14);
 		
 		//Verificando se sao iguais pelo metodo Equals
 		assertEquals(equalbagtest,bagtest);
@@ -91,6 +94,65 @@ public class TesteMoneyBag {
 		assertEquals(emptybag,emptybag);
 		assertEquals(unibag2,unibag);
 		assertEquals(unibag,unibag2);
+		assertEquals(bagtest3,bagtest);
+		assertEquals(bagtest,bagtest3);
+		
+	}
+	/**
+	 * Esse metodo compara MoneyBag diferentes
+	 * Passo 8
+	 */
+	@Test
+	public void VerificarMetodoEqualDaClasseMoney_QuandoCompararMoneyDiferentesDevemSerDiferentes() {
+		//Criando objetos para usar no Teste
+		Money USD7 = new Money(7,USD);
+		Money USD0 = new Money(0,USD);
+		Money EUR0 = new Money(0,EUR);
+		Money EUR7 = new Money(7,EUR);
+		Money EURmax = new Money(maxint, EUR);
+		MoneyBag ebagtest = new MoneyBag();
+		MoneyBag bagtest2 = new MoneyBag();
+		MoneyBag unibag2 = new MoneyBag();
+		MoneyBag sameBag = new MoneyBag();
+		//Fim da Criacao de Objetos
+		
+		bagtest.add(USD7);
+		bagtest.add(USD0);
+		bagtest.add(EUR0);
+		bagtest.add(EUR7);
+		bagtest.add(EUR7);
+		unibag.add(EURmax);
+		
+		ebagtest.add(USD7);
+		ebagtest.add(USD0);
+		ebagtest.add(EUR0);
+		ebagtest.add(EURmax);
+		unibag2.add(EUR0);
+		
+		bagtest2.add(EUR7);
+		bagtest2.add(USD7);
+		bagtest2.add(USD7);
+		
+		
+		for(int i=0;i<7;i++) {
+			sameBag.add(USD7);
+		}
+		
+		//Verificando se sao iguais pelo metodo Equals
+		assertFalse(ebagtest.equals(bagtest));
+		assertFalse(bagtest.equals(ebagtest));
+		assertFalse(unibag2.equals(unibag));
+		assertFalse(unibag.equals(unibag2));
+		assertFalse(unibag.equals(emptybag));
+		assertFalse(emptybag.equals(unibag));
+		assertFalse(bagtest.equals(emptybag));
+		assertFalse(emptybag.equals(bagtest));
+		assertFalse(bagtest.equals(unibag));
+		assertFalse(unibag.equals(bagtest));
+		assertFalse(sameBag.equals(bagtest));
+		assertFalse(bagtest.equals(sameBag));
+		assertFalse(bagtest.equals(bagtest2));
+		assertFalse(bagtest2.equals(bagtest));
 		
 	}
 }
