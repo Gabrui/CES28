@@ -19,15 +19,19 @@ import org.junit.Before;
  *
  */
 public class TesteMoney {
+	
+	//Declarando atributos privados
+	
 	private Money BRL7;
 	private Money USD11;
 	private Money EUR19;
 	private Money GBP7;
 	private int maxint;
-	private java.util.Currency BRL;
-	private java.util.Currency USD;
+	private Currency BRL;
+	private Currency USD;
 	private Currency EUR;
 	private Currency GBP;
+	//Fim da declaracao
 	
 	@Before
 	//Definindo alguns objetos Money para usar nos testes
