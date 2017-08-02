@@ -35,7 +35,7 @@ public class TesteMoney {
 	}
 	
 	@Test
-	public void VerificarMetodoEqualDaClasseMoney_QuandoCompararIguaisDevemSerIguais() {
+	public void VerificarMetodoEqualDaClasseMoney_QuandoCompararMoneyIguaisDevemSerIguais() {
 		//Criando objetos para usar no Teste
 		Money GBP07 = new Money(7,"GBP");
 		Money GBP0 = new Money(0,"GBP");
@@ -62,7 +62,7 @@ public class TesteMoney {
 	}
 	
 	@Test
-	public void VerificarMetodoEqualDaClasseMoney_QuandoComparaDiferenteDevemSerDiferentes() {
+	public void VerificarMetodoEqualDaClasseMoney_QuandoComparaMoneyDiferenteDevemSerDiferentes() {
 		//Criando objetos para usar no Teste
 				Money GBP07 = new Money(7,"GBP");
 				Money GBP0 = new Money(0,"GBP");
