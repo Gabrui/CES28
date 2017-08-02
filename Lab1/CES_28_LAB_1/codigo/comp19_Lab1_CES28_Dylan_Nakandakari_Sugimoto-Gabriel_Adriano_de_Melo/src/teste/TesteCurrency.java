@@ -174,4 +174,15 @@ public class TesteCurrency {
 		assertFalse(EUR.getTaxaDeCambioParaReais() == 100);
 		assertFalse(CHF.getTaxaDeCambioParaReais() == 10);
 	}
+	/**
+	 * Este metodo verifica o metodo toString da classe Currency
+	 * Passo 6
+	 */
+	@Test
+	public void VerificartoStringDaClasseCurrency_QuandoImprimirRetornarNomeDaCurrency() {
+		
+		//Teste
+		assertTrue(BRL.toString().equals("BRL"));
+		assertFalse(BRL.toString().equals("USD"));
+	}
 }
