@@ -1,8 +1,8 @@
 /**
  * LAB-1 CES-28
- * @date   01/08/2017
- * @author Dylan N. Sugimoto
- * @author Gabriel Adriano de Melo
+ *@date   01/08/2017
+ *@author Dylan N. Sugimoto
+ *@author Gabriel Adriano de Melo
  * 
  * Esse pacote guarda a classe Money e a classe MoneyBag
  */
@@ -19,49 +19,38 @@ package main;
  * metodo getAmount: retorna o valor de _amount
  * metodo getCurrency: retorna o valor de _currency
  */
-public class Money implements Pocket{
-	private int amount;
-	private Currency currency;
-	/**
-	 * 
-	 * @param amount
-	 * @param currency
-	 */
-	public Money(int amount, Currency currency) {
+public class Money {
+	private int _amount;
+	private String _currency;
+	public Money(int amount, String currency) {
 		setAmount(amount);
 		setCurrency(currency);
 	}
-	
-	
 	public void setAmount(int amount) {
 		if(amount < 0) {
 			
-			throw new ArithmeticException("amount não deve ser negativo!");
+			throw new ArithmeticException("amount negativo!");
 		}
-		this.amount = amount;
+		this._amount = amount;
 	}
-	
-	
-	public void setCurrency(Currency currency) {
-		this.currency = currency;
+	public void setCurrency(String currency) {
+		if(currency.length() != 3) {
+			throw new ArithmeticException("Tamanho de _currency diferente de 3!");
+		}
+		this._currency = currency;
 	}
-	
-	
-	public Pocket add(Money money) {
+	public Money add(Money money) {
 		if(this.getCurrency().equals(money.getCurrency())){
-			return new Money(this.getAmount() + money.getAmount(), this.getCurrency());
+			money.setAmount(this._amount + money.getAmount());
+			
 		}
 		return money;
 	}
-	
-	
 	public int getAmount() {
-		return this.amount;
+		return this._amount;
 	}
-	
-	
-	public Currency getCurrency() {
-		return this.currency.clonar();
+	public String getCurrency() {
+		return this._currency;
 	}
 	
 	@Override
