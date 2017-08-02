@@ -243,6 +243,7 @@ public class TesteMoney {
 		//Clonando
 		Money BRL2 = BRL.clonar();
 		
+		//Testes
 		assertNotNull(BRL2);
 		assertEquals(BRL,BRL2);
 		assertTrue(!(BRL2.equals(USD)));
