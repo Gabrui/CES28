@@ -115,25 +115,27 @@ public class TesteMoneyBag {
 		MoneyBag unibag2 = new MoneyBag();
 		MoneyBag sameBag = new MoneyBag();
 		//Fim da Criacao de Objetos
-		
+		//bagtest: 7USD + 14EUR
 		bagtest.add(USD7);
 		bagtest.add(USD0);
 		bagtest.add(EUR0);
 		bagtest.add(EUR7);
 		bagtest.add(EUR7);
+		//unibag: maxintEUR
 		unibag.add(EURmax);
-		
+		//ebagtest: 7USD+maxintEUR
 		ebagtest.add(USD7);
 		ebagtest.add(USD0);
 		ebagtest.add(EUR0);
 		ebagtest.add(EURmax);
+		//unibag2: 0EUR
 		unibag2.add(EUR0);
-		
+		//bagtest2: 14USD + 7EUR
 		bagtest2.add(EUR7);
 		bagtest2.add(USD7);
 		bagtest2.add(USD7);
 		
-		
+		//sameBag: 42USD
 		for(int i=0;i<7;i++) {
 			sameBag.add(USD7);
 		}
