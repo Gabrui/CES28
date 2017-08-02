@@ -169,6 +169,9 @@ public class TesteCurrency {
 		assertTrue(USD.getTaxaDeCambioParaReais() == 3);
 		assertTrue(EUR.getTaxaDeCambioParaReais() == 4);
 		assertTrue(CHF.getTaxaDeCambioParaReais() == 2);
-		
+		assertFalse(BRL.getTaxaDeCambioParaReais() == 2);
+		assertFalse(USD.getTaxaDeCambioParaReais() == 0);
+		assertFalse(EUR.getTaxaDeCambioParaReais() == 100);
+		assertFalse(CHF.getTaxaDeCambioParaReais() == 10);
 	}
 }
