@@ -19,7 +19,6 @@ import org.junit.Before;
 public class TesteCurrency {
 	
 	//Declarando atributos privados
-	private int maxint;
 	private Currency BRL;
 	private Currency USD;
 	private Currency EUR;
@@ -39,8 +38,7 @@ public class TesteCurrency {
 		USD = new Currency("USD");
 		EUR = new Currency("EUR");
 		CHF = new Currency("CHF");
-		
-		maxint = 2147483647;
+
 	}
 	
 	/**
