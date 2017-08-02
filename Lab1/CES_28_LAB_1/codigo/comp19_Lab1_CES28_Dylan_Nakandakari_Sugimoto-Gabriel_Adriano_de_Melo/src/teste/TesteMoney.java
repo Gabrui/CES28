@@ -178,5 +178,10 @@ public class TesteMoney {
 		//Espera-se que uma excecao seja gerada
 		Currency BR = new Currency("BR");
 	}
-	
+	@Test (Expected = Exception.class)
+	public void VerificarConstrutorDaClasseCurrency_QuandoCriadoComNomeVazioDeveGerarUmaExcecao() {
+		// Criando Objeto Currency com nome Vazio
+		//Espera-se que uma excecao seja gerada
+		Currency vazio = new Currency("");
+	}
 }
