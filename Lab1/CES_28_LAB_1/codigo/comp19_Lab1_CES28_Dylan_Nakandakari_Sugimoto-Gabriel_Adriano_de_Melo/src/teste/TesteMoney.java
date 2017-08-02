@@ -166,5 +166,17 @@ public class TesteMoney {
 		assertTrue(BRL.getNome().length == 3);
 	}
 	@Test (Expected = Exception.class)
-	public void VerificarConstrutorDaClasseCurrency_
+	public void VerificarConstrutorDaClasseCurrency_QuandoCriadoComNomeMaiorQue3DeveGerarUmaExcecao() {
+		//Criando Objeto Currency com nome maior que 3
+		//Espera-se que uma excecao seja gerada
+		Currency BRLL = new Currency("BRLL");
+		
+	}
+	@Test (Expected = Exception.class)
+	public void VerificarConstrutorDaClasseCurrency_QuandoCriadoComNomeMenorQue3DeveGerarUmaExcecao() {
+		// Criando Objeto Currency com nome menor que 3
+		//Espera-se que uma excecao seja gerada
+		Currency BR = new Currency("BR");
+	}
+	
 }
