@@ -19,6 +19,7 @@ package main;
  * metodo getAmount: retorna o valor de _amount
  * metodo getCurrency: retorna o valor de _currency
  */
+<<<<<<< HEAD
 public class Money implements Pocket{
 	private int amount;
 	private Currency currency;
@@ -28,6 +29,12 @@ public class Money implements Pocket{
 	 * @param currency
 	 */
 	public Money(int amount, Currency currency) {
+=======
+public class Money {
+	private int _amount;
+	private String _currency;
+	public Money(int amount, String currency) {
+>>>>>>> ab3eae7e74ec7cc2adb22b6041943c1c347b2bcb
 		setAmount(amount);
 		setCurrency(currency);
 	}
@@ -62,14 +69,5 @@ public class Money implements Pocket{
 	
 	public Currency getCurrency() {
 		return this.currency.clonar();
-	}
-	
-	@Override
-	public boolean equals(Object money) {
-		if (money instanceof Money) {
-			Money m = (Money) money;
-			return this.currency.equals(m.currency) && this.getAmount() == m.getAmount();
-		}
-		return false;
 	}
 }
