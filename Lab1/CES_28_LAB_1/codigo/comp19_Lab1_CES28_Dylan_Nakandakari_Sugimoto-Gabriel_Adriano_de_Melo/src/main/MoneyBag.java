@@ -3,12 +3,15 @@
  */
 package main;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Gabriel
  *
  */
 public class MoneyBag implements Pocket{
-
+	List<Money> myList = new ArrayList<Money>();
 	/**
 	 * 
 	 */
