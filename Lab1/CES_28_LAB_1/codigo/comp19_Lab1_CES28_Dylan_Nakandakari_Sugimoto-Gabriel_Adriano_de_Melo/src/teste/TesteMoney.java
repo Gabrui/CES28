@@ -24,8 +24,8 @@ public class TesteMoney {
 	private Money EUR19;
 	private Money GBP7;
 	private int maxint;
-	private Currency BRL;
-	private Currency USD;
+	private java.util.Currency BRL;
+	private java.util.Currency USD;
 	private Currency EUR;
 	private Currency GBP;
 	
@@ -88,7 +88,10 @@ public class TesteMoney {
 				assertTrue(!(GBPmax.equals(EUR19)));
 		
 	}
-	
+	/**
+	 * Esse metodo realiza o teste da soma entre mesma moeda.
+	 * Passo 2, 3 e 4.
+	 */
 	@Test
 	public void VerificarMetodoAddDaClasseMoney_SomaDaMesmaMoeda() {
 		//Criando alguns objetos Money para usar no teste.
@@ -124,5 +127,30 @@ public class TesteMoney {
 		assertEquals(USDmax.add(USD0),USDmax);
 	}
 	
-	
+	/**
+	 * Passo 6
+	 */
+	@Test
+	public void VerificarMetodoEqualsDaClasseCurrency_QuandoComparaCurrencyIguaisDevemSerIguais() {
+		//Criando objetos currency para serem usados no teste
+		Currency BRL2 = new Currency("BRL");
+		Currency USD2 = new Currency("USD");
+		//Fim da Criacao
+		
+		//Testando
+		assertEquals(BRL,BRL2);
+		assertEquals(USD2,USD);
+		
+	}
+	@Test
+	public void VerificarMetodoEqualsDaClasseCurrency_QuandoComparaCurrencyDiferenteDevemSerDiferentes() {
+		//Criando um objeto com nome parecido ao de BRL
+		Currency BRR = new Currency("BRR");
+		
+		//Testando currency com nomes diferentes
+		assertTrue(!BRL.equals(BRR));
+		assertTrue(!BRL.equals(USD));
+		assertTrue(!USD.equals(BRL));
+		
+	}
 }
