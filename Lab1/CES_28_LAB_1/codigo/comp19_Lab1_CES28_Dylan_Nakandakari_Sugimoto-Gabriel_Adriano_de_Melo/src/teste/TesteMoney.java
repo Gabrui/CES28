@@ -153,4 +153,20 @@ public class TesteMoney {
 		assertTrue(!USD.equals(BRL));
 		
 	}
+	@Test
+	public void VerificarConstrutorDaClasseCurrency_QuandoCriadoDeveConterUmNomeDeStringDeTamanho3() {
+		//Criando Objetos
+		Currency BRL2 = new Currency("BRL");
+		Currency BRLL = new Currency("BRLL");
+		
+		assertEqual(BRL,BRL2);
+		assertTrue(!(BRL.equals(USD)));
+		assertNotNull(BRL);
+		assertNotSame(BRL,BRL2);
+		assertTrue(BRL.getNome() instaceof String);
+		assertTrue(BRL.getNome().length == 3);
+		assertFalse(BRLL.getNome().length == 3);
+		
+		
+	}
 }
