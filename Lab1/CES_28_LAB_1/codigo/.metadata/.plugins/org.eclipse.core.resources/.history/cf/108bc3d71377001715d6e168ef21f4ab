@@ -44,6 +44,7 @@ public class TesteMoney {
 		//Fim da Criacao de objetos
 		
 		//Testando com BRL
+		assertTrue(BRL7.add(null).equals(null));
 		assertTrue(BRL7.add(BRL0).getAmount() == 7);
 		assertTrue(BRL0.add(BRL1).getAmount() == 1);
 		assertTrue(BRL07.add(BRL7).getAmount() == 14);
@@ -63,6 +64,7 @@ public class TesteMoney {
 		assertEquals(USD0.add(USD1),USD1);
 		assertEquals(USD0.add(USD0),USD0);
 		assertEquals(USDmax.add(USD0),USDmax);
+		assertEquals(USD0.add(null), null);
 	}
 	
 	
