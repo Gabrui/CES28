@@ -167,19 +167,6 @@ public class TesteMoney {
 		
 	}
 	/**
-	 * Este metodo verifica se o construtor do Currency retorna um objeto currency
-	 * 
-	 */
-	@Test
-	public void VerificarConstrutorDaClasseCurrency_QuandoCriadoDeveRetornarObjetoCurrency() {
-		//Criando Objetos
-		Currency BRL2 = new Currency("BRL");
-		
-		assertNotNull(BRL);
-		assertTrue((BRL instanceof Currency));
-		assertNotSame(BRL,BRL2);
-	}
-	/**
 	 * Este metodo verifica se o atributo recebe uma string
 	 * 
 	 */
@@ -247,5 +234,19 @@ public class TesteMoney {
 		// Criando Objeto Currency com nome Vazio
 		//Espera-se que uma excecao seja gerada
 		Currency vazio = new Currency("");
+	}
+	/**
+	 * Este metodo verifica se o metodo clonar da Classe Currency retorna um currency igual
+	 * 
+	 */
+	public void VerificarClonarDaClasseCurrency_QuandoClonarRetornaUmCurrencyIgual() {
+		//Clonando
+		Money BRL2 = BRL.clonar();
+		
+		assertNotNull(BRL2);
+		assertEquals(BRL,BRL2);
+		assertTrue(!(BRL2.equals(USD)));
+		assertNotSame(BRL,BRL2);
+		
 	}
 }
