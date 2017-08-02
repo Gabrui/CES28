@@ -8,6 +8,7 @@
  */
 package teste;
 import main.Money;
+import main.Currency;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import org.junit.Before;
@@ -23,25 +24,33 @@ public class TesteMoney {
 	private Money EUR19;
 	private Money GBP7;
 	private int maxint;
+	private Currency BRL;
+	private Currency USD;
+	private Currency EUR;
+	private Currenry GBP;
 	
 	@Before
 	//Definindo alguns objetos Money para usar nos testes
 	public void setUp() {
-		BRL7 = new Money(7,"BRL");
-		USD11 = new Money(11,"USD");
-		EUR19 = new Money(19,"EUR");
-		GBP7 = new Money(7,"GBP");
+		BRL = new Currency("BRL");
+		USD = new Currency("USD");
+		EUR = new Currency("EUR");
+		GBP = new Currency("GBP");
+		BRL7 = new Money(7,BRL);
+		USD11 = new Money(11,USD);
+		EUR19 = new Money(19,EUR);
+		GBP7 = new Money(7,GBP);
 		maxint = 2147483647;
 	}
 	
 	@Test
 	public void VerificarMetodoEqualDaClasseMoney_QuandoCompararMoneyIguaisDevemSerIguais() {
 		//Criando objetos para usar no Teste
-		Money GBP07 = new Money(7,"GBP");
-		Money GBP0 = new Money(0,"GBP");
-		Money GBPmax = new Money(maxint,"GBP");
-		Money EUR019 = new Money(19,"EUR");
-		Money EUR7 = new Money(7,"EUR");
+		Money GBP07 = new Money(7,GBP);
+		Money GBP0 = new Money(0,GBP);
+		Money GBPmax = new Money(maxint,GBP);
+		Money EUR019 = new Money(19,EUR);
+		Money EUR7 = new Money(7,EUR);
 		//Fim da Criacao de Objetos
 		
 		//Verificando se sao iguais pelo metodo Equals
@@ -64,11 +73,11 @@ public class TesteMoney {
 	@Test
 	public void VerificarMetodoEqualDaClasseMoney_QuandoComparaMoneyDiferenteDevemSerDiferentes() {
 		//Criando objetos para usar no Teste
-				Money GBP07 = new Money(7,"GBP");
-				Money GBP0 = new Money(0,"GBP");
-				Money GBPmax = new Money(maxint,"GBP");
-				Money EUR019 = new Money(19,"EUR");
-				Money EUR7 = new Money(7,"EUR");
+				Money GBP07 = new Money(7,GBP);
+				Money GBP0 = new Money(0,GBP);
+				Money GBPmax = new Money(maxint,GBP);
+				Money EUR019 = new Money(19,EUR);
+				Money EUR7 = new Money(7,EUR);
 				//Fim da Criacao de Objetos
 				
 		//conferindo quando sao diferentes
@@ -83,14 +92,14 @@ public class TesteMoney {
 	@Test
 	public void VerificarMetodoAddDaClasseMoney_SomaDaMesmaMoeda() {
 		//Criando alguns objetos Money para usar no teste.
-		Money BRL0 = new Money(0,"BRL");
-		Money BRL1 = new Money(1,"BRL");
-		Money BRL07 = new Money(7,"BRL");
-		Money BRL00 = new Money(0, "BRL");
-		Money BRLmax = new Money(maxint, "BRL");
-		Money USD0 = new Money(0,"USD");
-		Money USD1 = new Money(1,"USD");
-		Money USDmax = new Money(maxint,"USD");
+		Money BRL0 = new Money(0,BRL);
+		Money BRL1 = new Money(1,BRL);
+		Money BRL07 = new Money(7,BRL);
+		Money BRL00 = new Money(0, BRL);
+		Money BRLmax = new Money(maxint, BRL);
+		Money USD0 = new Money(0,USD);
+		Money USD1 = new Money(1,USD);
+		Money USDmax = new Money(maxint,USD);
 		//Fim da Criacao de objetos
 		
 		//Testando com BRL
