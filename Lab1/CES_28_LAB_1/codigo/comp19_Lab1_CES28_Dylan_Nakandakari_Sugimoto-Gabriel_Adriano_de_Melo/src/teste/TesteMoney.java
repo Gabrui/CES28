@@ -42,7 +42,10 @@ public class TesteMoney {
 		GBP7 = new Money(7,GBP);
 		maxint = 2147483647;
 	}
-	
+	/**
+	 * Esse metodo compara money iguais
+	 * 
+	 */
 	@Test
 	public void VerificarMetodoEqualDaClasseMoney_QuandoCompararMoneyIguaisDevemSerIguais() {
 		//Criando objetos para usar no Teste
@@ -69,7 +72,10 @@ public class TesteMoney {
 		assertTrue(GBPmax.equals(GBPmax));
 		
 	}
-	
+	/**
+	 * Esse metodo compara money diferentes
+	 * 
+	 */
 	@Test
 	public void VerificarMetodoEqualDaClasseMoney_QuandoComparaMoneyDiferenteDevemSerDiferentes() {
 		//Criando objetos para usar no Teste
@@ -90,7 +96,8 @@ public class TesteMoney {
 	}
 	/**
 	 * Esse metodo realiza o teste da soma entre mesma moeda.
-	 * Passo 2, 3 e 4.
+	 * Passo 2, 3, 4 e 6.
+	 * 
 	 */
 	@Test
 	public void VerificarMetodoAddDaClasseMoney_SomaDaMesmaMoeda() {
@@ -129,6 +136,8 @@ public class TesteMoney {
 	
 	/**
 	 * Passo 6
+	 * Esse metodo compara currency iguais
+	 * 
 	 */
 	@Test
 	public void VerificarMetodoEqualsDaClasseCurrency_QuandoComparaCurrencyIguaisDevemSerIguais() {
@@ -142,6 +151,10 @@ public class TesteMoney {
 		assertEquals(USD2,USD);
 		
 	}
+	/**
+	 * Esse metodo compara currency diferentes
+	 * 
+	 */
 	@Test
 	public void VerificarMetodoEqualsDaClasseCurrency_QuandoComparaCurrencyDiferenteDevemSerDiferentes() {
 		//Criando um objeto com nome parecido ao de BRL
@@ -153,17 +166,44 @@ public class TesteMoney {
 		assertTrue(!USD.equals(BRL));
 		
 	}
+	/**
+	 * Este metodo verifica se o metodo retorna um objeto currency
+	 * 
+	 */
 	@Test
-	public void VerificarConstrutorDaClasseCurrency_QuandoCriadoDeveConterUmNomeDeStringDeTamanho3() {
+	public void VerificarConstrutorDaClasseCurrency_QuandoCriadoDeveRetornarObjetoCurrency() {
 		//Criando Objetos
 		Currency BRL2 = new Currency("BRL");
 		
+		assertNotNull(BRL);
+		assertTrue((BRL instanceof Currency));
+		assertNotSame(BRL,BRL2);
+	}
+	@Test
+	public void VerificarConstrutorDaClasseCurrency_QuandoCriadoDeveAtribuirUmNomeDoTipoString() {
+		//Criando Objetos
+		Currency BRL2 = new Currency("BRL");
+		
+		assertTrue(BRL.getNome() instanceof String);
+		
+	}
+	@Test
+	public void VerificarConstrutorDaClasseCurrency_QuandoCriadoDeveAtribuirUmNomeDeTamanho3() {
+		//Criando Objetos
+		Currency BRL2 = new Currency("BRL");
+		
+		assertTrue(BRL.getNome().length == 3);
+		
+	}
+	@Test
+	public void VerificarConstrutorDaClasseCurrency_QuandoCriadoDeveAtribuirParametroPassado() {
+		//Criando Objetos
+		Currency BRL2 = new Currency("BRL");
+
 		assertEqual(BRL,BRL2);
 		assertTrue(!(BRL.equals(USD)));
-		assertNotNull(BRL);
-		assertNotSame(BRL,BRL2);
-		assertTrue(BRL.getNome() instaceof String);
-		assertTrue(BRL.getNome().length == 3);
+		assertTrue(BRL.getNome().equals("BRL"));
+		assertTrue(!(BRL.getNome().equals("USD")));
 	}
 	@Test (Expected = Exception.class)
 	public void VerificarConstrutorDaClasseCurrency_QuandoCriadoComNomeMaiorQue3DeveGerarUmaExcecao() {
