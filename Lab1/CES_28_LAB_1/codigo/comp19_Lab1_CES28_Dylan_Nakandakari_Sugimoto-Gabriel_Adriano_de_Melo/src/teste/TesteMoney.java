@@ -221,7 +221,7 @@ public class TesteMoney {
 	 * Este metodo verifica se um valor de excecao eh gerado quando um nome maior que 3 eh passado
 	 * 
 	 */
-	@Test (Expected = Exception.class)
+	@Test (Expected = RuntimeException.class)
 	public void VerificarConstrutorDaClasseCurrency_QuandoCriadoComNomeMaiorQue3DeveGerarUmaExcecao() {
 		//Criando Objeto Currency com nome maior que 3
 		//Espera-se que uma excecao seja gerada
@@ -232,7 +232,7 @@ public class TesteMoney {
 	 * Este metodo verifica se um valor de excecao eh gerado quando um nome menor que 3 eh passado
 	 * 
 	 */
-	@Test (Expected = Exception.class)
+	@Test (Expected = RuntimeException.class)
 	public void VerificarConstrutorDaClasseCurrency_QuandoCriadoComNomeMenorQue3DeveGerarUmaExcecao() {
 		// Criando Objeto Currency com nome menor que 3
 		//Espera-se que uma excecao seja gerada
@@ -242,7 +242,7 @@ public class TesteMoney {
 	 * Este metodo verifica se um valor de exececao eh gerado quando um nome vazio eh passado
 	 * 
 	 */
-	@Test (Expected = Exception.class)
+	@Test (Expected = RuntimeException.class)
 	public void VerificarConstrutorDaClasseCurrency_QuandoCriadoComNomeVazioDeveGerarUmaExcecao() {
 		// Criando Objeto Currency com nome Vazio
 		//Espera-se que uma excecao seja gerada
