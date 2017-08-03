@@ -147,7 +147,6 @@ public class TesteCurrency {
 	public void VerificarClonarDaClasseCurrency_QuandoClonarRetornaUmCurrencyIgual() {
 		//Clonando
 		Currency BRL2 = BRL.clonar();
-		
 		//Testes
 		assertNotNull(BRL2);
 		assertEquals(BRL,BRL2);

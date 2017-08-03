@@ -23,7 +23,13 @@ public class MoneyBag implements Pocket{
 	
 	@Override
 	public Pocket add(Money money) {
-		if (this.hasMoney(money))
+		for (Money dim : this.lista) {
+			if (dim.getCurrency().equals(money.getCurrency())) {
+				this.lista.remove(dim);
+				this.lista.add((Money) dim.add(money));
+				return this;
+			}
+		}
 		this.lista.add(money);
 		return this;
 	}
@@ -57,12 +63,21 @@ public class MoneyBag implements Pocket{
 	public boolean equals(Object moneyBag) {
 		if (moneyBag instanceof MoneyBag) {
 			MoneyBag m = (MoneyBag) moneyBag;
+			if (this.lista.size() != m.lista.size())
+				return false;
 			for (Money dim : this.lista) {
 				if (!m.hasMoney(dim))
 					return false;
 			}
+			return true;
 		}
-		return true;
+		return false;
+	}
+	
+	
+	@Override
+	public String toString() {
+		return this.lista.toString();
 	}
 
 }

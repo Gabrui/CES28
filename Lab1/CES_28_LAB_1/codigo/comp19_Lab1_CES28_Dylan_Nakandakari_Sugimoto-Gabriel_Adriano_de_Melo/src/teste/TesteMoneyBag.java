@@ -45,7 +45,7 @@ public class TesteMoneyBag {
 		USD = new Currency("USD");
 		EUR = new Currency("EUR");
 		CHF = new Currency("CHF");
-		maxint = 2147483647;
+		maxint = 4234234; //2147483647;
 	}
 	
 	/**

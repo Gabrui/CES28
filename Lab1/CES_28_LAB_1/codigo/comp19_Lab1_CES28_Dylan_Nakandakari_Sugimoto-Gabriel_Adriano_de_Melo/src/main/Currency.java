@@ -16,7 +16,7 @@ public class Currency {
 	
 	
 	public String getSigla() {
-		return sigla;
+		return this.sigla;
 	}
 	
 	
@@ -45,8 +45,13 @@ public class Currency {
 	}
 	
 	
-	public boolean equals(Currency curr) {
-		return this.getSigla().equals(curr.getSigla());
+	@Override
+	public boolean equals(Object curr) {
+		if (curr instanceof Currency) {
+			Currency c = (Currency) curr;
+			return this.getSigla().equals(c.getSigla());
+		}
+		return false;
 	}
 	
 	
