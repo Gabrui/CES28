@@ -354,6 +354,7 @@ public class TesteMoneyBag {
 		assertTrue(unibag3.getSize(),1);
 		assertTrue(bagtest4.getSize(),2);
 		assertTrue(bagtest5.getSize(),1);
+		assertTrue(emptybag.getSize(),0);
 		//Fim do teste
 	}
 	/**
@@ -391,6 +392,59 @@ public class TesteMoneyBag {
 		assertTrue(unibag3.hasMoney(USDmax));
 		assertTrue(bagtest2.hasMoney(EUR14));
 		assertFalse(bagtest2.hasMoney(EUR7));
+		assertFalse(bagtest2.hasMoney(CHF12));
+		assertFalse(emptybag.hasMoney(CHF12));
+		assertFalse(emptybag.hasMoney(EUR0));
+		assertFalse(emptybag.hasMoney(USDmax));
 		//Fim do teste
+	}
+	/**
+	 * Este Metodo testa o metood Add da Classe MoneyBag verificando se a soma de todos os elementos da lista esta correto
+	 * Passo 8
+	 */
+	@Test
+	public void VerificarMetodoGetAmountDaClasseMoneyBag_QuandoSolicitadoDeveRetornarSomaDeTudoDaMoneyBagEmBRL() {
+		//Declarando variaveis para serem usadas neste teste
+		Money BRL10 = new Money(10,BRL);
+		MoneyBag unibag2 = new MoneyBag();
+		MoneyBag unibag3 = new MoneyBag();
+		MoneyBag unibag4 = new MoneyBag();
+		MoneyBag unibag5 = new MoneyBag();
+		MoneyBag bagtest2 = new MoneyBag();
+		//Fim da declaracao
+		
+		//Montando MoneyBags
+		bagtest.add(EUR7);
+		bagtest.add(EUR0);
+		bagtest.add(USD7);
+		bagtest.add(BRL10);
+		bagtest.add(CHF12);
+		
+		unibag.add(EUR7);
+		unibag2.add(BRL10);
+		unibag3.add(USD7);
+		unibag4.add(CHF12);
+		unibag5.add(USD0);
+		
+		bagtest2.add(EUR0);
+		bagtest2.add(EUR7);
+		bagtest2.add(EUR14);
+		//Fim da Montagem
+		
+		//Teste
+		assertEquals(bagtest.getAmount(),71);
+		assertEquals(unibag.getAmount(),28);
+		assertEquals(unibag2.getAmount(),10);
+		assertEquals(unibag3.getAmount(),21);
+		assertEquals(unibag4.getAmount(),24);
+		assertEquals(unibag5.getAmount(),0);
+		assertEquals(bagtest2.getAmount(),84);
+		assertFalse(bagtest.getAmount() == 0);
+		assertFalse(unibag.getAmount() == 0);
+		assertFalse(unibag.getAmount() == 7);
+		assertFalse(bagtest2.getAmount() == 21);
+		
+		
+		//Fim do Teste
 	}
 }
