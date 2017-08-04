@@ -143,7 +143,7 @@ public class TesteMoney {
 	 * Teste da implementacao do Passo 10
 	 */
 	@Test
-	public void VerificarMetodoAddDaClasseMoney_QuandoSomaMoneyDiferentesRetornaMoneyRecebido() {
+	public void VerificarMetodoAddDaClasseMoney_QuandoSomaMoneyDiferentesRetornaMoneyBag() {
 		//Declarando variaveis para usar neste teste
 		Currency empty = new Currency("   ");
 		Money BRL0 = new Money(0,BRL);
@@ -214,6 +214,57 @@ public class TesteMoney {
 				assertFalse(EUR0.add(BRL0).getSize() <= 1);
 				assertFalse(BRL7.add(GBP7).getSize() >= 3);
 				
+	}
+	/**
+	 * Este Metodo testa o metodo add quando recebe Money diferentes
+	 * Teste da implementacao do Passo 10
+	 */
+	@Test
+	public void VerificarMetodoAddDaClasseMoney_QuandoSomaMoneyDiferentesRetornaMoneyBagComOsDoisMoneys() {
+		//Declarando variaveis para usar neste teste
+		Currency empty = new Currency("   ");
+		Money BRL0 = new Money(0,BRL);
+		Money BRLmax = new Money(maxint,BRL);
+		Money BRLempty = new Money(12,empty);
+		Money EUR0 = new Money(0,EUR);
+		
+		MoneyBag bagBRL7EUR19 = new MoneyBag();
+		MoneyBag bagBRLemptyUSD11 = new MoneyBag();
+		MoneyBag bagEUR19BRLmax = new MoneyBag();
+		MoneyBag bagBRL0GBP7 = new MoneyBag();
+		MoneyBag bagBRL0EUR0 = new MoneyBag();
+		//Fim da declaracao
+		
+		//Montando Moneybags
+		bagBRL7EUR19 = BRL7.add(EUR19);
+		bagBRLemptyUSD11 = USD11.add(BRLempty);
+		bagEUR19BRLmax = EUR19.add(BRLmax);
+		bagBRL0GBP7 = BRL0.add(GBP7);
+		bagBRL0EUR0 = BRL0.add(EUR0);
+		//Fim da montagem
+		
+		//Teste
+		assertTrue(bagBRL7EUR19.hasMoney(BRL7));
+		assertTrue(bagBRL7EUR19.hasMoney(EUR19));
+		assertFalse(bagBRL7EUR19.hasMoney(BRL0));
+		assertFalse(bagBRL7EUR19.hasCurrency(USD));
+		assertTrue(bagBRLemptyUSD11.hasMoney(USD11));
+		assertTrue(bagBRLemptyUSD11.hasMoney(BRLempty));
+		assertFalse(bagBRLemptyUSD11.hasMoney(EUR0));
+		assertFalse(bagBRLemptyUSD11.hasCurrency(GBP));
+		assertTrue(bagEUR19BRLmax.hasMoney(EUR19));
+		assertTrue(bagEUR19BRLmax.hasMoney(BRLmax));
+		assertFalse(bagEUR19BRLmax.hasMoney(EUR0));
+		assertFalse(bagEUR19BRLmax.hasCurrency(USD));
+		assertTrue(bagBRL0GBP7.hasMoney(BRL0));
+		assertTrue(bagBRL0GBP7.hasMoney(GBP7));
+		assertFalse(bagBRL0GBP7.hasCurrency(EUR));
+		assertFalse(bagBRL0GBP7.hasMoney(USD11));
+		assertTrue(bagBRL0EUR0.hasMoney(BRL0));
+		assertTrue(bagBRL0EUR0.hasMoney(EUR0));
+		assertFalse(bagBRL0EUR0.hasMoney(BRLempty));
+		assertFalse(bagBRL0EUR0.hasCurrency(GBP));
+		//Fim do Teste
 	}
 	/**
 	 * Este Metodo testa se o setAmount da Classe Money impede a atribuicao de inteiros negativos
