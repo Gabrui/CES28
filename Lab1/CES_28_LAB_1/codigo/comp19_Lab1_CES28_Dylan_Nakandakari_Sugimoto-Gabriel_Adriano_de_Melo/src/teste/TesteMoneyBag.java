@@ -183,11 +183,12 @@ public class TesteMoneyBag {
 				bagtest.add(EUR7);
 				unibag.add(EURmax);
 				
-				equalbagtest.add(USD7);
-				equalbagtest.add(USD0);
 				equalbagtest.add(EUR0);
 				equalbagtest.add(EUR7);
 				equalbagtest.add(EUR7);
+				equalbagtest.add(USD7);
+				equalbagtest.add(USD0);
+				
 				unibag2.add(EURmax);
 				bagtest3.add(USD7);
 				bagtest3.add(EUR14);
