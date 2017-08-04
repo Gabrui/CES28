@@ -137,5 +137,14 @@ public class TesteMoney {
 		assertEquals(USD0.add(USD0),USD0);
 		assertEquals(USDmax.add(USD0),USDmax);
 	}
-	
+	/**
+	 * Este Metodo testa se o setAmount da Classe Money impede a atribuicao de inteiros negativos
+	 * Passo 6
+	 */
+	@Test (expected = RuntimeException.class)
+	public void VerificarMetodoSetAmountDaClasseMoney_QuandoAtribuiNegativoEnviaRunTimeException(){
+		// Ao criar o objeto exceptionMoney atribuiu-se um valor inteiro negativo para a amount
+		//Espera-se que uma excecao seja gerada e capturada por esse teste validando o metodo.
+		Money exceptionMoney = new Money(-1,BRL);
+	}
 }
