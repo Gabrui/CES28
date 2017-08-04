@@ -105,7 +105,7 @@ public class TesteMoney {
 	}
 	/**
 	 * Esse metodo realiza o teste da soma entre mesma moeda.
-	 * Passo 2, 3, 4 e 6.
+	 * Passo 2, 3 ,5 e 6.
 	 * 
 	 */
 	@Test
@@ -268,7 +268,7 @@ public class TesteMoney {
 	}
 	/**
 	 * Este Metodo testa se o setAmount da Classe Money impede a atribuicao de inteiros negativos
-	 * Passo 6
+	 * Passo 2,3,5,6
 	 */
 	@Test (expected = RuntimeException.class)
 	public void VerificarMetodoSetAmountDaClasseMoney_QuandoAtribuiNegativoEnviaRunTimeException(){

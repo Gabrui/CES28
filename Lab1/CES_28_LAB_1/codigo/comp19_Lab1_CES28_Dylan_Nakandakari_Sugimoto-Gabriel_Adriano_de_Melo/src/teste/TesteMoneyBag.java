@@ -17,7 +17,7 @@ import org.junit.Test;
 import org.junit.Before;
 /**
  * Class TesteMoneyBag: Testa a classe MoneyBag.
- * Passo 8 
+ * Teste dos Passos 7,8,9 e 11 
  */
 public class TesteMoneyBag {
 	
