@@ -45,7 +45,7 @@ public class TesteMoneyBag {
 		USD = new Currency("USD");
 		EUR = new Currency("EUR");
 		CHF = new Currency("CHF");
-		maxint = 4234234; //2147483647;
+		maxint = 2147483647;
 	}
 	
 	/**
@@ -171,9 +171,16 @@ public class TesteMoneyBag {
 				Money EUR7 = new Money(7,EUR);
 				Money EURmax = new Money(maxint, EUR);
 				Money EUR14 = new Money(14,EUR);
+				Money BRL0 = new Money(0,BRL);
 				MoneyBag equalbagtest = new MoneyBag();
 				MoneyBag unibag2 = new MoneyBag(); 
 				MoneyBag bagtest3 = new MoneyBag();
+				MoneyBag bagtest4 = new MoneyBag();
+				MoneyBag bagtest5 = new MoneyBag();
+				MoneyBag bagtest6 = new MoneyBag();
+				MoneyBag bagtest7 = new MoneyBag();
+				MoneyBag bagtest8 = new MoneyBag();
+				MoneyBag bagtest9 = new MoneyBag();
 				//Fim da Criacao de Objetos
 				
 				bagtest.add(USD7);
@@ -193,11 +200,123 @@ public class TesteMoneyBag {
 				bagtest3.add(USD7);
 				bagtest3.add(EUR14);
 				
+				bagtest4.add(EURmax);
+				bagtest4.add(USD7);
+				bagtest5.add(USD7);
+				bagtest5.add(EURmax);
+				
+	            bagtest6.add(EURmax);
+	            bagtest6.add(USD7);
+	            bagtest6.add(EUR0);
+				
+	            for(int i =0;i<6;i++) {
+	            	bagtest7.add(USD7);
+	            }
+	            for(int i=0;i<6;i++) {
+	            	bagtest7.add(EUR7);
+	            }
+	            //adicionando em uma ordem diferentes do bagtest7
+	            for(int i=0;i<6;i++) {
+	            	bagtest8.add(EUR7);
+	            	bagtest8.add(USD7);
+	            }
+	            //colocando BRL0 a mais do que o bagtest
+	            bagtest9.add(USD7);
+				bagtest9.add(USD0);
+				bagtest9.add(EUR0);
+				bagtest9.add(EUR7);
+				bagtest9.add(EUR7);
+	            bagtest9.add(BRL0);
 				//Verificando se sao iguais pelo metodo Equals
 				assertEquals(equalbagtest,bagtest);
 				assertEquals(unibag2,unibag);
 				assertEquals(bagtest3,bagtest);
-		
-		
+				assertEquals(bagtest4,bagtest5);
+				assertEquals(bagtest5,bagtest6);
+				assertEquals(bagtest4,bagtest6);
+				assertEquals(bagtest7,bagtest8);
+				assertEquals(bagtest,bagtest9);
+	}
+	/**
+	 * Este Metodo testa o metodo add
+	 * Passo 8
+	 */
+	@Test
+	public void VerificarMetodoAddDeMoneyBag_CompararMoneyBagDiferentesDevemSerDiferentes() {
+		//Criando objetos para usar no Teste
+				Money USD7 = new Money(7,USD);
+				Money USD0 = new Money(0,USD);
+				Money USDmax = new Money(maxint,USD);
+				Money EUR0 = new Money(0,EUR);
+				Money EUR7 = new Money(7,EUR);
+				Money EURmax = new Money(maxint, EUR);
+				Money EUR14 = new Money(14,EUR);
+				Money CHF12 = new Money(12,CHF);
+				MoneyBag equalbagtest = new MoneyBag();
+				MoneyBag unibag2 = new MoneyBag(); 
+				MoneyBag bagtest3 = new MoneyBag();
+				MoneyBag bagtest4 = new MoneyBag();
+				MoneyBag bagtest5 = new MoneyBag();
+				MoneyBag bagtest6 = new MoneyBag();
+				MoneyBag bagtest7 = new MoneyBag();
+				MoneyBag bagtest8 = new MoneyBag();
+				
+				//Fim da Criacao de Objetos
+				
+				bagtest.add(USD7);
+				bagtest.add(USD0);
+				bagtest.add(EUR0);
+				bagtest.add(EUR7);
+				bagtest.add(EUR7);
+				unibag.add(EURmax);
+				
+				equalbagtest.add(EUR0);
+				equalbagtest.add(EUR7);
+				equalbagtest.add(EUR7);
+				equalbagtest.add(USD7);
+				equalbagtest.add(USD0);
+				equalbagtest.add(CHF12);
+				
+				unibag2.add(EUR0);
+				bagtest3.add(USD0);
+				bagtest3.add(EUR14);
+				
+				bagtest4.add(EURmax);
+				bagtest4.add(USD7);
+				bagtest5.add(USDmax);
+				bagtest5.add(EUR7);
+				
+	            bagtest6.add(EURmax);
+	            bagtest6.add(USDmax);
+	            bagtest6.add(EUR0);
+	            bagtest6.add(CHF12);
+				
+	            for(int i =0;i<6;i++) {
+	            	bagtest7.add(USD7);
+	            	bagtest7.add(USD0);
+	            	bagtest7.add(CHF12);
+	            }
+	            for(int i=0;i<6;i++) {
+	            	bagtest7.add(EUR7);
+	            	bagtest7.add(EUR0);
+	            }
+	            //adicionando em uma ordem diferentes do bagtest7
+	            for(int i=0;i<7;i++) {
+	            	bagtest8.add(USD0);
+	            	bagtest8.add(EUR7);
+	            	bagtest8.add(USD7);
+	            	bagtest8.add(EUR0);
+	            	bagtest8.add(CHF12);
+	            }
+				//Verificando se sao iguais pelo metodo Equals
+				assertFalse(equalbagtest.equals(bagtest));
+				assertFalse(unibag2.equals(unibag));
+				assertFalse(bagtest3.equals(bagtest));
+				assertFalse(bagtest4.equals(bagtest5));
+				assertFalse(bagtest5.equals(bagtest6));
+				assertFalse(bagtest4.equals(bagtest6));
+				assertFalse(bagtest7.equals(bagtest8));
+				assertFalse(bagtest.equals(emptybag));
+				assertFalse(emptybag.equals(unibag));
 	}
 }
