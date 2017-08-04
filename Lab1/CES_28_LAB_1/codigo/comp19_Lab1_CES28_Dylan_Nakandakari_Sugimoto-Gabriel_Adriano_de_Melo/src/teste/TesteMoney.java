@@ -9,6 +9,7 @@
 package teste;
 import main.Money;
 import main.Currency;
+import main.MoneyBag;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import org.junit.Before;
@@ -136,6 +137,57 @@ public class TesteMoney {
 		assertEquals(USD0.add(USD1),USD1);
 		assertEquals(USD0.add(USD0),USD0);
 		assertEquals(USDmax.add(USD0),USDmax);
+	}
+	/**
+	 * Este Metodo testa o metodo add quando recebe Money diferentes
+	 * Teste da implementacao do Passo 10
+	 */
+	@Test
+	public void VerificarMetodoAddDaClasseMoney_QuandoSomaMoneyDiferentesRetornaMoneyRecebido() {
+		//Declarando variaveis para usar neste teste
+		Currency empty = new Currency("   ");
+		Money BRL0 = new Money(0,BRL);
+		Money BRLmax = new Money(maxint,BRL);
+		Money BRLempty = new Money(12,empty);
+		Money EUR0 = new Money(0,EUR);
+		
+		MoneyBag bagBRL7EUR19 = new MoneyBag();
+		MoneyBag bagBRLemptyUSD11 = new MoneyBag();
+		MoneyBag bagEUR19BRLmax = new MoneyBag();
+		MoneyBag bagBRL0GBP7 = new MoneyBag();
+		MoneyBag bagBRL0EUR0 = new MoneyBag();
+		//Fim da declaracao
+		
+		//Montando Moneybags
+		bagBRL7EUR19.add(BRL7);
+		bagBRL7EUR19.add(EUR19);
+		bagBRLemptyUSD11.add(BRLempty);
+		bagBRLemptyUSD11.add(USD11);
+		bagEUR19BRLmax.add(EUR19);
+		bagEUR19BRLmax.add(BRLmax);
+		bagBRL0GBP7.add(BRL0);
+		bagBRL0GBP7.add(GBP7);
+		bagBRL0EUR0.add(EUR0);
+		bagBRL0EUR0.add(BRL0);
+		//Fim da montagem
+		
+		//Teste
+		assertEquals(BRL7.add(EUR19),bagBRL7EUR19);
+		assertFalse(BRL7.add(EUR19).equals(BRL7));
+		assertFalse(BRL7.add(EUR19).equals(EUR19));
+		assertEquals(USD11.add(BRLempty),bagBRLemptyUSD11);
+		assertFalse(BRLempty.add(USD11).equals(BRLempty));
+		assertFalse(BRLempty.add(USD11).equals(USD11));
+		assertEquals(EUR19.add(BRLmax),bagEUR19BRLmax);
+		assertFalse(BRLmax.add(EUR19).equals(BRLmax));
+		assertFalse(BRLmax.add(EUR19).equals(EUR19));
+		assertEquals(BRL0.add(GBP7),bagBRL0GBP7);
+		assertFalse(GBP7.add(BRL0).equals(GBP7));
+		assertFalse(GBP7.add(BRL0).equals(BRL0));
+		assertEquals(BRL0.add(EUR0),bagBRL0EUR0);
+		assertFalse(EUR0.add(BRL0).equals(BRL0));
+		assertFalse(BRL0.add(EUR0).equals(BRL0));
+		//Fim do Teste
 	}
 	/**
 	 * Este Metodo testa se o setAmount da Classe Money impede a atribuicao de inteiros negativos

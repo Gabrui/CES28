@@ -400,7 +400,7 @@ public class TesteMoneyBag {
 	}
 	/**
 	 * Este Metodo testa o metood Add da Classe MoneyBag verificando se a soma de todos os elementos da lista esta correto
-	 * Passo 8
+	 * Passo 8, Teste da implementacao do Passo 11
 	 */
 	@Test
 	public void VerificarMetodoGetAmountDaClasseMoneyBag_QuandoSolicitadoDeveRetornarSomaDeTudoDaMoneyBagEmBRL() {
