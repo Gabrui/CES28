@@ -356,4 +356,41 @@ public class TesteMoneyBag {
 		assertTrue(bagtest5.getSize(),1);
 		//Fim do teste
 	}
+	/**
+	 * Metodo verifica o metodo add olhando os elementos da lista
+	 * Passo 8
+	 */
+	@Test
+	public void VerificarMetodoAddDaClasseMoneyBag_SeAdicionaElementoDeveTerElemento() {
+		//Declarando Variaveis para usar neste teste
+		MoneyBag unibag2 = new MoneyBag();
+		MoneyBag unibag3 = new MoneyBag();
+		MoneyBag bagtest2 = new MoneyBag();
+		//Fim da Declaracao
+		
+		//Montando as bags
+		bagtest.add(CHF12);
+		bagtest.add(EUR7);
+		bagtest.add(EUR7);
+		bagtest.add(USDmax);
+		unibag.add(CHF12);
+		unibag2.add(EUR0);
+		unibag3.add(USDmax);
+		bagtest2.add(EUR14);
+		//Fim da Montagem
+		
+		//Testando
+		assertTrue(bagtest.hasMoney(CHF12));
+		assertTrue(bagtest.hasMoney(EUR14));
+		assertTrue(bagtest.hasMoney(USDmax));
+		assertFalse(bagtest.hasMoney(EUR7));
+		assertFalse(bagtest.hasMoney(USD0));
+		assertTrue(unibag.hasMoney(CHF12));
+		assertFalse(unibag.hasMoney(EUR7));
+		assertTrue(unibag2.hasMoney(EUR0));
+		assertTrue(unibag3.hasMoney(USDmax));
+		assertTrue(bagtest2.hasMoney(EUR14));
+		assertFalse(bagtest2.hasMoney(EUR7));
+		//Fim do teste
+	}
 }
