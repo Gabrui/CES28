@@ -443,8 +443,47 @@ public class TesteMoneyBag {
 		assertFalse(unibag.getAmount() == 0);
 		assertFalse(unibag.getAmount() == 7);
 		assertFalse(bagtest2.getAmount() == 21);
+		assertEquals(emptybag.getAmount(),0);
+		assertFalse(emptybag.getAmount() == 1);
+		assertFalse(unibag5.getAmount() == 1);
+		//Fim do Teste
+	}
+	/**
+	 * Teste do metodo hasCurrency da Classe MoneyBag
+	 * Passo 8
+	 */
+	@Test
+	public void VerificarMetodohasCurrencyDaClasseMoneyBag_QuandoColocaUmaMoedaDeveConterEssaMoeda() {
+		//Declarando Variaveis para serem usadas neste teste
+		MoneyBag unibag2 = new MoneyBag();
+		MoneyBag unibag3 = new MoneyBag();
+		//Fim da declaracao
 		
+		//Montando Moneybags
+		bagtest.add(CHF12);
+		bagtest.add(EUR0);
+		bagtest.add(USDmax);
+		bagtest.add(CHF12);
+		bagtest.add(EUR14);
 		
+		unibag.add(CHF12);
+		unibag2.add(EUR0);
+		unibag3.add(USDmax);
+		//Fim da montagem
+		
+		//Teste
+		assertTrue(bagtest.hasCurrency(CHF));
+		assertTrue(bagtest.hasCurrency(USD));
+		assertTrue(bagtest.hasCurrency(EUR));
+		assertTrue(unibag.hasCurrency(CHF));
+		assertFalse(bagtest.hasCurrency(BRL));
+		assertFalse(unibag.hasCurrency(USD));
+		assertFalse(emptybag.hasCurrency(BRL));
+		assertFalse(emptybag.hasCurrency(USD));
+		assertTrue(unibag2.hasCurrency(EUR));
+		assertFalse(unibag2.hasCurrency(USD));
+		assertTrue(unibag3.hasCurrency(USD));
+		assertFalse(unibag3.hasCurrency(BRL));
 		//Fim do Teste
 	}
 }
