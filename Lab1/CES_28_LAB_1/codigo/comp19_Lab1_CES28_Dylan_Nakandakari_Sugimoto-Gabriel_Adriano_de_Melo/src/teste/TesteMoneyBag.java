@@ -22,6 +22,14 @@ import org.junit.Before;
 public class TesteMoneyBag {
 	
 	//Declarando atributos privados
+	private Money USD7;
+	private Money USD0 ;
+	private Money USDmax;
+	private Money EUR0;
+	private Money EUR7;
+	private Money EURmax;
+	private Money EUR14;
+	private Money CHF12;
 	private MoneyBag bagtest;
 	private MoneyBag emptybag;
 	private MoneyBag unibag;
@@ -38,6 +46,7 @@ public class TesteMoneyBag {
 	 */
 	@Before
 	public void setUp() {
+		//Declarando variaveis para poder usar em todos os testes
 		bagtest = new MoneyBag();
 		emptybag = new MoneyBag();
 		unibag = new MoneyBag();
@@ -46,6 +55,15 @@ public class TesteMoneyBag {
 		EUR = new Currency("EUR");
 		CHF = new Currency("CHF");
 		maxint = 2147483647;
+		Money USD7 = new Money(7,USD);
+		Money USD0 = new Money(0,USD);
+		Money USDmax = new Money(maxint,USD);
+		Money EUR0 = new Money(0,EUR);
+		Money EUR7 = new Money(7,EUR);
+		Money EURmax = new Money(maxint, EUR);
+		Money EUR14 = new Money(14,EUR);
+		Money CHF12 = new Money(12,CHF);
+	//Fim do setUp
 	}
 	
 	/**
@@ -55,12 +73,6 @@ public class TesteMoneyBag {
 	@Test
 	public void VerificarMetodoEqualDaClasseMoney_QuandoCompararMoneyIguaisDevemSerIguais() {
 		//Criando objetos para usar no Teste
-		Money USD7 = new Money(7,USD);
-		Money USD0 = new Money(0,USD);
-		Money EUR0 = new Money(0,EUR);
-		Money EUR7 = new Money(7,EUR);
-		Money EURmax = new Money(maxint, EUR);
-		Money EUR14 = new Money(14,EUR);
 		MoneyBag equalbagtest = new MoneyBag();
 		MoneyBag bagtest2 = new MoneyBag();
 		MoneyBag unibag2 = new MoneyBag(); 
@@ -96,7 +108,7 @@ public class TesteMoneyBag {
 		assertEquals(unibag,unibag2);
 		assertEquals(bagtest3,bagtest);
 		assertEquals(bagtest,bagtest3);
-		
+		//Fim do teste
 	}
 	/**
 	 * Esse metodo compara MoneyBag diferentes
@@ -105,11 +117,6 @@ public class TesteMoneyBag {
 	@Test
 	public void VerificarMetodoEqualDaClasseMoney_QuandoCompararMoneyDiferentesDevemSerDiferentes() {
 		//Criando objetos para usar no Teste
-		Money USD7 = new Money(7,USD);
-		Money USD0 = new Money(0,USD);
-		Money EUR0 = new Money(0,EUR);
-		Money EUR7 = new Money(7,EUR);
-		Money EURmax = new Money(maxint, EUR);
 		MoneyBag ebagtest = new MoneyBag();
 		MoneyBag bagtest2 = new MoneyBag();
 		MoneyBag unibag2 = new MoneyBag();
@@ -155,7 +162,7 @@ public class TesteMoneyBag {
 		assertFalse(bagtest.equals(sameBag));
 		assertFalse(bagtest.equals(bagtest2));
 		assertFalse(bagtest2.equals(bagtest));
-		
+		//Fim do teste
 	}
 	
 	/**
@@ -165,12 +172,6 @@ public class TesteMoneyBag {
 	@Test
 	public void VerificarMetodoAddDeMoneyBag_CompararMoneyBagIguaisDevemSerIguais() {
 		//Criando objetos para usar no Teste
-				Money USD7 = new Money(7,USD);
-				Money USD0 = new Money(0,USD);
-				Money EUR0 = new Money(0,EUR);
-				Money EUR7 = new Money(7,EUR);
-				Money EURmax = new Money(maxint, EUR);
-				Money EUR14 = new Money(14,EUR);
 				Money BRL0 = new Money(0,BRL);
 				MoneyBag equalbagtest = new MoneyBag();
 				MoneyBag unibag2 = new MoneyBag(); 
@@ -236,6 +237,7 @@ public class TesteMoneyBag {
 				assertEquals(bagtest4,bagtest6);
 				assertEquals(bagtest7,bagtest8);
 				assertEquals(bagtest,bagtest9);
+	//Fim do teste
 	}
 	/**
 	 * Este Metodo testa o metodo add
@@ -244,14 +246,6 @@ public class TesteMoneyBag {
 	@Test
 	public void VerificarMetodoAddDeMoneyBag_CompararMoneyBagDiferentesDevemSerDiferentes() {
 		//Criando objetos para usar no Teste
-				Money USD7 = new Money(7,USD);
-				Money USD0 = new Money(0,USD);
-				Money USDmax = new Money(maxint,USD);
-				Money EUR0 = new Money(0,EUR);
-				Money EUR7 = new Money(7,EUR);
-				Money EURmax = new Money(maxint, EUR);
-				Money EUR14 = new Money(14,EUR);
-				Money CHF12 = new Money(12,CHF);
 				MoneyBag equalbagtest = new MoneyBag();
 				MoneyBag unibag2 = new MoneyBag(); 
 				MoneyBag bagtest3 = new MoneyBag();
@@ -318,5 +312,48 @@ public class TesteMoneyBag {
 				assertFalse(bagtest7.equals(bagtest8));
 				assertFalse(bagtest.equals(emptybag));
 				assertFalse(emptybag.equals(unibag));
+				//Fim do teste
+	}
+	/**
+	 * Verifica o metodo add em relacao ao tamanho da lista
+	 * Passo 8
+	 */
+	@Test
+	public void VerificaMetodoAddDaClasseMoneyBag_SeTemMesmoTamanhoSaoIguais() {
+		//Declarando variaveis para usar no teste
+		MoneyBag equalbagtest = new MoneyBag();
+		MoneyBag unibag2 = new MoneyBag(); 
+		MoneyBag unibag3 = new MoneyBag();
+		MoneyBag bagtest3 = new MoneyBag();
+		MoneyBag bagtest4 = new MoneyBag();
+		MoneyBag bagtest5 = new MoneyBag();
+		//Fim da Declaracao
+		
+		//montando as bags
+		bagtest.add(CHF12);
+		bagtest.add(CHF12);
+		bagtest.add(EUR0);
+		equalbagtest.add(EURmax);
+		equalbagtest.add(USDmax);
+		equalbagtest.add(CHF12);
+		unibag.add(CHF12);
+		unibag2.add(EUR0);
+		unibag3.add(USDmax);
+		bagtest3.add(EUR0);
+		bagtest3.add(USD0);
+		bagtest4.add(EUR7);
+		bagtest4.add(EUR7);
+		bagtest5.add(EUR14);
+		//Fim da Montagem
+		
+		//Teste
+		assertTrue(bagtest.getSize(),3);
+		assertTrue(equalbagtest.getSize(),3);
+		assertTrue(unibag.getSize(),1);
+		assertTrue(unibag2.getSize(),1);
+		assertTrue(unibag3.getSize(),1);
+		assertTrue(bagtest4.getSize(),2);
+		assertTrue(bagtest5.getSize(),1);
+		//Fim do teste
 	}
 }

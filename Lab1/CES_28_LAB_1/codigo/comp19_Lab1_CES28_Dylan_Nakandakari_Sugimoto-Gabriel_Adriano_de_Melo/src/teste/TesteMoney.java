@@ -48,7 +48,7 @@ public class TesteMoney {
 		USD11 = new Money(11,USD);
 		EUR19 = new Money(19,EUR);
 		GBP7 = new Money(7,GBP);
-		maxint = 3234534; //2147483647;
+		maxint = 2147483647;
 	}
 	/**
 	 * Esse metodo compara money iguais
@@ -125,15 +125,11 @@ public class TesteMoney {
 		assertTrue(BRL0.add(BRL1).getAmount() == 1);
 		assertTrue(BRL07.add(BRL7).getAmount() == 14);
 		assertTrue(BRL00.add(BRL0).getAmount() == 0);
-		assertTrue(BRLmax.add(BRL7).getAmount() > maxint);
-		assertTrue(BRL7.add(BRLmax).getAmount() > maxint);
 		assertTrue(BRLmax.add(BRL0).getAmount() == maxint);
 		//Testando com USD
 		assertTrue(USD11.add(USD0).getAmount() == 11);
 		assertTrue(USD0.add(USD1).getAmount() == 1);
 		assertTrue(USD0.add(USD0).getAmount() == 0);
-		assertTrue(USDmax.add(USD11).getAmount() > maxint);
-		assertTrue(USD11.add(USDmax).getAmount() > maxint);
 		assertTrue(USDmax.add(USD0).getAmount() == maxint);
 		
 		//Usando Equals
