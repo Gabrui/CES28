@@ -190,6 +190,32 @@ public class TesteMoney {
 		//Fim do Teste
 	}
 	/**
+	 * Este metodo verifica o tamanho da Moneybag que o metodo add da Money retorna
+	 * Teste da implementacao do Passo 10
+	 */
+	public void VerificarMetodoAddDaClasseMoney_QuandoAddRecebeMoneyDiferentesRetornaMoneyBagDeTamanho2() {
+				//Declarando variaveis para usar neste teste
+				Currency empty = new Currency("   ");
+				Money BRL0 = new Money(0,BRL);
+				Money BRLmax = new Money(maxint,BRL);
+				Money BRLempty = new Money(12,empty);
+				Money EUR0 = new Money(0,EUR);
+				//Fim da declaracao
+				
+				assertEquals(BRL7.add(EUR19).getSize(),2);
+				assertFalse(BRL7.add(EUR19).getSize() <= 1);
+				assertEquals(USD11.add(BRLempty).getSize(), 2);
+				assertFalse(BRLempty.add(USD11).getSize() <= 1);
+				assertEquals(EUR19.add(BRLmax).getSize(),2);
+				assertFalse(BRLmax.add(EUR19).getSize() <= 1);
+				assertEquals(BRL0.add(GBP7).getSize(),2);
+				assertFalse(GBP7.add(BRL0).getSize() <= 1);
+				assertEquals(BRL0.add(EUR0).getSize(),2);
+				assertFalse(EUR0.add(BRL0).getSize() <= 1);
+				assertFalse(BRL7.add(GBP7).getSize() >= 3);
+				
+	}
+	/**
 	 * Este Metodo testa se o setAmount da Classe Money impede a atribuicao de inteiros negativos
 	 * Passo 6
 	 */
