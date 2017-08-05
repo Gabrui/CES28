@@ -25,6 +25,12 @@ public class MoneyBag implements Pocket{
 		this.lista = new LinkedList<Money>();
 	}
 	
+	public MoneyBag(Money a, Money b) {
+		this.lista = new LinkedList<Money>();
+		this.add(a);
+		this.add(b);
+	}
+	
 	
 	@Override
 	public Pocket add(Money money) {
@@ -92,6 +98,16 @@ public class MoneyBag implements Pocket{
 			resposta = resposta + ", " + dim.toString();
 		}
 		return resposta.substring(2);
+	}
+	
+	
+	@Override
+	public MoneyBag clone() {
+		MoneyBag a = new MoneyBag();
+		for (Money dim : this.lista) {
+			a.add(dim.clone());
+		}
+		return a;
 	}
 
 }

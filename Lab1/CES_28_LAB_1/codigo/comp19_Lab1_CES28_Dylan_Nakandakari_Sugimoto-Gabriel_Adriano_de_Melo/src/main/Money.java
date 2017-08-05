@@ -52,7 +52,7 @@ public class Money implements Pocket{
 		if(this.getCurrency().equals(money.getCurrency())){
 			return new Money(this.getAmount() + money.getAmount(), this.getCurrency());
 		}
-		return money;
+		return new MoneyBag(this.clone(), money.clone());
 	}
 	
 	
@@ -63,8 +63,15 @@ public class Money implements Pocket{
 	
 	
 	public Currency getCurrency() {
-		return this.currency.clonar();
+		return this.currency.clone();
 	}
+	
+	
+	@Override
+	public Money clone() {
+		return new Money(this.getAmount(), this.getCurrency());
+	}
+	
 	
 	@Override
 	public boolean equals(Object money) {
@@ -74,6 +81,7 @@ public class Money implements Pocket{
 		}
 		return false;
 	}
+	
 	
 	@Override
 	public String toString() {
