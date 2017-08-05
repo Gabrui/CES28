@@ -16,7 +16,7 @@ import org.junit.Before;
 
 /**
  * Class TesteMoney: Possui metodos que testam a classe Money
- * 
+ * Passo 2,3,4 e 6 e teste da implementacao do Passo 1, 5 e 10.
  *
  */
 public class TesteMoney {
@@ -36,7 +36,7 @@ public class TesteMoney {
 	
 	/**
 	 * Este metodo realiza algumas preparacoes para realizacao do teste
-	 * Pass 4
+	 * Passo 4
 	 */
 	@Before
 	//Definindo alguns objetos Money para usar nos testes
@@ -105,7 +105,7 @@ public class TesteMoney {
 	}
 	/**
 	 * Esse metodo realiza o teste da soma entre mesma moeda.
-	 * Passo 2, 3 ,5 e 6.
+	 * Passo 2, 3 e 6, e testa a implementacao do passo 1 e 5
 	 * 
 	 */
 	@Test
@@ -268,7 +268,7 @@ public class TesteMoney {
 	}
 	/**
 	 * Este Metodo testa se o setAmount da Classe Money impede a atribuicao de inteiros negativos
-	 * Passo 2,3,5,6
+	 * Testa implementacao do Passo 1
 	 */
 	@Test (expected = RuntimeException.class)
 	public void VerificarMetodoSetAmountDaClasseMoney_QuandoAtribuiNegativoEnviaRunTimeException(){

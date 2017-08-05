@@ -42,7 +42,7 @@ public class TesteMoneyBag {
 	
 	/**
 	 * Este metodo realiza algumas preparacoes para a realizacao do teste
-	 * Passo 8
+	 * Passo 4
 	 */
 	@Before
 	public void setUp() {
