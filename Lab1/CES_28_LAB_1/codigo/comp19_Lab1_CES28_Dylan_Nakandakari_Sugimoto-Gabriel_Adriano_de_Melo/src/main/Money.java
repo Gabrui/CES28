@@ -72,4 +72,9 @@ public class Money implements Pocket{
 		}
 		return false;
 	}
+	
+	@Override
+	public String toString() {
+		return this.getAmount() + " " + this.getCurrency().toString();
+	}
 }

@@ -59,6 +59,11 @@ public class MoneyBag implements Pocket{
 	}
 	
 	
+	public int getSize() {
+		return this.lista.size();
+	}
+	
+	
 	@Override
 	public boolean equals(Object moneyBag) {
 		if (moneyBag instanceof MoneyBag) {
@@ -77,7 +82,11 @@ public class MoneyBag implements Pocket{
 	
 	@Override
 	public String toString() {
-		return this.lista.toString();
+		String resposta = "";
+		for (Money dim : this.lista) {
+			resposta = resposta + ", " + dim.toString();
+		}
+		return resposta.substring(2);
 	}
 
 }
