@@ -8,6 +8,8 @@
  */
 package main;
 
+import javax.swing.plaf.synth.SynthSeparatorUI;
+
 /**
  * @version 1.0, 01/08/2017
  * @param {_amount} representa a quantidade da moeda (inteiro positivo) 
@@ -52,7 +54,7 @@ public class Money implements Pocket{
 		if(this.getCurrency().equals(money.getCurrency())){
 			return new Money(this.getAmount() + money.getAmount(), this.getCurrency());
 		}
-		return new MoneyBag(this.clone(), money.clone());
+		return new MoneyBag(this, money);
 	}
 	
 	
@@ -63,12 +65,11 @@ public class Money implements Pocket{
 	
 	
 	public Currency getCurrency() {
-		return this.currency.clone();
+		return this.currency.clonar();
 	}
 	
 	
-	@Override
-	public Money clone() {
+	public Money clonar() {
 		return new Money(this.getAmount(), this.getCurrency());
 	}
 	

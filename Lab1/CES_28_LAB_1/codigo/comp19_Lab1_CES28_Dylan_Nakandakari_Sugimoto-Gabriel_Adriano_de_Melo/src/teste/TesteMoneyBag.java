@@ -55,14 +55,14 @@ public class TesteMoneyBag {
 		EUR = new Currency("EUR");
 		CHF = new Currency("CHF");
 		maxint = 2147483647;
-		Money USD7 = new Money(7,USD);
-		Money USD0 = new Money(0,USD);
-		Money USDmax = new Money(maxint,USD);
-		Money EUR0 = new Money(0,EUR);
-		Money EUR7 = new Money(7,EUR);
-		Money EURmax = new Money(maxint, EUR);
-		Money EUR14 = new Money(14,EUR);
-		Money CHF12 = new Money(12,CHF);
+		USD7 = new Money(7,USD);
+		USD0 = new Money(0,USD);
+		USDmax = new Money(maxint,USD);
+		EUR0 = new Money(0,EUR);
+		EUR7 = new Money(7,EUR);
+		EURmax = new Money(maxint, EUR);
+		EUR14 = new Money(14,EUR);
+		CHF12 = new Money(12,CHF);
 	//Fim do setUp
 	}
 	
@@ -189,6 +189,7 @@ public class TesteMoneyBag {
 				bagtest.add(EUR0);
 				bagtest.add(EUR7);
 				bagtest.add(EUR7);
+				
 				unibag.add(EURmax);
 				
 				equalbagtest.add(EUR0);
@@ -236,7 +237,7 @@ public class TesteMoneyBag {
 				assertEquals(bagtest5,bagtest6);
 				assertEquals(bagtest4,bagtest6);
 				assertEquals(bagtest7,bagtest8);
-				assertEquals(bagtest,bagtest9);
+				assertNotEquals(bagtest,bagtest9);
 	//Fim do teste
 	}
 	/**
@@ -347,12 +348,12 @@ public class TesteMoneyBag {
 		//Fim da Montagem
 		
 		//Teste
-		assertEquals(bagtest.getSize(),3);
+		assertEquals(bagtest.getSize(), 2);
 		assertEquals(equalbagtest.getSize(),3);
 		assertEquals(unibag.getSize(),1);
 		assertEquals(unibag2.getSize(),1);
 		assertEquals(unibag3.getSize(),1);
-		assertEquals(bagtest4.getSize(),2);
+		assertEquals(bagtest4.getSize(),1);
 		assertEquals(bagtest5.getSize(),1);
 		assertEquals(emptybag.getSize(),0);
 		//Fim do teste
@@ -432,7 +433,7 @@ public class TesteMoneyBag {
 		//Fim da Montagem
 		
 		//Teste
-		assertEquals(bagtest.getAmount(),71);
+		assertEquals(bagtest.getAmount(),83);
 		assertEquals(unibag.getAmount(),28);
 		assertEquals(unibag2.getAmount(),10);
 		assertEquals(unibag3.getAmount(),21);
@@ -497,7 +498,7 @@ public class TesteMoneyBag {
 		MoneyBag unibag3 = new MoneyBag();
 		MoneyBag bagtest2 = new MoneyBag();
 		//Fim da Declaracao
-		
+		System.out.println("'"+emptybag.toString()+"'");
 		//Montando MoneyBags
 		bagtest.add(CHF12);
 		bagtest.add(EUR0);

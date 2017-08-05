@@ -45,8 +45,7 @@ public class Currency {
 	}
 	
 	
-	@Override
-	public Currency clone() {
+	public Currency clonar() {
 		return new Currency(this.getSigla());
 	}
 	

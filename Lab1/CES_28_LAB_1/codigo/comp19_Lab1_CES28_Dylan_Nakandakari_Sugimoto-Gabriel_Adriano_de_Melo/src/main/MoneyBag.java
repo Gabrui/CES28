@@ -40,7 +40,7 @@ public class MoneyBag implements Pocket{
 				return this;
 			}
 		}
-		this.lista.add(money.clone());
+		this.lista.add(money.clonar());
 		return this;
 	}
 
@@ -92,6 +92,8 @@ public class MoneyBag implements Pocket{
 	
 	@Override
 	public String toString() {
+		if (this.getSize() == 0)
+			return "";
 		String resposta = "";
 		for (Money dim : this.lista) {
 			resposta = resposta + ", " + dim.toString();
@@ -100,13 +102,4 @@ public class MoneyBag implements Pocket{
 	}
 	
 	
-	@Override
-	public MoneyBag clone() {
-		MoneyBag a = new MoneyBag();
-		for (Money dim : this.lista) {
-			a.add(dim.clone());
-		}
-		return a;
-	}
-
 }
