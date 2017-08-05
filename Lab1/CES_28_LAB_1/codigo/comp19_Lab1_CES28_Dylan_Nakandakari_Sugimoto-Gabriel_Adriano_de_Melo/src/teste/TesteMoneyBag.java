@@ -347,14 +347,14 @@ public class TesteMoneyBag {
 		//Fim da Montagem
 		
 		//Teste
-		assertTrue(bagtest.getSize(),3);
-		assertTrue(equalbagtest.getSize(),3);
-		assertTrue(unibag.getSize(),1);
-		assertTrue(unibag2.getSize(),1);
-		assertTrue(unibag3.getSize(),1);
-		assertTrue(bagtest4.getSize(),2);
-		assertTrue(bagtest5.getSize(),1);
-		assertTrue(emptybag.getSize(),0);
+		assertEquals(bagtest.getSize(),3);
+		assertEquals(equalbagtest.getSize(),3);
+		assertEquals(unibag.getSize(),1);
+		assertEquals(unibag2.getSize(),1);
+		assertEquals(unibag3.getSize(),1);
+		assertEquals(bagtest4.getSize(),2);
+		assertEquals(bagtest5.getSize(),1);
+		assertEquals(emptybag.getSize(),0);
 		//Fim do teste
 	}
 	/**
