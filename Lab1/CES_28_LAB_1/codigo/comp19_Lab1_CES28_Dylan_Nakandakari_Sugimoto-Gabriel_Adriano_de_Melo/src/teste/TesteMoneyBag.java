@@ -486,4 +486,57 @@ public class TesteMoneyBag {
 		assertFalse(unibag3.hasCurrency(BRL));
 		//Fim do Teste
 	}
+	/**
+	 * Teste do Metodo ToString
+	 * Passo 8 e 9
+	 */
+	@Test
+	public void VerificarMetodoToStringDaClasseMoneyBag_SeTemMoneyEntaoToStringDeveRetornarStringDaListaDeMoneys() {
+		//Declarando variaveis para usar no teste
+		MoneyBag unibag2 = new MoneyBag();
+		MoneyBag unibag3 = new MoneyBag();
+		MoneyBag bagtest2 = new MoneyBag();
+		//Fim da Declaracao
+		
+		//Montando MoneyBags
+		bagtest.add(CHF12);
+		bagtest.add(EUR0);
+		bagtest.add(USDmax);
+		bagtest.add(EUR7);
+		
+		unibag.add(CHF12);
+		unibag2.add(EUR0);
+		unibag3.add(USDmax);
+		bagtest2.add(USD0);
+		bagtest2.add(EUR7);
+		//Fim da Montagem
+		
+		//Teste
+		assertTrue(emptybag.toString().equals(""));
+		assertTrue(bagtest.toString().equals("12 CHF, 7 EUR, 2147483647 USD"));
+		assertFalse(bagtest.toString().equals(""));
+		assertFalse(bagtest.toString().equals("12 CHF, 0 EUR, 7 EUR, 2147483647 USD"));
+		assertFalse(bagtest.toString().equals("CHF 12, EUR 7, USD 2147483647"));
+		assertFalse(bagtest.toString().equals("CHF 12, EUR 7, USD 2147483647, "));
+		assertTrue(unibag.toString().equals("12 CHF"));
+		assertFalse(unibag.toString().equals("12 CHF, "));
+		assertTrue(unibag2.toString().equals("0 EUR"));
+		assertFalse(unibag2.toString().equals("0 EUR, "));
+		assertFalse(unibag2.toString().equals(" EUR"));
+		assertFalse(unibag2.toString().equals(" EUR, "));
+		assertFalse(unibag2.toString().equals("  EUR"));
+		assertFalse(unibag2.toString().equals("  EUR, "));
+		assertFalse(unibag2.toString().equals(""));
+		assertTrue(unibag3.toString().equals("2147483647 USD"));
+		assertFalse(unibag3.toString().equals("2147483647 USD, "));
+		assertTrue(bagtest2.toString().equals("0 USD, 7 EUR"));
+		assertFalse(bagtest2.toString().equals("7 EUR, 0 USD"));
+		assertFalse(bagtest2.toString().equals("7 EUR, 0 USD, "));
+		assertFalse(bagtest2.toString().equals("0 USD, 7 EUR, "));
+		assertFalse(bagtest2.toString().equals("7 EUR"));
+		assertFalse(bagtest2.toString().equals("7 EUR, "));
+		assertFalse(bagtest2.toString().equals(" USD, 7 EUR"));
+		assertFalse(bagtest2.toString().equals(" USD, 7 EUR, "));
+		//Fim do Teste
+	}
 }
