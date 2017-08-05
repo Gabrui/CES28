@@ -1,40 +1,36 @@
 /**
  * LAB-1 CES-28
- * @date   01/08/2017
- * @author Dylan N. Sugimoto
- * @author Gabriel Adriano de Melo
+ * Data: 01/08/2017
+ * @encoding UTF-8
+ * @author - Dylan Nakandakari Sugimoto
+ * @author - Gabriel Adriano de Melo
  * 
- * Esse pacote guarda a classe Money e a classe MoneyBag
+ * Esse pacote contem as classes principais, isto é, implementadas
  */
 package main;
 
-import javax.swing.plaf.synth.SynthSeparatorUI;
 
 /**
- * @version 1.0, 01/08/2017
- * @param {_amount} representa a quantidade da moeda (inteiro positivo) 
- * @param {_currency} representa o tipo da moeda (string de tres letras)
- * 
- * metodo setAmount: estabelece o valor da variavel _amount
- * metodo setCurrency: estabelece o valor da variavel _currency
- * metodo add: adiciona uma Money
- * metodo getAmount: retorna o valor de _amount
- * metodo getCurrency: retorna o valor de _currency
+ * Representa a classe Money conforme especificado
  */
-public class Money implements Pocket{
+public class Money implements Pocket {
 	private int amount;
 	private Currency currency;
 	/**
 	 * 
-	 * @param amount
-	 * @param currency
+	 * @param amount A quantidade de dinheiro
+	 * @param currency O tipo do dinheiro
 	 */
 	public Money(int amount, Currency currency) {
 		setAmount(amount);
 		setCurrency(currency);
 	}
 	
-	
+	/**
+	 * Modifica a quantidade de dinheiro.
+	 * @throws Erro se amount for negativo
+	 * @param amount Quantidade sempre positiva
+	 */
 	public void setAmount(int amount) {
 		if(amount < 0) {
 			
@@ -43,7 +39,10 @@ public class Money implements Pocket{
 		this.amount = amount;
 	}
 	
-	
+	/**
+	 * Modifica a moeda do dinheiro.
+	 * @param currency Novo tipo de moeda.
+	 */
 	public void setCurrency(Currency currency) {
 		this.currency = currency;
 	}
@@ -63,12 +62,18 @@ public class Money implements Pocket{
 		return this.amount;
 	}
 	
-	
+	/**
+	 * Retorna um novo objeto Currency respectivo
+	 * @return Um clone do Currency desda moeda
+	 */
 	public Currency getCurrency() {
 		return this.currency.clonar();
 	}
 	
-	
+	/**
+	 * Cria uma cópia deste objeto
+	 * @return Retorna um clone.
+	 */
 	public Money clonar() {
 		return new Money(this.getAmount(), this.getCurrency());
 	}

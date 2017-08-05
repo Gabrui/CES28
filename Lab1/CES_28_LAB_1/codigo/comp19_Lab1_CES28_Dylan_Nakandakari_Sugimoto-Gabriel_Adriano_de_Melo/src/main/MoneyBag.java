@@ -1,10 +1,11 @@
 /**
  * LAB-1 CES-28
  * Data: 01/08/2017
+ * @encoding UTF-8
  * @author - Dylan Nakandakari Sugimoto
  * @author - Gabriel Adriano de Melo
  * 
- * Esse pacote contem as classes de teste
+ * Esse pacote contem as classes principais, isto é, implementadas
  */
 package main;
 
@@ -13,14 +14,11 @@ import java.util.List;
 
 
 /**
- * @author Gabriel
- *
+ * Representa a MoneyBag conforme as especificações.
  */
 public class MoneyBag implements Pocket{
 	private List<Money> lista;
-	/**
-	 * 
-	 */
+	
 	public MoneyBag() {
 		this.lista = new LinkedList<Money>();
 	}
@@ -40,6 +38,7 @@ public class MoneyBag implements Pocket{
 				return this;
 			}
 		}
+		// Os elementos da lista não são os mesmos que os originais
 		this.lista.add(money.clonar());
 		return this;
 	}
@@ -54,12 +53,20 @@ public class MoneyBag implements Pocket{
 		return total;
 	}
 	
-	
+	/**
+	 * Verifica se a MoneyBag tem o dinheiro, que inclusive pode ter valor 0.
+	 * @param money Dinheiro a ser procurado
+	 * @return Retorna verdadeiro caso tenha o mesmo dinheiro.
+	 */
 	public boolean hasMoney(Money money) {
 		return this.lista.contains(money);
 	}
 	
-	
+	/**
+	 * Verifica se a MoneyBag tem a moeda especificada, mesmo que não haja valor.
+	 * @param curr Moeda a ser verificada
+	 * @return Retorna verdadeiro caso haja a moeda.
+	 */
 	public boolean hasCurrency(Currency curr) {
 		for (Money dim : this.lista) {
 			if (dim.getCurrency().equals(curr))
@@ -68,7 +75,10 @@ public class MoneyBag implements Pocket{
 		return false;
 	}
 	
-	
+	/**
+	 * Mesmo que hajam moedas vazias, conta todas elas.
+	 * @return A quantidade de diferentes moedas
+	 */
 	public int getSize() {
 		return this.lista.size();
 	}
