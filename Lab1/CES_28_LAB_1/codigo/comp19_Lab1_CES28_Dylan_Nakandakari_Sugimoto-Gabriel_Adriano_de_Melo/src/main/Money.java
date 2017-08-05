@@ -47,6 +47,7 @@ public class Money implements Pocket{
 	}
 	
 	
+	@Override
 	public Pocket add(Money money) {
 		if(this.getCurrency().equals(money.getCurrency())){
 			return new Money(this.getAmount() + money.getAmount(), this.getCurrency());
@@ -55,6 +56,7 @@ public class Money implements Pocket{
 	}
 	
 	
+	@Override
 	public int getAmount() {
 		return this.amount;
 	}
