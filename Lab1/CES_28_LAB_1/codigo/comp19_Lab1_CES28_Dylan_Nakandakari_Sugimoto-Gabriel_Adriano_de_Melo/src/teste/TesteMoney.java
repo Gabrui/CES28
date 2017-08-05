@@ -202,17 +202,17 @@ public class TesteMoney {
 				Money EUR0 = new Money(0,EUR);
 				//Fim da declaracao
 				
-				assertEquals(BRL7.add(EUR19).getSize(), 2);
-				assertFalse(BRL7.add(EUR19).getSize() <= 1);
-				assertEquals(USD11.add(BRLempty).getSize(), 2);
-				assertFalse(BRLempty.add(USD11).getSize() <= 1);
-				assertEquals(EUR19.add(BRLmax).getSize(),2);
-				assertFalse(BRLmax.add(EUR19).getSize() <= 1);
-				assertEquals(BRL0.add(GBP7).getSize(),2);
-				assertFalse(GBP7.add(BRL0).getSize() <= 1);
-				assertEquals(BRL0.add(EUR0).getSize(),2);
-				assertFalse(EUR0.add(BRL0).getSize() <= 1);
-				assertFalse(BRL7.add(GBP7).getSize() >= 3);
+				assertEquals(((MoneyBag) BRL7.add(EUR19)).getSize(), 2);
+				assertFalse(((MoneyBag) BRL7.add(EUR19)).getSize() <= 1);
+				assertEquals(((MoneyBag) USD11.add(BRLempty)).getSize(), 2);
+				assertFalse(( (MoneyBag) BRLempty.add(USD11)).getSize() <= 1);
+				assertEquals(( (MoneyBag) EUR19.add(BRLmax)).getSize(),2);
+				assertFalse(( (MoneyBag) BRLmax.add(EUR19)).getSize() <= 1);
+				assertEquals(( (MoneyBag) BRL0.add(GBP7)).getSize(),2);
+				assertFalse(( (MoneyBag) GBP7.add(BRL0)).getSize() <= 1);
+				assertEquals(( (MoneyBag) BRL0.add(EUR0)).getSize(),2);
+				assertFalse(( (MoneyBag) EUR0.add(BRL0)).getSize() <= 1);
+				assertFalse(( (MoneyBag) BRL7.add(GBP7)).getSize() >= 3);
 	}
 	/**
 	 * Este Metodo testa o metodo add quando recebe Money diferentes
@@ -236,10 +236,10 @@ public class TesteMoney {
 		
 		//Montando Moneybags
 		bagBRL7EUR19 = ((MoneyBag) BRL7.add(EUR19));
-		bagBRLemptyUSD11 = USD11.add(BRLempty);
-		bagEUR19BRLmax = EUR19.add(BRLmax);
-		bagBRL0GBP7 = BRL0.add(GBP7);
-		bagBRL0EUR0 = BRL0.add(EUR0);
+		bagBRLemptyUSD11 = (MoneyBag) USD11.add(BRLempty);
+		bagEUR19BRLmax = (MoneyBag) EUR19.add(BRLmax);
+		bagBRL0GBP7 = (MoneyBag) BRL0.add(GBP7);
+		bagBRL0EUR0 = (MoneyBag) BRL0.add(EUR0);
 		//Fim da montagem
 		
 		//Teste
