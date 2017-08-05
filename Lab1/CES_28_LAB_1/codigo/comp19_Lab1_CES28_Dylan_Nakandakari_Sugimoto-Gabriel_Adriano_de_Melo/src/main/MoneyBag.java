@@ -36,12 +36,11 @@ public class MoneyBag implements Pocket{
 	public Pocket add(Money money) {
 		for (Money dim : this.lista) {
 			if (dim.getCurrency().equals(money.getCurrency())) {
-				this.lista.remove(dim);
-				this.lista.add((Money) dim.add(money));
+				dim.setAmount(dim.getAmount() + money.getAmount());
 				return this;
 			}
 		}
-		this.lista.add(money);
+		this.lista.add(money.clone());
 		return this;
 	}
 
