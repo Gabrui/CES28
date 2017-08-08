@@ -78,7 +78,7 @@ public class TesteCurrency {
 	 *  Passo 6 e teste da implementacao do Passo 5
 	 */
 	@Test
-	public void VerificarConstrutorDaClasseCurrency_QuandoCriadoDeveAtribuirUmNomeDoTipoString() {
+	public void VerificarSetSiglaDaClasseCurrency_QuandoCriadoDeveAtribuirUmNomeDoTipoString() {
 	
 		
 		assertTrue(BRL.getSigla() instanceof String);
@@ -89,7 +89,7 @@ public class TesteCurrency {
 	 *  Passo 6 e teste da implementacao do Passo 5
 	 */
 	@Test
-	public void VerificarConstrutorDaClasseCurrency_QuandoCriadoDeveAtribuirUmNomeDeTamanho3() {
+	public void VerificarSetSiglaDaClasseCurrency_QuandoCriadoDeveAtribuirUmNomeDeTamanho3() {
 		
 		assertTrue(BRL.getSigla().length() == 3);
 		
@@ -99,7 +99,7 @@ public class TesteCurrency {
 	 *  Passo 6 e teste da implementacao do Passo 5
 	 */
 	@Test
-	public void VerificarConstrutorDaClasseCurrency_QuandoCriadoDeveAtribuirParametroPassado() {
+	public void VerificarSetSiglaDaClasseCurrency_QuandoCriadoDeveAtribuirParametroPassado() {
 		//Criando Objetos
 		Currency BRL2 = new Currency("BRL");
 
@@ -113,7 +113,7 @@ public class TesteCurrency {
 	 *  Passo 6 e teste da implementacao do Passo 5
 	 */
 	@Test (expected = RuntimeException.class)
-	public void VerificarConstrutorDaClasseCurrency_QuandoCriadoComNomeMaiorQue3DeveGerarUmaExcecao() {
+	public void VerificarSetSiglaDaClasseCurrency_QuandoCriadoComNomeMaiorQue3DeveGerarUmaExcecao() {
 		//Criando Objeto Currency com nome maior que 3
 		//Espera-se que uma excecao seja gerada
 		Currency BRLL = new Currency("BRLL");
@@ -124,7 +124,7 @@ public class TesteCurrency {
 	 *  Passo 6 e teste da implementacao do Passo 5
 	 */
 	@Test (expected = RuntimeException.class)
-	public void VerificarConstrutorDaClasseCurrency_QuandoCriadoComNomeMenorQue3DeveGerarUmaExcecao() {
+	public void VerificarSetSiglaDaClasseCurrency_QuandoCriadoComNomeMenorQue3DeveGerarUmaExcecao() {
 		// Criando Objeto Currency com nome menor que 3
 		//Espera-se que uma excecao seja gerada
 		Currency BR = new Currency("BR");
@@ -134,7 +134,7 @@ public class TesteCurrency {
 	 * Passo 6 e teste da implementacao do Passo 5
 	 */
 	@Test (expected = RuntimeException.class)
-	public void VerificarConstrutorDaClasseCurrency_QuandoCriadoComNomeVazioDeveGerarUmaExcecao() {
+	public void VerificarSetSiglaDaClasseCurrency_QuandoCriadoComNomeVazioDeveGerarUmaExcecao() {
 		// Criando Objeto Currency com nome Vazio
 		//Espera-se que uma excecao seja gerada
 		Currency vazio = new Currency("");
