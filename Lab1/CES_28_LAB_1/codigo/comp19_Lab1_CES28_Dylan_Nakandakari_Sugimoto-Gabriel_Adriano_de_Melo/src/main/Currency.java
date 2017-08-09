@@ -32,7 +32,7 @@ public class Currency {
 	 * @throws Erro do tamanho da sigla diferente de 3
 	 * @param sigla String que define a sigla da moeda.
 	 */
-	public void setSigla (String sigla) {
+	private void setSigla (String sigla) {
 		if (sigla.length() != 3) {
 			throw new SiglaDeCurrencyException("Sigla inválida");
 		}
