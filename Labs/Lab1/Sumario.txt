@@ -1,7 +1,0 @@
-Teste dos Passos 2,3,4, 6 e 10 => Pacote teste/Class TesteMoney
-Passo 6 => Pacote teste/Class TesteCurrency
-Passo 8 => Pacote teste/Class TesteMoneyBag
-
-TesteMoney.java => Teste dos Passos 1,2,3,4,5,6 e 10
-TesteMoneyBag.java => Teste dos Passos 7,8,9 e 11
-TesteCurrency.java => Teste dos Passos 5 e 6

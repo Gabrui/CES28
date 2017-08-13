@@ -12,7 +12,7 @@ package lab01;
 
 /**
  * PASSO 10 - MÉTODO ADD RETORNA MONEY OU MONEYBAG
- * Interface comum a operações com dinheiro.
+ * Interface comum a operações com dinheiro (bolso).
  * Possui interfaces dos passos 10 e 11.
  */
 public interface Pocket {
