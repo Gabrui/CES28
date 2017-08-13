@@ -6,10 +6,12 @@
  * 
  * Esse pacote contem as classes de teste
  */
-package teste;
-import main.Currency;
+package testeLab01;
 import static org.junit.Assert.*;
 import org.junit.Test;
+
+import lab01.Currency;
+
 import org.junit.Before;
 
 /**
@@ -116,6 +118,7 @@ public class TesteCurrency {
 	public void VerificarSetSiglaDaClasseCurrency_QuandoCriadoComNomeMaiorQue3DeveGerarUmaExcecao() {
 		//Criando Objeto Currency com nome maior que 3
 		//Espera-se que uma excecao seja gerada
+		@SuppressWarnings("unused")
 		Currency BRLL = new Currency("BRLL");
 		
 	}
@@ -127,6 +130,7 @@ public class TesteCurrency {
 	public void VerificarSetSiglaDaClasseCurrency_QuandoCriadoComNomeMenorQue3DeveGerarUmaExcecao() {
 		// Criando Objeto Currency com nome menor que 3
 		//Espera-se que uma excecao seja gerada
+		@SuppressWarnings("unused")
 		Currency BR = new Currency("BR");
 	}
 	/**
@@ -137,6 +141,7 @@ public class TesteCurrency {
 	public void VerificarSetSiglaDaClasseCurrency_QuandoCriadoComNomeVazioDeveGerarUmaExcecao() {
 		// Criando Objeto Currency com nome Vazio
 		//Espera-se que uma excecao seja gerada
+		@SuppressWarnings("unused")
 		Currency vazio = new Currency("");
 	}
 	/**

@@ -7,10 +7,12 @@
  * 
  * Esse pacote contem as classes principais, isto é, implementadas
  */
-package main;
+package lab01;
 
 /**
+ * PASSO 5 - CLASSE CURRENCY CONSTRUIDA E INJETADA
  * Descreve um tipo de moeda
+ * Possui PASSO 5.
  */
 public class Currency {
 	private String sigla;

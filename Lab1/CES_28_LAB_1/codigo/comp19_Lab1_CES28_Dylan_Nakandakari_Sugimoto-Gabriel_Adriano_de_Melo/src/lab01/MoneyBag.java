@@ -7,14 +7,16 @@
  * 
  * Esse pacote contem as classes principais, isto é, implementadas
  */
-package main;
+package lab01;
 
 import java.util.LinkedList;
 import java.util.List;
 
 
 /**
+ * PASSO 7 - CLASSE MONEY BAG CRIADA
  * Representa a MoneyBag conforme as especificações.
+ * Possui PASSO 7, 9 e 11.
  */
 public class MoneyBag implements Pocket{
 	private List<Money> lista;
@@ -24,7 +26,7 @@ public class MoneyBag implements Pocket{
 	}
 	
 	public MoneyBag(Money a, Money b) {
-		this.lista = new LinkedList<Money>();
+		this();
 		this.add(a);
 		this.add(b);
 	}
@@ -43,7 +45,7 @@ public class MoneyBag implements Pocket{
 		return this;
 	}
 
-	
+	// PASSO 11 - RETORNA O VALOR TOTAL EM REAIS
 	@Override
 	public int getAmount() {
 		int total = 0;
@@ -100,6 +102,7 @@ public class MoneyBag implements Pocket{
 	}
 	
 	
+	// PASSO 9 - APLICAÇÃO QUE MOSTRA AS VARIAS MOEDAS NUM MONEYBAG
 	@Override
 	public String toString() {
 		if (this.getSize() == 0)

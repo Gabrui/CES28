@@ -6,14 +6,15 @@
  * 
  * Esse pacote contem as classes de teste
  */
-package teste;
+package testeLab01;
 
-import main.Currency;
-import main.Money;
-import main.Currency;
-import main.MoneyBag;
 import static org.junit.Assert.*;
 import org.junit.Test;
+
+import lab01.Currency;
+import lab01.Money;
+import lab01.MoneyBag;
+
 import org.junit.Before;
 /**
  * Class TesteMoneyBag: Testa a classe MoneyBag.
@@ -38,6 +39,20 @@ public class TesteMoneyBag {
 	private Currency USD;
 	private Currency EUR;
 	private Currency CHF;
+	private MoneyBag equalbagtest;
+	private MoneyBag bagtest2;
+	private MoneyBag unibag2;
+	private MoneyBag bagtest3;
+	private MoneyBag ebagtest;
+	private MoneyBag sameBag;
+	private MoneyBag unibag3;
+	private Money BRL0;
+	private MoneyBag bagtest4;
+	private MoneyBag bagtest5;
+	private MoneyBag bagtest6;
+	private MoneyBag bagtest7;
+	private MoneyBag bagtest8;
+	private MoneyBag bagtest9;
 	//Fim da declaracao
 	
 	/**
@@ -63,6 +78,20 @@ public class TesteMoneyBag {
 		EURmax = new Money(maxint, EUR);
 		EUR14 = new Money(14,EUR);
 		CHF12 = new Money(12,CHF);
+		BRL0 = new Money(0,BRL);
+		equalbagtest = new MoneyBag();
+		bagtest2 = new MoneyBag();
+		unibag2 = new MoneyBag(); 
+		bagtest3 = new MoneyBag();
+		ebagtest = new MoneyBag();
+		sameBag = new MoneyBag();
+		unibag3 = new MoneyBag();
+		bagtest4 = new MoneyBag();
+		bagtest5 = new MoneyBag();
+		bagtest6 = new MoneyBag();
+		bagtest7 = new MoneyBag();
+		bagtest8 = new MoneyBag();
+		bagtest9 = new MoneyBag();
 	//Fim do setUp
 	}
 	
@@ -72,13 +101,6 @@ public class TesteMoneyBag {
 	 */
 	@Test
 	public void VerificarMetodoEqualDaClasseMoney_QuandoCompararMoneyIguaisDevemSerIguais() {
-		//Criando objetos para usar no Teste
-		MoneyBag equalbagtest = new MoneyBag();
-		MoneyBag bagtest2 = new MoneyBag();
-		MoneyBag unibag2 = new MoneyBag(); 
-		MoneyBag bagtest3 = new MoneyBag();
-		//Fim da Criacao de Objetos
-		
 		bagtest.add(USD7);
 		bagtest.add(USD0);
 		bagtest.add(EUR0);
@@ -116,12 +138,6 @@ public class TesteMoneyBag {
 	 */
 	@Test
 	public void VerificarMetodoEqualDaClasseMoney_QuandoCompararMoneyDiferentesDevemSerDiferentes() {
-		//Criando objetos para usar no Teste
-		MoneyBag ebagtest = new MoneyBag();
-		MoneyBag bagtest2 = new MoneyBag();
-		MoneyBag unibag2 = new MoneyBag();
-		MoneyBag sameBag = new MoneyBag();
-		//Fim da Criacao de Objetos
 		//bagtest: 7USD + 14EUR
 		bagtest.add(USD7);
 		bagtest.add(USD0);
@@ -171,73 +187,60 @@ public class TesteMoneyBag {
 	 */
 	@Test
 	public void VerificarMetodoAddDeMoneyBag_CompararMoneyBagIguaisDevemSerIguais() {
-		//Criando objetos para usar no Teste
-				Money BRL0 = new Money(0,BRL);
-				MoneyBag equalbagtest = new MoneyBag();
-				MoneyBag unibag2 = new MoneyBag(); 
-				MoneyBag bagtest3 = new MoneyBag();
-				MoneyBag bagtest4 = new MoneyBag();
-				MoneyBag bagtest5 = new MoneyBag();
-				MoneyBag bagtest6 = new MoneyBag();
-				MoneyBag bagtest7 = new MoneyBag();
-				MoneyBag bagtest8 = new MoneyBag();
-				MoneyBag bagtest9 = new MoneyBag();
-				//Fim da Criacao de Objetos
-				
-				bagtest.add(USD7);
-				bagtest.add(USD0);
-				bagtest.add(EUR0);
-				bagtest.add(EUR7);
-				bagtest.add(EUR7);
-				
-				unibag.add(EURmax);
-				
-				equalbagtest.add(EUR0);
-				equalbagtest.add(EUR7);
-				equalbagtest.add(EUR7);
-				equalbagtest.add(USD7);
-				equalbagtest.add(USD0);
-				
-				unibag2.add(EURmax);
-				bagtest3.add(USD7);
-				bagtest3.add(EUR14);
-				
-				bagtest4.add(EURmax);
-				bagtest4.add(USD7);
-				bagtest5.add(USD7);
-				bagtest5.add(EURmax);
-				
-	            bagtest6.add(EURmax);
-	            bagtest6.add(USD7);
-	            bagtest6.add(EUR0);
-				
-	            for(int i =0;i<6;i++) {
-	            	bagtest7.add(USD7);
-	            }
-	            for(int i=0;i<6;i++) {
-	            	bagtest7.add(EUR7);
-	            }
-	            //adicionando em uma ordem diferentes do bagtest7
-	            for(int i=0;i<6;i++) {
-	            	bagtest8.add(EUR7);
-	            	bagtest8.add(USD7);
-	            }
-	            //colocando BRL0 a mais do que o bagtest
-	            bagtest9.add(USD7);
-				bagtest9.add(USD0);
-				bagtest9.add(EUR0);
-				bagtest9.add(EUR7);
-				bagtest9.add(EUR7);
-	            bagtest9.add(BRL0);
-				//Verificando se sao iguais pelo metodo Equals
-				assertEquals(equalbagtest,bagtest);
-				assertEquals(unibag2,unibag);
-				assertEquals(bagtest3,bagtest);
-				assertEquals(bagtest4,bagtest5);
-				assertEquals(bagtest5,bagtest6);
-				assertEquals(bagtest4,bagtest6);
-				assertEquals(bagtest7,bagtest8);
-				assertNotEquals(bagtest,bagtest9);
+			bagtest.add(USD7);
+			bagtest.add(USD0);
+			bagtest.add(EUR0);
+			bagtest.add(EUR7);
+			bagtest.add(EUR7);
+			
+			unibag.add(EURmax);
+			
+			equalbagtest.add(EUR0);
+			equalbagtest.add(EUR7);
+			equalbagtest.add(EUR7);
+			equalbagtest.add(USD7);
+			equalbagtest.add(USD0);
+			
+			unibag2.add(EURmax);
+			bagtest3.add(USD7);
+			bagtest3.add(EUR14);
+			
+			bagtest4.add(EURmax);
+			bagtest4.add(USD7);
+			bagtest5.add(USD7);
+			bagtest5.add(EURmax);
+			
+            bagtest6.add(EURmax);
+            bagtest6.add(USD7);
+            bagtest6.add(EUR0);
+			
+            for(int i =0;i<6;i++) {
+            	bagtest7.add(USD7);
+            }
+            for(int i=0;i<6;i++) {
+            	bagtest7.add(EUR7);
+            }
+            //adicionando em uma ordem diferentes do bagtest7
+            for(int i=0;i<6;i++) {
+            	bagtest8.add(EUR7);
+            	bagtest8.add(USD7);
+            }
+            //colocando BRL0 a mais do que o bagtest
+            bagtest9.add(USD7);
+			bagtest9.add(USD0);
+			bagtest9.add(EUR0);
+			bagtest9.add(EUR7);
+			bagtest9.add(EUR7);
+            bagtest9.add(BRL0);
+			//Verificando se sao iguais pelo metodo Equals
+			assertEquals(equalbagtest,bagtest);
+			assertEquals(unibag2,unibag);
+			assertEquals(bagtest3,bagtest);
+			assertEquals(bagtest4,bagtest5);
+			assertEquals(bagtest5,bagtest6);
+			assertEquals(bagtest4,bagtest6);
+			assertEquals(bagtest7,bagtest8);
+			assertNotEquals(bagtest,bagtest9);
 	//Fim do teste
 	}
 	/**
@@ -246,74 +249,62 @@ public class TesteMoneyBag {
 	 */
 	@Test
 	public void VerificarMetodoAddDeMoneyBag_CompararMoneyBagDiferentesDevemSerDiferentes() {
-		//Criando objetos para usar no Teste
-				MoneyBag equalbagtest = new MoneyBag();
-				MoneyBag unibag2 = new MoneyBag(); 
-				MoneyBag bagtest3 = new MoneyBag();
-				MoneyBag bagtest4 = new MoneyBag();
-				MoneyBag bagtest5 = new MoneyBag();
-				MoneyBag bagtest6 = new MoneyBag();
-				MoneyBag bagtest7 = new MoneyBag();
-				MoneyBag bagtest8 = new MoneyBag();
-				
-				//Fim da Criacao de Objetos
-				
-				bagtest.add(USD7);
-				bagtest.add(USD0);
-				bagtest.add(EUR0);
-				bagtest.add(EUR7);
-				bagtest.add(EUR7);
-				unibag.add(EURmax);
-				
-				equalbagtest.add(EUR0);
-				equalbagtest.add(EUR7);
-				equalbagtest.add(EUR7);
-				equalbagtest.add(USD7);
-				equalbagtest.add(USD0);
-				equalbagtest.add(CHF12);
-				
-				unibag2.add(EUR0);
-				bagtest3.add(USD0);
-				bagtest3.add(EUR14);
-				
-				bagtest4.add(EURmax);
-				bagtest4.add(USD7);
-				bagtest5.add(USDmax);
-				bagtest5.add(EUR7);
-				
-	            bagtest6.add(EURmax);
-	            bagtest6.add(USDmax);
-	            bagtest6.add(EUR0);
-	            bagtest6.add(CHF12);
-				
-	            for(int i =0;i<6;i++) {
-	            	bagtest7.add(USD7);
-	            	bagtest7.add(USD0);
-	            	bagtest7.add(CHF12);
-	            }
-	            for(int i=0;i<6;i++) {
-	            	bagtest7.add(EUR7);
-	            	bagtest7.add(EUR0);
-	            }
-	            //adicionando em uma ordem diferentes do bagtest7
-	            for(int i=0;i<7;i++) {
-	            	bagtest8.add(USD0);
-	            	bagtest8.add(EUR7);
-	            	bagtest8.add(USD7);
-	            	bagtest8.add(EUR0);
-	            	bagtest8.add(CHF12);
-	            }
-				//Verificando se sao iguais pelo metodo Equals
-				assertFalse(equalbagtest.equals(bagtest));
-				assertFalse(unibag2.equals(unibag));
-				assertFalse(bagtest3.equals(bagtest));
-				assertFalse(bagtest4.equals(bagtest5));
-				assertFalse(bagtest5.equals(bagtest6));
-				assertFalse(bagtest4.equals(bagtest6));
-				assertFalse(bagtest7.equals(bagtest8));
-				assertFalse(bagtest.equals(emptybag));
-				assertFalse(emptybag.equals(unibag));
-				//Fim do teste
+			bagtest.add(USD7);
+			bagtest.add(USD0);
+			bagtest.add(EUR0);
+			bagtest.add(EUR7);
+			bagtest.add(EUR7);
+			unibag.add(EURmax);
+			
+			equalbagtest.add(EUR0);
+			equalbagtest.add(EUR7);
+			equalbagtest.add(EUR7);
+			equalbagtest.add(USD7);
+			equalbagtest.add(USD0);
+			equalbagtest.add(CHF12);
+			
+			unibag2.add(EUR0);
+			bagtest3.add(USD0);
+			bagtest3.add(EUR14);
+			
+			bagtest4.add(EURmax);
+			bagtest4.add(USD7);
+			bagtest5.add(USDmax);
+			bagtest5.add(EUR7);
+			
+            bagtest6.add(EURmax);
+            bagtest6.add(USDmax);
+            bagtest6.add(EUR0);
+            bagtest6.add(CHF12);
+			
+            for(int i =0;i<6;i++) {
+            	bagtest7.add(USD7);
+            	bagtest7.add(USD0);
+            	bagtest7.add(CHF12);
+            }
+            for(int i=0;i<6;i++) {
+            	bagtest7.add(EUR7);
+            	bagtest7.add(EUR0);
+            }
+            //adicionando em uma ordem diferentes do bagtest7
+            for(int i=0;i<7;i++) {
+            	bagtest8.add(USD0);
+            	bagtest8.add(EUR7);
+            	bagtest8.add(USD7);
+            	bagtest8.add(EUR0);
+            	bagtest8.add(CHF12);
+            }
+			//Verificando se sao iguais pelo metodo Equals
+			assertFalse(equalbagtest.equals(bagtest));
+			assertFalse(unibag2.equals(unibag));
+			assertFalse(bagtest3.equals(bagtest));
+			assertFalse(bagtest4.equals(bagtest5));
+			assertFalse(bagtest5.equals(bagtest6));
+			assertFalse(bagtest4.equals(bagtest6));
+			assertFalse(bagtest7.equals(bagtest8));
+			assertFalse(bagtest.equals(emptybag));
+			assertFalse(emptybag.equals(unibag));
+			//Fim do teste
 	}
 	/**
 	 * Verifica o metodo add em relacao ao tamanho da lista
@@ -321,15 +312,6 @@ public class TesteMoneyBag {
 	 */
 	@Test
 	public void VerificaMetodoAddDaClasseMoneyBag_SeTemMesmoTamanhoSaoIguais() {
-		//Declarando variaveis para usar no teste
-		MoneyBag equalbagtest = new MoneyBag();
-		MoneyBag unibag2 = new MoneyBag(); 
-		MoneyBag unibag3 = new MoneyBag();
-		MoneyBag bagtest3 = new MoneyBag();
-		MoneyBag bagtest4 = new MoneyBag();
-		MoneyBag bagtest5 = new MoneyBag();
-		//Fim da Declaracao
-		
 		//montando as bags
 		bagtest.add(CHF12);
 		bagtest.add(CHF12);
@@ -364,12 +346,6 @@ public class TesteMoneyBag {
 	 */
 	@Test
 	public void VerificarMetodoAddDaClasseMoneyBag_SeAdicionaElementoDeveTerElemento() {
-		//Declarando Variaveis para usar neste teste
-		MoneyBag unibag2 = new MoneyBag();
-		MoneyBag unibag3 = new MoneyBag();
-		MoneyBag bagtest2 = new MoneyBag();
-		//Fim da Declaracao
-		
 		//Montando as bags
 		bagtest.add(CHF12);
 		bagtest.add(EUR7);
@@ -407,11 +383,8 @@ public class TesteMoneyBag {
 	public void VerificarMetodoGetAmountDaClasseMoneyBag_QuandoSolicitadoDeveRetornarSomaDeTudoDaMoneyBagEmBRL() {
 		//Declarando variaveis para serem usadas neste teste
 		Money BRL10 = new Money(10,BRL);
-		MoneyBag unibag2 = new MoneyBag();
-		MoneyBag unibag3 = new MoneyBag();
 		MoneyBag unibag4 = new MoneyBag();
 		MoneyBag unibag5 = new MoneyBag();
-		MoneyBag bagtest2 = new MoneyBag();
 		//Fim da declaracao
 		
 		//Montando MoneyBags
@@ -455,10 +428,6 @@ public class TesteMoneyBag {
 	 */
 	@Test
 	public void VerificarMetodohasCurrencyDaClasseMoneyBag_QuandoColocaUmaMoedaDeveConterEssaMoeda() {
-		//Declarando Variaveis para serem usadas neste teste
-		MoneyBag unibag2 = new MoneyBag();
-		MoneyBag unibag3 = new MoneyBag();
-		//Fim da declaracao
 		
 		//Montando Moneybags
 		bagtest.add(CHF12);
@@ -493,12 +462,6 @@ public class TesteMoneyBag {
 	 */
 	@Test
 	public void VerificarMetodoToStringDaClasseMoneyBag_SeTemMoneyEntaoToStringDeveRetornarStringDaListaDeMoneys() {
-		//Declarando variaveis para usar no teste
-		MoneyBag unibag2 = new MoneyBag();
-		MoneyBag unibag3 = new MoneyBag();
-		MoneyBag bagtest2 = new MoneyBag();
-		//Fim da Declaracao
-		System.out.println("'"+emptybag.toString()+"'");
 		//Montando MoneyBags
 		bagtest.add(CHF12);
 		bagtest.add(EUR0);

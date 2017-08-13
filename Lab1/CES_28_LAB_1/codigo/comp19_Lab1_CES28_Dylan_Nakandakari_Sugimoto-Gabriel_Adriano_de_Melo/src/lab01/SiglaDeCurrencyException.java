@@ -6,7 +6,7 @@
  * 
  * Esse pacote contem as classes de teste
  */
-package main;
+package lab01;
 
 public class SiglaDeCurrencyException extends RuntimeException {
 

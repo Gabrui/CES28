@@ -7,15 +7,17 @@
  * 
  * Esse pacote contem as classes principais, isto é, implementadas
  */
-package main;
+package lab01;
 
 
 /**
+ * PASSO 1 - CLASSE MONEY E SETTERS PÚBLICOS CRIADOS
  * Representa a classe Money conforme especificado
+ * Possui PASSO 1.
  */
 public class Money implements Pocket {
-	private int amount;
-	private Currency currency;
+	private int _amount;
+	private Currency _currency;
 	/**
 	 * 
 	 * @param amount A quantidade de dinheiro
@@ -36,7 +38,7 @@ public class Money implements Pocket {
 			
 			throw new ArithmeticException("amount não deve ser negativo!");
 		}
-		this.amount = amount;
+		this._amount = amount;
 	}
 	
 	/**
@@ -44,7 +46,7 @@ public class Money implements Pocket {
 	 * @param currency Novo tipo de moeda.
 	 */
 	public void setCurrency(Currency currency) {
-		this.currency = currency;
+		this._currency = currency;
 	}
 	
 	
@@ -59,7 +61,7 @@ public class Money implements Pocket {
 	
 	@Override
 	public int getAmount() {
-		return this.amount;
+		return this._amount;
 	}
 	
 	/**
@@ -67,7 +69,7 @@ public class Money implements Pocket {
 	 * @return Um clone do Currency desda moeda
 	 */
 	public Currency getCurrency() {
-		return this.currency.clonar();
+		return this._currency.clonar();
 	}
 	
 	/**
@@ -83,7 +85,7 @@ public class Money implements Pocket {
 	public boolean equals(Object money) {
 		if (money instanceof Money) {
 			Money m = (Money) money;
-			return this.currency.equals(m.currency) && this.getAmount() == m.getAmount();
+			return this._currency.equals(m._currency) && this.getAmount() == m.getAmount();
 		}
 		return false;
 	}

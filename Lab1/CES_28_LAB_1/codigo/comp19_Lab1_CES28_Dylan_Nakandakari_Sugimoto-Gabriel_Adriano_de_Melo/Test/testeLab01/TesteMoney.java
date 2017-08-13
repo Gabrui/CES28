@@ -6,12 +6,14 @@
  * 
  * Esse pacote contem as classes de teste
  */
-package teste;
-import main.Money;
-import main.Currency;
-import main.MoneyBag;
+package testeLab01;
 import static org.junit.Assert.*;
 import org.junit.Test;
+
+import lab01.Currency;
+import lab01.Money;
+import lab01.MoneyBag;
+
 import org.junit.Before;
 
 /**
@@ -27,6 +29,10 @@ public class TesteMoney {
 	private Money USD11;
 	private Money EUR19;
 	private Money GBP7;
+	private Money BRL0;
+	private Money BRLmax;
+	private Money BRLempty;
+	private Money EUR0;
 	private int maxint;
 	private Currency BRL;
 	private Currency USD;
@@ -50,6 +56,11 @@ public class TesteMoney {
 		EUR19 = new Money(19,EUR);
 		GBP7 = new Money(7,GBP);
 		maxint = 2147483647;
+		Currency empty = new Currency("   ");
+		BRL0 = new Money(0,BRL);
+		BRLmax = new Money(maxint,BRL);
+		BRLempty = new Money(12,empty);
+		EUR0 = new Money(0,EUR);
 	}
 	/**
 	 * Esse metodo compara money iguais
@@ -62,7 +73,6 @@ public class TesteMoney {
 		Money GBP0 = new Money(0,GBP);
 		Money GBPmax = new Money(maxint,GBP);
 		Money EUR019 = new Money(19,EUR);
-		Money EUR7 = new Money(7,EUR);
 		//Fim da Criacao de Objetos
 		
 		//Verificando se sao iguais pelo metodo Equals
@@ -88,7 +98,6 @@ public class TesteMoney {
 	@Test
 	public void VerificarMetodoEqualDaClasseMoney_QuandoComparaMoneyDiferenteDevemSerDiferentes() {
 		//Criando objetos para usar no Teste
-				Money GBP07 = new Money(7,GBP);
 				Money GBP0 = new Money(0,GBP);
 				Money GBPmax = new Money(maxint,GBP);
 				Money EUR019 = new Money(19,EUR);
@@ -144,12 +153,6 @@ public class TesteMoney {
 	 */
 	@Test
 	public void VerificarMetodoAddDaClasseMoney_QuandoSomaMoneyDiferentesRetornaMoneyBag() {
-		//Declarando variaveis para usar neste teste
-		Currency empty = new Currency("   ");
-		Money BRL0 = new Money(0,BRL);
-		Money BRLmax = new Money(maxint,BRL);
-		Money BRLempty = new Money(12,empty);
-		Money EUR0 = new Money(0,EUR);
 		
 		MoneyBag bagBRL7EUR19 = new MoneyBag();
 		MoneyBag bagBRLemptyUSD11 = new MoneyBag();
@@ -194,25 +197,18 @@ public class TesteMoney {
 	 * Teste da implementacao do Passo 10
 	 */
 	public void VerificarMetodoAddDaClasseMoney_QuandoAddRecebeMoneyDiferentesRetornaMoneyBagDeTamanho2() {
-				//Declarando variaveis para usar neste teste
-				Currency empty = new Currency("   ");
-				Money BRL0 = new Money(0,BRL);
-				Money BRLmax = new Money(maxint,BRL);
-				Money BRLempty = new Money(12,empty);
-				Money EUR0 = new Money(0,EUR);
-				//Fim da declaracao
-				
-				assertEquals(((MoneyBag) BRL7.add(EUR19)).getSize(), 2);
-				assertFalse(((MoneyBag) BRL7.add(EUR19)).getSize() <= 1);
-				assertEquals(((MoneyBag) USD11.add(BRLempty)).getSize(), 2);
-				assertFalse(( (MoneyBag) BRLempty.add(USD11)).getSize() <= 1);
-				assertEquals(( (MoneyBag) EUR19.add(BRLmax)).getSize(),2);
-				assertFalse(( (MoneyBag) BRLmax.add(EUR19)).getSize() <= 1);
-				assertEquals(( (MoneyBag) BRL0.add(GBP7)).getSize(),2);
-				assertFalse(( (MoneyBag) GBP7.add(BRL0)).getSize() <= 1);
-				assertEquals(( (MoneyBag) BRL0.add(EUR0)).getSize(),2);
-				assertFalse(( (MoneyBag) EUR0.add(BRL0)).getSize() <= 1);
-				assertFalse(( (MoneyBag) BRL7.add(GBP7)).getSize() >= 3);
+
+			assertEquals(((MoneyBag) BRL7.add(EUR19)).getSize(), 2);
+			assertFalse(((MoneyBag) BRL7.add(EUR19)).getSize() <= 1);
+			assertEquals(((MoneyBag) USD11.add(BRLempty)).getSize(), 2);
+			assertFalse(( (MoneyBag) BRLempty.add(USD11)).getSize() <= 1);
+			assertEquals(( (MoneyBag) EUR19.add(BRLmax)).getSize(),2);
+			assertFalse(( (MoneyBag) BRLmax.add(EUR19)).getSize() <= 1);
+			assertEquals(( (MoneyBag) BRL0.add(GBP7)).getSize(),2);
+			assertFalse(( (MoneyBag) GBP7.add(BRL0)).getSize() <= 1);
+			assertEquals(( (MoneyBag) BRL0.add(EUR0)).getSize(),2);
+			assertFalse(( (MoneyBag) EUR0.add(BRL0)).getSize() <= 1);
+			assertFalse(( (MoneyBag) BRL7.add(GBP7)).getSize() >= 3);
 	}
 	/**
 	 * Este Metodo testa o metodo add quando recebe Money diferentes
@@ -221,12 +217,6 @@ public class TesteMoney {
 	@Test
 	public void VerificarMetodoAddDaClasseMoney_QuandoSomaMoneyDiferentesRetornaMoneyBagComOsDoisMoneys() {
 		//Declarando variaveis para usar neste teste
-		Currency empty = new Currency("   ");
-		Money BRL0 = new Money(0,BRL);
-		Money BRLmax = new Money(maxint,BRL);
-		Money BRLempty = new Money(12,empty);
-		Money EUR0 = new Money(0,EUR);
-		
 		MoneyBag bagBRL7EUR19 = new MoneyBag();
 		MoneyBag bagBRLemptyUSD11 = new MoneyBag();
 		MoneyBag bagEUR19BRLmax = new MoneyBag();
@@ -273,6 +263,7 @@ public class TesteMoney {
 	public void VerificarMetodoSetAmountDaClasseMoney_QuandoAtribuiNegativoEnviaRunTimeException(){
 		// Ao criar o objeto exceptionMoney atribuiu-se um valor inteiro negativo para a amount
 		//Espera-se que uma excecao seja gerada e capturada por esse teste validando o metodo.
+		@SuppressWarnings("unused")
 		Money exceptionMoney = new Money(-1,BRL);
 	}
 }

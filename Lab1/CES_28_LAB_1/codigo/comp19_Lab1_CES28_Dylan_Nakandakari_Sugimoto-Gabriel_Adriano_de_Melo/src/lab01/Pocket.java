@@ -7,11 +7,13 @@
  * 
  * Esse pacote contem as classes principais, isto é, implementadas
  */
-package main;
+package lab01;
 
 
 /**
+ * PASSO 10 - MÉTODO ADD RETORNA MONEY OU MONEYBAG
  * Interface comum a operações com dinheiro.
+ * Possui interfaces dos passos 10 e 11.
  */
 public interface Pocket {
 	/**
@@ -26,6 +28,7 @@ public interface Pocket {
 	/**
 	 * Retorna o valor do Pocket
 	 * Se for um Money, retorna seu valor próprio
+	 * PASSO 11:
 	 * Se for uma MoneyBag, retorna o seu valor total em reais.
 	 * @return O valor do dinheiro, ou a conversão total das moedas para reais
 	 */
