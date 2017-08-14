@@ -98,5 +98,7 @@ public class TesteCalculadoraSimples {
 		assertFalse(1 == CalculadoraString.add("//[%]\n1%2%3%4"));
 		assertEquals(10, CalculadoraString.add("//[;]\n1;2;3;4;"));
 		assertEquals(10, CalculadoraString.add("//[@]\n@1@2@3@4@"));
+		assertEquals(10, CalculadoraString.add("//[;]\n10"));
+		assertEquals(10, CalculadoraString.add("//[:]\n:10:"));
 	}
 }
