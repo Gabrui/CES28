@@ -81,4 +81,19 @@ public class TesteCalculadoraSimples {
 		assertEquals(0, CalculadoraString.add("//[;]\n"));
 		assertEquals(0, CalculadoraString.add("//[ ]\n"));
 	}
+	/**
+	 * Nao eh permitido definir delimitador vazio. Caso isso aconteca,
+	 * deve ser gerado uma excecao
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void SeDefinirDelimitadorVazioGeraExcecao() {
+		CalculadoraString.add("//[]\n");
+	}
+	/**
+	 * 
+	 */
+	@Test
+	public void QuandoDefineDelimitadorComNumerosRetornaSomaDosNumeros() {
+		
+	}
 }
