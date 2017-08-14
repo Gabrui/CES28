@@ -6,15 +6,16 @@ public class CalculadoraString {
 		if (operandos.isEmpty())
 			return 0;
 		int total = 0;
+		String delimitacao = "";
 		if (operandos.startsWith("//")) {
-			String[] partes = operandos.split("\n", 1);
-			String delimitacao = partes[0].substring(2);
-			if (partes.length !=2)
-				return 0;
+			String[] partes = operandos.split("\n", 2);
+			delimitacao = partes[0];
 			operandos = partes[1];
+			if (delimitacao.contains("[]"))
+				throw new IllegalArgumentException();
+			delimitacao = "|"+delimitacao.substring(3, partes[0].length()-1).replace("][", "|");
 		}
-		
-		String[] numeros = operandos.split("[, \n]");
+		String[] numeros = operandos.split(",| |\n"+delimitacao);
 		for(String numero : numeros) {
 			total += CalculadoraString.getValor(numero);
 		}
