@@ -26,7 +26,7 @@ public class TesteCalculadoraSimples {
 	}
 
 	/**
-	 * Quando é passado uma string vazia para o metodo add da classe CalculadoraString
+	 * Quando Ã© passado uma string vazia para o metodo add da classe CalculadoraString
 	 * ela retorna zero.
 	 * 
 	 */
@@ -36,7 +36,7 @@ public class TesteCalculadoraSimples {
 	}
 	
 	/**
-	 * Testa se o numero passado como string é retornado como int. 
+	 * Testa se o numero passado como string Ã© retornado como int. 
 	 * 
 	 */
 	@Test
@@ -90,7 +90,7 @@ public class TesteCalculadoraSimples {
 		CalculadoraString.add("//[]\n");
 	}
 	/**
-	 * 
+	 * Verifica se a soma esta correta quando define delimitador.
 	 */
 	@Test
 	public void QuandoPassaNumerosComDelimitadorDefinidoRetornaSomaDosNumeros() {
@@ -100,5 +100,21 @@ public class TesteCalculadoraSimples {
 		assertEquals(10, CalculadoraString.add("//[@]\n@1@2@3@4@"));
 		assertEquals(10, CalculadoraString.add("//[;]\n10"));
 		assertEquals(10, CalculadoraString.add("//[:]\n:10:"));
+		assertEquals(0, CalculadoraString.add("//[;]\n0"));
+		assertEquals(10, CalculadoraString.add("//[@]\n0@010@0"));
+	}
+	/**
+	 * Verifica se a soma esta correta quando usa delimitador definido com os padroes
+	 */
+	@Test
+	public void QuandoPassaNumerosComDelimitadorDefinidoEComDelimitadorPadraoRetornaSomaDosNumeros() {
+		assertEquals(10, CalculadoraString.add("//[%]\n   1%2,3\n4\n"));
+		assertFalse(1 == CalculadoraString.add("//[%]\n   1%2,3\n4\n"));
+		assertEquals(10, CalculadoraString.add("//[;]\n1  2;3\n4;"));
+		assertEquals(10, CalculadoraString.add("//[@]\n@1 2\n 3 @ 4@\n , "));
+		assertEquals(10, CalculadoraString.add("//[;]\n  \n10,,,,"));
+		assertEquals(10, CalculadoraString.add("//[:]\n : ,\n10\n, : "));
+		assertEquals(0, CalculadoraString.add("//[;]\n0"));
+		assertEquals(10, CalculadoraString.add("//[@]\n  0 @ 010,0\n"));
 	}
 }
