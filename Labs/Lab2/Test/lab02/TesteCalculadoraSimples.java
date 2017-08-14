@@ -83,7 +83,7 @@ public class TesteCalculadoraSimples {
 	}
 	/**
 	 * Nao eh permitido definir delimitador vazio. Caso isso aconteca,
-	 * deve ser gerado uma excecao
+	 * deve ser gerado uma excecao.
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void SeDefinirDelimitadorVazioGeraExcecao() {
@@ -93,7 +93,10 @@ public class TesteCalculadoraSimples {
 	 * 
 	 */
 	@Test
-	public void QuandoDefineDelimitadorComNumerosRetornaSomaDosNumeros() {
-		
+	public void QuandoPassaNumerosComDelimitadorDefinidoRetornaSomaDosNumeros() {
+		assertEquals(10, CalculadoraString.add("//[%]\n1%2%3%4"));
+		assertFalse(1 == CalculadoraString.add("//[%]\n1%2%3%4"));
+		assertEquals(10, CalculadoraString.add("//[;]\n1;2;3;4;"));
+		assertEquals(10, CalculadoraString.add("//[@]\n@1@2@3@4@"));
 	}
 }
