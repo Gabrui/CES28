@@ -6,6 +6,14 @@ public class CalculadoraString {
 		if (operandos.isEmpty())
 			return 0;
 		int total = 0;
+		if (operandos.startsWith("//")) {
+			String[] partes = operandos.split("\n", 1);
+			String delimitacao = partes[0].substring(2);
+			if (partes.length !=2)
+				return 0;
+			operandos = partes[1];
+		}
+		
 		String[] numeros = operandos.split("[, \n]");
 		for(String numero : numeros) {
 			total += CalculadoraString.getValor(numero);
