@@ -132,7 +132,7 @@ public class TesteCalculadoraSimples {
 	 * Sem o n no final
 	 */
 	@Test(expected = IllegalArgumentException.class)
-	public void SeDefinirDelimitadorForaDoFormatoSemnNoFinalGeraExcecao2() {
+	public void SeDefinirDelimitadorForaDoFormatoSemnNoFinalGeraExcecao() {
 		CalculadoraString.add("//[%]\\");
 	}
 	/**
