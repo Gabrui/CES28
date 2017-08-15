@@ -97,5 +97,16 @@ public class Dec2RomanTest {
 		assertEquals("MMVIII",Dec2Roman.conv(2008));
 	}
 	
+	@Test
+	public void testeFinal() {
+		assertEquals("MMMCMXCIX",Dec2Roman.conv(3999));
+		assertEquals("DCLXVI",Dec2Roman.conv(666));
+		assertEquals("MMXVII",Dec2Roman.conv(2017));
+		// COMP 19 !!!
+		assertEquals("MMXIX",Dec2Roman.conv(2019));
+		assertEquals("XIX",Dec2Roman.conv(19));
+		
+	}
+	
 
 }//class Dec2RomanTest

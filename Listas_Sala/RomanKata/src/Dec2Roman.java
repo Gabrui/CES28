@@ -9,7 +9,7 @@ public class Dec2Roman {
 	// troque conv0 por conv1, conv2, conv10, etc. 
 	// assim voce pode manter as versoes como metodos da mesma classe.
 	public static String conv(int num) {
-		return conv0(num);
+		return convFinal(num);
 	}
 	
 	// 1 {} -> null
@@ -29,14 +29,10 @@ public class Dec2Roman {
 	// 5 statement -> statements
 	// 6 unconditional -> conditional
 	public static String conv2(int num) {
-		
 		 String res = "I";
-
-	     if (num > 1)
-	        {
+	     if (num > 1) {
 	            res += "I";
-	        }
-	     
+	     }
 	     return res;
 	}
 
@@ -45,15 +41,292 @@ public class Dec2Roman {
 	// each new convX version must make a new test pass
 	// BUT PERFORM ONLY THE MINIMUM CHANGES AT EACH STEP
 	// *****************************************************
-	
 	public static String conv3(int num) {
-		return "fill this method";
+		String res = "";
+	     while (num > 0) {
+	    	 res += "I";
+	    	 num -= 1;
+	     }
+	     return res;
 	}
 	
+	
+	public static String conv4(int num) {
+		String res = "";
+		if (num == 4)
+			return "IV";
+		
+	    while (num > 0) {
+	    	 res += "I";
+	    	 num -= 1;
+	     }
+	     return res;
+	}
+	
+	
+	public static String conv5(int num) {
+		String res = "";
+		if (num == 4)
+			return "IV";
+		if (num >= 5)
+			return "V";
+	    while (num > 0) {
+	    	 res += "I";
+	    	 num -= 1;
+	     }
+	     return res;
+	}
+	
+	
+	public static String conv8(int num) {
+		String res = "";
+		if (num == 4)
+			return "IV";
+		if (num >= 5) {
+			res += "V";
+			num -= 5;
+		}
+	    while (num > 0) {
+	    	 res += "I";
+	    	 num -= 1;
+	     }
+	     return res;
+	}
+	
+	
+	public static String conv10(int num) {
+		String res = "";
+		if (num >= 10) {
+			res += "X";
+			num -= 10;
+		}
+		if (num == 9)
+			return "IX";
+		if (num >= 5) {
+			res += "V";
+			num -= 5;
+		}
+		if (num == 4)
+			return "IV";
+	    while (num > 0) {
+	    	 res += "I";
+	    	 num -= 1;
+	     }
+	     return res;
+	}
+	
+	
+	// O professor Mirisola sugeriu utilizar o Map a partir do teste 10, refizemos
+	public static String conv10b(int num) {
+		LinkedHashMap<Integer, String> valores = new LinkedHashMap<Integer, String>();
+		valores.put(10, "X");
+		valores.put(9, "IX");
+		valores.put(5, "V");
+		valores.put(4, "IV");
+		valores.put(1, "I");
+		String res = "";
+		for (int valor : valores.keySet()) {
+			while (num >= valor) {
+				res += valores.get(valor);
+				num -= valor;
+			}
+		}
+	    return res;
+	}
+	
+	
+	public static String conv14(int num) {
+		String res = "";
+		if (num >= 10) {
+			res += "X";
+			num -= 10;
+		}
+		if (num == 9)
+			return "IX";
+		if (num >= 5) {
+			res += "V";
+			num -= 5;
+		}
+		if (num == 4) {
+			res += "IV";
+			num -= 4;
+		}
+	    while (num > 0) {
+	    	 res += "I";
+	    	 num -= 1;
+	     }
+	     return res;
+	}
+	
+	
+	// O professor Mirisola sugeriu utilizar o Map a partir do teste 10, refizemos
+	public static String conv14b(int num) {
+		LinkedHashMap<Integer, String> valores = new LinkedHashMap<Integer, String>();
+		valores.put(10, "X");
+		valores.put(9, "IX");
+		valores.put(5, "V");
+		valores.put(4, "IV");
+		valores.put(1, "I");
+		String res = "";
+		for (int valor : valores.keySet()) {
+			while (num >= valor) {
+				res += valores.get(valor);
+				num -= valor;
+			}
+		}
+	    return res;
+	}
+		
+	
+	public static String conv44(int num) {
+		String res = "";
+		if (num >= 40) {
+			res += "XL";
+			num -= 40;
+		}
+		while (num >= 10) {
+			res += "X";
+			num -= 10;
+		}
+		if (num == 9) {
+			res += "IX";
+			num -= 9;
+		}
+		if (num >= 5) {
+			res += "V";
+			num -= 5;
+		}
+		if (num == 4) {
+			res += "IV";
+			num -= 4;
+		}
+	    while (num > 0) {
+	    	 res += "I";
+	    	 num -= 1;
+	     }
+	     return res;
+	}
+	
+	// O professor Mirisola sugeriu utilizar o Map a partir do teste 10, refizemos
+	public static String conv44b(int num) {
+		LinkedHashMap<Integer, String> valores = new LinkedHashMap<Integer, String>();
+		valores.put(40, "XL");
+		valores.put(10, "X");
+		valores.put(9, "IX");
+		valores.put(5, "V");
+		valores.put(4, "IV");
+		valores.put(1, "I");
+		String res = "";
+		for (int valor : valores.keySet()) {
+			while (num >= valor) {
+				res += valores.get(valor);
+				num -= valor;
+			}
+		}
+	    return res;
+	}
+	
+	
+	public static String conv100(int num) {
+		String res = "";
+		if (num >= 100) {
+			res += "C";
+			num -= 100;
+		}
+		if (num >= 90) {
+			res += "XC";
+			num -= 90;
+		}
+		if (num >= 50) {
+			res += "L";
+			num -= 50;
+		}
+		if (num >= 40) {
+			res += "XL";
+			num -= 40;
+		}
+		while (num >= 10) {
+			res += "X";
+			num -= 10;
+		}
+		if (num == 9) {
+			res += "IX";
+			num -= 9;
+		}
+		if (num >= 5) {
+			res += "V";
+			num -= 5;
+		}
+		if (num == 4) {
+			res += "IV";
+			num -= 4;
+		}
+	    while (num > 0) {
+	    	 res += "I";
+	    	 num -= 1;
+	     }
+	     return res;
+	}
+	
+	
+	public static String conv100b(int num) {
+		LinkedHashMap<Integer, String> valores = new LinkedHashMap<Integer, String>();
+		valores.put(400, "CD");
+		valores.put(100, "C");
+		valores.put(90, "XC");
+		valores.put(50, "L");
+		valores.put(40, "XL");
+		valores.put(10, "X");
+		valores.put(9, "IX");
+		valores.put(5, "V");
+		valores.put(4, "IV");
+		valores.put(1, "I");
+		String res = "";
+		for (int valor : valores.keySet()) {
+			while (num >= valor) {
+				res += valores.get(valor);
+				num -= valor;
+			}
+		}
+	    return res;
+	}
+	
+	
+	// Passa em tudo
+	public static String convFinal(int num) {
+		LinkedHashMap<Integer, String> valores = new LinkedHashMap<Integer, String>();
+		valores.put(1000, "M");
+		valores.put(900, "CM");
+		valores.put(500, "D");
+		valores.put(400, "CD");
+		valores.put(100, "C");
+		valores.put(90, "XC");
+		valores.put(50, "L");
+		valores.put(40, "XL");
+		valores.put(10, "X");
+		valores.put(9, "IX");
+		valores.put(5, "V");
+		valores.put(4, "IV");
+		valores.put(1, "I");
+		String res = "";
+		for (int valor : valores.keySet()) {
+			while (num >= valor) {
+				res += valores.get(valor);
+				num -= valor;
+			}
+		}
+	    return res;
+	}
 
 }// class Dec2Roman
 	
 	/*
+	 * 		LinkedHashMap<Integer, String> valores = new LinkedHashMap<Integer, String>();
+		valores.put(1, "I");
+		valores.put(4, "IV");
+		valores.put(5, "V");
+		valores.put(9, "IX");
+		valores.put(10, "X");
 	/// EXAMPLE OF HOW TO USE A DICTIONARY!
 	// example of how to use a dictionary to avoid repetition
 	public static String conv4_2(int number)
