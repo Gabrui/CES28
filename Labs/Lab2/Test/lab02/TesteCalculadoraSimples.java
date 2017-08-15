@@ -30,7 +30,7 @@ public class TesteCalculadoraSimples {
 	/**
 	 * Quando é passado uma string vazia para o metodo add da classe CalculadoraString
 	 * ela retorna zero.
-	 * 
+	 * Passo 1
 	 */
 	@Test
 	public void QuandoStringVaziaRetornaZero() {
@@ -39,7 +39,7 @@ public class TesteCalculadoraSimples {
 	
 	/**
 	 * Testa se o numero passado como string é retornado como int. 
-	 * 
+	 * Passo 1
 	 */
 	@Test
 	public void QuandoTemUmNumeroRetornaEsseNumero() {
@@ -47,22 +47,48 @@ public class TesteCalculadoraSimples {
 		assertEquals(442, CalculadoraString.add("442"));
 	}
 	
+	/**
+	 * Passo 1 e teste do Passo 2
+	 */
 	@Test
 	public void SomaNumerosSeparadosPorVirgula() {
 		assertEquals(3, CalculadoraString.add("1,2"));
 		assertEquals(10, CalculadoraString.add("1,2,3,4"));
 	}
+	
 	/**
-	 * Forma para definir Delimitador: "//[delimiter]\n"
 	 * Nao eh permitido usar letra como delimitador. 
+	 * Passo 1
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void SeUsarLetraComoDelimitadorNaoDefinidoGeraExcecao() {
 		CalculadoraString.add("X1X2X3X4");
 	}
+
+	/**
+	 * Forma para definir Delimitador: "//[delimiter]\n"
+	 * Nao eh permitido usar delimitador nao definido. 
+	 * Passo 1
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void SeUsarDelimitadorNaoDefinidoSemNumeroGeraExcecao() {
+		CalculadoraString.add("%");
+	}
+	/**
+	 * Forma para definir Delimitador: "//[delimiter]\n"
+	 * Nao eh permitido usar delimitador nao definido. 
+	 * Passo 1
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void SeUsarDelimitadorNaoDefinidoComNumeroGeraExcecao() {
+		CalculadoraString.add(" % 1  2 \n3,4");
+	}
+	
+	
+	
 	/**
 	 * Marcadores Padroes: " " ou "\n" ou ",".
-	 * 
+	 * Passo 3
 	 */
 	@Test
 	public void SomaNumerosSeparadosPorMarcadoresPadroes() {
@@ -71,6 +97,7 @@ public class TesteCalculadoraSimples {
 	}
 	/**
 	 * Marcadores Padroes: " " ou  "\n" ou  ",".
+	 * Passo 3
 	 */
 	@Test
 	public void RetornaZeroQuandoRecebeApenasMarcadoresPadroes() {
@@ -84,6 +111,7 @@ public class TesteCalculadoraSimples {
 	 * Forma para definir Delimitador: "//[delimiter]\n"
 	 * Testando se o metodo add permite definir delimitadores, ou seja,
 	 * se quando definimos um delimitador nao eh gerado um erro e retorna zero
+	 * Passo 4
 	 */
 	@Test
 	public void VerificaSeAddPermiteDefinirDelimitador() {
@@ -94,6 +122,7 @@ public class TesteCalculadoraSimples {
 	/**
 	 * Nao eh permitido definir delimitador vazio. Caso isso aconteca,
 	 * deve ser gerado uma excecao.
+	 * Passo 4
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void SeDefinirDelimitadorVazioGeraExcecao() {
@@ -101,6 +130,7 @@ public class TesteCalculadoraSimples {
 	}
 	/**
 	 * Verifica se a soma esta correta quando define delimitador.
+	 * Passo 4
 	 */
 	@Test
 	public void QuandoPassaNumerosComDelimitadorDefinidoRetornaSomaDosNumeros() {
@@ -119,6 +149,7 @@ public class TesteCalculadoraSimples {
 	}
 	/**
 	 * Verifica se a soma esta correta quando usa delimitador definido com os padroes
+	 * Passo 4
 	 */
 	@Test
 	public void QuandoPassaNumerosComDelimitadorDefinidoEComDelimitadorPadraoRetornaSomaDosNumeros() {
@@ -139,6 +170,7 @@ public class TesteCalculadoraSimples {
 	 * Forma para definir Delimitador: "//[delimiter]\n"
 	 * Nao eh permitido definir delimitador que nao esteja no formato. 
 	 * Sem uma barra
+	 * Passo 4
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void SeDefinirDelimitadorForaDoFormatoSemUmaBarraGeraExcecao() {
@@ -148,6 +180,7 @@ public class TesteCalculadoraSimples {
 	 * Forma para definir Delimitador: "//[Delimitador]\n"
 	 * Nao eh permitido definir delimitador que nao esteja no formato. 
 	 * Sem o n no final
+	 * Passo 4
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void SeDefinirDelimitadorForaDoFormatoSemnNoFinalGeraExcecao() {
@@ -157,6 +190,7 @@ public class TesteCalculadoraSimples {
 	 * Forma para definir Delimitador: "//[delimiter]\n"
 	 * Nao eh permitido definir delimitador que nao esteja no formato. 
 	 * Sem [
+	 * Passo 4
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void SeDefinirDelimitadorForaDoFormatoSemColcheteGeraExcecao() {
@@ -166,6 +200,7 @@ public class TesteCalculadoraSimples {
 	 * Forma para definir Delimitador: "//[delimiter]\n"
 	 * Nao eh permitido definir delimitador que nao esteja no formato. 
 	 * Com ] a mais
+	 * Passo 4
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void SeDefinirDelimitadorForaDoFormatoComColcheteAMaisGeraExcecao() {
@@ -175,6 +210,7 @@ public class TesteCalculadoraSimples {
 	 * Forma para definir Delimitador: "//[delimiter]\n"
 	 * Nao eh permitido definir delimitador que nao esteja no formato. 
 	 * Com [ a mais
+	 * Passo 4
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void SeDefinirDelimitadorForaDoFormatoComColcheteEsquerdoAMaisGeraExcecao() {
@@ -183,36 +219,23 @@ public class TesteCalculadoraSimples {
 	/**
 	 * Forma para definir Delimitador: "//[delimiter]\n"
 	 * Nao eh permitido definir delimitador por exemplo * e usar **. 
-	 * 
+	 * Passo 4
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void SeUsarDelimitadorDefinidoSemEstarIntercaladoPorNumeroGeraExcecao() {
 		CalculadoraString.add("//[*]\n *1**2***3****4 **********************************");
 	}
-	/**
-	 * Forma para definir Delimitador: "//[delimiter]\n"
-	 * Nao eh permitido usar delimitador nao definido. 
-	 */
-	@Test(expected = IllegalArgumentException.class)
-	public void SeUsarDelimitadorNaoDefinidoSemNumeroGeraExcecao() {
-		CalculadoraString.add("%");
-	}
-	/**
-	 * Forma para definir Delimitador: "//[delimiter]\n"
-	 * Nao eh permitido usar delimitador nao definido. 
-	 */
-	@Test(expected = IllegalArgumentException.class)
-	public void SeUsarDelimitadorNaoDefinidoComNumeroGeraExcecao() {
-		CalculadoraString.add(" % 1  2 \n3,4");
-	}
+	
 	/**
 	 * Forma para definir Delimitador: "//[delimiter]\n"
 	 * Nao eh permitido usar tab como delimitador padrao. 
+	 * Passo 4
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void SeUsarTabAoInvesDeEspacoEmBrancoGeraExcecao() {
 		CalculadoraString.add("	1	2,3\n4	");
 	}
+	
 	
 	@Rule
 	public final ExpectedException expectedExcecao = ExpectedException.none();
