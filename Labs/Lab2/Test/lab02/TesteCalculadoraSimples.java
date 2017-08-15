@@ -229,12 +229,23 @@ public class TesteCalculadoraSimples {
 	
 	/**
 	 * Quando recebe alguns numeros negativos deve lancar uma excecao
-	 * e uma mensagem bem definido com todos numeros negativos passado.
+	 * e uma mensagem bem definido com todos numeros negativos passados.
 	 */
 	@Test
 	public void QuandoRecebeNumerosNegativosGeraExcecaoComMessagemComTodosOsNumerosNegativos(){
 		expectedExcecao.expect(IllegalArgumentException.class);
 		expectedExcecao.expectMessage("negativos proibidos [-1 -2 -3 -4]");
 		CalculadoraString.add("1, -2, 3, -4,-1,2 -3\n-4, -1, -2");
+	}
+	/**
+	 * Quando recebe alguns numeros negativos separados por delimitador definido
+	 *  deve lancar uma excecao e uma mensagem bem definido com todos numeros 
+	 *  negativos passados.
+	 */
+	@Test
+	public void QuandoRecebeNumerosNegativosSeparadosPorDelimitadorDefinidoGeraExcecaoComMessagemComTodosOsNumerosNegativos(){
+		expectedExcecao.expect(IllegalArgumentException.class);
+		expectedExcecao.expectMessage("negativos proibidos [-1 -2 -3 -4]");
+		CalculadoraString.add("//[.]\n.1, -2. 3., -4,.-1,2. -3\n-4. -1. -2");
 	}
 }
