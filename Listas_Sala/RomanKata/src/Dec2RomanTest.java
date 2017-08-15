@@ -108,5 +108,26 @@ public class Dec2RomanTest {
 		
 	}
 	
+	/**
+	 * Testando quando recebe zero
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void QuandoRecebeInteiroIgual0RetornaIllegalException() {
+		Dec2Roman.conv(0);
+	}
+	/**
+	 * Testando quando recebe maior que 3999
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void QuandoRecebeInteiroMaiorQue3999RetornaIllegalException() {
+		Dec2Roman.conv(4000);
+	}
+	/**
+	 * Testando quando recebe menor que 0
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void QuandoRecebeInteiroMenorQue0RetornaIllegalException() {
+		Dec2Roman.conv(-1);
+	}
 
 }//class Dec2RomanTest

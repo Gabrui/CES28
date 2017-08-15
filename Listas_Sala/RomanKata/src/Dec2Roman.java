@@ -9,7 +9,7 @@ public class Dec2Roman {
 	// troque conv0 por conv1, conv2, conv10, etc. 
 	// assim voce pode manter as versoes como metodos da mesma classe.
 	public static String conv(int num) {
-		return convFinal(num);
+		return convFinalMelhorado(num);
 	}
 	
 	// 1 {} -> null
@@ -319,7 +319,36 @@ public class Dec2Roman {
 		}
 	    return res;
 	}
-
+	
+	// Passa em tudo
+		public static String convFinalMelhorado(int num) {
+			LinkedHashMap<Integer, String> valores = new LinkedHashMap<Integer, String>();
+			valores.put(1000, "M");
+			valores.put(900, "CM");
+			valores.put(500, "D");
+			valores.put(400, "CD");
+			valores.put(100, "C");
+			valores.put(90, "XC");
+			valores.put(50, "L");
+			valores.put(40, "XL");
+			valores.put(10, "X");
+			valores.put(9, "IX");
+			valores.put(5, "V");
+			valores.put(4, "IV");
+			valores.put(1, "I");
+			String res = "";
+			if(num > 3999 || num <= 0) {
+				throw new IllegalArgumentException("Must be between 3999 and 1"); 
+			}
+			for (int valor : valores.keySet()) {
+				while (num >= valor) {
+					res += valores.get(valor);
+					num -= valor;
+				}
+			}
+		    return res;
+		}
+	
 }// class Dec2Roman
 	
 	/*
