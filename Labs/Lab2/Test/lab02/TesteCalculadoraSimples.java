@@ -117,4 +117,40 @@ public class TesteCalculadoraSimples {
 		assertEquals(0, CalculadoraString.add("//[;]\n0"));
 		assertEquals(10, CalculadoraString.add("//[@]\n  0 @ 010,0\n"));
 	}
+	/**
+	 * Forma para definir Delimitador: "//[delimiter]\n"
+	 * Nao eh permitido definir delimitador que nao esteja no formato. 
+	 * Sem uma barra
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void SeDefinirDelimitadorForaDoFormatoSemUmaBarraGeraExcecao() {
+		CalculadoraString.add("/[%]\n");
+	}
+	/**
+	 * Forma para definir Delimitador: "//[Delimitador]\n"
+	 * Nao eh permitido definir delimitador que nao esteja no formato. 
+	 * Sem o n no final
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void SeDefinirDelimitadorForaDoFormatoSemnNoFinalGeraExcecao2() {
+		CalculadoraString.add("//[%]\\");
+	}
+	/**
+	 * Forma para definir Delimitador: "//[delimiter]\n"
+	 * Nao eh permitido definir delimitador que nao esteja no formato. 
+	 * Sem [
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void SeDefinirDelimitadorForaDoFormatoSemColcheteGeraExcecao() {
+		CalculadoraString.add("//%]\n");
+	}
+	/**
+	 * Forma para definir Delimitador: "//[delimiter]\n"
+	 * Nao eh permitido definir delimitador que nao esteja no formato. 
+	 * Sem [
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void SeDefinirDelimitadorForaDoFormatoComColcheteAMaisGeraExcecao() {
+		CalculadoraString.add("//[]]\n");
+	}
 }
