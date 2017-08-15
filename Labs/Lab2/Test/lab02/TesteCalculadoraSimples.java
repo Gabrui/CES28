@@ -223,7 +223,7 @@ public class TesteCalculadoraSimples {
 	@Test
 	public void QuandoRecebeApenasUmNumeroNegativoGeraExcecao(){
 		expectedExcecao.expect(IllegalArgumentException.class);
-		expectedExcecao.expectMessage("negativos proibidos: [-1]");
+		expectedExcecao.expectMessage("negativos proibidos [-1]");
 		CalculadoraString.add("-1");
 	}
 	
@@ -234,7 +234,7 @@ public class TesteCalculadoraSimples {
 	@Test
 	public void QuandoRecebeNumerosNegativosGeraExcecaoComMessagemComTodosOsNumerosNegativos(){
 		expectedExcecao.expect(IllegalArgumentException.class);
-		expectedExcecao.expectMessage("negativos proibidos: [-1 -2 -3 -4]");
+		expectedExcecao.expectMessage("negativos proibidos [-1 -2 -3 -4]");
 		CalculadoraString.add("1, -2, 3, -4,-1,2 -3\n-4, -1, -2");
 	}
 }
