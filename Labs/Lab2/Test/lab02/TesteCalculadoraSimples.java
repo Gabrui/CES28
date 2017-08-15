@@ -11,6 +11,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
+import org.junit.Rule;
 
 /**
  * 
@@ -201,5 +203,19 @@ public class TesteCalculadoraSimples {
 	@Test(expected = IllegalArgumentException.class)
 	public void SeUsarDelimitadorNaoDefinidoComNumeroGeraExcecao() {
 		CalculadoraString.add(" % 1  2 \n3,4");
+	}
+	
+	
+	@Rule
+	public final ExpectedException expectedExcecao = ExpectedException.none();
+	/**
+	 * Quando recebe um numero negativo deve lancar uma excecao
+	 * e uma mensagem bem definido com o numero negativo passado.
+	 */
+	@Test
+	public void QuandoRecebeApenasUmNumeroNegativoGeraExcecao(){
+		expectedExcecao.expect(IllegalArgumentException.class);
+		expectedExcecao.expectMessage("negativos proibidos: [-1]");
+		CalculadoraString.add("-1");
 	}
 }
