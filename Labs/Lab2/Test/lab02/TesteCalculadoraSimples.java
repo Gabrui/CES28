@@ -51,6 +51,14 @@ public class TesteCalculadoraSimples {
 		assertEquals(10, CalculadoraString.add("1,2,3,4"));
 	}
 	/**
+	 * Forma para definir Delimitador: "//[delimiter]\n"
+	 * Nao eh permitido usar letra como delimitador. 
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void SeUsarLetraComoDelimitadorNaoDefinidoGeraExcecao() {
+		CalculadoraString.add("X1X2X3X4");
+	}
+	/**
 	 * Marcadores Padroes: " " ou "\n" ou ",".
 	 * 
 	 */
@@ -103,7 +111,8 @@ public class TesteCalculadoraSimples {
 		assertEquals(0, CalculadoraString.add("//[;]\n0"));
 		assertEquals(10, CalculadoraString.add("//[@]\n0@010@0"));
 		assertEquals(10, CalculadoraString.add("//[-]\n-1-2-3-4"));
-		
+		assertEquals(10, CalculadoraString.add("//[a]\na1a2a3a4"));
+		assertEquals(10, CalculadoraString.add("//[B]\nB1B2B3B4B"));
 	}
 	/**
 	 * Verifica se a soma esta correta quando usa delimitador definido com os padroes
@@ -120,6 +129,8 @@ public class TesteCalculadoraSimples {
 		assertEquals(10, CalculadoraString.add("//[@]\n  0 @ 010,0\n"));
 		assertEquals(10, CalculadoraString.add("//[-]\n -1,-2 -3\n -4 -,\n"));
 		assertEquals(10, CalculadoraString.add("//[%]\n  % %\n %,\n \n%, \n%, 1%2,3\n4\n"));
+		assertEquals(10, CalculadoraString.add("//[a]\n a 1\n a 2, a ,3, ,a, \n, 4 "));
+		assertEquals(10, CalculadoraString.add("//[B]\n B 1, B, ,2, ,B, ,3,\n B,\n ,4, ,B, "));
 	}
 	/**
 	 * Forma para definir Delimitador: "//[delimiter]\n"
@@ -165,5 +176,21 @@ public class TesteCalculadoraSimples {
 	@Test(expected = IllegalArgumentException.class)
 	public void SeUsarDelimitadorDefinidoSemEstarIntercaladoPorNumeroGeraExcecao() {
 		CalculadoraString.add("//[*]\n *1**2***3****4 ");
+	}
+	/**
+	 * Forma para definir Delimitador: "//[delimiter]\n"
+	 * Nao eh permitido usar delimitador nao definido. 
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void SeUsarDelimitadorNaoDefinidoSemNumeroGeraExcecao() {
+		CalculadoraString.add("%");
+	}
+	/**
+	 * Forma para definir Delimitador: "//[delimiter]\n"
+	 * Nao eh permitido usar delimitador nao definido. 
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void SeUsarDelimitadorNaoDefinidoComNumeroGeraExcecao() {
+		CalculadoraString.add(" % 1  2 \n3,4");
 	}
 }
