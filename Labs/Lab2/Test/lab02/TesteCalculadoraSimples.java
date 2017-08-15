@@ -102,6 +102,8 @@ public class TesteCalculadoraSimples {
 		assertEquals(10, CalculadoraString.add("//[:]\n:10:"));
 		assertEquals(0, CalculadoraString.add("//[;]\n0"));
 		assertEquals(10, CalculadoraString.add("//[@]\n0@010@0"));
+		assertEquals(10, CalculadoraString.add("//[-]\n -1,-2 -3\n -4 -,\n"));
+		
 	}
 	/**
 	 * Verifica se a soma esta correta quando usa delimitador definido com os padroes
@@ -147,10 +149,19 @@ public class TesteCalculadoraSimples {
 	/**
 	 * Forma para definir Delimitador: "//[delimiter]\n"
 	 * Nao eh permitido definir delimitador que nao esteja no formato. 
-	 * Sem [
+	 * Com ] a mais
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void SeDefinirDelimitadorForaDoFormatoComColcheteAMaisGeraExcecao() {
 		CalculadoraString.add("//[]]\n");
+	}
+	/**
+	 * Forma para definir Delimitador: "//[delimiter]\n"
+	 * Nao eh permitido definir delimitador por exemplo * e usar **. 
+	 * 
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void SeUsarDelimitadorDefinidoSemEstarIntercaladoPorNumeroGeraExcecao() {
+		CalculadoraString.add("//[*]\n *1**2***3****4 ");
 	}
 }
