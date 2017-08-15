@@ -102,7 +102,7 @@ public class TesteCalculadoraSimples {
 		assertEquals(10, CalculadoraString.add("//[:]\n:10:"));
 		assertEquals(0, CalculadoraString.add("//[;]\n0"));
 		assertEquals(10, CalculadoraString.add("//[@]\n0@010@0"));
-		assertEquals(10, CalculadoraString.add("//[-]\n -1,-2 -3\n -4 -,\n"));
+		assertEquals(10, CalculadoraString.add("//[-]\n-1-2-3-4"));
 		
 	}
 	/**
@@ -118,6 +118,8 @@ public class TesteCalculadoraSimples {
 		assertEquals(10, CalculadoraString.add("//[:]\n : ,\n10\n, : "));
 		assertEquals(0, CalculadoraString.add("//[;]\n0"));
 		assertEquals(10, CalculadoraString.add("//[@]\n  0 @ 010,0\n"));
+		assertEquals(10, CalculadoraString.add("//[-]\n -1,-2 -3\n -4 -,\n"));
+		assertEquals(10, CalculadoraString.add("//[%]\n  % %\n %,\n \n%, \n%, 1%2,3\n4\n"));
 	}
 	/**
 	 * Forma para definir Delimitador: "//[delimiter]\n"
