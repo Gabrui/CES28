@@ -170,6 +170,15 @@ public class TesteCalculadoraSimples {
 	}
 	/**
 	 * Forma para definir Delimitador: "//[delimiter]\n"
+	 * Nao eh permitido definir delimitador que nao esteja no formato. 
+	 * Com [ a mais
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void SeDefinirDelimitadorForaDoFormatoComColcheteEsquerdoAMaisGeraExcecao() {
+		CalculadoraString.add("//[[]\n");
+	}
+	/**
+	 * Forma para definir Delimitador: "//[delimiter]\n"
 	 * Nao eh permitido definir delimitador por exemplo * e usar **. 
 	 * 
 	 */
