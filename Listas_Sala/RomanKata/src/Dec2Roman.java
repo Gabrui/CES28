@@ -50,7 +50,7 @@ public class Dec2Roman {
 	     return res;
 	}
 	
-	
+	// Adicionamos o 4 no condicional
 	public static String conv4(int num) {
 		String res = "";
 		if (num == 4)
@@ -63,7 +63,7 @@ public class Dec2Roman {
 	     return res;
 	}
 	
-	
+	// Adicionamos o 5 no condicional
 	public static String conv5(int num) {
 		String res = "";
 		if (num == 4)
@@ -77,7 +77,7 @@ public class Dec2Roman {
 	     return res;
 	}
 	
-	
+	// Melhoramos o condicional do 5
 	public static String conv8(int num) {
 		String res = "";
 		if (num == 4)
@@ -93,7 +93,7 @@ public class Dec2Roman {
 	     return res;
 	}
 	
-	
+	// Adicionamos o 10 no codicional utilizando a mesma lógica do 10
 	public static String conv10(int num) {
 		String res = "";
 		if (num >= 10) {
@@ -116,7 +116,9 @@ public class Dec2Roman {
 	}
 	
 	
-	// O professor Mirisola sugeriu utilizar o Map a partir do teste 10, refizemos
+	// O professor Mirisola sugeriu utilizar o Map a partir do teste 10, refizemos.
+	// Porém, já tinhamos feito até o conv100, então para não apagar o que já tínhamos
+	// feito, criamos os métodos "b";
 	public static String conv10b(int num) {
 		LinkedHashMap<Integer, String> valores = new LinkedHashMap<Integer, String>();
 		valores.put(10, "X");
