@@ -187,7 +187,7 @@ public class TesteCalculadoraSimples {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void SeUsarDelimitadorDefinidoSemEstarIntercaladoPorNumeroGeraExcecao() {
-		CalculadoraString.add("//[*]\n *1**2***3****4 ");
+		CalculadoraString.add("//[*]\n *1**2***3****4 **********************************");
 	}
 	/**
 	 * Forma para definir Delimitador: "//[delimiter]\n"
@@ -219,6 +219,7 @@ public class TesteCalculadoraSimples {
 	/**
 	 * Quando recebe um numero negativo deve lancar uma excecao
 	 * e uma mensagem bem definido com o numero negativo passado.
+	 * Passo 5
 	 */
 	@Test
 	public void QuandoRecebeApenasUmNumeroNegativoGeraExcecao(){
@@ -230,6 +231,7 @@ public class TesteCalculadoraSimples {
 	/**
 	 * Quando recebe alguns numeros negativos deve lancar uma excecao
 	 * e uma mensagem bem definido com todos numeros negativos passados.
+	 * Passo 5
 	 */
 	@Test
 	public void QuandoRecebeNumerosNegativosGeraExcecaoComMessagemComTodosOsNumerosNegativos(){
@@ -241,11 +243,24 @@ public class TesteCalculadoraSimples {
 	 * Quando recebe alguns numeros negativos separados por delimitador definido
 	 *  deve lancar uma excecao e uma mensagem bem definido com todos numeros 
 	 *  negativos passados.
+	 *  Passo 5
 	 */
 	@Test
 	public void QuandoRecebeNumerosNegativosSeparadosPorDelimitadorDefinidoGeraExcecaoComMessagemComTodosOsNumerosNegativos(){
 		expectedExcecao.expect(IllegalArgumentException.class);
 		expectedExcecao.expectMessage("negativos proibidos [-1 -2 -3 -4]");
 		CalculadoraString.add("//[.]\n.1, -2. 3., -4,.-1,2. -3\n-4. -1. -2");
+	}
+	
+	/**
+	 * Numeros maiores que 1000 sao ignorados
+	 * Passo 6
+	 */
+	public void NumerosMaioresQue1000SaoIgnorados() {
+		assertEquals(0, CalculadoraString.add("2147483648"));
+		assertEquals(0, CalculadoraString.add("1001"));
+		assertEquals(10, CalculadoraString.add("1 1001 2 1001 3 1001 4 "));
+		assertEquals(10, CalculadoraString.add("//[-]\n-1-1001-2-2147483648-3-2019,1001 \n -4"));
+		
 	}
 }
