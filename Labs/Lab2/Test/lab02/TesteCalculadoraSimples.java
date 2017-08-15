@@ -256,6 +256,7 @@ public class TesteCalculadoraSimples {
 	 * Numeros maiores que 1000 sao ignorados
 	 * Passo 6
 	 */
+	@Test
 	public void NumerosMaioresQue1000SaoIgnorados() {
 		assertEquals(0, CalculadoraString.add("2147483648"));
 		assertEquals(0, CalculadoraString.add("1001"));
