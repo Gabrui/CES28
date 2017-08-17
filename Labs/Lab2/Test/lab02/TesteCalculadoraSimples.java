@@ -260,8 +260,8 @@ public class TesteCalculadoraSimples {
 	public void QuandoRecebeNumerosNegativosGeraExcecaoComMessagemComTodosOsNumerosNegativos(){
 		expectedExcecao.expect(IllegalArgumentException.class);
 		
-		expectedExcecao.expectMessage("negativos proibidos [-1 -2 -3 -4]");
-		CalculadoraString.add("1, -2, 3, -4,-1,2 -3\n-4, -1, -2");
+		expectedExcecao.expectMessage("negativos proibidos [-1 -2 -3 -4 -2147483648]");
+		CalculadoraString.add("1, -2, 3, -4,-1,2 -3\n-4, -1, -2 -2147483648");
 	}
 	/**
 	 * Quando recebe alguns numeros negativos separados por delimitador definido
@@ -285,9 +285,27 @@ public class TesteCalculadoraSimples {
 		assertEquals(0, CalculadoraString.add("2147483648"));
 		assertEquals(0, CalculadoraString.add("1001"));
 		assertEquals(10, CalculadoraString.add("1 1001 2 1001 3 1001 4 "));
-		assertEquals(10, CalculadoraString.add("//[-]\n-1-1001-2-2147483648-3-2019,1001 \n -4"));
-		
+		assertEquals(1010, CalculadoraString.add("//[-]\n-1-1001-2-2147483648-3-2019,1001, 1000 \n -4"));
 	}
 	
+	/**
+	 * Verifica se a soma esta correta quando define delimitador com tamanho indefinido.
+	 * Passo 7
+	 */
+	@Test
+	public void QuandoPassaNumerosComDelimitadorDefinidoDeTamanhosVariadosRetornaSomaDosNumeros() {
+		assertEquals(10, CalculadoraString.add("//[%%%%%]\n1%%%%%2%%%%%3%%%%%4"));
+		assertFalse(1 == CalculadoraString.add("//[%%%%%]\n1%%%%%2%%%%%3%%%%%4"));
+		assertEquals(10, CalculadoraString.add("//[;;;;;]\n1;;;;;2;;;;;3;;;;;4;;;;;"));
+		assertEquals(10, CalculadoraString.add("//[@@]\n@@1@@2@@3@@4@@"));
+		assertEquals(10, CalculadoraString.add("//[;;;;;;;;;;;;;;;;]\n10"));
+		assertEquals(10, CalculadoraString.add("//[::::::::::::::::]\n::::::::::::::::10::::::::::::::::"));
+		assertEquals(0, CalculadoraString.add("//[;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;]\n0"));
+		assertEquals(10, CalculadoraString.add("//[@@@@@@@@@@@@@@@@@@]\n0@@@@@@@@@@@@@@@@@@010@@@@@@@@@@@@@@@@@@0"));
+		assertEquals(10, CalculadoraString.add("//[--]\n--1--2--3--4"));
+		assertEquals(10, CalculadoraString.add("//[aaaaa]\naaaaa1aaaaa2aaaaa3aaaaa4"));
+		assertEquals(10, CalculadoraString.add("//[BBB]\nBBB1BBB2BBB3BBB4BBB"));
+		assertEquals(10, CalculadoraString.add("//[	   ]\n	   1	   2	   3 4	"));
+	}
 	// TODO FAZ O TESTE DE UM NÚMERO NEGATIVO GRANDE
 }
