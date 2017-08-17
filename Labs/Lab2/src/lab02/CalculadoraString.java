@@ -5,9 +5,9 @@ public class CalculadoraString {
 	public static int add(String operandos) {
 		if (operandos.isEmpty())
 			return 0;
-		int total = 0;
-		String delimitacao = "";
+		
 		if (operandos.startsWith("//")) {
+			String delimitacao = "";
 			String[] partes = operandos.split("\n", 2);
 			if (partes.length != 2)
 				throw new IllegalArgumentException();
@@ -22,15 +22,27 @@ public class CalculadoraString {
 			}
 			if (delimitacao.isEmpty())
 				throw new IllegalArgumentException();
-			delimitacao = "|"+delimitacao.replace("][", "|");
-			// TODO Marcadores especiais precisam ser escapados
-			delimitacao = delimitacao.replace(".", "\\.");
+			for (String delimitador : delimitacao.split("\\]\\["))
+				operandos = operandos.replace(delimitador, ",");
 		}
-		String[] numeros = operandos.split(",| |\n"+delimitacao);
+		return somaStringNumerosSeparadosPadrao(operandos);
+	}
+
+	/**
+	 * Opera de acordo com as regras, recebendo apenas a string de operandos
+	 * separados por vírgulas, espaço ou \n. Lança os erros como previsto
+	 * @throws IllegalArgumentException No caso de ser mal-formatada ou haver
+	 * 		   números negativos.
+	 * @param operandos String com números separados apenas por vírgulas
+	 * @return O resultado da adição dos números.
+	 */
+	public static int somaStringNumerosSeparadosPadrao(String operandos) {
+		String[] numeros = operandos.split(",| |\n");
 		String erros = "";
+		int total = 0;
 		for(String numero : numeros) {
 			try {
-				total += CalculadoraString.getValor(numero);
+				total += CalculadoraString.transformaStringEmNumero(numero);
 			} catch (NumberFormatException erro) {
 				throw new IllegalArgumentException();
 			} catch (IllegalArgumentException erro) {
@@ -44,7 +56,14 @@ public class CalculadoraString {
 		return total;
 	}
 	
-	private static int getValor(String numero) {
+	/**
+	 * Transforma uma string em número, de acordo com as regras do lab.
+	 * @throws IllegalArgumentException A mensagem é o número negativo.
+	 * @throws NumberFormatException Se não for um número.
+	 * @param numero A string a ser convertida em número
+	 * @return Um inteiro que representa o número
+	 */
+	public static int transformaStringEmNumero(String numero) {
 		if (numero.isEmpty())
 			return 0;
 		if (numero.length() > 5) {
