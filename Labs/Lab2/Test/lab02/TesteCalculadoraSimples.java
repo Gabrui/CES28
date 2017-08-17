@@ -307,5 +307,25 @@ public class TesteCalculadoraSimples {
 		assertEquals(10, CalculadoraString.add("//[BBB]\nBBB1BBB2BBB3BBB4BBB"));
 		assertEquals(10, CalculadoraString.add("//[	   ]\n	   1	   2	   3 4	"));
 	}
+	
+	/**
+	 * Verifica se a soma esta correta quando usa multiplos delimitador definido com os padroes
+	 * Passo 8
+	 */
+	@Test
+	public void QuandoPassaNumerosComDelimitadorDefinidoEComMultiplosDelimitadorPadraoRetornaSomaDosNumeros() {
+		assertEquals(10, CalculadoraString.add("//[%][.]\n   .1%2,.3\n%4.\n"));
+		assertFalse(1 == CalculadoraString.add("//[%][.]\n   .1%2,%3\n.4\n"));
+		assertEquals(10, CalculadoraString.add("//[;][(][)]\n(1)  (2);(3)\n(4);"));
+		assertEquals(10, CalculadoraString.add("//[@][\\][t]\n@1 \\t2\n t3 @ \\4@\n , "));
+		assertEquals(10, CalculadoraString.add("//[;][£][°]\n  £\n10°,,,,"));
+		assertEquals(10, CalculadoraString.add("//[:][+]\n : ,\n+10+\n, : "));
+		assertEquals(0, CalculadoraString.add("//[;][&]\n&0&"));
+		assertEquals(10, CalculadoraString.add("//[@][¬]\n  ¬0 @ ¬010,¬0\n"));
+		assertEquals(10, CalculadoraString.add("//[-][|]\n |-1|,|-2| |-3|\n |-4| -,\n"));
+		assertEquals(10, CalculadoraString.add("//[%][!]\n  % %\n %,\n \n%, \n%, 1!%2!,3!\n4!\n!"));
+		assertEquals(10, CalculadoraString.add("//[a][=]\n a= 1\n a= 2, a= ,3, ,a=, \n,a= 4 "));
+		assertEquals(10, CalculadoraString.add("//[B][\\][d]\n B \\d1\\d, B, ,\\d2\\d, ,B, ,\\d3\\d,\\\n B,d\nd ,\\d4\n, ,B, "));//testando com tab
+	}
 	// TODO FAZ O TESTE DE UM NÚMERO NEGATIVO GRANDE
 }
