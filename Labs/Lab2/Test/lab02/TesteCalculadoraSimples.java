@@ -127,10 +127,21 @@ public class TesteCalculadoraSimples {
 	 */
 	@Test
 	public void RetornaZeroQuandoRecebeApenasMarcadoresPadroes() {
+		
+		//Testes simples com os delimitadores padroes
 		assertEquals(0, CalculadoraString.add("\n\n\n"));
 		assertEquals(0, CalculadoraString.add(",,,"));
 		assertEquals(0, CalculadoraString.add("   "));
-		assertEquals(0, CalculadoraString.add(" \n , \n , , , ,,, \n\n\n  "));
+		
+		//Testar com uma cadeia de combinacao aleatoria com os delimitadores padroes
+		String[] delimitadorPadrao = new String[]{" ","\n",","} ;
+		int RandomIndexDelimiter=GeneratorRandomInt.nextInt(3);
+		String Operandos ="";
+		for(int i=0; i<RandomInt1000+10;i++) {
+			Operandos += delimitadorPadrao[RandomIndexDelimiter];
+			assertEquals(0, CalculadoraString.add(Operandos));
+			RandomIndexDelimiter = GeneratorRandomInt.nextInt(3);
+		}
 		
 	}
 	/**
