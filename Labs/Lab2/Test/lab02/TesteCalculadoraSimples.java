@@ -289,6 +289,7 @@ public class TesteCalculadoraSimples {
 	/**
 	 * Forma para definir Delimitador: "//[delimiter]\n"
 	 * Nao eh permitido usar numero como delimitador padrao. 
+	 * Especificacao definida na terceira pergunta do FAQ
 	 * Passo 4
 	 */
 	@Test(expected = IllegalArgumentException.class)
