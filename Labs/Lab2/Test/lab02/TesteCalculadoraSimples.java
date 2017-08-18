@@ -408,6 +408,16 @@ public class TesteCalculadoraSimples {
 		CalculadoraString.add("//[^@]\t]\n");
 	}
 	
+	/**
+	 * Forma para definir Delimitador: "//[delimiter][delimiter]\n"
+	 * Nao eh permitido definir delimitador que nao esteja no formato. 
+	 * Faltando um ]
+	 * Passo 8
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void SeDefinirMultiplosDelimitadoresFaltandoColcheteDireitoGeraExcecao() {
+		CalculadoraString.add("//[^@[\t]\n");
+	}
 	
 	@Test
 	public void RetornaZeroParaNumerosQueDariaOverflow() {
