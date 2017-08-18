@@ -58,6 +58,14 @@ public class TesteCalculadoraSimples {
 	public void SomaNumerosSeparadosPorVirgula() {
 		assertEquals(3, CalculadoraString.add("1,2"));
 		assertEquals(10, CalculadoraString.add("1,2,3,4"));
+		int total =0;
+		String Operandos ="";
+		for(int i =0; i<100;i++) {
+			
+			total += RandomInt1000;
+			Operandos = String.valueOf(RandomInt1000) + ",";
+			assertEquals(total, CalculadoraString.add(Operandos));
+		}
 	}
 	
 	/**
