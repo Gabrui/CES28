@@ -136,7 +136,7 @@ public class TesteCalculadoraSimples {
 	public void QuandoPassaNumerosComDelimitadorDefinidoRetornaSomaDosNumeros() {
 		assertEquals(10, CalculadoraString.add("//[%]\n1%2%3%4"));
 		assertFalse(1 == CalculadoraString.add("//[%]\n1%2%3%4"));
-		assertEquals(10, CalculadoraString.add("//[;]\n1;2;3;4;"));
+		assertEquals(10, CalculadoraString.add("//[\n]\n1\n2\n3\n4\n"));
 		assertEquals(10, CalculadoraString.add("//[@]\n@1@2@3@4@"));
 		assertEquals(10, CalculadoraString.add("//[;]\n10"));
 		assertEquals(10, CalculadoraString.add("//[:]\n:10:"));
@@ -178,6 +178,17 @@ public class TesteCalculadoraSimples {
 		CalculadoraString.add("/[%]\n");
 	}
 	/**
+	 * Forma para definir Delimitador: "//[delimiter]\n"
+	 * Nao eh permitido definir delimitador que nao esteja no formato. 
+	 * Com barra a mais
+	 * Passo 4
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void SeDefinirDelimitadorForaDoFormatoComBarraMaisGeraExcecao() {
+		CalculadoraString.add("///[%]\\\n");
+	}
+	
+	/**
 	 * Forma para definir Delimitador: "//[Delimitador]\n"
 	 * Nao eh permitido definir delimitador que nao esteja no formato. 
 	 * Sem o n no final
@@ -217,6 +228,40 @@ public class TesteCalculadoraSimples {
 	public void SeDefinirDelimitadorForaDoFormatoComColcheteEsquerdoAMaisGeraExcecao() {
 		CalculadoraString.add("//[[]\n");
 	}
+	
+	/**
+	 * Forma para definir Delimitador: "//[delimiter]\n"
+	 * Nao eh permitido definir delimitador que nao esteja no formato. 
+	 * colchete em ordem trocada
+	 * Passo 4
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void SeDefinirDelimitadorComColcheteEmOrdemTrocadaGeraExcecao() {
+		CalculadoraString.add("//]%[\n");
+	}
+	
+	/**
+	 * Forma para definir Delimitador: "//[delimiter]\n"
+	 * Nao eh permitido definir delimitador que nao esteja no formato. 
+	 * inicio trocado com o fim
+	 * Passo 4
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void SeDefinirDelimitadorInicioTrocadoComFimGeraExcecao() {
+		CalculadoraString.add("\n]%[//");
+	}
+	
+	/**
+	 * Forma para definir Delimitador: "//[delimiter]\n"
+	 * Nao eh permitido definir delimitador que nao esteja no formato. 
+	 * trocado ]/\n com [delimtiador
+	 * Passo 4
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void SeDefinirDelimitadorComOrdemTrocadaComFinalGeraExcecao() {
+		CalculadoraString.add("//]\n[%");
+	}
+	
 	
 	/**
 	 * Forma para definir Delimitador: "//[delimiter]\n"
@@ -330,6 +375,18 @@ public class TesteCalculadoraSimples {
 		assertEquals(10, CalculadoraString.add("//[B][\\][d]\n B \\d1\\d, B, ,\\d2\\d, ,B, ,\\d3\\d,\\\n B,d\nd ,\\d4\n, ,B, "));//testando com tab
 	}
 	
+	/**
+	 * Forma para definir Delimitador: "//[delimiter][delimiter]\n"
+	 * Nao eh permitido definir delimitador que nao esteja no formato. 
+	 * Com lixo entre as definicoes
+	 * Passo 8
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void SeDefinirMultiplosDelimitadoresComLixoEntreAsDefinicoesGeraExcecao() {
+		CalculadoraString.add("//[^@]l1X0\n@M³¹°[\t]\n");
+	}
+	
+	
 	@Test
 	public void RetornaZeroParaNumerosQueDariaOverflow() {
 		assertEquals(0, CalculadoraString.transformaStringEmNumero("9870979765876987698754992"));
@@ -360,7 +417,7 @@ public class TesteCalculadoraSimples {
 		assertEquals(10, CalculadoraString.add("//[%%%][...]\n   ...1%%%2,...3\n%%%4...\n"));
 		assertFalse(1 == CalculadoraString.add("//[%][...]\n  ...1%2,%3\n...4\n"));
 		assertEquals(10, CalculadoraString.add("//[;;;;][((((][)]\n((((1)  ((((2);;;;((((3)\n((((4);;;;"));
-		assertEquals(10, CalculadoraString.add("//[@@@@@@][\\\\][ttttt]\\\\\\\\n@@@@@@1 \\\\\\\\ttttt2\n ttttt3 @@@@@@ \\\\\\\\4@@@@@@\n , "));
+		assertEquals(10, CalculadoraString.add("//[@@@@@@][\\\\][ttttt]\n \\\\\\\\ \n@@@@@@1 \\\\\\\\ttttt2\n ttttt3 @@@@@@ \\\\\\\\4@@@@@@\n , "));
 		assertEquals(10, CalculadoraString.add("//[aaaaaa][======]\n aaaaaa====== 1\n aaaaaa====== 2, aaaaaaa====== ,3, ,aaaaaaa======, \n,aaaaaa====== 4 "));
 		assertEquals(10, CalculadoraString.add("//[BBBB][\\][d]\n BBBB \\d1\\d, BBBB, ,\\d2\\d, ,BBBB, ,\\d3\\d,\\\n BBBB,d\nd ,\\d4\n, ,BBBB, "));
 	}
