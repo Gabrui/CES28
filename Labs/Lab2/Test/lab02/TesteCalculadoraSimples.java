@@ -165,6 +165,7 @@ public class TesteCalculadoraSimples {
 		assertEquals(10, CalculadoraString.add("//[%]\n  % %\n %,\n \n%, \n%, 1%2,3\n4\n"));
 		assertEquals(10, CalculadoraString.add("//[a]\n a 1\n a 2, a ,3, ,a, \n, 4 "));
 		assertEquals(10, CalculadoraString.add("//[B]\n B 1, B, ,2, ,B, ,3,\n B,\n ,4, ,B, "));//testando com tab
+		assertEquals(10, CalculadoraString.add("//[*]\n *1**2***3****4 **********************************"));
 	}
 	/**
 	 * Forma para definir Delimitador: "//[delimiter]\n"
@@ -215,16 +216,6 @@ public class TesteCalculadoraSimples {
 	@Test(expected = IllegalArgumentException.class)
 	public void SeDefinirDelimitadorForaDoFormatoComColcheteEsquerdoAMaisGeraExcecao() {
 		CalculadoraString.add("//[[]\n");
-	}
-	/**
-	 * Forma para definir Delimitador: "//[delimiter]\n"
-	 * Nao eh permitido definir delimitador por exemplo * e usar **. 
-	 * Passo 4
-	 */
-	//@Test(expected = IllegalArgumentException.class)
-	// TODO Mudei para isso, conversar com o professor.
-	public void SeUsarDelimitadorDefinidoSemEstarIntercaladoPorNumeroGeraExcecao() {
-		assertEquals(10, CalculadoraString.add("//[*]\n *1**2***3****4 **********************************"));
 	}
 	
 	/**
