@@ -121,9 +121,6 @@ public class TesteCalculadoraSimples {
 			}
 			//System.out.println(i + ": " + (char) i); imprime a tabela ASCII
 		}
-		assertEquals(0, CalculadoraString.add("//[%]\n"));
-		assertEquals(0, CalculadoraString.add("//[;]\n"));
-		assertEquals(0, CalculadoraString.add("//[ ]\n"));
 	}
 	/**
 	 * Nao eh permitido definir delimitador vazio. Caso isso aconteca,
@@ -289,6 +286,15 @@ public class TesteCalculadoraSimples {
 		CalculadoraString.add("	1	2,3\n4	");
 	}
 	
+	/**
+	 * Forma para definir Delimitador: "//[delimiter]\n"
+	 * Nao eh permitido usar numero como delimitador padrao. 
+	 * Passo 4
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void SeDefinirNumeroComoDelimitadorGeraExcecao() {
+		CalculadoraString.add("//[-0 9123999945609995789990999909990]\n");
+	}
 	
 	@Rule
 	public final ExpectedException expectedExcecao = ExpectedException.none();
