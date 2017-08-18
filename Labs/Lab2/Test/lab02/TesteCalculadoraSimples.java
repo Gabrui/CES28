@@ -63,8 +63,11 @@ public class TesteCalculadoraSimples {
 		for(int i =0; i<100;i++) {
 			
 			total += RandomInt1000;
-			Operandos = String.valueOf(RandomInt1000) + ",";
+			Operandos += String.valueOf(RandomInt1000) + ",";
+			System.out.println(Operandos);
+			System.out.println(total);
 			assertEquals(total, CalculadoraString.add(Operandos));
+			RandomInt1000 = GeneratorRandomInt.nextInt(1001);
 		}
 	}
 	
