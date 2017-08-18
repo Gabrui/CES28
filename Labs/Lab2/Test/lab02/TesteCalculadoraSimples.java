@@ -108,6 +108,18 @@ public class TesteCalculadoraSimples {
 	public void SomaNumerosSeparadosPorMarcadoresPadroes() {
 		assertEquals(3, CalculadoraString.add("    1    \n, 2  "));
 		assertEquals(10, CalculadoraString.add("1   ,  2\n3 4   "));
+		int total =0;
+		int RandomIndexDelimiter=GeneratorRandomInt.nextInt(3);
+		String[] delimitadorPadrao = new String[]{" ","\n",","} ;
+		String Operandos ="";
+		for(int i =0; i<100;i++) {
+			
+			total += RandomInt1000;
+			Operandos += String.valueOf(RandomInt1000) + delimitadorPadrao[RandomIndexDelimiter];
+			assertEquals(total, CalculadoraString.add(Operandos));
+			RandomInt1000 = GeneratorRandomInt.nextInt(1001);
+			RandomIndexDelimiter=GeneratorRandomInt.nextInt(3);
+		}
 	}
 	/**
 	 * Marcadores Padroes: " " ou  "\n" ou  ",".
