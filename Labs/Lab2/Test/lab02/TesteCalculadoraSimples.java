@@ -13,6 +13,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.Rule;
+import java.util.Random;
 
 /**
  * 
@@ -21,10 +22,12 @@ import org.junit.Rule;
  * 
  */
 public class TesteCalculadoraSimples {
-	
+	private Random GeneratorRandomInt;
+	private int RandomInt1000;
 	@Before
 	public void setUp() {
-		
+		GeneratorRandomInt = new Random();
+		RandomInt1000 = GeneratorRandomInt.nextInt(1001);
 	}
 
 	/**
@@ -45,6 +48,7 @@ public class TesteCalculadoraSimples {
 	public void QuandoTemUmNumeroRetornaEsseNumero() {
 		assertEquals(4, CalculadoraString.add("4"));
 		assertEquals(442, CalculadoraString.add("442"));
+		assertEquals(RandomInt1000, CalculadoraString.add(String.valueOf(RandomInt1000)));
 	}
 	
 	/**
