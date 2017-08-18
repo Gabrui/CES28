@@ -174,7 +174,7 @@ public class TesteCalculadoraSimples {
 	 */
 	@Test
 	public void QuandoPassaNumerosComDelimitadorDefinidoRetornaSomaDosNumeros() {
-		assertEquals(10, CalculadoraString.add("//[%]\n1%2%3%4"));
+		assertEquals(10, CalculadoraString.add(" //[%]\n1%2%3%4"));
 		assertFalse(1 == CalculadoraString.add("//[%]\n1%2%3%4"));
 		assertEquals(10, CalculadoraString.add("//[\n]\n1\n2\n3\n4\n"));
 		assertEquals(10, CalculadoraString.add("//[@]\n@1@2@3@4@"));
@@ -212,7 +212,7 @@ public class TesteCalculadoraSimples {
 	 */
 	@Test
 	public void QuandoPassaNumerosComDelimitadorDefinidoEComDelimitadorPadraoRetornaSomaDosNumeros() {
-		assertEquals(10, CalculadoraString.add("//[%]\n   1%2,3\n4\n"));
+		assertEquals(10, CalculadoraString.add(" //[%]\n   1%2,3\n4\n"));
 		assertFalse(1 == CalculadoraString.add("//[%]\n   1%2,3\n4\n"));
 		assertEquals(10, CalculadoraString.add("//[;]\n1  2;3\n4;"));
 		assertEquals(10, CalculadoraString.add("//[@]\n@1 2\n 3 @ 4@\n , "));
@@ -389,7 +389,7 @@ public class TesteCalculadoraSimples {
 	public void QuandoRecebeNumerosNegativosSeparadosPorDelimitadorDefinidoGeraExcecaoComMessagemComTodosOsNumerosNegativos(){
 		expectedExcecao.expect(IllegalArgumentException.class);
 		expectedExcecao.expectMessage("negativos proibidos [-2 -4 -1 -3 -4 -1 -2]");
-		CalculadoraString.add("//[.]\n.1, -2. 3., -4,.-1,2. -3\n-4. -1. -2");
+		CalculadoraString.add(" //[.]\n.1, -2. 3., -4,.-1,2. -3\n-4. -1. -2");
 	}
 	
 	/**
@@ -401,7 +401,7 @@ public class TesteCalculadoraSimples {
 		assertEquals(0, CalculadoraString.add("2147483648"));
 		assertEquals(0, CalculadoraString.add("1001"));
 		assertEquals(10, CalculadoraString.add("1 1001 2 1001 3 1001 4 "));
-		assertEquals(1010, CalculadoraString.add("//[-]\n-1-1001-2-2147483648-3-2019,1001, 1000 \n -4"));
+		assertEquals(1010, CalculadoraString.add(" //[-]\n-1-1001-2-2147483648-3-2019,1001, 1000 \n -4"));
 	}
 	
 	/**
@@ -410,7 +410,7 @@ public class TesteCalculadoraSimples {
 	 */
 	@Test
 	public void QuandoPassaNumerosComDelimitadorDefinidoDeTamanhosVariadosRetornaSomaDosNumeros() {
-		assertEquals(10, CalculadoraString.add("//[%%%%%]\n1%%%%%2%%%%%3%%%%%4"));
+		assertEquals(10, CalculadoraString.add(" //[%%%%%]\n1%%%%%2%%%%%3%%%%%4"));
 		assertFalse(1 == CalculadoraString.add("//[%%%%%]\n1%%%%%2%%%%%3%%%%%4"));
 		assertEquals(10, CalculadoraString.add("//[;;;;;]\n1;;;;;2;;;;;3;;;;;4;;;;;"));
 		assertEquals(10, CalculadoraString.add("//[@@]\n@@1@@2@@3@@4@@"));
@@ -430,7 +430,7 @@ public class TesteCalculadoraSimples {
 	 */
 	@Test
 	public void QuandoPassaNumerosComMultiplosDelimitadoresDefinidosEComDelimitadorPadraoRetornaSomaDosNumeros() {
-		assertEquals(10, CalculadoraString.add("//[%][.]\n   .1%2,.3\n%4.\n"));
+		assertEquals(10, CalculadoraString.add(" //[%][.]\n   .1%2,.3\n%4.\n"));
 		assertFalse(1 == CalculadoraString.add("//[%][.]\n   .1%2,%3\n.4\n"));
 		assertEquals(10, CalculadoraString.add("//[;][(][)]\n(1)  (2);(3)\n(4);"));
 		assertEquals(10, CalculadoraString.add("//[@][\\][t]\n@1 \\t2\n t3 @ \\4@\n , "));
@@ -525,7 +525,7 @@ public class TesteCalculadoraSimples {
 	 */
 	@Test
 	public void QuandoPassaNumerosComMultiplosDelimitadoresDefinidosDeTamanhoIndefinidoEComDelimitadorPadraoRetornaSomaDosNumeros() {
-		assertEquals(10, CalculadoraString.add("//[%%%][...]\n   ...1%%%2,...3\n%%%4...\n"));
+		assertEquals(10, CalculadoraString.add(" //[%%%][...]\n   ...1%%%2,...3\n%%%4...\n"));
 		assertFalse(1 == CalculadoraString.add("//[%][...]\n  ...1%2,%3\n...4\n"));
 		assertEquals(0, CalculadoraString.add("//[;;;;][((((][))))))))))))))]\n"));
 		assertEquals(10, CalculadoraString.add("//[@@@@@@][\\\\][ttttt]\n \\\\\\\\ \n@@@@@@1 \\\\\\\\ttttt2\n ttttt3 @@@@@@ \\\\\\\\4@@@@@@\n , "));
