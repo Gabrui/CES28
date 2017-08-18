@@ -386,6 +386,17 @@ public class TesteCalculadoraSimples {
 		CalculadoraString.add("//[^@]l1X0\n@M³¹°[\t]\n");
 	}
 	
+	/**
+	 * Forma para definir Delimitador: "//[delimiter][delimiter]\n"
+	 * Nao eh permitido definir delimitador que nao esteja no formato. 
+	 * Faltando um [
+	 * Passo 8
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void SeDefinirMultiplosDelimitadoresFaltandoColcheteEsquerdoGeraExcecao() {
+		CalculadoraString.add("//[^@]l1X0\n@M³¹°\t]\n");
+	}
+	
 	
 	@Test
 	public void RetornaZeroParaNumerosQueDariaOverflow() {
@@ -419,6 +430,6 @@ public class TesteCalculadoraSimples {
 		assertEquals(10, CalculadoraString.add("//[;;;;][((((][)]\n((((1)  ((((2);;;;((((3)\n((((4);;;;"));
 		assertEquals(10, CalculadoraString.add("//[@@@@@@][\\\\][ttttt]\n \\\\\\\\ \n@@@@@@1 \\\\\\\\ttttt2\n ttttt3 @@@@@@ \\\\\\\\4@@@@@@\n , "));
 		assertEquals(10, CalculadoraString.add("//[aaaaaa][======]\n aaaaaa====== 1\n aaaaaa====== 2, aaaaaaa====== ,3, ,aaaaaaa======, \n,aaaaaa====== 4 "));
-		assertEquals(10, CalculadoraString.add("//[BBBB][\\][d]\n BBBB \\d1\\d, BBBB, ,\\d2\\d, ,BBBB, ,\\d3\\d,\\\n BBBB,d\nd ,\\d4\n, ,BBBB, "));
+		assertEquals(10, CalculadoraString.add("//[BBBB][\n][d]\n BBBB d1d, BBBB, ,d2\nd, ,BBBB, ,d3d,\n BBBB,d\nd ,\nd4\n, ,BBBB, "));
 	}
 }
