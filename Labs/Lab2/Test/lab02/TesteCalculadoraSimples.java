@@ -115,6 +115,12 @@ public class TesteCalculadoraSimples {
 	 */
 	@Test
 	public void VerificaSeAddPermiteDefinirDelimitador() {
+		for(int i=0;i<128;i++) {
+			if(i != 91 && i != 93 && i<48 && i>57) {
+				assertEquals(0, CalculadoraString.add("//["+ (char) i +"]\n"));
+			}
+			//System.out.println(i + ": " + (char) i); imprime a tabela ASCII
+		}
 		assertEquals(0, CalculadoraString.add("//[%]\n"));
 		assertEquals(0, CalculadoraString.add("//[;]\n"));
 		assertEquals(0, CalculadoraString.add("//[ ]\n"));
