@@ -377,7 +377,7 @@ public class TesteCalculadoraSimples {
 		expectedExcecao.expect(IllegalArgumentException.class);
 		
 		expectedExcecao.expectMessage("negativos proibidos [-2 -4 -1 -3 -4 -1 -2 -2147483648 -999999999999999999]");
-		CalculadoraString.add("-0, 1, -2, 3, -4,-1,2 -3\n-4, -1, -2 -2147483648 -00000000000 -999999999999999999");
+		CalculadoraString.add("-0, 1, -2, 3, -4,-1,2 -3\n-4, -1, -2 -2147483648 -00000000000 - 999999999999999999");
 	}
 	/**
 	 * Quando recebe alguns numeros negativos separados por delimitador definido
