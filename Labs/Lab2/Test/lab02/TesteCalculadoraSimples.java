@@ -153,7 +153,7 @@ public class TesteCalculadoraSimples {
 	@Test
 	public void VerificaSeAddPermiteDefinirDelimitador() {
 		for(int i=0;i<128;i++) {
-			if(i != 91 && i != 93 && i<48 && i>57) {
+			if(i != 91 && i != 93 && (i<48 || i>57)) {
 				assertEquals(0, CalculadoraString.add("//["+ (char) i +"]\n"));
 			}
 			//System.out.println(i + ": " + (char) i); //imprime a tabela ASCII
@@ -186,6 +186,25 @@ public class TesteCalculadoraSimples {
 		assertEquals(10, CalculadoraString.add("//[a]\na1a2a3a4"));
 		assertEquals(10, CalculadoraString.add("//[B]\nB1B2B3B4B"));
 		assertEquals(10, CalculadoraString.add("//[	]\n	1	2	3	4	"));
+		
+		//Testar com uma cadeia de combinacao de numero aleatorios
+		// e com todos os caracteres da tabela ascii
+		
+		int total =0;
+		String Operandos ="";
+		for(int IndexDelimitador=1;IndexDelimitador<128;IndexDelimitador++) {
+			total =0;
+			Operandos = "//["+(char) IndexDelimitador+"]\n";
+			if(IndexDelimitador != 91 && IndexDelimitador != 93 && (IndexDelimitador<48 || IndexDelimitador>57)) {
+				for(int i =0; i<100;i++) {
+					
+					total += RandomInt1000;
+					Operandos += String.valueOf(RandomInt1000) + (char) IndexDelimitador;
+					assertEquals(total, CalculadoraString.add(Operandos));
+					RandomInt1000 = GeneratorRandomInt.nextInt(1001);
+				}
+			}
+		}
 	}
 	/**
 	 * Verifica se a soma esta correta quando usa delimitador definido com os padroes
