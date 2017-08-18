@@ -64,8 +64,6 @@ public class TesteCalculadoraSimples {
 			
 			total += RandomInt1000;
 			Operandos += String.valueOf(RandomInt1000) + ",";
-			System.out.println(Operandos);
-			System.out.println(total);
 			assertEquals(total, CalculadoraString.add(Operandos));
 			RandomInt1000 = GeneratorRandomInt.nextInt(1001);
 		}
@@ -77,6 +75,7 @@ public class TesteCalculadoraSimples {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void SeUsarLetraComoDelimitadorNaoDefinidoGeraExcecao() {
+		
 		CalculadoraString.add("X1X2X3X4");
 	}
 
@@ -134,7 +133,7 @@ public class TesteCalculadoraSimples {
 			if(i != 91 && i != 93 && i<48 && i>57) {
 				assertEquals(0, CalculadoraString.add("//["+ (char) i +"]\n"));
 			}
-			//System.out.println(i + ": " + (char) i); imprime a tabela ASCII
+			//System.out.println(i + ": " + (char) i); //imprime a tabela ASCII
 		}
 	}
 	/**
