@@ -6,24 +6,27 @@ public class CalculadoraString {
 		if (operandos.isEmpty())
 			return 0;
 		
-		if (operandos.startsWith("//")) {
+		if (operandos.startsWith("//[")) {
 			String delimitacao = "";
-			String[] partes = operandos.split("\n", 2);
+			String[] partes = operandos.split("\\]\n", 2);
 			if (partes.length != 2)
 				throw new IllegalArgumentException();
 			delimitacao = partes[0];
 			operandos = partes[1];
-			if (delimitacao.contains("[]") || !delimitacao.endsWith("]") || !delimitacao.startsWith("//["))
+			if (delimitacao.contains("[]"))
 				throw new IllegalArgumentException();
 			try {
-				delimitacao = delimitacao.substring(3, partes[0].length()-1);
+				delimitacao = delimitacao.substring(3);
 			} catch (IndexOutOfBoundsException erro) {
 				throw new IllegalArgumentException();
 			}
 			if (delimitacao.isEmpty())
 				throw new IllegalArgumentException();
-			for (String delimitador : delimitacao.split("\\]\\["))
+			for (String delimitador : delimitacao.split("\\]\\[")) {
+				if (delimitador.contains("]") || delimitador.contains("["))
+					throw new IllegalArgumentException();
 				operandos = operandos.replace(delimitador, ",");
+			}
 		}
 		return somaStringNumerosSeparadosPadrao(operandos);
 	}
@@ -66,14 +69,20 @@ public class CalculadoraString {
 	public static int transformaStringEmNumero(String numero) {
 		if (numero.isEmpty())
 			return 0;
-		if (numero.length() > 5) {
-			if (numero.matches("\\d+"))
-				return 0;
-			if (numero.matches("-\\d+"))
+		int valor;
+		if (numero.length() > 7) { // Para verificar casos que dariam overflow
+			if (numero.matches("\\d+") || numero.matches("-0+")) {
+				try {
+					valor =  Integer.valueOf(numero);
+				} catch (NumberFormatException e) {
+					return 0;
+				}
+			} else if (numero.matches("-\\d+"))
 				throw new IllegalArgumentException(numero);
-			throw new NumberFormatException();
+			else 
+				throw new NumberFormatException();
 		}
-		int valor =  Integer.valueOf(numero);
+		valor =  Integer.valueOf(numero);
 		if (valor > 1000)
 			return 0;
 		if (valor < 0)

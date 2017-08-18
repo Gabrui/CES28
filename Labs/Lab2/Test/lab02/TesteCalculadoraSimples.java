@@ -261,8 +261,8 @@ public class TesteCalculadoraSimples {
 	public void QuandoRecebeNumerosNegativosGeraExcecaoComMessagemComTodosOsNumerosNegativos(){
 		expectedExcecao.expect(IllegalArgumentException.class);
 		
-		expectedExcecao.expectMessage("negativos proibidos [-2 -4 -1 -3 -4 -1 -2 -2147483648]");
-		CalculadoraString.add("1, -2, 3, -4,-1,2 -3\n-4, -1, -2 -2147483648");
+		expectedExcecao.expectMessage("negativos proibidos [-2 -4 -1 -3 -4 -1 -2 -2147483648 -999999999999999999]");
+		CalculadoraString.add("1, -2, 3, -4,-1,2 -3\n-4, -1, -2 -2147483648 -999999999999999999");
 	}
 	/**
 	 * Quando recebe alguns numeros negativos separados por delimitador definido
@@ -328,5 +328,24 @@ public class TesteCalculadoraSimples {
 		assertEquals(10, CalculadoraString.add("//[a][=]\n a= 1\n a= 2, a= ,3, ,a=, \n,a= 4 "));
 		assertEquals(10, CalculadoraString.add("//[B][\\][d]\n B \\d1\\d, B, ,\\d2\\d, ,B, ,\\d3\\d,\\\n B,d\nd ,\\d4\n, ,B, "));//testando com tab
 	}
-	// TODO O TAB PASSA? TEVE UM TESTE QUE DEU ERRO POR CAUSA DE UM TAB
+	
+	@Test
+	public void RetornaZeroParaNumerosQueDariaOverflow() {
+		assertEquals(0, CalculadoraString.transformaStringEmNumero("9870979765876987698754992"));
+		assertEquals(0, CalculadoraString.transformaStringEmNumero("0000000000000000000000000"));
+		assertEquals(0, CalculadoraString.transformaStringEmNumero("-000000000000000000000000"));
+		assertEquals(0, CalculadoraString.transformaStringEmNumero("98767576"));
+		assertEquals(0, CalculadoraString.transformaStringEmNumero("9898"));
+	}
+	
+	@Test
+	public void RetornaNumeroPequenoParaSupostoNumeroGrande() {
+		assertEquals(10, CalculadoraString.transformaStringEmNumero("0000000000000000000000000010"));
+		assertEquals(10, CalculadoraString.transformaStringEmNumero("00010"));
+		assertEquals(10, CalculadoraString.transformaStringEmNumero("00000010"));
+		assertEquals(10, CalculadoraString.transformaStringEmNumero("0000010"));
+		assertEquals(10, CalculadoraString.transformaStringEmNumero("000000000000000000010"));
+	}
+	
+	
 }
