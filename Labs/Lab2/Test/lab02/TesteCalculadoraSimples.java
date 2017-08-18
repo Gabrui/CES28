@@ -394,7 +394,7 @@ public class TesteCalculadoraSimples {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void SeDefinirMultiplosDelimitadoresFaltandoColcheteEsquerdoGeraExcecao() {
-		CalculadoraString.add("//[^@]l1X0\n@M³¹°\t]\n");
+		CalculadoraString.add("//[^@]\t]\n");
 	}
 	
 	
