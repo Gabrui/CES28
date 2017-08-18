@@ -220,6 +220,16 @@ public class TesteCalculadoraSimples {
 	
 	/**
 	 * Forma para definir Delimitador: "//[delimiter]\n"
+	 * Nao eh permitido usar delimitador definido de tamanho menor.
+	 * Passo 4 
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void SeUsarDelimitadorDeTamanhoMenorDoQueDefinidoGeraExcecao() {
+		CalculadoraString.add("//[*****]\n ***** 1 ****,2,*** 3 ** 4 *\n** , \n *,*");
+	}
+	
+	/**
+	 * Forma para definir Delimitador: "//[delimiter]\n"
 	 * Nao eh permitido usar tab como delimitador padrao. 
 	 * Passo 4
 	 */
