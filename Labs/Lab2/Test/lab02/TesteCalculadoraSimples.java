@@ -346,6 +346,8 @@ public class TesteCalculadoraSimples {
 		assertEquals(10, CalculadoraString.transformaStringEmNumero("00000010"));
 		assertEquals(10, CalculadoraString.transformaStringEmNumero("0000010"));
 		assertEquals(10, CalculadoraString.transformaStringEmNumero("000000000000000000010"));
+		assertEquals(0, CalculadoraString.transformaStringEmNumero("//[-]\n-00000000000000000000000000000"));
+		assertEquals(0, CalculadoraString.transformaStringEmNumero("-0000000000000000000000000000000000000000000"));
 	}
 	
 	/**
