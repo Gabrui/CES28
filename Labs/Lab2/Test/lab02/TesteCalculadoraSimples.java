@@ -305,7 +305,7 @@ public class TesteCalculadoraSimples {
 	 * Passo 8
 	 */
 	@Test
-	public void QuandoPassaNumerosComDelimitadorDefinidoEComMultiplosDelimitadorPadraoRetornaSomaDosNumeros() {
+	public void QuandoPassaNumerosComMultiplosDelimitadoresDefinidosEComDelimitadorPadraoRetornaSomaDosNumeros() {
 		assertEquals(10, CalculadoraString.add("//[%][.]\n   .1%2,.3\n%4.\n"));
 		assertFalse(1 == CalculadoraString.add("//[%][.]\n   .1%2,%3\n.4\n"));
 		assertEquals(10, CalculadoraString.add("//[;][(][)]\n(1)  (2);(3)\n(4);"));
@@ -338,5 +338,18 @@ public class TesteCalculadoraSimples {
 		assertEquals(10, CalculadoraString.transformaStringEmNumero("000000000000000000010"));
 	}
 	
-	
+	/**
+	 * Verifica se a soma esta correta quando usa multiplos delimitador definido de 
+	 * tamanho indefinido com os padroes
+	 * Passo 9
+	 */
+	@Test
+	public void QuandoPassaNumerosComMultiplosDelimitadoresDefinidosDeTamanhoIndefinidoEComDelimitadorPadraoRetornaSomaDosNumeros() {
+		assertEquals(10, CalculadoraString.add("//[%%%][...]\n   ...1%%%2,...3\n%%%4...\n"));
+		assertFalse(1 == CalculadoraString.add("//[%][...]\n  ...1%2,%3\n...4\n"));
+		assertEquals(10, CalculadoraString.add("//[;;;;][((((][)]\n((((1)  ((((2);;;;((((3)\n((((4);;;;"));
+		assertEquals(10, CalculadoraString.add("//[@@@@@@][\\\\][ttttt]\\\\\\\\n@@@@@@1 \\\\\\\\ttttt2\n ttttt3 @@@@@@ \\\\\\\\4@@@@@@\n , "));
+		assertEquals(10, CalculadoraString.add("//[aaaaaa][======]\n aaaaaa====== 1\n aaaaaa====== 2, aaaaaaa====== ,3, ,aaaaaaa======, \n,aaaaaa====== 4 "));
+		assertEquals(10, CalculadoraString.add("//[BBBB][\\][d]\n BBBB \\d1\\d, BBBB, ,\\d2\\d, ,BBBB, ,\\d3\\d,\\\n BBBB,d\nd ,\\d4\n, ,BBBB, "));
+	}
 }
