@@ -7,14 +7,14 @@ public class CalculadoraString {
 			return 0;
 		
 		if (operandos.startsWith("//[")) {
+			if (operandos.contains("[]"))
+				throw new IllegalArgumentException();
 			String delimitacao = "";
 			String[] partes = operandos.split("\\]\n", 2);
 			if (partes.length != 2)
 				throw new IllegalArgumentException();
 			delimitacao = partes[0];
 			operandos = partes[1];
-			if (delimitacao.contains("[]"))
-				throw new IllegalArgumentException();
 			try {
 				delimitacao = delimitacao.substring(3);
 			} catch (IndexOutOfBoundsException erro) {
@@ -23,7 +23,8 @@ public class CalculadoraString {
 			if (delimitacao.isEmpty())
 				throw new IllegalArgumentException();
 			for (String delimitador : delimitacao.split("\\]\\[")) {
-				if (delimitador.contains("]") || delimitador.contains("["))
+				if (delimitador.contains("]") || delimitador.contains("[") ||
+						delimitador.matches(".*\\d+.*")) // TODO contém dígito?
 					throw new IllegalArgumentException();
 				operandos = operandos.replace(delimitador, ",");
 			}
