@@ -1,5 +1,7 @@
 # Lab 1
 
+Feito por Dylan Sugimoto e Gabriel Adriano
+
 Todos os passos foram implementados:
 
 - Passo  1 => Pacote lab01/Class Money
