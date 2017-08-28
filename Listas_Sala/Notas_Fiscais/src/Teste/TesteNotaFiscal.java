@@ -78,9 +78,9 @@ public class TesteNotaFiscal {
 		Mockito.when(fiscalizador.validaCPF(cpf)).thenReturn(true);
 		NotaFiscal testeNotaFiscal = new NotaFiscal(casd, cpf,item,quant);
 		testeNotaFiscal.adicionaItem(livro, quant);
-		assertTrue(NotaFiscal.getItem(livro) == quant);
-		assertTrue(NotaFiscal.getItem(item) == quant);
-		assertTrue(NotaFiscal.getItem(caneta) == 0);
+		assertTrue(testeNotaFiscal.getItem(livro) == quant);
+		assertTrue(testeNotaFiscal.getItem(item) == quant);
+		assertTrue(testeNotaFiscal.getItem(caneta) == 0);
 	}
 	
 	/**
@@ -94,27 +94,27 @@ public class TesteNotaFiscal {
 		testeNotaFiscal.adicionaItem(livro, quant);
 		testeNotaFiscal.deletaItem(item);
 		
-		assertTrue(NotaFiscal.getItem(livro)== quant);
-		asserTrue(NotaFiscal.getItem(item) == 0);
+		assertTrue(testeNotaFiscal.getItem(livro)== quant);
+		asserTrue(testeNotaFiscal.getItem(item) == 0);
 		
 		testeNotaFiscal.adicionaItem(notebook, 27);
 		testeNotaFiscal.adicionaItem(caneta, 7);
 		testeNotaFiscal.adicionaItem(item, quant);
 		
-		assertTrue(NotaFiscal.getItem(notebook) == 27);
-		assertTrue(NotaFiscal.getItem(caneta) == 7);
-		asserTrue(NotaFiscal.getItem(item) == quant);
+		assertTrue(testeNotaFiscal.getItem(notebook) == 27);
+		assertTrue(testeNotaFiscal.getItem(caneta) == 7);
+		asserTrue(testeNotaFiscal.getItem(item) == quant);
 		
 		testeNotaFiscal.deletaItem(notebook);
 		testeNotaFiscal.deletaItem(livro);
 		testeNotaFiscal.deletaItem(caneta);
 		testeNotaFiscal.deletaItem(item);
 		
-		assertTrue(NotaFiscal.getItem(livro)== 0);
-		asserTrue(NotaFiscal.getItem(item) == 0);
-		assertTrue(NotaFiscal.getItem(livro) == 0);
-		assertTrue(NotaFiscal.getItem(caneta) == 0);
-		asserTrue(NotaFiscal.getItem(notebook) == 0);
+		assertTrue(testeNotaFiscal.getItem(livro)== 0);
+		asserTrue(testeNotaFiscal.getItem(item) == 0);
+		assertTrue(testeNotaFiscal.getItem(livro) == 0);
+		assertTrue(testeNotaFiscal.getItem(caneta) == 0);
+		asserTrue(testeNotaFiscal.getItem(notebook) == 0);
 	}
 	
 	/**
@@ -128,7 +128,7 @@ public class TesteNotaFiscal {
 		testeNotaFiscal.adicionaItem(notebook, quant);
 		testeNotaFiscal.adicionaItem(caneta, quant);
 		
-		assertTrue(NotaFiscal.ValorTotal() == 40);
+		assertTrue(testeNotaFiscal.ValorTotal() == 40);
 		
 	}
 }
