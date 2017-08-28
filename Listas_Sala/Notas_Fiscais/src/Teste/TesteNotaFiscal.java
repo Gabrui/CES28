@@ -75,6 +75,7 @@ public class TesteNotaFiscal {
 	 */
 	@Test
 	public void QuandoAdicionaItemNaNotaFiscalItemEhAdicionadoNaListaDaNotaFiscal() {
+		Mockito.when(fiscalizador.validaCPF(cpf)).thenReturn(true);
 		NotaFiscal testeNotaFiscal = new NotaFiscal(casd, cpf,item,quant);
 		testeNotaFiscal.adicionaItem(livro, quant);
 		assertTrue(NotaFiscal.getItem(livro) == quant);
@@ -88,6 +89,7 @@ public class TesteNotaFiscal {
 	 */
 	@Test
 	public void QuandoDeletaItemNaNotaFiscalItemEhDeletadoDaListaDaNotaFiscal() {
+		Mockito.when(fiscalizador.validaCPF(cpf)).thenReturn(true);
 		NotaFiscal testeNotaFiscal = new NotaFiscal(casd, cpf,item,quant);
 		testeNotaFiscal.adicionaItem(livro, quant);
 		testeNotaFiscal.deletaItem(item);
@@ -113,5 +115,20 @@ public class TesteNotaFiscal {
 		assertTrue(NotaFiscal.getItem(livro) == 0);
 		assertTrue(NotaFiscal.getItem(caneta) == 0);
 		asserTrue(NotaFiscal.getItem(notebook) == 0);
+	}
+	
+	/**
+	 * Testa se o valor total da NotaFiscal esta correto
+	 */
+	@Test
+	public void QuandoPedeValorTotalParaNotaFiscalRetornaSomaDosPrecosDeCadaItemMultiplicadoPelasQuantidades() {
+		Mockito.when(fiscalizador.validaCPF(cpf)).thenReturn(true);
+		NotaFiscal testeNotaFiscal = new NotaFiscal(casd, cpf,item,quant);
+		testeNotaFiscal.adicionaItem(item, quant);
+		testeNotaFiscal.adicionaItem(notebook, quant);
+		testeNotaFiscal.adicionaItem(caneta, quant);
+		
+		assertTrue(NotaFiscal.ValorTotal() == 40);
+		
 	}
 }
