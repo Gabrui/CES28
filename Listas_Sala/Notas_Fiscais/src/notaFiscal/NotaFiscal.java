@@ -22,7 +22,14 @@ public class NotaFiscal {
 		return valor;
 	}
 	
-	public int getItem(ItemVenda item) {
+	public void deletaItem(String nomeItem) {
+		ItemVenda item = new ItemVenda(nomeItem, 0);
+		if (listaItens.contains(item))
+			listaItens.remove(item);
+	}
+	
+	public int getItem(String nomeItem) {
+		ItemVenda item = new ItemVenda(nomeItem, 0);
 		if (listaItens.contains(item))
 			return item.getQuantidade();
 		return 0;
