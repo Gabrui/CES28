@@ -33,12 +33,19 @@ public class TesteNotaFiscal {
 	private Cadastro casd = new Cadastro(bdc,fiscalizador);
 	private String cpf;
 	private int quant;
-	private String item ;
+	private String item;
+	private String notebook ;
+	private String livro;
+	private String caneta;
+	
 	@Before
 	public void setUp() {
 		 cpf = "10";
 		 quant= 10;
-		 item = "Notebook";
+		 item = "item";
+		 notebook = "Notebook";
+		 livro = "Livro";
+		 caneta = "Caneta";
 	}
 	
 	/**
@@ -62,4 +69,16 @@ public class TesteNotaFiscal {
 		NotaFiscal testeNotaFiscal = new NotaFiscal(casd,cpf,item,quant);
 	}
 	
+	/**
+	 * Testa se a NotaFiscal pode ser criada com itens de compra e se pode 
+	 * ser adicionado itens de compra
+	 */
+	@Test
+	public void QuandoAdicionaItemNaNotaFiscalItemEhAdicionadoNaListaDaNotaFiscal() {
+		NotaFiscal testeNotaFiscal = new NotaFiscal(casd, cpf,item,quant);
+		testeNotaFiscal.adicionaItem(livro, quant);
+		assertTrue(NotaFiscal.getItem(livro) == quant);
+		assertTrue(NotaFiscal.getItem(item) == quant);
+		assertTrue(NotaFiscal.getItem(caneta) == 0);
+	}
 }
