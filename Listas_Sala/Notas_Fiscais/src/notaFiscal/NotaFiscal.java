@@ -21,4 +21,10 @@ public class NotaFiscal {
 			valor += i.getValor();
 		return valor;
 	}
+	
+	public int getItem(ItemVenda item) {
+		if (listaItens.contains(item))
+			return item.getQuantidade();
+		return 0;
+	}
 }
