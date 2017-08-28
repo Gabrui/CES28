@@ -1,6 +1,5 @@
 package notaFiscal;
 
-import db.*;
 import java.util.LinkedList;
 
 public class NotaFiscal {
@@ -14,5 +13,12 @@ public class NotaFiscal {
 	
 	public void adicionaItem(String item, int quant) {
 		listaItens.add(new ItemVenda(item, quant));
+	}
+	
+	public int getValor() {
+		int valor = 0;
+		for (ItemVenda i : listaItens)
+			valor += i.getValor();
+		return valor;
 	}
 }
