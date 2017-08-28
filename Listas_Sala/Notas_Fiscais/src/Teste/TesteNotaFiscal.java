@@ -7,6 +7,8 @@
 package Teste;
 import org.junit.Assert;
 import org.junit.Test;
+import org.mockito.Mockito;
+
 /**
  * 
  *
@@ -19,7 +21,8 @@ public class TesteNotaFiscal {
 	 * Testa cadastro de cliente com CPF limpo
 	 */
 	@Test
-	public void QuandoPassaCPFLimpoVerificadorCadastroRetornaTrue() {
-		
+	public void QuandoPassaCPFLimpoVerificadorCPFRetornaTrue() {
+		VerificadorCPF fiscalizador = new VerificadorCPF();
+		assertTrue(fiscalizador.);
 	}
 }
