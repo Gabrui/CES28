@@ -83,7 +83,7 @@ public class TesteNotaFiscal {
 	}
 	
 	/**
-	 * Testa se a NotaFiscal pode ser criada com itens de compra e se pode 
+	 * Testa se a NotaFiscal consegue adicionar e deletar itens.
 	 * ser adicionado itens de compra
 	 */
 	@Test
