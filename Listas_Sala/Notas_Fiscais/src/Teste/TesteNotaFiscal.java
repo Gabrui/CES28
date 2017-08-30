@@ -104,7 +104,7 @@ public class TesteNotaFiscal {
 		Mockito.verify(fiscalizador, Mockito.times(1)).validaCPF(cpf);
 		
 		//teste se nao eh possivel criar nota fiscal com cpf sujo
-		NotaFiscal testeNotaFiscal = new NotaFiscal(casd,fiscalizador,cpf,item,quant);
+		NotaFiscal testeNotaFiscal = new NotaFiscal(casd,fiscalizador,cpf2,item,quant);
 	}
 	
 	/**
