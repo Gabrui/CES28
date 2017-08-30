@@ -93,6 +93,7 @@ public class TesteNotaFiscal {
 	/**
 	 * Testa se a NotaFiscal pode ser criada com itens de compra e se pode 
 	 * ser adicionado itens de compra
+	 * item d
 	 */
 	@Test
 	public void QuandoAdicionaItemNaNotaFiscalItemEhAdicionadoNaListaDaNotaFiscal() {
@@ -114,6 +115,8 @@ public class TesteNotaFiscal {
 	/**
 	 * Testa se a NotaFiscal consegue adicionar e deletar itens.
 	 * ser adicionado itens de compra
+	 * item d
+	 * item g
 	 */
 	@Test
 	public void QuandoDeletaItemNaNotaFiscalItemEhDeletadoDaListaDaNotaFiscal() {
@@ -154,6 +157,8 @@ public class TesteNotaFiscal {
 	
 	/**
 	 * Testa se o valor total da NotaFiscal esta correto
+	 * item d ultima parte
+	 * item e parte 1
 	 */
 	@Test
 	public void QuandoPedeValorTotalParaNotaFiscalRetornaSomaDosPrecosDeCadaItemMultiplicadoPelasQuantidades() {
@@ -163,13 +168,67 @@ public class TesteNotaFiscal {
 		//criando nota fiscal
 		NotaFiscal testeNotaFiscal = new NotaFiscal(casd, cpf,item,quant);
 		
+		//adiciando item na nota fiscal
+		testeNotaFiscal.adicionaItem(livro, quant);
+		//deletando item da nota fiscal
+		testeNotaFiscal.deletaItem(item);
+		//verificando valor total
+		assertTrue(testeNotaFiscal.getValor() == 40);
+		
 		//adicionando itens
 		testeNotaFiscal.adicionaItem(item, quant);
 		testeNotaFiscal.adicionaItem(notebook, quant);
 		testeNotaFiscal.adicionaItem(caneta, quant);
 		
 		//verificando valor total
-		assertTrue(testeNotaFiscal.ValorTotal() == 40);
+		assertTrue(testeNotaFiscal.getValor() == 40);
 		
+	}
+	
+	/**
+	 * Testa se a NotaFiscal nao pode ficar sem itens
+	 * item e ultima parte
+	 * item g
+	 */
+	@Test(expected = RuntimeException.class)
+	public void QuandoCriaNotaFiscalComApenasUmItemETrocaPorOutroNaoPodeFicarVazia() {
+		Mockito.when(fiscalizador.validaCPF(cpf)).thenReturn(true);
+		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
+		
+		//criando nota fiscal
+		NotaFiscal testeNotaFiscal = new NotaFiscal(casd, cpf,item,quant);
+		
+		
+		//deletando item da nota fiscal
+		testeNotaFiscal.deletaItem(item);
+		//adiciando item na nota fiscal
+		testeNotaFiscal.adicionaItem(livro, quant);
+		
+	}
+	
+	/**
+	 * Testa se eh possivel criar nota fiscal com quantidade nula de itens
+	 * item f
+	 */
+	@Test(expected = RuntimeException.class)
+	public void QuandoCriaNotaFiscalVaziaGeraExececao() {
+		Mockito.when(fiscalizador.validaCPF(cpf)).thenReturn(true);
+		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
+		
+		//criando nota fiscal
+		NotaFiscal testeNotaFiscal = new NotaFiscal(casd, cpf,"banana",0);
+	}
+	
+	/**
+	 * Testa se eh possivel criar nota fiscal sem item
+	 * item f
+	 */
+	@Test(expected = RuntimeException.class)
+	public void QuandoCriaNotaFiscalStringVaziaGeraExececao() {
+		Mockito.when(fiscalizador.validaCPF(cpf)).thenReturn(true);
+		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
+		
+		//criando nota fiscal
+		NotaFiscal testeNotaFiscal2 = new NotaFiscal(casd, cpf,"",0);
 	}
 }
