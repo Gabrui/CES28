@@ -90,6 +90,7 @@ public class TesteNotaFiscal {
 	/**
 	 * Testa se a NotaFiscal pode ser criada com itens de compra e se pode 
 	 * ser adicionado itens de compra
+	 * item d
 	 */
 	@Test
 	public void QuandoAdicionaItemNaNotaFiscalItemEhAdicionadoNaListaDaNotaFiscal() {
@@ -111,6 +112,7 @@ public class TesteNotaFiscal {
 	/**
 	 * Testa se a NotaFiscal consegue adicionar e deletar itens.
 	 * ser adicionado itens de compra
+	 * item d
 	 */
 	@Test
 	public void QuandoDeletaItemNaNotaFiscalItemEhDeletadoDaListaDaNotaFiscal() {
@@ -151,6 +153,8 @@ public class TesteNotaFiscal {
 	
 	/**
 	 * Testa se o valor total da NotaFiscal esta correto
+	 * item d ultima parte
+	 * item e parte 1
 	 */
 	@Test
 	public void QuandoPedeValorTotalParaNotaFiscalRetornaSomaDosPrecosDeCadaItemMultiplicadoPelasQuantidades() {
@@ -159,6 +163,13 @@ public class TesteNotaFiscal {
 		
 		//criando nota fiscal
 		NotaFiscal testeNotaFiscal = new NotaFiscal(casd, cpf,item,quant);
+		
+		//adiciando item na nota fiscal
+		testeNotaFiscal.adicionaItem(livro, quant);
+		//deletando item da nota fiscal
+		testeNotaFiscal.deletaItem(item);
+		//verificando valor total
+		assertTrue(testeNotaFiscal.getValor() == 40);
 		
 		//adicionando itens
 		testeNotaFiscal.adicionaItem(item, quant);
@@ -173,6 +184,7 @@ public class TesteNotaFiscal {
 	/**
 	 * Testa se a NotaFiscal consegue adicionar e deletar itens.
 	 * ser adicionado itens de compra
+	 * item e ultima parte
 	 */
 	@Test(expected = RuntimeException.class)
 	public void QuandoCriaNotaFiscalComApenasUmItemETrocaPorOutroNaoPodeFicarVazia() {
@@ -193,8 +205,6 @@ public class TesteNotaFiscal {
 		assertTrue(testeNotaFiscal.getItem(item) == 0);
 		assertTrue(testeNotaFiscal.getValor() == 40);
 		
-		
-	
 	}
 	
 }
