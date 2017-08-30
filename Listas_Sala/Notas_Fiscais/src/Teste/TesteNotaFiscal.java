@@ -74,6 +74,7 @@ public class TesteNotaFiscal {
 		 Mockito.when(produtoLivro.getPreco()).thenReturn(1000);
 		 Mockito.when(produtoCaneta.getPreco()).thenReturn(10000);
 		 Mockito.when(produtoBanana.getPreco()).thenReturn(100000);
+		 Mockito.when(produtoVendido.getQuantidade()).thenReturn(quant);
 	}
 	
 	/**
@@ -150,12 +151,12 @@ public class TesteNotaFiscal {
 		assertTrue(testeNotaFiscal.getItem(livro)== quant);
 		assertTrue(testeNotaFiscal.getItem(item) == 0);
 		
-		testeNotaFiscal.adicionaItem(notebook, 27);
-		testeNotaFiscal.adicionaItem(caneta, 7);
+		testeNotaFiscal.adicionaItem(notebook, quant);
+		testeNotaFiscal.adicionaItem(caneta,quant);
 		testeNotaFiscal.adicionaItem(item, quant);
 		
-		assertTrue(testeNotaFiscal.getItem(notebook) == 27);
-		assertTrue(testeNotaFiscal.getItem(caneta) == 7);
+		assertTrue(testeNotaFiscal.getItem(notebook) == quant);
+		assertTrue(testeNotaFiscal.getItem(caneta) == quant);
 		assertTrue(testeNotaFiscal.getItem(item) == quant);
 		
 		testeNotaFiscal.deletaItem(notebook);
