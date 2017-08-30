@@ -74,7 +74,7 @@ public class TesteNotaFiscal {
 		 Mockito.when(produtoLivro.getPreco()).thenReturn(1000);
 		 Mockito.when(produtoCaneta.getPreco()).thenReturn(10000);
 		 Mockito.when(produtoBanana.getPreco()).thenReturn(100000);
-		 Mockito.when(produtoVendido.getQuantidade()).thenReturn(quant);
+
 	}
 	
 	/**
