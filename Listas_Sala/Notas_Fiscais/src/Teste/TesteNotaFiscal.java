@@ -113,6 +113,7 @@ public class TesteNotaFiscal {
 	 * Testa se a NotaFiscal consegue adicionar e deletar itens.
 	 * ser adicionado itens de compra
 	 * item d
+	 * item g
 	 */
 	@Test
 	public void QuandoDeletaItemNaNotaFiscalItemEhDeletadoDaListaDaNotaFiscal() {
@@ -184,6 +185,7 @@ public class TesteNotaFiscal {
 	/**
 	 * Testa se a NotaFiscal nao pode ficar sem itens
 	 * item e ultima parte
+	 * item g
 	 */
 	@Test(expected = RuntimeException.class)
 	public void QuandoCriaNotaFiscalComApenasUmItemETrocaPorOutroNaoPodeFicarVazia() {
