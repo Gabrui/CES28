@@ -155,11 +155,17 @@ public class TesteNotaFiscal {
 	@Test
 	public void QuandoPedeValorTotalParaNotaFiscalRetornaSomaDosPrecosDeCadaItemMultiplicadoPelasQuantidades() {
 		Mockito.when(fiscalizador.validaCPF(cpf)).thenReturn(true);
+		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
+		
+		//criando nota fiscal
 		NotaFiscal testeNotaFiscal = new NotaFiscal(casd, cpf,item,quant);
+		
+		//adicionando itens
 		testeNotaFiscal.adicionaItem(item, quant);
 		testeNotaFiscal.adicionaItem(notebook, quant);
 		testeNotaFiscal.adicionaItem(caneta, quant);
 		
+		//verificando valor total
 		assertTrue(testeNotaFiscal.ValorTotal() == 40);
 		
 	}
