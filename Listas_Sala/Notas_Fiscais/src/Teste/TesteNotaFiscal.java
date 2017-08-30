@@ -63,6 +63,7 @@ public class TesteNotaFiscal {
 	public void QuandoPassaCPFLimpoNotaFiscalPodeSerInstaciada() {
 		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
 		Mockito.when(fiscalizador.validaCPF(cpf)).thenReturn(true);
+		Mockito.when(cliente.getCPF()).thenReturn(cpf);
 		
 		//conferindo se o fiscalizador retorna a resposta enlatada.
 		assertTrue(fiscalizador.validaCPF(cpf));
@@ -79,6 +80,7 @@ public class TesteNotaFiscal {
 	public void QuandoPassaCPFSujoNotaFiscalRetornaIllegalArgumentExceptionNaInstanciacao() {
 		Mockito.when(fiscalizador.validaCPF(cpf)).thenReturn(false);
 		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
+		Mockito.when(cliente.getCPF()).thenReturn(cpf);
 		
 		//conferindo se fiscalizador retorna a resposta enlatada
 		assertFalse(fiscalizador.validaCPF(cpf));
