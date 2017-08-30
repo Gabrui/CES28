@@ -99,6 +99,7 @@ public class TesteNotaFiscal {
 	public void QuandoAdicionaItemNaNotaFiscalItemEhAdicionadoNaListaDaNotaFiscal() {
 		Mockito.when(fiscalizador.validaCPF(cpf)).thenReturn(true);
 		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
+		Mockito.when(cliente.getCPF()).thenReturn(cpf);
 		
 		//criando nota fiscal
 		NotaFiscal testeNotaFiscal = new NotaFiscal(casd,fiscalizador, cpf,item,quant);
@@ -122,6 +123,7 @@ public class TesteNotaFiscal {
 	public void QuandoDeletaItemNaNotaFiscalItemEhDeletadoDaListaDaNotaFiscal() {
 		Mockito.when(fiscalizador.validaCPF(cpf)).thenReturn(true);
 		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
+		Mockito.when(cliente.getCPF()).thenReturn(cpf);
 		
 		//criando nota fiscal
 		NotaFiscal testeNotaFiscal = new NotaFiscal(casd,fiscalizador, cpf,item,quant);
@@ -164,6 +166,7 @@ public class TesteNotaFiscal {
 	public void QuandoPedeValorTotalParaNotaFiscalRetornaSomaDosPrecosDeCadaItemMultiplicadoPelasQuantidades() {
 		Mockito.when(fiscalizador.validaCPF(cpf)).thenReturn(true);
 		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
+		Mockito.when(cliente.getCPF()).thenReturn(cpf);
 		
 		//criando nota fiscal
 		NotaFiscal testeNotaFiscal = new NotaFiscal(casd,fiscalizador, cpf,item,quant);
@@ -194,6 +197,7 @@ public class TesteNotaFiscal {
 	public void QuandoCriaNotaFiscalComApenasUmItemETrocaPorOutroNaoPodeFicarVazia() {
 		Mockito.when(fiscalizador.validaCPF(cpf)).thenReturn(true);
 		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
+		Mockito.when(cliente.getCPF()).thenReturn(cpf);
 		
 		//criando nota fiscal
 		NotaFiscal testeNotaFiscal = new NotaFiscal(casd,fiscalizador, cpf,item,quant);
@@ -214,6 +218,7 @@ public class TesteNotaFiscal {
 	public void QuandoCriaNotaFiscalVaziaGeraExececao() {
 		Mockito.when(fiscalizador.validaCPF(cpf)).thenReturn(true);
 		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
+		Mockito.when(cliente.getCPF()).thenReturn(cpf);
 		
 		//criando nota fiscal
 		NotaFiscal testeNotaFiscal = new NotaFiscal(casd,fiscalizador, cpf,"banana",0);
@@ -227,6 +232,7 @@ public class TesteNotaFiscal {
 	public void QuandoCriaNotaFiscalStringVaziaGeraExececao() {
 		Mockito.when(fiscalizador.validaCPF(cpf)).thenReturn(true);
 		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
+		Mockito.when(cliente.getCPF()).thenReturn(cpf);
 		
 		//criando nota fiscal
 		NotaFiscal testeNotaFiscal2 = new NotaFiscal(casd,fiscalizador, cpf,"",0);
