@@ -187,7 +187,7 @@ public class TesteNotaFiscal {
 		//deletando item da nota fiscal
 		testeNotaFiscal.deletaItem(item);
 		//verificando valor total
-		assertTrue(testeNotaFiscal.getValor() == 1000);
+		assertTrue(testeNotaFiscal.getValor() == 10000);
 		
 		//adicionando itens
 		testeNotaFiscal.adicionaItem(item, quant);
