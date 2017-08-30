@@ -182,8 +182,7 @@ public class TesteNotaFiscal {
 	}
 	
 	/**
-	 * Testa se a NotaFiscal consegue adicionar e deletar itens.
-	 * ser adicionado itens de compra
+	 * Testa se a NotaFiscal nao pode ficar sem itens
 	 * item e ultima parte
 	 */
 	@Test(expected = RuntimeException.class)
@@ -203,9 +202,8 @@ public class TesteNotaFiscal {
 	}
 	
 	/**
-	 * Testa se a NotaFiscal consegue adicionar e deletar itens.
-	 * ser adicionado itens de compra
-	 * item e ultima parte
+	 * Testa se eh possivel criar nota fiscal com quantidade nula de itens
+	 * item f
 	 */
 	@Test(expected = RuntimeException.class)
 	public void QuandoCriaNotaFiscalVaziaGeraExececao() {
@@ -214,7 +212,18 @@ public class TesteNotaFiscal {
 		
 		//criando nota fiscal
 		NotaFiscal testeNotaFiscal = new NotaFiscal(casd, cpf,"banana",0);
-		NotaFiscal testeNotaFiscal2 = new NotaFiscal(casd, cpf,"",0);
 	}
 	
+	/**
+	 * Testa se eh possivel criar nota fiscal sem item
+	 * item f
+	 */
+	@Test(expected = RuntimeException.class)
+	public void QuandoCriaNotaFiscalStringVaziaGeraExececao() {
+		Mockito.when(fiscalizador.validaCPF(cpf)).thenReturn(true);
+		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
+		
+		//criando nota fiscal
+		NotaFiscal testeNotaFiscal2 = new NotaFiscal(casd, cpf,"",0);
+	}
 }
