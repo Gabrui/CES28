@@ -12,14 +12,13 @@ import org.junit.Before;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import bd.BDCliente;
+import bd.BD;
 import bd.Cliente;
 import bd.VerificadorCPF;
 
 import org.mockito.Mock;
 
 import notaFiscal.NotaFiscal;
-import notaFiscal.Cadastro;
 import notaFiscal.ItemVenda;
 
 /**
@@ -31,9 +30,8 @@ public class TesteNotaFiscal {
 	
 	
 	@Mock private VerificadorCPF fiscalizador;
-	@Mock private BDCliente bdc;
 	@Mock private ItemVenda produtoVendido;
-	@Mock private Cadastro casd;
+	@Mock private BD casd;
 	@Mock private Cliente cliente;
 	
 	/**
@@ -71,7 +69,7 @@ public class TesteNotaFiscal {
 		Mockito.verify(fiscalizador, Mockito.times(1)).validaCPF(cpf);
 		
 		//Teste se eh possivel criar nota fiscal com cpf limpo
-		NotaFiscal testeNotaFiscal = new NotaFiscal(casd,cpf,item,quant);
+		NotaFiscal testeNotaFiscal = new NotaFiscal(casd,fiscalizador,cpf,item,quant);
 	}
 	
 	/**
@@ -87,7 +85,7 @@ public class TesteNotaFiscal {
 		Mockito.verify(fiscalizador, Mockito.times(1)).validaCPF(cpf);
 		
 		//teste se nao eh possivel criar nota fiscal com cpf sujo
-		NotaFiscal testeNotaFiscal = new NotaFiscal(casd,cpf,item,quant);
+		NotaFiscal testeNotaFiscal = new NotaFiscal(casd,fiscalizador,cpf,item,quant);
 	}
 	
 	/**
@@ -101,7 +99,7 @@ public class TesteNotaFiscal {
 		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
 		
 		//criando nota fiscal
-		NotaFiscal testeNotaFiscal = new NotaFiscal(casd, cpf,item,quant);
+		NotaFiscal testeNotaFiscal = new NotaFiscal(casd,fiscalizador, cpf,item,quant);
 		
 		//adicionando itens na nota fiscal
 		testeNotaFiscal.adicionaItem(livro, quant);
@@ -124,7 +122,7 @@ public class TesteNotaFiscal {
 		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
 		
 		//criando nota fiscal
-		NotaFiscal testeNotaFiscal = new NotaFiscal(casd, cpf,item,quant);
+		NotaFiscal testeNotaFiscal = new NotaFiscal(casd,fiscalizador, cpf,item,quant);
 		
 		//adiciando item na nota fiscal
 		testeNotaFiscal.adicionaItem(livro, quant);
@@ -166,7 +164,7 @@ public class TesteNotaFiscal {
 		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
 		
 		//criando nota fiscal
-		NotaFiscal testeNotaFiscal = new NotaFiscal(casd, cpf,item,quant);
+		NotaFiscal testeNotaFiscal = new NotaFiscal(casd,fiscalizador, cpf,item,quant);
 		
 		//adiciando item na nota fiscal
 		testeNotaFiscal.adicionaItem(livro, quant);
@@ -196,7 +194,7 @@ public class TesteNotaFiscal {
 		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
 		
 		//criando nota fiscal
-		NotaFiscal testeNotaFiscal = new NotaFiscal(casd, cpf,item,quant);
+		NotaFiscal testeNotaFiscal = new NotaFiscal(casd,fiscalizador, cpf,item,quant);
 		
 		
 		//deletando item da nota fiscal
@@ -216,7 +214,7 @@ public class TesteNotaFiscal {
 		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
 		
 		//criando nota fiscal
-		NotaFiscal testeNotaFiscal = new NotaFiscal(casd, cpf,"banana",0);
+		NotaFiscal testeNotaFiscal = new NotaFiscal(casd,fiscalizador, cpf,"banana",0);
 	}
 	
 	/**
@@ -229,6 +227,6 @@ public class TesteNotaFiscal {
 		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
 		
 		//criando nota fiscal
-		NotaFiscal testeNotaFiscal2 = new NotaFiscal(casd, cpf,"",0);
+		NotaFiscal testeNotaFiscal2 = new NotaFiscal(casd,fiscalizador, cpf,"",0);
 	}
 }
