@@ -15,7 +15,7 @@ import org.mockito.MockitoAnnotations;
 import bd.BD;
 import bd.Cliente;
 import bd.VerificadorCPF;
-
+import bd.Produto;
 import org.mockito.Mock;
 
 import notaFiscal.NotaFiscal;
@@ -33,12 +33,18 @@ public class TesteNotaFiscal {
 	@Mock private ItemVenda produtoVendido;
 	@Mock private BD casd;
 	@Mock private Cliente cliente;
-	
+	@Mock private Cliente cliente2;
+	@Mock private Produto produtoItem;
+	@Mock private Produto produtoNotebook;
+	@Mock private Produto produtoLivro;
+	@Mock private Produto produtoCaneta;
+	@Mock private Produto produtoBanana;
 	/**
 	 * Declaracao de variaveis para uso nos testes
 	 */
 	
 	private String cpf;
+	private String cpf2;
 	private int quant;
 	private String item;
 	private String notebook ;
@@ -49,11 +55,25 @@ public class TesteNotaFiscal {
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
 		 cpf = "10";
+		 cpf2 = "100";
 		 quant= 10;
 		 item = "item";
 		 notebook = "Notebook";
 		 livro = "Livro";
 		 caneta = "Caneta";
+		 Mockito.when(fiscalizador.validaCPF(cpf)).thenReturn(true);
+		 Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
+		 Mockito.when(cliente.getCPF()).thenReturn(cpf);
+		 Mockito.when(casd.getProdutoServico(item)).thenReturn(produtoItem);
+		 Mockito.when(casd.getProdutoServico(notebook)).thenReturn(produtoNotebook);
+		 Mockito.when(casd.getProdutoServico(livro)).thenReturn(produtoLivro);
+		 Mockito.when(casd.getProdutoServico(caneta)).thenReturn(produtoCaneta);
+		 Mockito.when(casd.getProdutoServico("banana")).thenReturn(produtoBanana);
+		 Mockito.when(produtoItem.getPreco()).thenReturn(10);
+		 Mockito.when(produtoNotebook.getPreco()).thenReturn(100);
+		 Mockito.when(produtoLivro.getPreco()).thenReturn(1000);
+		 Mockito.when(produtoCaneta.getPreco()).thenReturn(10000);
+		 Mockito.when(produtoBanana.getPreco()).thenReturn(100000);
 	}
 	
 	/**
@@ -61,9 +81,6 @@ public class TesteNotaFiscal {
 	 */
 	@Test
 	public void QuandoPassaCPFLimpoNotaFiscalPodeSerInstaciada() {
-		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
-		Mockito.when(fiscalizador.validaCPF(cpf)).thenReturn(true);
-		Mockito.when(cliente.getCPF()).thenReturn(cpf);
 		
 		//conferindo se o fiscalizador retorna a resposta enlatada.
 		assertTrue(fiscalizador.validaCPF(cpf));
@@ -78,9 +95,9 @@ public class TesteNotaFiscal {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void QuandoPassaCPFSujoNotaFiscalRetornaIllegalArgumentExceptionNaInstanciacao() {
-		Mockito.when(fiscalizador.validaCPF(cpf)).thenReturn(false);
-		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
-		Mockito.when(cliente.getCPF()).thenReturn(cpf);
+		Mockito.when(fiscalizador.validaCPF(cpf2)).thenReturn(false);
+		Mockito.when(casd.getCliente(cpf2)).thenReturn(cliente2);
+		Mockito.when(cliente.getCPF()).thenReturn(cpf2);
 		
 		//conferindo se fiscalizador retorna a resposta enlatada
 		assertFalse(fiscalizador.validaCPF(cpf));
@@ -97,9 +114,7 @@ public class TesteNotaFiscal {
 	 */
 	@Test
 	public void QuandoAdicionaItemNaNotaFiscalItemEhAdicionadoNaListaDaNotaFiscal() {
-		Mockito.when(fiscalizador.validaCPF(cpf)).thenReturn(true);
-		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
-		Mockito.when(cliente.getCPF()).thenReturn(cpf);
+		
 		
 		//criando nota fiscal
 		NotaFiscal testeNotaFiscal = new NotaFiscal(casd,fiscalizador, cpf,item,quant);
@@ -121,9 +136,7 @@ public class TesteNotaFiscal {
 	 */
 	@Test
 	public void QuandoDeletaItemNaNotaFiscalItemEhDeletadoDaListaDaNotaFiscal() {
-		Mockito.when(fiscalizador.validaCPF(cpf)).thenReturn(true);
-		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
-		Mockito.when(cliente.getCPF()).thenReturn(cpf);
+
 		
 		//criando nota fiscal
 		NotaFiscal testeNotaFiscal = new NotaFiscal(casd,fiscalizador, cpf,item,quant);
@@ -164,9 +177,6 @@ public class TesteNotaFiscal {
 	 */
 	@Test
 	public void QuandoPedeValorTotalParaNotaFiscalRetornaSomaDosPrecosDeCadaItemMultiplicadoPelasQuantidades() {
-		Mockito.when(fiscalizador.validaCPF(cpf)).thenReturn(true);
-		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
-		Mockito.when(cliente.getCPF()).thenReturn(cpf);
 		
 		//criando nota fiscal
 		NotaFiscal testeNotaFiscal = new NotaFiscal(casd,fiscalizador, cpf,item,quant);
@@ -176,7 +186,7 @@ public class TesteNotaFiscal {
 		//deletando item da nota fiscal
 		testeNotaFiscal.deletaItem(item);
 		//verificando valor total
-		assertTrue(testeNotaFiscal.getValor() == 40);
+		assertTrue(testeNotaFiscal.getValor() == 1000);
 		
 		//adicionando itens
 		testeNotaFiscal.adicionaItem(item, quant);
@@ -184,7 +194,7 @@ public class TesteNotaFiscal {
 		testeNotaFiscal.adicionaItem(caneta, quant);
 		
 		//verificando valor total
-		assertTrue(testeNotaFiscal.getValor() == 40);
+		assertTrue(testeNotaFiscal.getValor() == 10*100+10*10+10*1000+10*10000);
 		
 	}
 	
@@ -195,9 +205,6 @@ public class TesteNotaFiscal {
 	 */
 	@Test(expected = RuntimeException.class)
 	public void QuandoCriaNotaFiscalComApenasUmItemETrocaPorOutroNaoPodeFicarVazia() {
-		Mockito.when(fiscalizador.validaCPF(cpf)).thenReturn(true);
-		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
-		Mockito.when(cliente.getCPF()).thenReturn(cpf);
 		
 		//criando nota fiscal
 		NotaFiscal testeNotaFiscal = new NotaFiscal(casd,fiscalizador, cpf,item,quant);
@@ -216,10 +223,6 @@ public class TesteNotaFiscal {
 	 */
 	@Test(expected = RuntimeException.class)
 	public void QuandoCriaNotaFiscalVaziaGeraExececao() {
-		Mockito.when(fiscalizador.validaCPF(cpf)).thenReturn(true);
-		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
-		Mockito.when(cliente.getCPF()).thenReturn(cpf);
-		
 		//criando nota fiscal
 		NotaFiscal testeNotaFiscal = new NotaFiscal(casd,fiscalizador, cpf,"banana",0);
 	}
@@ -230,11 +233,7 @@ public class TesteNotaFiscal {
 	 */
 	@Test(expected = RuntimeException.class)
 	public void QuandoCriaNotaFiscalStringVaziaGeraExececao() {
-		Mockito.when(fiscalizador.validaCPF(cpf)).thenReturn(true);
-		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
-		Mockito.when(cliente.getCPF()).thenReturn(cpf);
-		
 		//criando nota fiscal
-		NotaFiscal testeNotaFiscal2 = new NotaFiscal(casd,fiscalizador, cpf,"",0);
+		NotaFiscal testeNotaFiscal2 = new NotaFiscal(casd,fiscalizador, cpf,"",10);
 	}
 }
