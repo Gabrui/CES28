@@ -63,9 +63,11 @@ public class TesteNotaFiscal {
 		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
 		Mockito.when(fiscalizador.validaCPF(cpf)).thenReturn(true);
 		
+		//conferindo se o fiscalizador retorna a resposta enlatada.
 		assertTrue(fiscalizador.validaCPF(cpf));
 		Mockito.verify(fiscalizador, Mockito.times(1)).validaCPF(cpf);
 		
+		//Teste se eh possivel criar nota fiscal com cpf limpo
 		NotaFiscal testeNotaFiscal = new NotaFiscal(casd,cpf,item,quant);
 	}
 	
@@ -77,9 +79,11 @@ public class TesteNotaFiscal {
 		Mockito.when(fiscalizador.validaCPF(cpf)).thenReturn(false);
 		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
 		
+		//conferindo se fiscalizador retorna a resposta enlatada
 		assertFalse(fiscalizador.validaCPF(cpf));
 		Mockito.verify(fiscalizador, Mockito.times(1)).validaCPF(cpf);
 		
+		//teste se nao eh possivel criar nota fiscal com cpf sujo
 		NotaFiscal testeNotaFiscal = new NotaFiscal(casd,cpf,item,quant);
 	}
 	
@@ -90,8 +94,15 @@ public class TesteNotaFiscal {
 	@Test
 	public void QuandoAdicionaItemNaNotaFiscalItemEhAdicionadoNaListaDaNotaFiscal() {
 		Mockito.when(fiscalizador.validaCPF(cpf)).thenReturn(true);
+		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
+		
+		//criando nota fiscal
 		NotaFiscal testeNotaFiscal = new NotaFiscal(casd, cpf,item,quant);
+		
+		//adicionando itens na nota fiscal
 		testeNotaFiscal.adicionaItem(livro, quant);
+		
+		//Teste quantidade de itens correto
 		assertTrue(testeNotaFiscal.getItem(livro) == quant);
 		assertTrue(testeNotaFiscal.getItem(item) == quant);
 		assertTrue(testeNotaFiscal.getItem(caneta) == 0);
@@ -104,10 +115,17 @@ public class TesteNotaFiscal {
 	@Test
 	public void QuandoDeletaItemNaNotaFiscalItemEhDeletadoDaListaDaNotaFiscal() {
 		Mockito.when(fiscalizador.validaCPF(cpf)).thenReturn(true);
+		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
+		
+		//criando nota fiscal
 		NotaFiscal testeNotaFiscal = new NotaFiscal(casd, cpf,item,quant);
+		
+		//adiciando item na nota fiscal
 		testeNotaFiscal.adicionaItem(livro, quant);
+		//deletando item da nota fiscal
 		testeNotaFiscal.deletaItem(item);
 		
+		//conferindo as quantidades dos itens na nota fiscal
 		assertTrue(testeNotaFiscal.getItem(livro)== quant);
 		assertTrue(testeNotaFiscal.getItem(item) == 0);
 		
