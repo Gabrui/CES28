@@ -101,7 +101,7 @@ public class TesteNotaFiscal {
 		
 		//conferindo se fiscalizador retorna a resposta enlatada
 		assertFalse(fiscalizador.validaCPF(cpf2));
-		Mockito.verify(fiscalizador, Mockito.times(1)).validaCPF(cpf);
+		Mockito.verify(fiscalizador, Mockito.times(1)).validaCPF(cpf2);
 		
 		//teste se nao eh possivel criar nota fiscal com cpf sujo
 		NotaFiscal testeNotaFiscal = new NotaFiscal(casd,fiscalizador,cpf2,item,quant);
