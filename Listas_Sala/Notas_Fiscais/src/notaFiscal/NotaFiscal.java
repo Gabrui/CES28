@@ -29,6 +29,8 @@ public class NotaFiscal {
 	}
 	
 	public void adicionaItem(String item, int quant) {
+		if (quant <= 0)
+			throw new IllegalArgumentException("A quantidade não pode ser nula ou negativa.");
 		listaItens.add(new ItemVenda(bancoRemoto, item, quant));
 	}
 	
