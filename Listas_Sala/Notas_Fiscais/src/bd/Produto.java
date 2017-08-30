@@ -1,4 +1,4 @@
-package db;
+package bd;
 
 public class Produto extends ProdutoAbstrato {
 	

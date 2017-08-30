@@ -11,10 +11,13 @@ import org.junit.Test;
 import org.junit.Before;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+
+import bd.BDCliente;
+import bd.Cliente;
+import bd.VerificadorCPF;
+
 import org.mockito.Mock;
-import db.VerificadorCPF;
-import db.BDCliente;
-import db.Cliente;
+
 import notaFiscal.NotaFiscal;
 import notaFiscal.Cadastro;
 import notaFiscal.ItemVenda;

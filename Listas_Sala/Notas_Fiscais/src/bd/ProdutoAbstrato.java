@@ -1,4 +1,4 @@
-package db;
+package bd;
 
 public abstract class ProdutoAbstrato {
 	

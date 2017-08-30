@@ -1,17 +1,20 @@
 package notaFiscal;
-import db.*;
+import bd.*;
 
 public class ItemVenda {
-	private BDProduto bancoDadosRemoto;
+	private BD bancoDadosRemoto;
 	private ProdutoAbstrato produto;
 	private String nome;
 	private int quantidade;
 	
-	public ItemVenda (String nome, int quantidade) {
-		// Deveria se inicializar bancoDadosRemoto;
+	public ItemVenda (BD bancoRemoto, String nome, int quantidade) {
+		this.bancoDadosRemoto = bancoRemoto;
 		this.quantidade = quantidade;
 		this.nome = nome;
 		produto = bancoDadosRemoto.getProdutoServico(nome);
+		if (produto == null)
+			throw new IllegalArgumentException("O produto não existe!");
+			
 	}
 	
 	public int getValor() {

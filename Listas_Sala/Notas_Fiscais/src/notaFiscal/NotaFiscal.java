@@ -1,18 +1,35 @@
+/**
+ * Codificação UTF-8
+ * Gabriel Adriano
+ * Dylan Sugimoto
+ */
+
+
 package notaFiscal;
 
 import java.util.LinkedList;
+import bd.*;
 
 public class NotaFiscal {
 	
 	private LinkedList<ItemVenda> listaItens;
+	private BD bancoRemoto;
+	private Cliente comprador;
 	
-	public NotaFiscal(Cadastro Cad, String CPF, String item, int quant) {
+	public NotaFiscal(BD bancoRemoto, VerificadorCPF verificador, 
+			String CPF, String item, int quant) {
+		this.bancoRemoto = bancoRemoto;
+		this.comprador = bancoRemoto.getCliente(CPF);
+		if (comprador == null)
+			throw new IllegalArgumentException("Cliente não cadastrado no sistema.");
+		if (!verificador.validaCPF(comprador.getCPF()))
+			throw new IllegalArgumentException("CPF não é válido!");
 		listaItens = new LinkedList<>();
 		adicionaItem(item, quant);
 	}
 	
 	public void adicionaItem(String item, int quant) {
-		listaItens.add(new ItemVenda(item, quant));
+		listaItens.add(new ItemVenda(bancoRemoto, item, quant));
 	}
 	
 	public int getValor() {
@@ -23,13 +40,18 @@ public class NotaFiscal {
 	}
 	
 	public void deletaItem(String nomeItem) {
-		ItemVenda item = new ItemVenda(nomeItem, 0);
+		ItemVenda item = new ItemVenda(bancoRemoto, nomeItem, 0);
 		if (listaItens.contains(item))
 			listaItens.remove(item);
 	}
 	
+	/**
+	 * Retorna a quantidade de um item
+	 * @param nomeItem
+	 * @return A quantidade de produtos de um item
+	 */
 	public int getItem(String nomeItem) {
-		ItemVenda item = new ItemVenda(nomeItem, 0);
+		ItemVenda item = new ItemVenda(bancoRemoto, nomeItem, 0);
 		if (listaItens.contains(item))
 			return item.getQuantidade();
 		return 0;
