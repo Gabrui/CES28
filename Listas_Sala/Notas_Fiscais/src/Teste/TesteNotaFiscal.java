@@ -200,11 +200,21 @@ public class TesteNotaFiscal {
 		//adiciando item na nota fiscal
 		testeNotaFiscal.adicionaItem(livro, quant);
 		
-		//conferindo as quantidades dos itens na nota fiscal
-		assertTrue(testeNotaFiscal.getItem(livro)== quant);
-		assertTrue(testeNotaFiscal.getItem(item) == 0);
-		assertTrue(testeNotaFiscal.getValor() == 40);
+	}
+	
+	/**
+	 * Testa se a NotaFiscal consegue adicionar e deletar itens.
+	 * ser adicionado itens de compra
+	 * item e ultima parte
+	 */
+	@Test(expected = RuntimeException.class)
+	public void QuandoCriaNotaFiscalVaziaGeraExececao() {
+		Mockito.when(fiscalizador.validaCPF(cpf)).thenReturn(true);
+		Mockito.when(casd.getCliente(cpf)).thenReturn(cliente);
 		
+		//criando nota fiscal
+		NotaFiscal testeNotaFiscal = new NotaFiscal(casd, cpf,"banana",0);
+		NotaFiscal testeNotaFiscal2 = new NotaFiscal(casd, cpf,"",0);
 	}
 	
 }
