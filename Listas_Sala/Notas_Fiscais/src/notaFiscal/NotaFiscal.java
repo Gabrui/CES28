@@ -43,8 +43,11 @@ public class NotaFiscal {
 	
 	public void deletaItem(String nomeItem) {
 		ItemVenda item = new ItemVenda(bancoRemoto, nomeItem, 0);
-		if (listaItens.contains(item))
+		if (listaItens.contains(item)) {
+			if (listaItens.size() == 1)
+				throw new IllegalArgumentException("A lista não pode ficar vazia.");
 			listaItens.remove(item);
+		}
 	}
 	
 	/**
@@ -54,8 +57,9 @@ public class NotaFiscal {
 	 */
 	public int getItem(String nomeItem) {
 		ItemVenda item = new ItemVenda(bancoRemoto, nomeItem, 0);
-		if (listaItens.contains(item))
-			return item.getQuantidade();
+		for (ItemVenda i : listaItens)
+			if (i.equals(item))
+				return i.getQuantidade();
 		return 0;
 	}
 }

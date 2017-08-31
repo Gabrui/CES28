@@ -88,7 +88,7 @@ public class TesteNotaFiscal {
 		Mockito.verify(fiscalizador, Mockito.times(1)).validaCPF(cpf);
 		
 		//Teste se eh possivel criar nota fiscal com cpf limpo
-		NotaFiscal testeNotaFiscal = new NotaFiscal(casd,fiscalizador,cpf,item,quant);
+		new NotaFiscal(casd,fiscalizador,cpf,item,quant);
 	}
 	
 	/**
@@ -105,7 +105,7 @@ public class TesteNotaFiscal {
 		Mockito.verify(fiscalizador, Mockito.times(1)).validaCPF(cpf2);
 		
 		//teste se nao eh possivel criar nota fiscal com cpf sujo
-		NotaFiscal testeNotaFiscal = new NotaFiscal(casd,fiscalizador,cpf2,item,quant);
+		new NotaFiscal(casd,fiscalizador,cpf2,item,quant);
 	}
 	
 	/**
@@ -162,10 +162,10 @@ public class TesteNotaFiscal {
 		testeNotaFiscal.deletaItem(notebook);
 		testeNotaFiscal.deletaItem(livro);
 		testeNotaFiscal.deletaItem(caneta);
-		testeNotaFiscal.deletaItem(item);
+		//testeNotaFiscal.deletaItem(item);
 		
 		assertTrue(testeNotaFiscal.getItem(livro)== 0);
-		assertTrue(testeNotaFiscal.getItem(item) == 0);
+		//assertTrue(testeNotaFiscal.getItem(item) == 0);
 		assertTrue(testeNotaFiscal.getItem(livro) == 0);
 		assertTrue(testeNotaFiscal.getItem(caneta) == 0);
 		assertTrue(testeNotaFiscal.getItem(notebook) == 0);
@@ -225,7 +225,7 @@ public class TesteNotaFiscal {
 	@Test(expected = RuntimeException.class)
 	public void QuandoCriaNotaFiscalVaziaGeraExececao() {
 		//criando nota fiscal
-		NotaFiscal testeNotaFiscal = new NotaFiscal(casd,fiscalizador, cpf,"banana",0);
+		new NotaFiscal(casd,fiscalizador, cpf,"banana",0);
 	}
 	
 	/**
@@ -235,6 +235,16 @@ public class TesteNotaFiscal {
 	@Test(expected = RuntimeException.class)
 	public void QuandoCriaNotaFiscalStringVaziaGeraExececao() {
 		//criando nota fiscal
-		NotaFiscal testeNotaFiscal2 = new NotaFiscal(casd,fiscalizador, cpf,"",10);
+		new NotaFiscal(casd,fiscalizador, cpf,"",10);
+	}
+	
+	/**
+	 * Testa se eh possivel criar nota fiscal sem item
+	 * item f
+	 */
+	@Test(expected = RuntimeException.class)
+	public void QuandoCriaNotaFiscalStringNaoCadastradaGeraExececao() {
+		//criando nota fiscal
+		new NotaFiscal(casd,fiscalizador, cpf,"bacalhau",10);
 	}
 }
