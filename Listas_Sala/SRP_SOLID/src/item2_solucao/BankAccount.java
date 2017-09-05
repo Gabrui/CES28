@@ -1,5 +1,12 @@
 package item2_solucao;
-
+/**
+ * 
+ * @author aluno
+ * O arquivo original não tinha uma responsabilidade única de representar uma
+ * conta abstrata, segundo as especificações do projeto.
+ * Haviam responsabilidades de contas corrente e poupança juntas, que foram 
+ * refatoradas de forma a respeitar o princípio de responsabilidade única.
+ */
 public abstract class BankAccount {
 	// Class Description: Checking and Savings Account
 	public double Balance() {
