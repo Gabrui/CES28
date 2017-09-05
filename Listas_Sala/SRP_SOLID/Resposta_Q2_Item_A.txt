@@ -1,0 +1,16 @@
+﻿Lab-SOLID
+05/09/2017
+Dylan N. Sugimoto
+Gabriel Adriano de Melo
+
+Questão (2)
+item a. 
+Identificar se o SRP corresponde a algum princípio do GRASP, LoD ou outro conceito apresentado no curso anteriormente.
+
+RESPOSTA:
+
+	O SRP é semelhante aos princípios de High Coesion, que também é uma prática que delimita as responsabilidades
+de uma classe; o Low Coupling, pois o SRP geralmente resulta em classes com baixo acoplamento; o Expert, por
+ser uma prática que tem por objetivo atribuir corretamente as responsabilidades ao atribuí-las para os especialistas.
+Igualmente, o LoD possui uma certa correlação com o SRP no sentido do LoD fazer o programador refletir sobre o
+encapsulamento, coeasão das classes e dos métodos.
