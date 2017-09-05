@@ -1,16 +1,16 @@
-Lab-SOLID
+ÔªøLab-SOLID
 05/09/2017
 Dylan N. Sugimoto
 Gabriel Adriano de Melo
 
-Quest„o 3
+Quest√£o 3
 Item a.
- Identificar se o ISP corresponde a algum princÌpio do GRASP, LoD ou outro conceito apresentado no curso anteriormente.
+ Identificar se o ISP corresponde a algum princ√≠pio do GRASP, LoD ou outro conceito apresentado no curso anteriormente.
 
 Resposta:
 
-	O ISP È semelhante aos princÌpios de LoD, pois a presenÁa de uma interface n„o implementadas È um Ìndicio de mau 
-cheiro, talvez haja a atribuiÁ„o de uma responsabilidade para uma classe que na verdade n„o precisava ou poderia ser feita
-por outra classe e na implementaÁ„o isso foi percebido e a interface que tavelz fosse tratar essa responsabilidade
-n„o foi implementada. A retirada de interfaces n„o implementadas tambÈm diminui os acoplamentos que È um prÌncipiodo Grasp
-, Low Coupling. O TDD evita que uma interface n„o implementada apareÁa no cÛdigo do projeto.
+	O ISP √© semelhante aos princ√≠pios de LoD, pois a presen√ßa de uma interface n√£o implementadas √© um √≠ndicio de mau 
+cheiro, talvez haja a atribui√ß√£o de uma responsabilidade para uma classe que na verdade n√£o precisava ou poderia ser feita
+por outra classe e na implementa√ß√£o isso foi percebido e a interface que tavelz fosse tratar essa responsabilidade
+n√£o foi implementada. A retirada de interfaces n√£o implementadas tamb√©m diminui os acoplamentos que √© um pr√≠ncipiodo Grasp
+, Low Coupling. O TDD evita que uma interface n√£o implementada apare√ßa no c√≥digo do projeto.
