@@ -1,7 +1,8 @@
 package item2_solucao;
 /**
  * 
- * @author aluno
+ * @author Gabriel Adriano
+ * @author Dylan Sugimoto
  * O arquivo original não tinha uma responsabilidade única de representar uma
  * conta abstrata, segundo as especificações do projeto.
  * Haviam responsabilidades de contas corrente e poupança juntas, que foram 
