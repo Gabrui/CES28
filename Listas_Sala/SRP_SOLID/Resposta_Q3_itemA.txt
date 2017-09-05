@@ -10,7 +10,6 @@ Item a.
 Resposta:
 
 	O ISP é semelhante aos princípios de LoD, pois a presença de uma interface não implementadas é um índicio de mau 
-cheiro, talvez haja a atribuição de uma responsabilidade para uma classe que na verdade não precisava ou poderia ser feita
-por outra classe e na implementação isso foi percebido e a interface que tavelz fosse tratar essa responsabilidade
-não foi implementada. A retirada de interfaces não implementadas também diminui os acoplamentos que é um príncipiodo Grasp
-, Low Coupling. O TDD evita que uma interface não implementada apareça no código do projeto.
+cheiro, pois a classe depende da implementação de uma interface que na verdade não é necessária.
+A retirada de interfaces não implementadas também diminui os acoplamentos que é um príncipiodo Grasp, Low Coupling.
+O TDD evita que uma interface não implementada apareça no código do projeto.
