@@ -6,25 +6,36 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.mockito.Spy;
+
+
 
 import org.junit.Before;
 import org.junit.Test;
 
+
 public class TestaControladorPTC {
 	// Poderia ter usado as anotations, mas iniciei no setUp mesmo
-	Sensor sensor;
-	Datacenter dataCenter;
-	PainelCondutor painelCond;
-	ControladorPTC controlador;
+	private Sensor sensor;
+	private Datacenter dataCenter;
+	private PainelCondutor painelCond;
+	private ControladorPTC controlador;
+	
+	/*@Mock private Sensor sensorD;
+	@Mock private Datacenter dataCenterD;
+	@Mock private PainelCondutor painelCondD;
+	@Spy private TimeUnit tempo;
+	@InjectMocks private ControladorPTC controladorD;*/
 
 	// a) Teste a inicialização do objeto ControladorPTC. (1.0 PT).
 	// Utilizo dummys objects para testar a sua inicialização
 	@Before
-	public void setUp() {
+	public void setUp() throws InterruptedException {
 		sensor = Mockito.mock(Sensor.class);
 		dataCenter = Mockito.mock(Datacenter.class);
 		painelCond = Mockito.mock(PainelCondutor.class);
 		controlador = new ControladorPTC(sensor, dataCenter, painelCond);
+		
 	}
 
 	
@@ -74,7 +85,7 @@ public class TestaControladorPTC {
 	
 	// d) Construa um caso de teste, quando o trem se encontra em um cruzamento e a velocidade é inferior a 20Km/h
 	@Test
-	public void ItemD_QuandoEstaNoCruzamentoComVelocidadeInferior20() {
+	public void ItemD_QuandoEstaNoCruzamentoComVelocidadeInferior20() throws InterruptedException {
 		// Enlata a resposta do stub
 		Mockito.when(sensor.isCruzamento()).thenReturn(true);
 		Mockito.when(sensor.getVelocidade()).thenReturn(19.0);
@@ -83,6 +94,14 @@ public class TestaControladorPTC {
 		Mockito.when(painelCond.imprimirAviso(Mockito.anyString(), Mockito.anyInt())).thenReturn(false);
 		
 		// Esse teste demorava 10 segundos, mas eu resolvi o problema :)
+		// OBS não encontrei no mockito como mockar classe estática, usei esse powermock
+		//PowerMock.mockStatic(Thread.class, PowerMock.method(Thread.class, "sleep"));
+		//expect(Thread.sleep("SomeBundleName", Locale.ENGLISH)).andReturn(bundle);
+		// Não conseguir mocar o comportamento da thread
+		
+	    //Mockito.spy(controlador);
+	    // Mockito.when(controlador.enviaMsgPrioritariaPainel(Mockito.anyString(), Mockito.eq(painelCond))).thenReturn(false);
+        
 		controlador.run();
 		
 		// Verifica se o painel está normal: aviso com prioridade IGUAL a 1
