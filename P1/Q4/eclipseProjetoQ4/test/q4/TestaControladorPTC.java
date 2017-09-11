@@ -2,11 +2,13 @@ package q4;
 
 import static org.junit.Assert.*;
 
+import java.util.concurrent.TimeUnit;
+
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.mockito.Spy;
+
 
 
 
@@ -21,16 +23,17 @@ public class TestaControladorPTC {
 	private PainelCondutor painelCond;
 	private ControladorPTC controlador;
 	
-	/*@Mock private Sensor sensorD;
+	@Mock private Sensor sensorD;
 	@Mock private Datacenter dataCenterD;
 	@Mock private PainelCondutor painelCondD;
-	@Spy private TimeUnit tempo;
-	@InjectMocks private ControladorPTC controladorD;*/
+	@Mock private TimeUnit tempo;
+	@InjectMocks private ControladorPTC controladorD;
 
 	// a) Teste a inicialização do objeto ControladorPTC. (1.0 PT).
 	// Utilizo dummys objects para testar a sua inicialização
 	@Before
 	public void setUp() throws InterruptedException {
+		MockitoAnnotations.initMocks(this);
 		sensor = Mockito.mock(Sensor.class);
 		dataCenter = Mockito.mock(Datacenter.class);
 		painelCond = Mockito.mock(PainelCondutor.class);
@@ -87,11 +90,11 @@ public class TestaControladorPTC {
 	@Test
 	public void ItemD_QuandoEstaNoCruzamentoComVelocidadeInferior20() throws InterruptedException {
 		// Enlata a resposta do stub
-		Mockito.when(sensor.isCruzamento()).thenReturn(true);
-		Mockito.when(sensor.getVelocidade()).thenReturn(19.0);
+		Mockito.when(sensorD.isCruzamento()).thenReturn(true);
+		Mockito.when(sensorD.getVelocidade()).thenReturn(19.0);
 		
 		// Configura o comportamento do painel
-		Mockito.when(painelCond.imprimirAviso(Mockito.anyString(), Mockito.anyInt())).thenReturn(false);
+		Mockito.when(painelCondD.imprimirAviso(Mockito.anyString(), Mockito.anyInt())).thenReturn(false);
 		
 		// Esse teste demorava 10 segundos, mas eu resolvi o problema :)
 		// OBS não encontrei no mockito como mockar classe estática, usei esse powermock
@@ -101,13 +104,14 @@ public class TestaControladorPTC {
 		
 	    //Mockito.spy(controlador);
 	    // Mockito.when(controlador.enviaMsgPrioritariaPainel(Mockito.anyString(), Mockito.eq(painelCond))).thenReturn(false);
-        
-		controlador.run();
+        //Mockito.when(controlador.enviaMsgPrioritariaPainel(Mockito.anyString(), Mockito.any())).thenReturn(false);
+		controladorD.run();
+		// ele não moca o timeunit :(
 		
 		// Verifica se o painel está normal: aviso com prioridade IGUAL a 1
-		Mockito.verify(painelCond, Mockito.times(2)).imprimirAviso(Mockito.eq("Velocidade Baixa"), Mockito.eq(2));
+		Mockito.verify(painelCondD, Mockito.times(2)).imprimirAviso(Mockito.eq("Velocidade Baixa"), Mockito.eq(2));
 		
-		Mockito.verify(painelCond, Mockito.times(1)).aceleraVelocidadeTrem(Mockito.eq(20.0));;
+		Mockito.verify(painelCondD, Mockito.times(1)).aceleraVelocidadeTrem(Mockito.eq(20.0));;
 	}
 
 }
