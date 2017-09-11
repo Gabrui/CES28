@@ -77,15 +77,18 @@ public class TestaControladorPTC {
 	public void ItemD_QuandoEstaNoCruzamentoComVelocidadeInferior20() {
 		// Enlata a resposta do stub
 		Mockito.when(sensor.isCruzamento()).thenReturn(true);
-		Mockito.when(sensor.getVelocidade()).thenReturn(10.0);
+		Mockito.when(sensor.getVelocidade()).thenReturn(19.0);
 		
 		// Configura o comportamento do painel
-		//Mockito.when(painelCond.imprimirAviso(Mockito.any(), Mockito.any())).thenReturn(false);
+		Mockito.when(painelCond.imprimirAviso(Mockito.anyString(), Mockito.anyInt())).thenReturn(false);
 		
-		//controlador.run();
+		// Esse teste demorava 10 segundos, mas eu resolvi o problema :)
+		controlador.run();
 		
 		// Verifica se o painel está normal: aviso com prioridade IGUAL a 1
-		//Mockito.verify(painelCond, Mockito.times(1)).imprimirAviso(Mockito.eq("120"), Mockito.eq(1));
+		Mockito.verify(painelCond, Mockito.times(2)).imprimirAviso(Mockito.eq("Velocidade Baixa"), Mockito.eq(2));
+		
+		Mockito.verify(painelCond, Mockito.times(1)).aceleraVelocidadeTrem(Mockito.eq(20.0));;
 	}
 
 }
