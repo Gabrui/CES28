@@ -34,6 +34,7 @@ public class TestaControladorPTC {
 	@Before
 	public void setUp() throws InterruptedException {
 		MockitoAnnotations.initMocks(this);
+		// Mockito.doThrow(new Exception()).when(tempo.sleep(Mockito.anyLong());
 		sensor = Mockito.mock(Sensor.class);
 		dataCenter = Mockito.mock(Datacenter.class);
 		painelCond = Mockito.mock(PainelCondutor.class);
