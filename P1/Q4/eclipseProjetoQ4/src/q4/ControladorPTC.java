@@ -44,11 +44,11 @@ public class ControladorPTC {
 	}
 
 	public boolean enviaMsgPrioritariaPainel(String msg, PainelCondutor condutor) {
-		boolean result = condutor.imprimirAviso(msg, 1);
+		boolean result = condutor.imprimirAviso(msg, 2);
 		if (result == false) {
 			try {
 				TimeUnit.SECONDS.sleep(10);
-				result = condutor.imprimirAviso(msg, 1);
+				result = condutor.imprimirAviso(msg, 2);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
