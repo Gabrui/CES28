@@ -10,6 +10,7 @@ public class RandonIntGenerator {
 	  }
 	  
 	  /*
+	   * ISSO ERA PROBLEMA
 	  public RandonIntGenerator(int min) {
 	    this.min = min;
 	    this.max = Integer.MAX_VALUE;
@@ -22,6 +23,7 @@ public class RandonIntGenerator {
 
 	   */
 
+	  // Resolvemos esse problema com o padrão static factory
 	  public static RandonIntGenerator entre(int max, int min) {
 	    return new RandonIntGenerator(min, max);
 	  }
