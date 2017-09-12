@@ -1,5 +1,9 @@
 package staticFactory;
-
+/**
+ * Método para adequar o nome do construtor da classe.
+Serve para quem facilitar a criação de objetos específicos daquela classe para o usuário.
+A estrutura do Static Factory Method é a chamada do construtor da classe passando os parâmetros corretos de acordo com o nome do método.
+ */
 public class RandonIntGenerator {
 	  private final int minimo;
 	  private final int maximo;
