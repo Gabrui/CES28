@@ -9,11 +9,11 @@ public class Principal {
 		// HOOK METHODS
 		System.out.println();
 		System.out.println("==> Exemplo de Hook methods:");
-		Pai p = new Pai();
+		Impressora p = new Impressora();
 		p.metodoPrincipal();
-		Filho1 f1 = new Filho1();
+		ImpressoraAzul f1 = new ImpressoraAzul();
 		f1.metodoPrincipal();
-		Filho2 f2 = new Filho2();
+		ImpressoraVerde f2 = new ImpressoraVerde();
 		f2.metodoPrincipal();
 		
 		// HOOK CLASS
