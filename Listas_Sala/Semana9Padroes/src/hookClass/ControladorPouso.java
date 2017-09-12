@@ -9,6 +9,7 @@ public class ControladorPouso {
 	}
 	
 	public void executaPouso() {
-		est.calculaVelocidadeOtima(100, 3000);
+		int d = est.calculaVelocidadeOtima(100, 3000);
+		System.out.println(d);
 	}
 }
