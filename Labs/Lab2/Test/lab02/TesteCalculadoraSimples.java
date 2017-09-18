@@ -548,4 +548,22 @@ public class TesteCalculadoraSimples {
 		assertEquals(10, CalculadoraString.add("//[aa][aaa]\n5aaaaa5"));
 		assertEquals(10, CalculadoraString.add("//[abc][abcab]\n abcab5 abcabcabcababcabcabcab 5"));
 	}
+	
+	/**
+	 * Verifica se eh possivel decompor em delimitadores definidos.
+	 * Passo 9
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void QuandoUmDelimitorNaoPodeSerDecompostoEmDelimitadoresDefinidosComCaracteresTodosIguais() {
+		assertEquals(10, CalculadoraString.add("//[bb][bbbb]\n 5 bbbbbbb 5"));
+	}
+	
+	/**
+	 * Verifica se eh possivel decompor em delimitadores definidos.
+	 * Passo 9
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void QuandoUmDelimitorNaoPodeSerDecompostoEmDelimitadoresDefinidosComLetrasNaoTodasIguais() {
+		assertEquals(10, CalculadoraString.add("//[abc][ab]\n5 abcaba 5"));
+	}
 }
