@@ -538,6 +538,10 @@ public class TesteCalculadoraSimples {
 		assertEquals(10, CalculadoraString.add("//[BBBB][\n][d]\n BBBB d1d, BBBB, ,d2\nd, ,BBBB, ,d3d,\n BBBB,d\nd ,\nd4\n, ,BBBB, "));
 	}
 	
+	/**
+	 * Verifica se eh possivel decompor em delimitadores definidos.
+	 * Passo 9
+	 */
 	@Test
 	public void QuandoUmDelimitadorEstaContidoNoOutro() {
 		assertEquals(10, CalculadoraString.add("//[aa][aaa]\n5aaaaa5"));
