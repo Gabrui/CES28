@@ -501,6 +501,16 @@ public class TesteCalculadoraSimples {
 		CalculadoraString.add("//[^@][\t][]\n");
 	}
 	
+	/**
+	 * Forma para definir Delimitador: "//[delimiter][delimiter]\n"
+	 * Nao eh permitido definir delimitador Com Numero.
+	 * Passo 8
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void SeDefinirMultiplosDelimitadoresEmQueUmTemNumeroGeraExcecao() {
+		CalculadoraString.add("//[^@][\t][a0123456789a]\n");
+	}
+	
 	@Test
 	public void RetornaZeroParaNumerosQueDariaOverflow() {
 		assertEquals(0, CalculadoraString.transformaStringEmNumero("9870979765876987698754992"));
