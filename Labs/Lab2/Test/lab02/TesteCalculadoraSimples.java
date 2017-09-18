@@ -545,5 +545,6 @@ public class TesteCalculadoraSimples {
 	@Test
 	public void QuandoUmDelimitadorEstaContidoNoOutro() {
 		assertEquals(10, CalculadoraString.add("//[aa][aaa]\n5aaaaa5"));
+		assertEquals(10, CalculadoraString.add("//[abc][abcab]\n abcab5 abcabcabcababcabcabcab 5"));
 	}
 }
