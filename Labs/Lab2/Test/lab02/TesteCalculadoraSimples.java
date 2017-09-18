@@ -555,7 +555,7 @@ public class TesteCalculadoraSimples {
 	 */
 	@Test
 	public void QuandoRecebeUmDemilitadorQuePodeSerDecompostoEmDelimitadoresDefinidos() {
-		assertEquals(10, CalculadoraString.add("//[aa][aaa]\n5aaaaa5"));
+		assertEquals(10, CalculadoraString.add("//[..][...]\n5.....5"));
 		assertEquals(10, CalculadoraString.add("//[abc][abcab]\n abcab5 abcabcabcababcabcabcab 5"));
 		assertEquals(10, CalculadoraString.add("//[aba][aaabbaaa][a]\nabaabaaabaaaaaabbaaa5aaabbaaaabaaba5"));
 	}
