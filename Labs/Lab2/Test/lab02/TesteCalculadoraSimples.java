@@ -544,9 +544,10 @@ public class TesteCalculadoraSimples {
 	 * Passo 9
 	 */
 	@Test
-	public void QuandoUmDelimitadorEstaContidoNoOutro() {
+	public void QuandoRecebeUmDemilitadorQuePodeSerDecompostoEmDelimitadoresDefinidos() {
 		assertEquals(10, CalculadoraString.add("//[aa][aaa]\n5aaaaa5"));
 		assertEquals(10, CalculadoraString.add("//[abc][abcab]\n abcab5 abcabcabcababcabcabcab 5"));
+		assertEquals(10, CalculadoraString.add("//[aba][aaabbaaa][a]\nabaabaaabaaaaaabbaaa5aaabbaaaabaaba5"));
 	}
 	
 	/**
@@ -564,6 +565,6 @@ public class TesteCalculadoraSimples {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void QuandoUmDelimitorNaoPodeSerDecompostoEmDelimitadoresDefinidosComLetrasNaoTodasIguais() {
-		assertEquals(10, CalculadoraString.add("//[abc][ab]\n5 abcaba 5"));
+		assertEquals(10, CalculadoraString.add("//[aba][aaabbaaa]\n5aaabbaaaba5"));
 	}
 }
