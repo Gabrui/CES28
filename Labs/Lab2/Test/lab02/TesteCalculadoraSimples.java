@@ -537,4 +537,9 @@ public class TesteCalculadoraSimples {
 		assertEquals(10, CalculadoraString.add("//[aaaaaa][======]\n aaaaaa====== 1\n aaaaaa====== 2, aaaaaa====== ,3, ,aaaaaa======, \n,aaaaaa====== 4 "));
 		assertEquals(10, CalculadoraString.add("//[BBBB][\n][d]\n BBBB d1d, BBBB, ,d2\nd, ,BBBB, ,d3d,\n BBBB,d\nd ,\nd4\n, ,BBBB, "));
 	}
+	
+	@Test
+	public void QuandoUmDelimitadorEstaContidoNoOutro() {
+		assertEquals(10, CalculadoraString.add("//[aa][aaa]\n5aaaaa5"));
+	}
 }
