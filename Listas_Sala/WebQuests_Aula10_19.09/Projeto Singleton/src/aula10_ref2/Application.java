@@ -39,8 +39,7 @@ public class Application {
 	private static Application _theApplication = null;
 	private static Boolean instanceFlag = false;
 	public void run() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("RODANDO O SINGLETON");
 	}
 
 }    // class: Application
