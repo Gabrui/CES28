@@ -1,4 +1,4 @@
-package aula10;
+package aula10_ref0;
 
 public class HousingClient {
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package aula10;
+package aula10_ref0;
 
 /**
  * 1. Implementar e testar a classe WoodenHouse 
