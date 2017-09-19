@@ -22,15 +22,105 @@ public class CalculadoraString {
 			}
 			if (delimitacao.isEmpty())
 				throw new IllegalArgumentException();
-			for (String delimitador : delimitacao.split("\\]\\[")) {
-				if (delimitador.contains("]") || delimitador.contains("[") ||
-						delimitador.matches(".*\\d+.*")) // TODO contém dígito?
-					throw new IllegalArgumentException();
+			String[] delimitadores = delimitacao.split("\\]\\[");
+			// Verifica o perigo de delimitadores contidos em outros delimitadores
+			String[] ambiguos = null;
+			if (existeAmbiguidade(delimitadores)) {
+				ambiguos = delimitadoresAmbiguos(delimitadores);
+				delimitadores = delimitadoresNaoAmbiguos(delimitadores);
+			}
+			for (String delimitador : delimitadores)
 				operandos = operandos.replace(delimitador, ",");
+			if (ambiguos != null) {
+				String regexAmbiguos = gerarRegexAmbiguos(ambiguos);
+				if (ehValidavel(operandos, regexAmbiguos))
+					operandos = forcarValidacao(operandos);
 			}
 		}
 		return somaStringNumerosSeparadosPadrao(operandos);
 	}
+
+	// Esse monte de método privado foi criado para contornar o problema da ambiguidade
+	// de quando um delimitador está contido no outro e tem que encontrar uma fatoração.
+	private static String forcarValidacao(String operandos) {
+		// TODO inseguro para -
+		return operandos.replaceAll("[^0-9- ]", " ").replaceAll("-+ ", " ").replaceAll("-+", "-");
+	}
+
+	private static boolean ehValidavel(String operandos, String regexAmbiguos) {
+		return operandos.matches("( |,|\n|-\\d+|[0-9]|"+regexAmbiguos+")*");
+	}
+
+	private static String gerarRegexAmbiguos(String[] ambiguos) {
+		// TODO validação de escape de regex
+		String retorno = "";
+		for (String s : ambiguos) {
+			retorno += "|"+escaparUnicode(s);
+		}
+		return retorno.substring(1);
+	}
+
+	private static String escaparUnicode(String s) {
+		String resp = "";
+		for (int i=0; i<s.length(); i++) {
+			resp += "\\u"+String.format("%04X", (int) s.charAt(i));
+		}
+		return resp;
+	}
+
+	private static String[] delimitadoresAmbiguos(String[] delimitadores) {
+		boolean[] ambiguo = ehAmbiguo(delimitadores);
+		int quant = 0;
+		for (int i = 0; i < ambiguo.length; i++)
+			if (ambiguo[i])
+				quant++;
+		String[] retorno = new String[quant];
+		for (int i = 0, j =0; i < ambiguo.length; i++)
+			if (ambiguo[i])
+				retorno[j++] = delimitadores[i];
+		return retorno;
+	}
+
+	private static String[] delimitadoresNaoAmbiguos(String[] delimitadores) {
+		boolean[] ambiguo = ehAmbiguo(delimitadores);
+		int quant = 0;
+		for (int i = 0; i < ambiguo.length; i++)
+			if (!ambiguo[i])
+				quant++;
+		String[] retorno = new String[quant];
+		for (int i = 0, j =0; i < ambiguo.length; i++)
+			if (!ambiguo[i])
+				retorno[j++] = delimitadores[i];
+		return retorno;
+	}
+
+	private static boolean existeAmbiguidade(String[] delimitadores) {
+		if (delimitadores == null)
+			throw new IllegalArgumentException();
+		boolean[] ambiguo = ehAmbiguo(delimitadores);
+		for (boolean b : ambiguo)
+			if (b)
+				return true;
+		return false;
+	}
+
+	private static boolean[] ehAmbiguo(String[] delimitadores) {
+		boolean[] ambiguo = new boolean[delimitadores.length];
+		for (int i = 0; i<delimitadores.length; i++) {
+			if (delimitadores[i].contains("]") || delimitadores[i].contains("[") ||
+					delimitadores[i].matches(".*\\d+.*")) // Não tratável
+				throw new IllegalArgumentException();
+			for (int j = i+1; j<delimitadores.length; j++) {
+				if (delimitadores[i].contains(delimitadores[j]) ||
+					delimitadores[j].contains(delimitadores[i])) {
+					ambiguo[i] = true;
+					ambiguo[j] = true;
+				}
+			}
+		}
+		return ambiguo;
+	}
+	
 
 	/**
 	 * Opera de acordo com as regras, recebendo apenas a string de operandos
@@ -90,5 +180,10 @@ public class CalculadoraString {
 			throw new IllegalArgumentException(numero);
 		return valor;
 	}
+	
+	/**
+	 * 
+	 */
+	//public static 
 
 }
