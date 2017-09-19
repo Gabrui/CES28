@@ -5,6 +5,7 @@ package aula10_ref0;
  *  métodos buildPillars() e buildWalls(), em que se troca “Wood” por “Glass”. 
  *  Implemente e teste a construção de uma WoodenHouse e de uma GlassHouse, 
  *  refatorando a classe teste HousingClient.
+ *  OK
  *
  */
 public class GlassHouse {

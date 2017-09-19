@@ -4,7 +4,7 @@ package aula10_ref0;
  * 2.	Inclua uma nova classe GlassHouse, idêntica a WoodenHouse, exceto pelos
  *  métodos buildPillars() e buildWalls(), em que se troca “Wood” por “Glass”. 
  *  Implemente e teste a construção de uma WoodenHouse e de uma GlassHouse, 
- *  refatorando a classe teste HousingClient.
+ *  refatorando a classe teste HousingClient. OK
  *
  */
 public class HousingClient {
@@ -13,7 +13,7 @@ public class HousingClient {
 		woodenhouse.buildHouse();
 		System.out.println("************");
 		
-		// Refatoração:
+		// Refatoração: AQUI
 		GlassHouse glassnhouse = new GlassHouse();
 		glassnhouse.buildHouse();
 		System.out.println("************");
