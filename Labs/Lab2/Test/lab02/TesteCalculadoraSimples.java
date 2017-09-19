@@ -501,6 +501,16 @@ public class TesteCalculadoraSimples {
 		CalculadoraString.add("//[^@][\t][]\n");
 	}
 	
+	/**
+	 * Forma para definir Delimitador: "//[delimiter][delimiter]\n"
+	 * Nao eh permitido definir delimitador Com Numero.
+	 * Passo 8
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void SeDefinirMultiplosDelimitadoresEmQueUmTemNumeroGeraExcecao() {
+		CalculadoraString.add("//[^@][\t][a0123456789a]\n");
+	}
+	
 	@Test
 	public void RetornaZeroParaNumerosQueDariaOverflow() {
 		assertEquals(0, CalculadoraString.transformaStringEmNumero("9870979765876987698754992"));
@@ -536,10 +546,35 @@ public class TesteCalculadoraSimples {
 		// TODO quantidade errada de caracteres
 		assertEquals(10, CalculadoraString.add("//[aaaaaa][======]\n aaaaaa====== 1\n aaaaaa====== 2, aaaaaa====== ,3, ,aaaaaa======, \n,aaaaaa====== 4 "));
 		assertEquals(10, CalculadoraString.add("//[BBBB][\n][d]\n BBBB d1d, BBBB, ,d2\nd, ,BBBB, ,d3d,\n BBBB,d\nd ,\nd4\n, ,BBBB, "));
+		assertEquals(10, CalculadoraString.add("//[ab][abc]\n abc 1ab2 abc ab 3 abc,ab4"));
 	}
 	
+	/**
+	 * Verifica se eh possivel decompor em delimitadores definidos.
+	 * Passo 9
+	 */
 	@Test
-	public void QuandoUmDelimitadorEstaContidoNoOutro() {
-		assertEquals(10, CalculadoraString.add("//[aa][aaa]\n5aaaaa5"));
+	public void QuandoRecebeUmDemilitadorQuePodeSerDecompostoEmDelimitadoresDefinidos() {
+		assertEquals(10, CalculadoraString.add("//[..][...]\n5.....5"));
+		assertEquals(10, CalculadoraString.add("//[abc][abcab]\n abcab5 abcabcabcababcabcabcab 5"));
+		assertEquals(10, CalculadoraString.add("//[aba][aaabbaaa][a]\nabaabaaabaaaaaabbaaa5aaabbaaaabaaba5"));
+	}
+	
+	/**
+	 * Verifica se eh possivel decompor em delimitadores definidos.
+	 * Passo 9
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void QuandoUmDelimitorNaoPodeSerDecompostoEmDelimitadoresDefinidosComCaracteresTodosIguais() {
+		assertEquals(10, CalculadoraString.add("//[bb][bbbb]\n 5 bbbbbbb 5"));
+	}
+	
+	/**
+	 * Verifica se eh possivel decompor em delimitadores definidos.
+	 * Passo 9
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void QuandoUmDelimitorNaoPodeSerDecompostoEmDelimitadoresDefinidosComLetrasNaoTodasIguais() {
+		assertEquals(10, CalculadoraString.add("//[aba][aaabbaaa]\n5aaabbaaaba5"));
 	}
 }
