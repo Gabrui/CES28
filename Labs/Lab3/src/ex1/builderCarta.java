@@ -22,8 +22,11 @@ public class builderCarta {
 	public builderCarta(String modelo) {
 		this._modelo = modelo;
 	}
-	public void buildCabecario(String cabecario) {
-		this._cabecario = cabecario;
+	public void buildCabecarioComercial(String nomeDaEmpresaEmissorra,String departamentoEmissor,String assunto,String vocativo) {
+		this._cabecario = nomeDaEmpresaEmissorra + "\n"
+				+ departamentoEmissor +"\n"
+				+ assunto +"\n\n"
+				+ vocativo + "\n\n";
 	}
 	public void buildCorpo(String corpo) {
 		this._corpo = corpo;
@@ -36,6 +39,8 @@ public class builderCarta {
 	}
 	public Carta buildCarta() {
 		
-		return new CartaComercial(_cabecario,_corpo,_conclusao,_assinatura);
+		if( _modelo.toLowerCase() == "comercial") {
+			return new CartaComercial(_cabecario,_corpo,_conclusao,_assinatura);
+		}
 	}
 }
