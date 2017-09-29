@@ -16,16 +16,21 @@ public class builderCarta {
 	private String _conclusao;
 	private String _assinatura;
 	private String _modelo;
+	private Pessoa _remetente;
+	private Pessoa _destinatario;
+	private Data _data;
 	//Fim da declaração de variaveis privadas
 	
 	//construtor da classe
-	public builderCarta(String modelo) {
-		this._modelo = modelo;
+	public builderCarta(Pessoa remetente, Pessoa destinatario, Data data) {
+		_remetente = remetente;
+		_destinatario = destinatario;
+		_data = data;
 	}
-	public Carta buildCarta(Pessoa remetente, Pessoa destinatario,Data data) {
+	public CartaComercial buildCartaComercial() {
 		
-		if( _modelo.toLowerCase() == "comercial") {
-			return new CartaComercial(remetente, destinatario,data);
-		}
+		
+		return new CartaComercial(_remetente, _destinatario,_data);
+		
 	}
 }
