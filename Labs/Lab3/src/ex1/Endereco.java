@@ -20,7 +20,8 @@ public class Endereco {
 		_pais = pais;
 		
 	}
-	public String getEndereco() {
-		return _rua + _cidade + _estado + _pais;
+	public Endereco getEndereco() {
+		return new Endereco(_rua,_cidade,_estado,_pais);
 	}
+	
 }

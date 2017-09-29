@@ -7,12 +7,11 @@ class CartaComercial extends Carta {
 	private Endereco _enderecoDestinatario;
 	private Data _data;
 	
-	/*public CartaComercial(Pessoa remetente, Pessoa destinatario, 
-			Endereco enderecoRemetente, Endereco enderecoDestinatario, Data data) {
+	public CartaComercial(Pessoa remetente, Pessoa destinatario, Data data) {
 		this._remetente = remetente;
 		this._destinatario = destinatario;
-		this._enderecoRemetente = enderecoRemetente;
-		this._enderecoDestinatario = enderecoDestinatario;
+		this._enderecoRemetente = remetente.getEndereco();
+		this._enderecoDestinatario = destinatario.getEndereco();
 		this._data = data;
 	}
 	
@@ -38,10 +37,8 @@ class CartaComercial extends Carta {
 		return "\n\n            __________________\n            "
 				+ _remetente.getNome() + "\n            " + _remetente.getFone()
 				+ "\n            email:" + _remetente.getEmail();
-	}*/
-	
-	public String getconteudo() {
-		return _cabecario + _corpo +_conclusao + _assinatura;
 	}
+	
+	
 
 }

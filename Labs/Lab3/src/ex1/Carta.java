@@ -10,7 +10,7 @@ package ex1;
  */
 public abstract class Carta {
 	
-	//declarando variaveis privadas
+	/*//declarando variaveis privadas
 	protected final String _cabecario;
 	protected final String _corpo;
 	protected final String _conclusao;
@@ -23,6 +23,6 @@ public abstract class Carta {
 		_conclusao = conclusao;
 		_assinatura = assinatura;
 		
-	}
+	}*/
 	
 }
