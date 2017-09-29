@@ -31,12 +31,12 @@ public class builderCarta {
 	public void buildCorpo(String corpo) {
 		this._corpo = corpo;
 	}
-	public void buildConclusao(String conclusao) {
-		this._conclusao = conclusao;
+	public void buildDespedida(String despedida) {
+		this._conclusao = despedida+"\n\n";
 	}
 	public void buildAssinaturaComercial(Pessoa remetente) {
 		this._assinatura = remetente.getNome()+"\n\n"
-						   remetente.getDepartamento()+"\n";
+						   + remetente.getEmprego()+remetente.getDepartamento()+"\n";
 	}
 	public Carta buildCarta() {
 		
