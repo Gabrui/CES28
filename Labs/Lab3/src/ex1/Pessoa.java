@@ -28,7 +28,7 @@ public class Pessoa {
 		return _idade;
 	}
 	public String getEndereco() {
-		return _endereco.getRua()+_endereco.getCidade()+_endereco.getEstado()+_endereco.getPais();
+		return _endereco.getEndereco();
 	}
 	public String getemail() {
 		return _email;
