@@ -29,7 +29,7 @@ class CartaComercial extends Carta {
 	protected String cabecarioPortugues(String assunto) {
 		return _remetente.getNomeEmpresa() + "\n"
 				+ _remetente.getDepartamento() + "\n"
-				+ _enderecoRemetente.toString() + ", "+_data.toString() + "\n"
+				+ _enderecoRemetente.toString() + ", "+_data.getDataPortugues(" de ") + "\n"
 				+ "Assunto: " + assunto + "\n\n";
 	}
 	
