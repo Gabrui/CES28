@@ -12,7 +12,7 @@ public class CartaPessoal extends Carta{
 	
 	
 	
-	private CartaPessoal(Pessoa remetente, Pessoa destinatario,Data data) {
+	public CartaPessoal(Pessoa remetente, Pessoa destinatario,Data data) {
 		_remetente = remetente;
 		_destinatario = destinatario;
 		_data = data;

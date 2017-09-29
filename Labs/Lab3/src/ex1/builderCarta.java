@@ -33,4 +33,8 @@ public class builderCarta {
 		return new CartaComercial(_remetente, _destinatario,_data);
 		
 	}
+	public CartaPessoal buildCartaPessoa() {
+		
+		return new CartaPessoal(_remetente, _destinatario, _data);
+	}
 }
