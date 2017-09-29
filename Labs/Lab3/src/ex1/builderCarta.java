@@ -34,8 +34,9 @@ public class builderCarta {
 	public void buildConclusao(String conclusao) {
 		this._conclusao = conclusao;
 	}
-	public void buildAssinatura(String assinatura) {
-		this._assinatura = assinatura;
+	public void buildAssinaturaComercial(Pessoa remetente) {
+		this._assinatura = remetente.getNome()+"\n\n"
+						   remetente.getDepartamento()+"\n";
 	}
 	public Carta buildCarta() {
 		
