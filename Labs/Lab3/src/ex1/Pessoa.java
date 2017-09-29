@@ -1,20 +1,37 @@
+/**
+ * @author Dylan N. Sugimoto e Gabriel Adriano de Melo
+ * Data da criação: 29/09/2017
+ */
 package ex1;
 
+/**
+ * Classe que contém informações pessoais
+ *
+ */
 public class Pessoa {
 
+	private final String _nome;
+	private final int _idade;
+	private String _email;
+	private Endereco _endereco;
+	
+	public Pessoa(String nome,int idade,Endereco endereco,String email) {
+		_nome = nome;
+		_idade = idade;
+		_endereco = endereco;
+		_email = email;
+	}
 	public String getNome() {
-		// TODO Auto-generated method stub
-		return null;
+		return _nome;
 	}
-
-	public String getEmail() {
-		// TODO Auto-generated method stub
-		return null;
+	public int getIdade() {
+		return _idade;
 	}
-
-	public String getFone() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getEndereco() {
+		return _endereco.getRua()+_endereco.getCidade()+_endereco.getEstado()+_endereco.getPais();
 	}
-
+	public String getemail() {
+		return _email;
+	}
 }
+
