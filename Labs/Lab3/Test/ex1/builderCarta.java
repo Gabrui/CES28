@@ -36,6 +36,6 @@ public class builderCarta {
 	}
 	public Carta buildCarta() {
 		
-		return Carta(_cabecario,_corpo,_conclusao,_assinatura);
+		return new CartaComercial(_cabecario,_corpo,_conclusao,_assinatura);
 	}
 }
