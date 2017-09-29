@@ -22,26 +22,10 @@ public class builderCarta {
 	public builderCarta(String modelo) {
 		this._modelo = modelo;
 	}
-	public void buildCabecarioComercial(String nomeDaEmpresaEmissorra,String departamentoEmissor,String assunto,String vocativo) {
-		this._cabecario = nomeDaEmpresaEmissorra + "\n"
-				+ departamentoEmissor +"\n"
-				+ assunto +"\n\n"
-				+ vocativo + "\n\n";
-	}
-	public void buildCorpo(String corpo) {
-		this._corpo = corpo;
-	}
-	public void buildDespedida(String despedida) {
-		this._conclusao = despedida+"\n\n";
-	}
-	public void buildAssinaturaComercial(Pessoa remetente) {
-		this._assinatura = remetente.getNome()+"\n\n"
-						   + remetente.getEmprego()+remetente.getDepartamento()+"\n";
-	}
-	public Carta buildCarta() {
+	public Carta buildCarta(Pessoa remetente, Pessoa destinatario,Data data) {
 		
 		if( _modelo.toLowerCase() == "comercial") {
-			return new CartaComercial(_cabecario,_corpo,_conclusao,_assinatura);
+			return new CartaComercial(remetente, destinatario,data);
 		}
 	}
 }
