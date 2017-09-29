@@ -23,5 +23,7 @@ public class Endereco {
 	public Endereco getEndereco() {
 		return new Endereco(_rua,_cidade,_estado,_pais);
 	}
-	
+	public String toString() {
+		return _rua +", "+ _cidade+ ", " + _estado + ", "+_pais;
+	}
 }
