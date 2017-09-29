@@ -41,7 +41,10 @@ class CartaComercial extends Carta {
 	protected String conclusao() {
 		return "\nSincerely,\n";
 	}
-	
+	protected String despedida(String despedida){
+		return despedida +",\n\n" + _remetente.getNome()+"\n\n"
+				+_remetente.getDepartamento();
+	}
 	protected String assinatura() {
 		return "\n\n            __________________\n            "
 				+ _remetente.getNome() + "\n            " + _remetente.getFone()
