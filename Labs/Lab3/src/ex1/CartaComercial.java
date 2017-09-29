@@ -24,6 +24,12 @@ class CartaComercial extends Carta {
 				_enderecoRemetente.toString() + "\n" + _destinatario.getNome() +
 				_enderecoDestinatario.toString() + "\n";
 	}
+	protected String cabecarioPortuges(String assunto) {
+		return _remetente.getNomeEmpresa() + "\n"
+				+ _remetente.getDepartamento() + "\n"
+				+ _enderecoRemetente.toString() + ", "+_data.toString() + "\n"
+				+ "Assunto: " + assunto + "\n\n";
+	}
 	
 	protected String corpo() {
 		return "Dear "+ _destinatario.getNome() + "\n" ;
