@@ -14,12 +14,14 @@ public class Pessoa {
 	private final int _idade;
 	private String _email;
 	private Endereco _endereco;
+	private String _fone;
 	
-	public Pessoa(String nome,int idade,Endereco endereco,String email) {
+	public Pessoa(String nome,int idade,Endereco endereco,String email, String fone) {
 		_nome = nome;
 		_idade = idade;
 		_endereco = endereco;
 		_email = email;
+		_fone = fone;
 	}
 	public String getNome() {
 		return _nome;
@@ -30,8 +32,11 @@ public class Pessoa {
 	public String getEndereco() {
 		return _endereco.getEndereco();
 	}
-	public String getemail() {
+	public String getEmail() {
 		return _email;
+	}
+	public String getFone() {
+		return _fone;
 	}
 }
 
