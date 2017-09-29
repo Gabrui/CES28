@@ -34,7 +34,10 @@ class CartaComercial extends Carta {
 	protected String corpo() {
 		return "Dear "+ _destinatario.getNome() + "\n" ;
 	}
-	
+	protected String corpoPortugues(String vocativo, String mensagem) {
+		return vocativo + _destinatario.getNome()+": " +"\n\n"
+				+ mensagem +"\n\n";
+	}
 	protected String conclusao() {
 		return "\nSincerely,\n";
 	}
