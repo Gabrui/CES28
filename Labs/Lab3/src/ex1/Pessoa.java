@@ -15,6 +15,9 @@ public class Pessoa {
 	private String _email;
 	private Endereco _endereco;
 	private String _fone;
+	private String _departamento;
+	private String _emprego;
+	private String _nomeEmpresa;
 	
 	public Pessoa(String nome,int idade,Endereco endereco,String email, String fone) {
 		_nome = nome;
@@ -22,6 +25,14 @@ public class Pessoa {
 		_endereco = endereco;
 		_email = email;
 		_fone = fone;
+	}
+	public Pessoa PessoaEmpregada(String nome,int idade,Endereco endereco,String email, String fone,String emprego,String departamento,String nomeEmpresa) {
+		
+		Pessoa pessoaEmpregada = new Pessoa(nome,idade,endereco,email,fone);
+		pessoaEmpregada.setEmprego(emprego);
+		pessoaEmpregada.setDepartamento(departamento);
+		pessoaEmpregada.setEmpresa(nomeEmpresa);
+		return pessoaEmpregada;
 	}
 	public String getNome() {
 		return _nome;
@@ -37,6 +48,15 @@ public class Pessoa {
 	}
 	public String getFone() {
 		return _fone;
+	}
+	public void setEmprego(String emprego) {
+		_emprego = emprego;
+	}
+	public void setDepartamento(String departamento) {
+		_departamento = departamento;
+	}
+	public void setEmpresa(String empresa) {
+		_nomeEmpresa = empresa;
 	}
 }
 
