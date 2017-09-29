@@ -24,5 +24,9 @@ public abstract class Carta {
 		_assinatura = assinatura;
 		
 	}*/
-	
+	protected Pessoa _remetente;
+	protected Pessoa _destinatario;
+	protected Endereco _enderecoRemetente;
+	protected Endereco _enderecoDestinatario;
+	protected Data _data;
 }
