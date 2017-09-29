@@ -58,5 +58,14 @@ public class Pessoa {
 	public void setEmpresa(String empresa) {
 		_nomeEmpresa = empresa;
 	}
+	public String getDepartamento() {
+		return _departamento;
+	}
+	public String getEmprego() {
+		return _emprego;
+	}
+	public String getNomeEmpresa() {
+		return _nomeEmpresa;
+	}
 }
 
