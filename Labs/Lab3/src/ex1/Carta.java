@@ -11,10 +11,10 @@ package ex1;
 public abstract class Carta {
 	
 	//declarando variaveis privadas
-	private final String _cabecario;
-	private final String _corpo;
-	private final String _conclusao;
-	private final String _assinatura;
+	protected final String _cabecario;
+	protected final String _corpo;
+	protected final String _conclusao;
+	protected final String _assinatura;
 	//Fim da declaração de variaveis privadas
 	
 	protected Carta(String cabecario,String corpo,String conclusao,String assinatura) {

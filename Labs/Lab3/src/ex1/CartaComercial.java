@@ -1,13 +1,13 @@
 package ex1;
 
-class CartaComercial {
+class CartaComercial extends Carta {
 	private Pessoa _remetente;
 	private Pessoa _destinatario;
 	private Endereco _enderecoRemetente;
 	private Endereco _enderecoDestinatario;
 	private Data _data;
 	
-	public CartaComercial(Pessoa remetente, Pessoa destinatario, 
+	/*public CartaComercial(Pessoa remetente, Pessoa destinatario, 
 			Endereco enderecoRemetente, Endereco enderecoDestinatario, Data data) {
 		this._remetente = remetente;
 		this._destinatario = destinatario;
@@ -38,6 +38,10 @@ class CartaComercial {
 		return "\n\n            __________________\n            "
 				+ _remetente.getNome() + "\n            " + _remetente.getFone()
 				+ "\n            email:" + _remetente.getEmail();
+	}*/
+	
+	public String getconteudo() {
+		return _cabecario + _corpo +_conclusao + _assinatura;
 	}
 
 }
