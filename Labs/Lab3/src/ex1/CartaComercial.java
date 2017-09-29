@@ -1,10 +1,19 @@
 package ex1;
 
 class CartaComercial {
+	private Pessoa _remetente;
+	private Pessoa _destinatario;
+	private Endereco _enderecoRemetente;
+	private Endereco _enderecoDestinatario;
+	private Data _data;
 	
-	CartaComercial(Pessoa remetente, Pessoa destinatario, 
+	public CartaComercial(Pessoa remetente, Pessoa destinatario, 
 			Endereco enderecoRemetente, Endereco enderecoDestinatario, Data data) {
-		// armazena todos os dados necessarios 
+		this._remetente = remetente;
+		this._destinatario = destinatario;
+		this._enderecoRemetente = enderecoRemetente;
+		this._enderecoDestinatario = enderecoDestinatario;
+		this._data = data;
 	}
 	
 	public String modelo() {
@@ -12,13 +21,13 @@ class CartaComercial {
 	}
 	
 	protected String cabecario() {
-		return date.toPrint() + "\n\n" + sender.name() + "\n" +
-				addressSender.toPrint() + "\n" + destinatary.name() +
-				addressDestiny.toPrint() + "\n";
+		return _data.toString() + "\n\n" + _remetente.getNome() + "\n" +
+				_enderecoRemetente.toString() + "\n" + _destinatario.getNome() +
+				_enderecoDestinatario.toString() + "\n";
 	}
 	
 	protected String corpo() {
-		return "Dear "+destinatary_.name() + "\n" ;
+		return "Dear "+ _destinatario.getNome() + "\n" ;
 	}
 	
 	protected String conclusao() {
@@ -26,8 +35,9 @@ class CartaComercial {
 	}
 	
 	protected String assinatura() {
-		return "\n\n            __________________\n            "+ sender_.name() + "\n            " + sender.phone().toPrint() +       "\n            email:" + sender.email();
-		//espaços representam justificação à direita.keep it simple!
+		return "\n\n            __________________\n            "
+				+ _remetente.getNome() + "\n            " + _remetente.getFone()
+				+ "\n            email:" + _remetente.getEmail();
 	}
 
 }
