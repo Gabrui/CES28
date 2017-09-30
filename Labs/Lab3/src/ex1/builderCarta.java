@@ -22,11 +22,13 @@ public class builderCarta {
 	//Fim da declaração de variaveis privadas
 	
 	//construtor da classe
-	public builderCarta(Pessoa remetente, Pessoa destinatario, Data data) {
+	public builderCarta(Pessoa remetente, Pessoa destinatario, Data data,String modelo) {
 		_remetente = remetente;
 		_destinatario = destinatario;
 		_data = data;
+		_modelo = modelo;
 	}
+	/*
 	public CartaComercial buildCartaComercial() {
 		
 		
@@ -39,5 +41,14 @@ public class builderCarta {
 	}
 	public CartaArgumentativa buildCartaArgumentativa() {
 		return new CartaArgumentativa(_remetente,_destinatario,_data);
+	}*/
+	public Carta build() {
+		if(_modelo.toLowerCase() == "comercial") {
+			return new CartaComercial(_remetente, _destinatario,_data);
+		}
+		else if(_modelo.toLowerCase() == "argumentativa") {
+			return new CartaArgumentativa(_remetente,_destinatario,_data);
+		}
+		return new CartaPessoal(_remetente, _destinatario, _data);
 	}
 }
