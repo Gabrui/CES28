@@ -37,4 +37,7 @@ public class builderCarta {
 		
 		return new CartaPessoal(_remetente, _destinatario, _data);
 	}
+	public CartaArgumentativa buildCartaArgumentativa() {
+		return new CartaArgumentativa(_remetente,_destinatario,_data);
+	}
 }
