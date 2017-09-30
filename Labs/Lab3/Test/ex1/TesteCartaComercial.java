@@ -12,7 +12,7 @@ public class TesteCartaComercial {
 	}
 
 	@Test
-	public void test() {
+	public void construcaoDaCarta() {
 		fail("Not yet implemented");
 	}
 
