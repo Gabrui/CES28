@@ -11,9 +11,13 @@ public class RelatorioDespesas {
 		impressora.imprimir(conteudo);
 	}
 	
-	// Caso alguém reclame que queria passar um iterador
+	
+	// ATENÇÃO, esse método aqui é um EXTRA:
+	// Caso a resposta acima tenha ficado muito simples, e se desejasse passar um iterador
+	// Eu fiz um Overload que satisfaça as necessidades de se usar obrigatoriamente um iterador.
 	public void imprimirRelatorio(Iterator<Despesa> despesas, Imprime impressora) {
 		Calculadora calc = new Calculadora(); // Dependência OK para LoD
 		imprimirRelatorio(calc.calculaDespesas(despesas), impressora);
 	}
+	
 }
