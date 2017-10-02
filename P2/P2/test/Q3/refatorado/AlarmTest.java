@@ -10,8 +10,8 @@ import org.mockito.MockitoAnnotations;
 
 public class AlarmTest {
 	
-	@Mock ISensor sensor;
-	Alarm alarme;
+	private @Mock ISensor sensor;
+	private Alarm alarme;
 	
 
 	@Before
