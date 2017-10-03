@@ -1,4 +1,4 @@
-package aula10_ref1;
+package aula10_ref1_lazy;
 
 public class Main {
 	// ---------- Operations --------------------

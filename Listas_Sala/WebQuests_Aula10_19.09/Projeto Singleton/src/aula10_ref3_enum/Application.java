@@ -1,4 +1,4 @@
-package aula10_ref3;
+package aula10_ref3_enum;
 
 public enum Application {
     INSTANCE;

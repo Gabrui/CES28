@@ -1,9 +1,8 @@
-package aula10_ref2;
+package aula10_ref4_pool;
 
 // Atividade: A propósito, como se poderia testar a classe singleton agora?
-// SE TESTA CRIANDO THREADS
-// RODAR O MAIN.JAVA
-public class ApplicationTest implements Runnable {
+// SE TESTA DA MESMA FORMA
+public class ApplicationTest {
 	public static void main(String[] args) {
 		Application app1 = Application.getApplication();
 		app1.run( );
@@ -13,11 +12,5 @@ public class ApplicationTest implements Runnable {
 			System.out.println ("Same instance");
 		else
 			System.out.println ("Different instances");
-	}
-
-	@Override
-	public void run() {
-		Application app1 = Application.getApplication();
-		app1.run( );
 	}
 }
