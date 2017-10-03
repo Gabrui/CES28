@@ -2,7 +2,7 @@ package aula10_ref4_pool;
 
 
 public class ApplicationTest implements Runnable {
-	public static void main(String[] args) {
+	public void run() {
 		Application app1 = null;
 		Application app2 = null;
 		try {
@@ -15,13 +15,10 @@ public class ApplicationTest implements Runnable {
 			else
 				System.out.println ("Different instances");
 			Application.release(app1);
+			Application.release(app2);
 		} catch (RuntimeException e) {
 			System.out.println("Não deu para criar");
 		}
 	}
 
-	@Override
-	public void run() {
-		main(null);
-	}
 }

@@ -4,7 +4,8 @@ package aula10_ref2_threads;
 // SE TESTA CRIANDO THREADS
 // RODAR O MAIN.JAVA
 public class ApplicationTest implements Runnable {
-	public static void main(String[] args) {
+	
+	public void run() {
 		Application app1 = Application.getApplication();
 		app1.run( );
 		Application app2 = Application.getApplication();
@@ -15,8 +16,4 @@ public class ApplicationTest implements Runnable {
 			System.out.println ("Different instances");
 	}
 
-	@Override
-	public void run() {
-		main(null);
-	}
 }
