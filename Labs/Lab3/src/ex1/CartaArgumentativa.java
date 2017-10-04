@@ -11,11 +11,7 @@ package ex1;
 public class CartaArgumentativa extends Carta {
 	
 	public CartaArgumentativa(Pessoa remetente, Pessoa destinatario,Data data) {
-		_remetente = remetente;
-		_destinatario = destinatario;
-		_data = data;
-		_enderecoRemetente = remetente.getEndereco();
-		_enderecoDestinatario = destinatario.getEndereco();
+		super(remetente,destinatario,data);
 	}
 	public String modeloPortugues(String vocativo,String intro,String desenvolvimento,String conclusao,String despedida) {
 		return cabecarioPortugues() + corpoPortugues(vocativo,intro,desenvolvimento,conclusao) + despedida(despedida) + assinaturaPortugues();

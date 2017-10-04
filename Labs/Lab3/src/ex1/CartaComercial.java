@@ -8,11 +8,7 @@ class CartaComercial extends Carta {
 	private Data _data;
 	
 	public CartaComercial(Pessoa remetente, Pessoa destinatario, Data data) {
-		this._remetente = remetente;
-		this._destinatario = destinatario;
-		this._enderecoRemetente = remetente.getEndereco();
-		this._enderecoDestinatario = destinatario.getEndereco();
-		this._data = data;
+		super(remetente,destinatario,data);
 	}
 	
 	public String modelo() {

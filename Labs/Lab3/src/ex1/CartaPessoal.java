@@ -13,11 +13,7 @@ public class CartaPessoal extends Carta{
 	
 	
 	public CartaPessoal(Pessoa remetente, Pessoa destinatario,Data data) {
-		_remetente = remetente;
-		_destinatario = destinatario;
-		_data = data;
-		_enderecoRemetente = remetente.getEndereco();
-		_enderecoDestinatario = destinatario.getEndereco();
+		super(remetente,destinatario,data);
 	}
 	
 	public String modeloPortugues(String vocativo,String mensagem,String despedida) {
