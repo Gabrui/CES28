@@ -40,7 +40,7 @@ public class Pessoa {
 	public int getIdade() {
 		return _idade;
 	}
-	public Endereco getEndereco() {
+	public String getEndereco() {
 		return _endereco.getEndereco();
 	}
 	public String getEmail() {

@@ -26,16 +26,12 @@ public abstract class Carta {
 	}*/
 	protected Pessoa _remetente;
 	protected Pessoa _destinatario;
-	protected Endereco _enderecoRemetente;
-	protected Endereco _enderecoDestinatario;
 	protected Data _data;
 	
 	public Carta(Pessoa remetente, Pessoa destinatario,Data data) {
 		_remetente = remetente;
 		_destinatario = destinatario;
 		_data = data;
-		_enderecoRemetente = remetente.getEndereco();
-		_enderecoDestinatario = destinatario.getEndereco();
 	}
 
 	

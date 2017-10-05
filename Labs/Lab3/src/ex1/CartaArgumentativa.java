@@ -17,7 +17,8 @@ public class CartaArgumentativa extends Carta {
 		return cabecarioPortugues() + corpoPortugues(vocativo,intro,desenvolvimento,conclusao) + despedida(despedida) + assinaturaPortugues();
 	}
 	protected String cabecarioPortugues() {
-		return _enderecoRemetente.toString() + ", "+_data.getDataPortugues(" de ") + "\n\n";
+		
+		return _remetente.getEndereco() + ", "+_data.getDataPortugues(" de ") + "\n\n";
 	}
 	protected String corpoPortugues(String vocativo, String introducao, String desenvolvimento, String conclusao) {
 		return vocativo + _destinatario.getNome()+", " +"\n\n"

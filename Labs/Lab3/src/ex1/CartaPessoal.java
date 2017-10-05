@@ -20,7 +20,7 @@ public class CartaPessoal extends Carta{
 		return cabecarioPortugues() + corpoPortugues(vocativo,mensagem) + despedida(despedida) + assinaturaPortugues();
 	}
 	protected String cabecarioPortugues() {
-		return _enderecoRemetente.toString() + ", "+_data.getDataPortugues(" de ") + "\n\n";
+		return _remetente.getEndereco()+ ", "+_data.getDataPortugues(" de ") + "\n\n";
 	}
 	protected String corpoPortugues(String vocativo, String mensagem) {
 		return vocativo + _destinatario.getNome()+", " +"\n\n"

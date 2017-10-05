@@ -19,13 +19,13 @@ class CartaComercial extends Carta {
 	}
 	protected String cabecario() {
 		return _data.toString() + "\n\n" + _remetente.getNome() + "\n" +
-				_enderecoRemetente.toString() + "\n" + _destinatario.getNome() +
-				_enderecoDestinatario.toString() + "\n";
+				_remetente.getEndereco() + "\n" + _destinatario.getNome() +
+				_destinatario.getEndereco() + "\n";
 	}
 	protected String cabecarioPortugues(String assunto) {
 		return _remetente.getNomeEmpresa() + "\n"
 				+ _remetente.getDepartamento() + "\n"
-				+ _enderecoRemetente.toString() + ", "+_data.getDataPortugues(" de ") + "\n"
+				+ _remetente.getEndereco() + ", "+_data.getDataPortugues(" de ") + "\n"
 				+ "Assunto: " + assunto + "\n\n";
 	}
 	

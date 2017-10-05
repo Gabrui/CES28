@@ -20,10 +20,10 @@ public class Endereco {
 		_pais = pais;
 		
 	}
-	public Endereco getEndereco() {
+	public Endereco copiar() {
 		return new Endereco(_rua,_cidade,_estado,_pais);
 	}
-	public String toString() {
+	public String getEndereco() {
 		return _rua +", "+ _cidade+ ", " + _estado + ", "+_pais;
 	}
 }
