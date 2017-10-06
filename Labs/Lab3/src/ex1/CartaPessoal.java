@@ -23,7 +23,7 @@ public class CartaPessoal extends Carta{
 		return _remetente.getEndereco()+ ", "+_data.getDataPortugues(" de ") + "\n\n";
 	}
 	protected String corpoPortugues(String vocativo, String mensagem) {
-		return vocativo + _destinatario.getNome()+", " +"\n\n"
+		return vocativo + " " + _destinatario.getNome()+", " +"\n\n"
 				+ mensagem +"\n\n";
 	}
 	protected String despedida(String despedida){
