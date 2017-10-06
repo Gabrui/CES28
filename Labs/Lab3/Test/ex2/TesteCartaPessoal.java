@@ -1,4 +1,4 @@
-package ex1;
+package ex2;
 
 import static org.junit.Assert.*;
 
@@ -8,19 +8,19 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-public class TesteCartaArgumentativa {
+public class TesteCartaPessoal {
 	
 	@Mock private Pessoa reme;
 	@Mock private Pessoa dest;
 	@Mock private Data dia;
 	
-	private CartaArgumentativa carta;
+	private CartaPessoal carta;
 	
 
 	@Before
 	public void setUp() throws Exception {
 		MockitoAnnotations.initMocks(this);
-		carta = new CartaArgumentativa(reme, dest, dia);
+		carta = new CartaPessoal(reme, dest, dia);
 	}
 	
 
@@ -30,34 +30,30 @@ public class TesteCartaArgumentativa {
 	}
 	
 	@Test
-	public void testaModelo() {
+	public void testaModeloPortuguês() {
 		valoresPadroesMocks();
 		assertEquals(
+				"H8-B 241, 01 de Outubro de 2017\n" + 
+				"\n" + 
+				"Amigo Dylan, \n" + 
+				"\n" + 
+				"A ligeira raposa marron correu.\n" + 
+				"\n" + 
+				"Até breve\n" + 
+				"\n" + 
 				"Gabriel\n" + 
-				"H8-B 241\n" + 
-				"\n" + 
-				"01/10/2017\n" + 
-				"\n" + 
-				"Dylan\n" + 
-				"H8-B 208\n" + 
-				"\n" + 
-				"\n" + 
-				"Caro Dylan,\n" + 
-				"\n" + 
-				"\n" + 
-				"Atensiosamente,\n" + 
-				"Gabriel"
-				, carta.modelo());
+				"\n"
+				, carta.modeloPortugues("Amigo", "A ligeira raposa marron correu.", "Até breve"));
+				
 	}
 	
 	private void valoresPadroesMocks() {
 		Mockito.when(reme.getEndereco()).thenReturn("H8-B 241");
 		Mockito.when(reme.getNome()).thenReturn("Gabriel");
 		
-		Mockito.when(dest.getEndereco()).thenReturn("H8-B 208");
 		Mockito.when(dest.getNome()).thenReturn("Dylan");
 
-		Mockito.when(dia.toString()).thenReturn("01/10/2017");
+		Mockito.when(dia.getDataPortugues(Mockito.anyString())).thenReturn("01 de Outubro de 2017");
 	}
 
 }

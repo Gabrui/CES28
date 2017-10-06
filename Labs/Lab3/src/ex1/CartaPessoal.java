@@ -10,26 +10,13 @@ package ex1;
  */
 public class CartaPessoal extends Carta{
 	
-	
-	
-	public CartaPessoal(Pessoa remetente, Pessoa destinatario,Data data) {
-		super(remetente,destinatario,data);
+	public CartaPessoal(Pessoa remetente, Pessoa destinatario, Data data) {
+		super(remetente, destinatario, data);
 	}
 	
-	public String modeloPortugues(String vocativo,String mensagem,String despedida) {
-		return cabecarioPortugues() + corpoPortugues(vocativo,mensagem) + despedida(despedida) + assinaturaPortugues();
+	@Override
+	protected String cabecalho() {
+		return  _destinatario.getEndereco() + "\n" +_data.toString() + "\n\n";
 	}
-	protected String cabecarioPortugues() {
-		return _remetente.getEndereco()+ ", "+_data.getDataPortugues(" de ") + "\n\n";
-	}
-	protected String corpoPortugues(String vocativo, String mensagem) {
-		return vocativo + " " + _destinatario.getNome()+", " +"\n\n"
-				+ mensagem +"\n\n";
-	}
-	protected String despedida(String despedida){
-		return despedida +"\n\n";
-	}
-	protected String assinaturaPortugues() {
-		return  _remetente.getNome()+"\n\n";
-	}
+	
 }

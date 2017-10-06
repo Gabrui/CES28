@@ -1,4 +1,4 @@
-package ex1;
+package ex2;
 
 /**
  * @author Dylan N. Sugimoto e Gabriel Adriano de Melo
@@ -25,8 +25,5 @@ public class Endereco {
 	}
 	public String getEndereco() {
 		return _rua +", "+ _cidade+ ", " + _estado + ", "+_pais;
-	}
-	public String getCidade() {
-		return _cidade;
 	}
 }

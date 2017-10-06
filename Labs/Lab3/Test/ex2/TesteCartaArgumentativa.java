@@ -1,4 +1,4 @@
-package ex1;
+package ex2;
 
 import static org.junit.Assert.*;
 
@@ -30,34 +30,31 @@ public class TesteCartaArgumentativa {
 	}
 	
 	@Test
-	public void testaModelo() {
+	public void testaModeloPortuguês() {
 		valoresPadroesMocks();
 		assertEquals(
+				"H8-B 241, 01 de Outubro de 2017\n" + 
+				"\n" + 
+				"Senhor Dylan, \n" + 
+				"\n" + 
+				"Seremos\n" + 
+				"A ligeira raposa marron correu.\n" + 
+				"Fomos\n" + 
+				"\n" + 
+				"Até breve\n" + 
+				"\n" + 
 				"Gabriel\n" + 
-				"H8-B 241\n" + 
-				"\n" + 
-				"01/10/2017\n" + 
-				"\n" + 
-				"Dylan\n" + 
-				"H8-B 208\n" + 
-				"\n" + 
-				"\n" + 
-				"Caro Dylan,\n" + 
-				"\n" + 
-				"\n" + 
-				"Atensiosamente,\n" + 
-				"Gabriel"
-				, carta.modelo());
+				"\n"
+				, carta.modeloPortugues("Senhor", "Seremos", "A ligeira raposa marron correu.", "Fomos", "Até breve"));
 	}
 	
 	private void valoresPadroesMocks() {
 		Mockito.when(reme.getEndereco()).thenReturn("H8-B 241");
 		Mockito.when(reme.getNome()).thenReturn("Gabriel");
 		
-		Mockito.when(dest.getEndereco()).thenReturn("H8-B 208");
 		Mockito.when(dest.getNome()).thenReturn("Dylan");
 
-		Mockito.when(dia.toString()).thenReturn("01/10/2017");
+		Mockito.when(dia.getDataPortugues(Mockito.anyString())).thenReturn("01 de Outubro de 2017");
 	}
 
 }

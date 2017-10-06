@@ -1,4 +1,4 @@
-package ex1;
+package ex2;
 
 import static org.junit.Assert.*;
 
@@ -33,33 +33,49 @@ public class TesteCartaComercial {
 	public void testaModeloPadrao() {
 		valoresPadroesMocks();
 		assertEquals(
-				"ITA\n" + 
-				"Gabriel\n" + 
-				"H8-B 241\n" + 
-				"\n" + 
 				"01/10/2017\n" + 
 				"\n" + 
+				"Gabriel\n" + 
+				"H8-B 241\n" + 
 				"Dylan\n" + 
 				"H8-B 208\n" + 
 				"\n" + 
 				"\n" + 
-				"Prezado senhor Dylan,\n" + 
+				"Dear Dylan,\n" + 
 				"\n" + 
+				"Sincerely,\n" + 
 				"\n" + 
-				"Atensiosamente,\n" + 
-				"Gabriel\n" + 
 				"\n" + 
 				"            __________________\n" + 
 				"            Gabriel\n" + 
-				"            Desenvolvedor\n" + 
 				"            3947-7891\n" + 
 				"            email:testes@ita.br"
 				, carta.modelo());
-				
+	}
+	
+	@Test
+	public void testaModeloPortuguês() {
+		valoresPadroesMocks();
+		assertEquals(
+				"ITA\n" + 
+				"Desenvolvimento\n" + 
+				"H8-B 241, 01/10/2017\n" + 
+				"Assunto: TESTE\n" + 
+				"\n" + 
+				"CaroDylan: \n" + 
+				"\n" + 
+				"A ligeira raposa marron correu.\n" + 
+				"\n" + 
+				"Até breve,\n" + 
+				"\n" + 
+				"Gabriel\n" + 
+				"\n" + 
+				"Desenvolvimento"
+				, carta.modeloPortugues("TESTE", "Caro", "A ligeira raposa marron correu.", "Até breve"));
 	}
 	
 	private void valoresPadroesMocks() {
-		Mockito.when(reme.getEmprego()).thenReturn("Desenvolvedor");
+		Mockito.when(reme.getDepartamento()).thenReturn("Desenvolvimento");
 		Mockito.when(reme.getEmail()).thenReturn("testes@ita.br");
 		Mockito.when(reme.getEndereco()).thenReturn("H8-B 241");
 		Mockito.when(reme.getFone()).thenReturn("3947-7891");
@@ -70,6 +86,7 @@ public class TesteCartaComercial {
 		Mockito.when(dest.getNome()).thenReturn("Dylan");
 
 		Mockito.when(dia.toString()).thenReturn("01/10/2017");
+		Mockito.when(dia.getDataPortugues(Mockito.anyString())).thenReturn("01/10/2017");
 	}
 
 }

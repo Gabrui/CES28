@@ -2,7 +2,7 @@
  * @author Dylan N. Sugimoto e Gabriel Adriano de Melo
  * Data da criação: 29/09/2017
  */
-package ex1;
+package ex2;
 
 /**
  * Classe que contém informações pessoais
@@ -10,8 +10,8 @@ package ex1;
  */
 public class Pessoa {
 
-	private String _nome;
-	private int _idade;
+	private final String _nome;
+	private final int _idade;
 	private String _email;
 	private Endereco _endereco;
 	private String _fone;
@@ -19,17 +19,21 @@ public class Pessoa {
 	private String _emprego;
 	private String _nomeEmpresa;
 	
-	private Pessoa(PessoaBuilder builder) {
-		_nome = builder.nome;
-		_idade = builder.idade;
-		_email = builder.email;
-		_endereco = builder.endereco;
-		_fone = builder.fone;
-		_departamento = builder.departamento;
-		_emprego = builder.emprego;
-		_nomeEmpresa = builder.nomeEmpresa;
+	public Pessoa(String nome,int idade,Endereco endereco,String email, String fone) {
+		_nome = nome;
+		_idade = idade;
+		_endereco = endereco;
+		_email = email;
+		_fone = fone;
 	}
-	
+	public Pessoa PessoaEmpregada(String nome,int idade,Endereco endereco,String email, String fone,String emprego,String departamento,String nomeEmpresa) {
+		
+		Pessoa pessoaEmpregada = new Pessoa(nome,idade,endereco,email,fone);
+		pessoaEmpregada.setEmprego(emprego);
+		pessoaEmpregada.setDepartamento(departamento);
+		pessoaEmpregada.setEmpresa(nomeEmpresa);
+		return pessoaEmpregada;
+	}
 	public String getNome() {
 		return _nome;
 	}
@@ -62,32 +66,6 @@ public class Pessoa {
 	}
 	public String getNomeEmpresa() {
 		return _nomeEmpresa;
-	}
-	
-	public static class PessoaBuilder {
-		
-		private String nome;
-		private int idade = 0;
-		private String email = "";
-		private Endereco endereco;
-		private String fone = "";
-		private String departamento = "";
-		private String emprego = "";
-		private String nomeEmpresa = "";
-		
-		public PessoaBuilder() {
-			this.nome = "Anônimo";
-			this.endereco = new Endereco("", "", "", "");
-		}
-		
-		public PessoaBuilder(String nome, Endereco endereco) {
-			this.nome = nome;
-			this.endereco = endereco;
-		}
-		
-		public Pessoa build() {
-			return null;
-		}
 	}
 }
 

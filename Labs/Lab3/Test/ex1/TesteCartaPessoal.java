@@ -33,27 +33,25 @@ public class TesteCartaPessoal {
 	public void testaModeloPortuguês() {
 		valoresPadroesMocks();
 		assertEquals(
-				"H8-B 241, 01 de Outubro de 2017\n" + 
+				"H8\n" + 
+				"01 de Outubro de 2017\n" + 
 				"\n" + 
-				"Amigo Dylan, \n" + 
+				"Caro Dylan,\n" + 
 				"\n" + 
-				"A ligeira raposa marron correu.\n" + 
 				"\n" + 
-				"Até breve\n" + 
-				"\n" + 
-				"Gabriel\n" + 
-				"\n"
-				, carta.modeloPortugues("Amigo", "A ligeira raposa marron correu.", "Até breve"));
+				"Atensiosamente,\n" + 
+				"Gabriel"
+				, carta.modelo());
 				
 	}
 	
 	private void valoresPadroesMocks() {
-		Mockito.when(reme.getEndereco()).thenReturn("H8-B 241");
 		Mockito.when(reme.getNome()).thenReturn("Gabriel");
 		
 		Mockito.when(dest.getNome()).thenReturn("Dylan");
+		Mockito.when(dest.getEndereco()).thenReturn("H8");
 
-		Mockito.when(dia.getDataPortugues(Mockito.anyString())).thenReturn("01 de Outubro de 2017");
+		Mockito.when(dia.toString()).thenReturn("01 de Outubro de 2017");
 	}
 
 }
