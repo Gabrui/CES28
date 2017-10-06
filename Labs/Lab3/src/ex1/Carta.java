@@ -9,26 +9,12 @@ package ex1;
  *
  */
 public abstract class Carta {
-	
-	/*//declarando variaveis privadas
-	protected final String _cabecario;
-	protected final String _corpo;
-	protected final String _conclusao;
-	protected final String _assinatura;
-	//Fim da declaração de variaveis privadas
-	
-	protected Carta(String cabecario,String corpo,String conclusao,String assinatura) {
-		_cabecario = cabecario;
-		_corpo = corpo;
-		_conclusao = conclusao;
-		_assinatura = assinatura;
-		
-	}*/
+
 	protected Pessoa _remetente;
 	protected Pessoa _destinatario;
 	protected Data _data;
 	
-	public Carta(Pessoa remetente, Pessoa destinatario,Data data) {
+	public Carta(Pessoa remetente, Pessoa destinatario, Data data) {
 		_remetente = remetente;
 		_destinatario = destinatario;
 		_data = data;
