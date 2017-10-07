@@ -12,9 +12,9 @@ package ex2;
  */
 public abstract class Idioma {
 	
-	private String _despedida;
-	private String _vocativo;
-	private String _PronomeTratamento;
+	protected String _despedida;
+	protected String _vocativo;
+	protected String _PronomeTratamento;
 	
 	public String despedida() {
 		return _despedida;
