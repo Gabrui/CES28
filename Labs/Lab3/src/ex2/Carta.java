@@ -23,9 +23,9 @@ public abstract class Carta {
 	}
 	
 	protected String cabecalho() {
-		return _remetente.getNome() + "\n" + _remetente.getEndereco() + "\n\n"
+		return _remetente.getNome() + "\n" + _remetente.getEndereco(_idioma) + "\n\n"
 				+ _data.toString() + "\n\n"
-				+ _destinatario.getNome() + "\n" + _destinatario.getEndereco()
+				+ _destinatario.getNome() + "\n" + _destinatario.getEndereco(_idioma)
 				+ "\n\n\n";
 	}
 	
