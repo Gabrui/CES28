@@ -20,7 +20,7 @@ public class Ingles extends Idioma {
 	}
 	@Override
 	public String data(Data data) {
-		return data.getDia() + " / " + data.getMes() + " / " + data.getAno();
+		return data.getMes() + " / " + data.getDia() + " / " + data.getAno();
 	}
 	@Override
 	public String endereco(Endereco end) {
