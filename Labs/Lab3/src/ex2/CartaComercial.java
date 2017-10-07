@@ -7,10 +7,12 @@ class CartaComercial extends Carta {
 	}
 	
 	public String modeloPortugues(String assunto,String mensagem) {
-		return cabecarioPortugues(assunto) + corpoPortugues(mensagem) + despedida() + assinaturaPortugues();
+		return cabecarioPortugues(assunto) + corpo(mensagem) + despedida() + assinaturaPortugues();
 	}
-	
-	protected String cabecalho() {
+	public String modeloIngles(String mensagem) {
+		return cabecalhoIngles() + corpo(mensagem) + despedida() + assinaturaIngles();
+	}
+	protected String cabecalhoIngles() {
 		return _data.toString() + "\n\n" + _remetente.getNome() + "\n" +
 				_remetente.getEndereco(_idioma) + "\n" + _destinatario.getNome() + "\n" +
 				_destinatario.getEndereco(_idioma) + "\n\n\n";
@@ -25,20 +27,14 @@ class CartaComercial extends Carta {
 				+ "Assunto: " + assunto + "\n\n";
 	}
 	
-	protected String corpo() {
-		return "Dear "+ _destinatario.getNome() + ",\n" ;
-	}
-	protected String corpoPortugues(String mensagem) {
+	protected String corpo(String mensagem) {
 		return _idioma.vocativo() + _destinatario.getNome()+": " +"\n\n"
 				+ mensagem +"\n\n";
-	}
-	protected String conclusao() {
-		return "\nSincerely,\n";
 	}
 	protected String despedida(){
 		return _idioma.despedida() +",\n\n";
 	}
-	protected String assinatura() {
+	protected String assinaturaIngles() {
 		return "\n\n            __________________\n            "
 				+ _remetente.getNome() + "\n            " + _remetente.getFone(_idioma)
 				+ "\n            email:" + _remetente.getEmail();

@@ -17,13 +17,28 @@ public class CartaArgumentativa extends Carta {
 	public String modeloPortugues(String intro,String desenvolvimento,String conclusao) {
 		return cabecarioPortugues() + corpoPortugues(intro,desenvolvimento,conclusao) + despedida() + assinaturaPortugues();
 	}
-	
+	public String modeloIngles(String intro,String desenvolvimento,String conclusao) {
+		return cabecarioIngles() + corpoIngles(intro, desenvolvimento,conclusao) + despedida() + assinaturaIngles();
+	}
+	private String cabecarioIngles() {
+		return _remetente.getFone(_idioma)+ ", " +_idioma.data(_data) 
+				+ " - " + _remetente.getEndereco(_idioma) + "\n\n";
+	}
 	protected String cabecarioPortugues() {
 		return _remetente.getEndereco(_idioma) + ", "+
 				_idioma.data(_data)
 				+ "\n\n";
 	}
-	
+	private String corpoIngles(String intro, String desen, String con) {
+		return _idioma.vocativo()+ " " + _destinatario.getNome() + ", "
+				+ "\n\n"
+				+ intro+"\n"
+				+desen + "\n"
+				+con+"\n\n";
+	}
+	private String assinaturaIngles() {
+		return _remetente.getNome() + ", " + _remetente.getEmail();
+	}
 	protected String corpoPortugues(String introducao, String desenvolvimento, String conclusao) {
 		return _idioma.vocativo() + " " +_idioma.pronome() + " " + _destinatario.getNome()+", " +"\n\n"
 				+ introducao + "\n"
