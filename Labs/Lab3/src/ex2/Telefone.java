@@ -24,4 +24,16 @@ public class Telefone {
 		String telefone = String.valueOf(tel);
 		_tel = telefone.substring(0 ,telefone.length() - 5) + "-" +  telefone.substring(telefone.length() - 5);
 	}
+	public String DDI() {
+		return _DDI;
+	}
+	public String cc() {
+		return _cc;
+	}
+	public String lc() {
+		return _lc;
+	}
+	public String tel() {
+		return _tel;
+	}
 }
