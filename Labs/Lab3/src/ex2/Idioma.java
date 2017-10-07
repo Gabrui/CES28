@@ -26,4 +26,5 @@ public abstract class Idioma {
 		return _PronomeTratamento;
 	}
 	public abstract String data(Data data);
+	public abstract String endereco(Endereco end);
 }

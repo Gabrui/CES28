@@ -14,7 +14,7 @@ public class Pessoa {
 	private int _idade;
 	private String _email;
 	private Endereco _endereco;
-	private String _fone;
+	private Telefone _fone;
 	private String _departamento;
 	private String _emprego;
 	private String _nomeEmpresa;
@@ -36,8 +36,8 @@ public class Pessoa {
 	public int getIdade() {
 		return _idade;
 	}
-	public String getEndereco() {
-		return _endereco.getEndereco();
+	public String getEndereco(Idioma idioma) {
+		return idioma.endereco(_endereco);
 	}
 	public String getEmail() {
 		return _email;

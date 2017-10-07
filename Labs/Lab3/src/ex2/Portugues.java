@@ -21,4 +21,8 @@ public class Portugues extends Idioma {
 	public String data(Data data) {
 		return data.getDia() + " de " + data.getMes() + " de " + data.getAno();
 	}
+	@Override
+	public String endereco(Endereco end) {
+		return end.rua()   +", "+ end.cidade() + ", " + end.estado() + ", " + end.pais();
+	}
 }

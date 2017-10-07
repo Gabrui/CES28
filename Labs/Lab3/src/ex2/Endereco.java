@@ -23,7 +23,17 @@ public class Endereco {
 	public Endereco copiar() {
 		return new Endereco(_rua,_cidade,_estado,_pais);
 	}
-	public String getEndereco() {
-		return _rua +", "+ _cidade+ ", " + _estado + ", "+_pais;
+	public String rua() {
+		return _rua;
 	}
+	public String cidade() {
+		return _cidade;
+	}
+	public String estado() {
+		return _estado;
+	}
+	public String pais() {
+		return _pais;
+	}
+	
 }
