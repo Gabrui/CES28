@@ -13,11 +13,13 @@ public abstract class Carta {
 	protected Pessoa _remetente;
 	protected Pessoa _destinatario;
 	protected Data _data;
+	protected Idioma _idioma;
 	
-	public Carta(Pessoa remetente, Pessoa destinatario, Data data) {
+	public Carta(Pessoa remetente, Pessoa destinatario, Data data, Idioma idioma) {
 		_remetente = remetente;
 		_destinatario = destinatario;
 		_data = data;
+		_idioma = idioma;
 	}
 	
 	protected String cabecalho() {
@@ -28,11 +30,11 @@ public abstract class Carta {
 	}
 	
 	protected String corpo() {
-		return "Senhor " + _destinatario.getNome() + "\n\n";
+		return _idioma.pronome()+ " " + _destinatario.getNome() + "\n\n";
 	}
 	
 	protected String conclusao() {
-		return "Atensiosamente,\n";
+		return _idioma._despedida + ",\n";
 	}
 	
 	protected String assinatura() {

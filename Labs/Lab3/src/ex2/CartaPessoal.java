@@ -12,22 +12,24 @@ public class CartaPessoal extends Carta{
 	
 	
 	
-	public CartaPessoal(Pessoa remetente, Pessoa destinatario,Data data) {
-		super(remetente,destinatario,data);
+	public CartaPessoal(Pessoa remetente, Pessoa destinatario,Data data, Idioma idioma) {
+		super(remetente,destinatario,data, idioma);
 	}
 	
-	public String modeloPortugues(String vocativo,String mensagem,String despedida) {
-		return cabecarioPortugues() + corpoPortugues(vocativo,mensagem) + despedida(despedida) + assinaturaPortugues();
+	public String modeloPortugues(String mensagem) {
+		return cabecarioPortugues() + corpoPortugues(mensagem) + despedida() + assinaturaPortugues();
 	}
 	protected String cabecarioPortugues() {
-		return _remetente.getEndereco()+ ", "+_data.getDataPortugues(" de ") + "\n\n";
+		return _remetente.getEndereco()+ ", "
+				+_idioma.data(_data)
+				+ "\n\n";
 	}
-	protected String corpoPortugues(String vocativo, String mensagem) {
-		return vocativo + " " + _destinatario.getNome()+", " +"\n\n"
+	protected String corpoPortugues(String mensagem) {
+		return _idioma.vocativo() + " " + _destinatario.getNome()+", " +"\n\n"
 				+ mensagem +"\n\n";
 	}
-	protected String despedida(String despedida){
-		return despedida +"\n\n";
+	protected String despedida(){
+		return _idioma.despedida() +"\n\n";
 	}
 	protected String assinaturaPortugues() {
 		return  _remetente.getNome()+"\n\n";

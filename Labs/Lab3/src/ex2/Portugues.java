@@ -17,4 +17,8 @@ public class Portugues extends Idioma {
 		_vocativo = "Caro";
 		_PronomeTratamento = "Senhor";
 	}
+	@Override
+	public String data(Data data) {
+		return data.getDia() + " de " + data.getMes() + " de " + data.getAno();
+	}
 }

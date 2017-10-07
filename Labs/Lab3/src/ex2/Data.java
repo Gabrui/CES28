@@ -10,10 +10,10 @@ public class Data {
 	private final String _dia;
 	private final String _mes;
 	private final String _ano;
-	public Data(String dia,String mes,String ano) {
-		_dia = dia;
+	public Data(int dia,String mes,int ano) {
+		_dia = String.valueOf(dia);
 		_mes = mes;
-		_ano = ano;
+		_ano = String.valueOf(ano);
 	}
 	public String getDia() {
 		return _dia;

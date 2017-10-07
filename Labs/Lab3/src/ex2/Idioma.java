@@ -25,4 +25,5 @@ public abstract class Idioma {
 	public String pronome() {
 		return _PronomeTratamento;
 	}
+	public abstract String data(Data data);
 }
