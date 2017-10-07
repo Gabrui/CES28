@@ -19,7 +19,7 @@ public class CartaArgumentativa extends Carta {
 	}
 	
 	protected String cabecarioPortugues() {
-		return _remetente.getEndereco() + ", "+
+		return _remetente.getEndereco(_idioma) + ", "+
 				_idioma.data(_data)
 				+ "\n\n";
 	}

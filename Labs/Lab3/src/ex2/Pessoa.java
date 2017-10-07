@@ -42,8 +42,8 @@ public class Pessoa {
 	public String getEmail() {
 		return _email;
 	}
-	public String getFone() {
-		return _fone;
+	public String getFone(Idioma idioma) {
+		return idioma.fone(_fone);
 	}
 	public void setEmprego(String emprego) {
 		_emprego = emprego;
@@ -70,7 +70,7 @@ public class Pessoa {
 		private int idade = 0;
 		private String email = "";
 		private Endereco endereco;
-		private String fone = "";
+		private Telefone fone = null;
 		private String departamento = "";
 		private String emprego = "";
 		private String nomeEmpresa = "";
@@ -99,7 +99,7 @@ public class Pessoa {
 			return this;
 		}
 		
-		public PessoaBuilder fone(String fone) {
+		public PessoaBuilder fone(Telefone fone) {
 			this.fone = fone;
 			return this;
 		}

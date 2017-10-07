@@ -25,4 +25,8 @@ public class Portugues extends Idioma {
 	public String endereco(Endereco end) {
 		return end.rua()   +", "+ end.cidade() + ", " + end.estado() + ", " + end.pais();
 	}
+	@Override
+	public String fone(Telefone fone) {
+		return "+"+ fone.DDI()+ " ("+fone.cc()+") "+" ("+fone.lc()+") "+fone.tel();
+	}
 }

@@ -22,4 +22,12 @@ public class Ingles extends Idioma {
 	public String data(Data data) {
 		return data.getDia() + " / " + data.getMes() + " / " + data.getAno();
 	}
+	@Override
+	public String endereco(Endereco end) {
+		return end.rua() +", "+end.cidade() + "   "+end.estado() +" "+ end.pais() ;
+	}
+	@Override
+	public String fone(Telefone fone) {
+		return "+" +"("+ fone.DDI() + fone.cc() + fone.lc()+")" + fone.tel();
+	}
 }

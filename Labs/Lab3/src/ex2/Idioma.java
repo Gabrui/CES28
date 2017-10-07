@@ -27,4 +27,5 @@ public abstract class Idioma {
 	}
 	public abstract String data(Data data);
 	public abstract String endereco(Endereco end);
+	public abstract String fone(Telefone fone);
 }
