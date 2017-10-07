@@ -88,6 +88,36 @@ public class Pessoa {
 		public Pessoa build() {
 			return null;
 		}
+		
+		public PessoaBuilder idade(int idade) {
+			this.idade = idade;
+			return this;
+		}
+		
+		public PessoaBuilder idade(String email) {
+			this.email = email;
+			return this;
+		}
+		
+		public PessoaBuilder fone(String fone) {
+			this.fone = fone;
+			return this;
+		}
+		
+		public PessoaBuilder departamento(String departamento) {
+			this.departamento = departamento;
+			return this;
+		}
+		
+		public PessoaBuilder emprego(String emprego) {
+			this.emprego = emprego;
+			return this;
+		}
+		
+		public PessoaBuilder nomeEmpresa(String nomeEmpresa) {
+			this.nomeEmpresa = nomeEmpresa;
+			return this;
+		}
 	}
 }
 
