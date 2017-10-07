@@ -10,7 +10,7 @@ package ex2;
  * Data da criacao: 07/10/2017
  * Representacao  da traducao de alguns parametros da Carta.
  */
-public class Idioma {
+public abstract class Idioma {
 	
 	private String _despedida;
 	private String _vocativo;
