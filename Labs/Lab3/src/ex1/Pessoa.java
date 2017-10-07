@@ -75,6 +75,9 @@ public class Pessoa {
 		private String emprego = "";
 		private String nomeEmpresa = "";
 		
+		/**
+		 * PessoaBuilder anônimo
+		 */
 		public PessoaBuilder() {
 			this.nome = "Anônimo";
 			this.endereco = new Endereco("", "", "", "");
@@ -86,7 +89,7 @@ public class Pessoa {
 		}
 		
 		public Pessoa build() {
-			return null;
+			return new Pessoa(this);
 		}
 		
 		public PessoaBuilder idade(int idade) {
@@ -94,7 +97,7 @@ public class Pessoa {
 			return this;
 		}
 		
-		public PessoaBuilder idade(String email) {
+		public PessoaBuilder email(String email) {
 			this.email = email;
 			return this;
 		}
