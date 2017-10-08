@@ -11,13 +11,6 @@ package ex3;
  */
 public abstract class ModeloComercial extends Modelo{
 
-	@Override
-	public String cabecario(Pessoa remetente, Pessoa destinatario, Data data, Idioma idioma) {
-		return remetente.getNome() + ", " + remetente.getEndereco(idioma) + "\n\n"
-				+ idioma.data(data) + "\n\n"
-				+ destinatario.getNome() + ", " + destinatario.getEndereco(idioma)
-				+ "\n\n\n";
-	}
 
 	@Override
 	public String corpo(Idioma idioma, Pessoa destinatario) {
@@ -31,13 +24,4 @@ public abstract class ModeloComercial extends Modelo{
 		return idioma.despedida() +",\n\n";
 	}
 
-	@Override
-	public String assinatura(Pessoa remetente, Idioma idioma) {
-		// TODO Auto-generated method stub
-		return  remetente.getNome() + "\n\n"
-				+remetente.getDepartamento();
-	}
-
-	
-	
 }

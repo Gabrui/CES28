@@ -12,11 +12,6 @@ package ex3;
 public abstract class ModeloPessoal extends Modelo{
 
 	@Override
-	public String cabecario(Pessoa remetente, Pessoa destinatario, Data data, Idioma idioma) {
-		return idioma.data(data) + "\n\n";		
-	}
-
-	@Override
 	public String corpo(Idioma idioma, Pessoa destinatario) {
 		return idioma.vocativo() + " " + destinatario.getNome()+", " +"\n\n"
 				+ "\n\n";
