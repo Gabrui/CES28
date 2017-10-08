@@ -14,7 +14,7 @@ public abstract class Modelo {
 	protected Idioma _idioma;
 	
 	public abstract String cabecario(Pessoa remetente, Pessoa destinatario,Data data, Idioma idioma);
-	public abstract String corpo();
+	public abstract String corpo(Idioma idioma, Pessoa destinatario);
 	public abstract String despedida(Idioma idioma);
 	public abstract String assinatura(Pessoa remetente,Idioma idioma);
 }
