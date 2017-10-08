@@ -13,7 +13,12 @@ public class CartaAnonima extends Carta {
 	
 	@Override
 	protected String cabecalho() {
-		return  _destinatario.getEndereco(_idioma) + "\n" +_data.toString() + "\n\n";
+		return  _destinatario.getEndereco(_idioma) + "\n" +_idioma.data(_data) + "\n\n";
+	}
+	
+	@Override
+	protected String conclusao() {
+		return  _idioma.despedida() + ".";
 	}
 
 }

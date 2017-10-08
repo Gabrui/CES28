@@ -27,7 +27,4 @@ public class Data {
 	public String toString() {
 		return _dia+"/"+"_mes" +"/"+_ano;
 	}
-	public String getDataPortugues(String separador) {
-		return _dia+separador+_mes +separador+_ano;
-	}
 }

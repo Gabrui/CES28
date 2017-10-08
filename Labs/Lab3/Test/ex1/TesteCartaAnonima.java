@@ -8,9 +8,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-public class TesteCartaPessoal {
+public class TesteCartaAnonima {
 	
-	@Mock private Pessoa reme;
 	@Mock private Pessoa dest;
 	@Mock private Data dia;
 	
@@ -20,7 +19,7 @@ public class TesteCartaPessoal {
 	@Before
 	public void setUp() throws Exception {
 		MockitoAnnotations.initMocks(this);
-		carta = new CartaPessoal(reme, dest, dia);
+		carta = new CartaAnonima(dest, dia);
 	}
 	
 
@@ -30,28 +29,24 @@ public class TesteCartaPessoal {
 	}
 	
 	@Test
-	public void testaModeloPortuguês() {
+	public void testaModelo() {
 		valoresPadroesMocks();
 		assertEquals(
-				"H8\n" + 
-				"01 de Outubro de 2017\n" + 
+				"H8-B 208\n" + 
+				"01/10/2017\n" + 
 				"\n" + 
 				"Caro Dylan,\n" + 
 				"\n" + 
 				"\n" + 
-				"Atensiosamente,\n" + 
-				"Gabriel"
+				"Obrigado."
 				, carta.modelo());
-				
 	}
 	
 	private void valoresPadroesMocks() {
-		Mockito.when(reme.getNome()).thenReturn("Gabriel");
-		
+		Mockito.when(dest.getEndereco()).thenReturn("H8-B 208");
 		Mockito.when(dest.getNome()).thenReturn("Dylan");
-		Mockito.when(dest.getEndereco()).thenReturn("H8");
 
-		Mockito.when(dia.toString()).thenReturn("01 de Outubro de 2017");
+		Mockito.when(dia.toString()).thenReturn("01/10/2017");
 	}
 
 }

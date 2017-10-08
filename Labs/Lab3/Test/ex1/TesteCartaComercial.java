@@ -14,7 +14,7 @@ public class TesteCartaComercial {
 	@Mock private Pessoa dest;
 	@Mock private Data dia;
 	
-	private CartaComercial carta;
+	private Carta carta;
 	
 
 	@Before
