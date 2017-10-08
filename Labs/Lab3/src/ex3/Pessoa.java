@@ -2,7 +2,7 @@
  * @author Dylan N. Sugimoto e Gabriel Adriano de Melo
  * Data da criação: 29/09/2017
  */
-package ex2;
+package ex3;
 
 
 /**

@@ -2,7 +2,7 @@
  * @author Dylan N. Sugimoto e Gabriel Adriano de Melo
  * Data da Criacao: 07/10/2017
  */
-package ex2;
+package ex3;
 
 /**
  * @author Dylan N. Sugimoto e Gabriel Adriano de Melo
@@ -15,7 +15,7 @@ public class Portugues extends Idioma {
 		
 		_despedida = "Atenciosamente";
 		_vocativo = "Caro";
-		_pronomeTratamento = "Senhor";
+		_PronomeTratamento = "Senhor";
 	}
 	@Override
 	public String data(Data data) {

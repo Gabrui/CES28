@@ -9,7 +9,7 @@ class CartaComercial extends Carta {
 	
 	@Override
 	public String modelo() {
-		return super.modelo() + informacoes();
+		return super.modelo() + informacoesFinais();
 	}
 	
 	@Override
@@ -17,7 +17,7 @@ class CartaComercial extends Carta {
 		return _remetente.getNomeEmpresa() + "\n" + super.cabecalho();
 	}
 	
-	protected String informacoes() {
+	protected String informacoesFinais() {
 		return "\n\n            __________________\n            "
 				+ _remetente.getNome() + "\n            " + _remetente.getEmprego()
 				+ "\n            "+ _remetente.getFone()

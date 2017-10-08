@@ -2,7 +2,7 @@
  * @author Dylan N. Sugimoto e Gabriel Adriano de Melo
  * Data da criação: 29/09/2017
  */
-package ex2;
+package ex3;
 
 /**
  * Classe Pai de todas os tipos de carta.
@@ -34,7 +34,7 @@ public abstract class Carta {
 	}
 	
 	protected String conclusao() {
-		return _idioma.despedida() + ",\n";
+		return _idioma._despedida + ",\n";
 	}
 	
 	protected String assinatura() {
