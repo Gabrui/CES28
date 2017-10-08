@@ -30,7 +30,7 @@ public abstract class Carta {
 	}
 	
 	protected String corpo() {
-		return _idioma.pronome()+ " " + _destinatario.getNome() + "\n\n";
+		return _idioma.pronome()+ " " + _destinatario.getNome() + ",\n\n\n";
 	}
 	
 	protected String conclusao() {
