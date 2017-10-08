@@ -29,7 +29,7 @@ public class CartaPessoal extends Carta{
 				+ mensagem +"\n\n";
 	}
 	protected String despedida(){
-		return _idioma.despedida() +"\n\n";
+		return _idioma.despedida() +",\n\n";
 	}
 	protected String assinatura() {
 		return  _remetente.getNome()+"\n\n";

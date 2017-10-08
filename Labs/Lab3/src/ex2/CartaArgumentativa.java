@@ -14,10 +14,21 @@ public class CartaArgumentativa extends Carta {
 		super(remetente,destinatario,data,idioma);
 	}
 	
-	public String modeloPortugues(String intro,String desenvolvimento,String conclusao) {
+	public String modelo(String intro, String desen,String con) {
+		if(_idioma instanceof Portugues) {
+			return modeloPortugues(intro,desen,con);
+		}
+		else if(_idioma instanceof Ingles){
+			return modeloIngles(intro,desen,con);
+		}
+		else {
+			return "Idioma da Carta inexistente.";
+		}
+	}
+	private String modeloPortugues(String intro,String desenvolvimento,String conclusao) {
 		return cabecarioPortugues() + corpoPortugues(intro,desenvolvimento,conclusao) + despedida() + assinaturaPortugues();
 	}
-	public String modeloIngles(String intro,String desenvolvimento,String conclusao) {
+	private String modeloIngles(String intro,String desenvolvimento,String conclusao) {
 		return cabecarioIngles() + corpoIngles(intro, desenvolvimento,conclusao) + despedida() + assinaturaIngles();
 	}
 	private String cabecarioIngles() {

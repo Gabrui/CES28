@@ -5,11 +5,22 @@ class CartaComercial extends Carta {
 	public CartaComercial(Pessoa remetente, Pessoa destinatario, Data data, Idioma idioma) {
 		super(remetente, destinatario, data, idioma);
 	}
+	public String modelo(String assunto, String mensagem) {
+		if(_idioma instanceof Ingles) {
+			return modeloIngles(mensagem);
+		}
+		else if(_idioma instanceof Portugues) {
+			return modeloPortugues(assunto, mensagem);
+		}
+		else {
+			return "Idioma inexistente na Carta.";
+		}
+	}
 	
-	public String modeloPortugues(String assunto,String mensagem) {
+	private String modeloPortugues(String assunto,String mensagem) {
 		return cabecarioPortugues(assunto) + corpo(mensagem) + despedida() + assinaturaPortugues();
 	}
-	public String modeloIngles(String mensagem) {
+	private String modeloIngles(String mensagem) {
 		return cabecalhoIngles() + corpo(mensagem) + despedida() + assinaturaIngles();
 	}
 	protected String cabecalhoIngles() {
