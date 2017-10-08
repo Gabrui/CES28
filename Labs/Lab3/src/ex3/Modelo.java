@@ -6,7 +6,7 @@
 package ex3;
 
 /**
- * @author Dylan N. Sugimoto
+ * @author Dylan N. Sugimoto e Gabriel Adriano de Melo
  * Classe abstrata que representa o modelo da carta.
  */
 public abstract class Modelo {
