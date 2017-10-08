@@ -8,37 +8,37 @@ package ex3;
  * Classe Pai de todas os tipos de carta.
  *
  */
-public abstract class Carta {
+public class Carta {
 
-	protected Pessoa _remetente;
-	protected Pessoa _destinatario;
-	protected Data _data;
-	protected Idioma _idioma;
+
+	private Pessoa _remetente;
+	private Pessoa _destinatario;
+	private Data _data;
+	private Idioma _idioma;
+	private Modelo _modelo;
 	
-	public Carta(Pessoa remetente, Pessoa destinatario, Data data, Idioma idioma) {
+	public Carta(Pessoa remetente, Pessoa destinatario, Data data, Idioma idioma, Modelo modelo) {
 		_remetente = remetente;
 		_destinatario = destinatario;
 		_data = data;
 		_idioma = idioma;
+		_modelo = modelo;
 	}
 	
-	protected String cabecalho() {
-		return _remetente.getNome() + "\n" + _remetente.getEndereco(_idioma) + "\n\n"
-				+ _idioma.data(_data) + "\n\n"
-				+ _destinatario.getNome() + "\n" + _destinatario.getEndereco(_idioma)
-				+ "\n\n\n";
+	private String cabecalho() {
+		return _modelo.cabecario(_remetente, _destinatario, _data, _idioma);
 	}
 	
-	protected String corpo() {
-		return _idioma.pronome()+ " " + _destinatario.getNome() + "\n\n";
+	private String corpo() {
+		return _modelo.corpo(_idioma, _destinatario);
 	}
 	
-	protected String conclusao() {
-		return _idioma._despedida + ",\n";
+	private String conclusao() {
+		return _modelo.despedida(_idioma);
 	}
 	
-	protected String assinatura() {
-		return _remetente.getNome();
+	private String assinatura() {
+		return _modelo.assinatura(_remetente, _idioma);
 	}
 	
 	public String modelo() {
