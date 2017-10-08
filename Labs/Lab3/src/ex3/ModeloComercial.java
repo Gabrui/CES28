@@ -9,7 +9,7 @@ package ex3;
  * @author Dylan N. Sugimoto e Gabriel Adriano de Melo
  * Representa o modelo da carta comercial.
  */
-public class ModeloComercial extends Modelo{
+public abstract class ModeloComercial extends Modelo{
 
 	@Override
 	public String cabecario(Pessoa remetente, Pessoa destinatario, Data data, Idioma idioma) {

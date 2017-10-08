@@ -9,7 +9,7 @@ package ex3;
  * @author Dylan N. Sugimoto e Gabriel Adriano de Melo
  * Representa o modelo comercial brasileiro
  */
-public class ModeloComercialBR {
+public class ModeloComercialBR extends ModeloComercial{
 
 	public String cabecarioPortugues(Pessoa remetente, Pessoa destinatario, Data data, Idioma idioma) {
 		return remetente.getNomeEmpresa() + "\n"
