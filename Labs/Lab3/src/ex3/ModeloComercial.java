@@ -13,8 +13,10 @@ public class ModeloComercial extends Modelo{
 
 	@Override
 	public String cabecario(Pessoa remetente, Pessoa destinatario, Data data, Idioma idioma) {
-		// TODO Auto-generated method stub
-		return null;
+		return remetente.getNome() + ", " + remetente.getEndereco(idioma) + "\n\n"
+				+ idioma.data(data) + "\n\n"
+				+ destinatario.getNome() + ", " + destinatario.getEndereco(idioma)
+				+ "\n\n\n";
 	}
 
 	@Override
@@ -26,7 +28,7 @@ public class ModeloComercial extends Modelo{
 	@Override
 	public String despedida(Idioma idioma) {
 		// Idioma trata de traduzir a despedida
-		return _idioma.despedida() +",\n\n";
+		return idioma.despedida() +",\n\n";
 	}
 
 	@Override
