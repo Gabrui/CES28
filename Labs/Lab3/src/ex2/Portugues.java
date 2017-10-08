@@ -10,13 +10,22 @@ package ex2;
  * Classe Portugues guarda alguns parametros da carta em portugues
  */
 public class Portugues extends Idioma {
-
-	public Portugues() {
-		
-		_despedida = "Atenciosamente";
-		_vocativo = "Caro";
-		_pronomeTratamento = "Senhor";
+	
+	@Override
+	public String despedida() {
+		return "Atensiosamente";
 	}
+	
+	@Override
+	public String vocativo() {
+		return "Caro";
+	}
+	
+	@Override
+	public String pronome() {
+		return "Senhor";
+	}
+	
 	@Override
 	public String data(Data data) {
 		return data.getDia() + " de " + data.getMes() + " de " + data.getAno();
@@ -29,4 +38,5 @@ public class Portugues extends Idioma {
 	public String fone(Telefone fone) {
 		return "+"+ fone.DDI()+ " ("+fone.cc()+") "+" ("+fone.lc()+") "+fone.tel();
 	}
+	
 }

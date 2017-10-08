@@ -12,19 +12,10 @@ package ex3;
  */
 public abstract class Idioma {
 	
-	protected String _despedida;
-	protected String _vocativo;
-	protected String _PronomeTratamento;
+	public abstract String despedida();
+	public abstract String vocativo();
+	public abstract String pronome();
 	
-	public String despedida() {
-		return _despedida;
-	}
-	public String vocativo() {
-		return _vocativo;
-	}
-	public String pronome() {
-		return _PronomeTratamento;
-	}
 	public abstract String data(Data data);
 	public abstract String endereco(Endereco end);
 	public abstract String fone(Telefone fone);

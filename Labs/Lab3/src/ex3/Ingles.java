@@ -12,12 +12,21 @@ package ex3;
  */
 public class Ingles extends Idioma {
 
-	public Ingles() {
-		
-		_despedida = "Gratefully";
-		_vocativo = "Dear";
-		_PronomeTratamento = "Mr.";
+	@Override
+	public String despedida() {
+		return "Gratefully";
 	}
+	
+	@Override
+	public String vocativo() {
+		return "Dear";
+	}
+	
+	@Override
+	public String pronome() {
+		return "Mr.";
+	}
+	
 	@Override
 	public String data(Data data) {
 		return data.getMes() + " / " + data.getDia() + " / " + data.getAno();
