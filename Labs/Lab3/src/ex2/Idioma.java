@@ -16,7 +16,15 @@ public abstract class Idioma {
 	public abstract String vocativo();
 	public abstract String pronome();
 	
-	public abstract String data(Data data);
-	public abstract String endereco(Endereco end);
-	public abstract String fone(Telefone fone);
+	public String data(Data data) {
+		return data.getMes() + "/" + data.getDia() + "/" + data.getAno();
+	}
+	
+	public String endereco(Endereco end) {
+		return end.rua()   +", "+ end.cidade() + ", " + end.estado() + ", " + end.pais();
+	}
+	
+	public String fone(Telefone fone) {
+		return "+"+ fone.DDI()+ " ("+fone.cc()+") "+" ("+fone.lc()+") "+fone.tel();
+	}
 }
