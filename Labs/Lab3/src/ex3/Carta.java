@@ -41,7 +41,7 @@ public class Carta {
 		return _modelo.assinatura(_remetente, _idioma);
 	}
 	
-	public String modelo() {
+	public String lerCarta() {
 		return cabecalho() + corpo() + conclusao() + assinatura();
 	}
 
