@@ -40,7 +40,7 @@ public class TesteCartaComercial {
 				"01/10/2017\n" + 
 				"\n" + 
 				"Dylan\n" + 
-				"H8-B 208\n" + 
+				"H8-B 205\n" + 
 				"\n" + 
 				"\n" + 
 				"Prezado senhor Dylan,\n" + 
@@ -66,7 +66,7 @@ public class TesteCartaComercial {
 		Mockito.when(reme.getNome()).thenReturn("Gabriel");
 		Mockito.when(reme.getNomeEmpresa()).thenReturn("ITA");
 		
-		Mockito.when(dest.getEndereco()).thenReturn("H8-B 208");
+		Mockito.when(dest.getEndereco()).thenReturn("H8-B 205");
 		Mockito.when(dest.getNome()).thenReturn("Dylan");
 
 		Mockito.when(dia.toString()).thenReturn("01/10/2017");

@@ -12,21 +12,30 @@ public class Endereco {
 	private String _estado;
 	private String _pais;
 	
-	public Endereco(String rua,String cidade,String estado,String pais) {
-		
+	public Endereco(String rua, String cidade, String estado, String pais) {
 		_rua = rua;
 		_cidade = cidade;
 		_estado = estado;
 		_pais = pais;
-		
 	}
-	public Endereco copiar() {
-		return new Endereco(_rua,_cidade,_estado,_pais);
-	}
+	
 	public String getEndereco() {
 		return _rua +", "+ _cidade+ ", " + _estado + ", "+_pais;
 	}
+	
+	public String getRua() {
+		return _rua;
+	}
+	
 	public String getCidade() {
 		return _cidade;
+	}
+	
+	public String getEstado() {
+		return _estado;
+	}
+	
+	public String getPais() {
+		return _pais;
 	}
 }

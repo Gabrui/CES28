@@ -19,18 +19,22 @@ public class TesteData {
 		assertNotNull(hoje);
 	}
 	
+	@Test
 	public void testaGetDia() {
 		assertEquals("01", hoje.getDia());
 	}
-	
+
+	@Test
 	public void testaGetMes() {
 		assertEquals("10", hoje.getMes());
 	}
-	
+
+	@Test
 	public void testaGetAno() {
 		assertEquals("2017", hoje.getAno());
 	}
-	
+
+	@Test
 	public void testaToString() {
 		assertEquals("01/10/2017", hoje.toString());
 	}

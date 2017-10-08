@@ -25,6 +25,6 @@ public class Data {
 		return _ano;
 	}
 	public String toString() {
-		return _dia+"/"+"_mes" +"/"+_ano;
+		return _dia+"/"+_mes +"/"+_ano;
 	}
 }
