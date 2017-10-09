@@ -25,6 +25,6 @@ public abstract class Idioma {
 	}
 	
 	public String fone(Telefone fone) {
-		return "+"+ fone.getDDI()+ " ("+fone.getCC()+") "+" ("+fone.getLC()+") "+fone.getTel(4);
+		return "+"+ fone.getDDI()+ " ("+fone.getCC()+")"+" ("+fone.getLC()+") "+fone.getTel(5);
 	}
 }
