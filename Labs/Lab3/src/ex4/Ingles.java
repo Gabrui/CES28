@@ -11,15 +11,27 @@ package ex4;
  * Classe Ingles guarda alguns parametros da carta em ingles
  */
 public class Ingles extends Idioma {
+	
+	protected static Idioma instance = new Ingles();
+	
+	private Ingles() {
+		super();
+	}
 
-	public Ingles() {
-		
-		_despedida = new FormatoDespedidaInglesPadrao();
-		_vocativo = new FormatoVocativoInglesPadrao();
-		_pronome = new FormatoPronomeInglesPadrao();
-		_end = new FormatoEnderecoInglesPadrao();
-		_fone = new FormatoFoneInglesPadrao();
-		_data = new FormatoDataInglesPadrao();
-		
+	protected Ingles (InglesBuilder b) {
+		super(b);
+	}
+	
+	// Ingles.InglesBuilder().assinatura(Portugues.getInstance())).build()
+	public static class InglesBuilder extends Builder {
+		public InglesBuilder() {
+			super(new Ingles());
+		}
+	}
+
+	@Override
+	public String despedidaFormato() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

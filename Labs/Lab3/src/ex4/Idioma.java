@@ -12,20 +12,34 @@ package ex4;
  */
 public abstract class Idioma {
 	
-	protected FormatoDespedida _despedida;
-	protected FormatoVocativo _vocativo;
+	protected static Idioma instance;
+	
+	protected Idioma _despedida = this;
+	/*
+	protected FormatoVocativo _vocativo = this;
 	protected FormatoPronome _pronome;
 	protected FormatoData _data;
 	protected FormatoEndereco _end;
 	protected FormatoFone _fone;
+	*/
 	
-	public  String despedida() {
+	protected Idioma() { // Construtor padrão
+	}
+	
+	protected Idioma(Builder b) {
+		// TODO
+	}
+	
+	static public Idioma getInstance() {
+		return instance;
+	}
+	
+	public abstract String despedidaFormato();
+	
+	public final String despedida() {
 		return _despedida.despedida();
 	}
-	public String despedida(FormatoDespedida format){
-		_despedida = format;
-		return despedida();
-	}	
+	/*
 	public  String vocativo() {
 		return _vocativo.vocativo();
 	}
@@ -60,5 +74,25 @@ public abstract class Idioma {
 	public String fone(Telefone fone,FormatoFone format) {
 		_fone = format;
 		return fone(fone);
+	}
+	*/
+	protected abstract static class Builder {
+		protected Idioma principal;
+		protected Idioma despedida;
+		
+		public Builder(Idioma idioma) {
+			principal = idioma;
+			despedida = idioma;
+			// TODO
+		}
+		
+		public Builder despedida(Idioma depedida) {
+			this.despedida = despedida;
+			return this;
+		}
+		
+		public Idioma build() {
+			return principal;
+		}
 	}
 }
