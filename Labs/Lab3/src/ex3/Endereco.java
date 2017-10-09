@@ -20,19 +20,24 @@ public class Endereco {
 		_pais = pais;
 		
 	}
+	
 	public Endereco copiar() {
 		return new Endereco(_rua,_cidade,_estado,_pais);
 	}
-	public String rua() {
+	
+	public String getRua() {
 		return _rua;
 	}
-	public String cidade() {
+	
+	public String getCidade() {
 		return _cidade;
 	}
-	public String estado() {
+	
+	public String getEstado() {
 		return _estado;
 	}
-	public String pais() {
+	
+	public String getPais() {
 		return _pais;
 	}
 	

@@ -34,36 +34,35 @@ public class Pessoa {
 	public String getNome() {
 		return _nome;
 	}
+	
 	public int getIdade() {
 		return _idade;
 	}
+	
 	public String getEndereco(Idioma idioma) {
 		return idioma.endereco(_endereco);
 	}
+	
 	public String getEmail() {
 		return _email;
 	}
+	
 	public String getFone(Idioma idioma) {
 		return idioma.fone(_fone);
 	}
-	public void setEmprego(String emprego) {
-		_emprego = emprego;
-	}
-	public void setDepartamento(String departamento) {
-		_departamento = departamento;
-	}
-	public void setEmpresa(String empresa) {
-		_nomeEmpresa = empresa;
-	}
+	
 	public String getDepartamento() {
 		return _departamento;
 	}
+	
 	public String getEmprego() {
 		return _emprego;
 	}
+	
 	public String getNomeEmpresa() {
 		return _nomeEmpresa;
 	}
+	
 	
 	public static class PessoaBuilder {
 		
@@ -95,7 +94,7 @@ public class Pessoa {
 			return this;
 		}
 		
-		public PessoaBuilder idade(String email) {
+		public PessoaBuilder email(String email) {
 			this.email = email;
 			return this;
 		}
