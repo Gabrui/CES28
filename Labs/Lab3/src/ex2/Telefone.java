@@ -22,23 +22,23 @@ public class Telefone {
 		_tel = String.valueOf(tel);
 	}
 	
-	public String DDI() {
+	public String getDDI() {
 		return _DDI;
 	}
 	
-	public String cc() {
+	public String getCC() {
 		return _cc;
 	}
 	
-	public String lc() {
+	public String getLC() {
 		return _lc;
 	}
 	
-	public String tel() {
+	public String getTel() {
 		return _tel;
 	}
 	
-	public String tel(int posicaoSeparador) {
+	public String getTel(int posicaoSeparador) {
 		return _tel.substring(0, _tel.length() - posicaoSeparador) + 
 				"-" +  _tel.substring(_tel.length() - posicaoSeparador);
 	}

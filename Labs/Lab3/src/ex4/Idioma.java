@@ -55,7 +55,7 @@ public abstract class Idioma {
 		return endereco(end);
 	}
 	public String fone(Telefone fone) {
-		return _fone.fone(fone.DDI(), fone.cc(),fone.lc(),fone.tel());
+		return _fone.fone(fone.getDDI(), fone.getCC(),fone.getLC(),fone.getTel());
 	}
 	public String fone(Telefone fone,FormatoFone format) {
 		_fone = format;
