@@ -37,7 +37,7 @@ public abstract class Idioma {
 	}
 	
 	protected Idioma(Builder b) {
-		// TODO
+		
 		_despedida = b._despedida;
 		_vocativo = b._vocativo;
 		_pronome = b._pronome;

@@ -31,37 +31,34 @@ public class Ingles extends Idioma {
 
 	@Override
 	public String despedidaFormato() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Gratefully";
 	}
 
 	@Override
 	protected String vocativoFormato() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Dear";
 	}
 
 	@Override
 	protected String pronomeFormato() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Mr.";
 	}
 
 	@Override
 	protected String dataFormato(String dia, String mes, String ano) {
-		// TODO Auto-generated method stub
-		return null;
+		// Date's Format: Month/Day/Year
+				return mes+"/"+dia+"/"+ano;
 	}
 
 	@Override
 	protected String enderecoFormato(String rua, String cidade, String estado, String pais) {
-		// TODO Auto-generated method stub
-		return null;
+		return rua +", "+cidade 
+				+ "   "+estado +" "+ pais ;
 	}
 
 	@Override
 	protected String foneFormato(String DDI, String cc, String lc, String tel) {
-		// TODO Auto-generated method stub
-		return null;
+		// cc: codigo do pais / lc: codigo local.
+				return DDI+" - "+cc+" - "+"("+lc+") "+tel;
 	}
 }
