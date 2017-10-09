@@ -12,19 +12,53 @@ package ex4;
  */
 public abstract class Idioma {
 	
-	public abstract String despedida();
-	public abstract String vocativo();
-	public abstract String pronome();
+	protected FormatoDespedida _despedida;
+	protected FormatoVocativo _vocativo;
+	protected FormatoPronome _pronome;
+	protected FormatoData _data;
+	protected FormatoEndereco _end;
+	protected FormatoFone _fone;
 	
+	public  String despedida() {
+		return _despedida.despedida();
+	}
+	public String despedida(FormatoDespedida format){
+		_despedida = format;
+		return despedida();
+	}	
+	public  String vocativo() {
+		return _vocativo.vocativo();
+	}
+	public String vocativo(FormatoVocativo format) {
+		_vocativo = format;
+		return vocativo();
+	}
+	public  String pronome() {
+		return _pronome.pronome();
+	}
+	public String pronome(FormatoPronome format) {
+		_pronome = format;
+		return pronome();
+	}
 	public String data(Data data) {
-		return data.getMes() + "/" + data.getDia() + "/" + data.getAno();
+		return _data.data(data.getDia(),data.getMes(),data.getAno());
 	}
-	
+	public String data(Data data,FormatoData format) {
+		_data = format;
+		return data(data);
+	}
 	public String endereco(Endereco end) {
-		return end.getRua()   +", "+ end.getCidade() + ", " + end.getEstado() + ", " + end.getPais();
+		return _end.endereco(end.getRua(),end.getCidade(), end.getEstado(), end.getPais());
 	}
-	
+	public String endereco(Endereco end,FormatoEndereco format) {
+		_end = format;
+		return endereco(end);
+	}
 	public String fone(Telefone fone) {
-		return "+"+ fone.DDI()+ " ("+fone.cc()+") "+" ("+fone.lc()+") "+fone.tel();
+		return _fone.fone(fone.DDI(), fone.cc(),fone.lc(),fone.tel());
+	}
+	public String fone(Telefone fone,FormatoFone format) {
+		_fone = format;
+		return fone(fone);
 	}
 }

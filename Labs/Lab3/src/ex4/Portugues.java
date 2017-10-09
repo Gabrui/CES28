@@ -11,24 +11,15 @@ package ex4;
  */
 public class Portugues extends Idioma {
 	
-	@Override
-	public String despedida() {
-		return "Atensiosamente";
-	}
-	
-	@Override
-	public String vocativo() {
-		return "Caro";
-	}
-	
-	@Override
-	public String pronome() {
-		return "Senhor";
-	}
-	
-	@Override
-	public String data(Data data) {
-		return data.getDia() + " de " + data.getMes() + " de " + data.getAno();
+public Portugues() {
+		
+		_despedida = new FormatoDespedidaPortuguesPadrao();
+		_vocativo = new FormatoVocativoPortuguesPadrao();
+		_pronome = new FormatoPronomePortuguesPadrao();
+		_end = new FormatoEnderecoPortuguesPadrao();
+		_fone = new FormatoFonePortuguesPadrao();
+		_data = new FormatoDataPortuguesPadrao();
+		
 	}
 	
 }
