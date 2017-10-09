@@ -14,7 +14,12 @@ public abstract class Idioma {
 	
 	protected static Idioma instance;
 	
-	protected Idioma _despedida = this;
+	protected Idioma _despedida;
+	protected Idioma _vocativo;
+	protected Idioma _pronome;
+	protected Idioma _data;
+	protected Idioma _end;
+	protected Idioma _fone;
 	/*
 	protected FormatoVocativo _vocativo = this;
 	protected FormatoPronome _pronome;
@@ -24,75 +29,92 @@ public abstract class Idioma {
 	*/
 	
 	protected Idioma() { // Construtor padrão
+		
+		_despedida = this;
+		_vocativo = this;
+		_pronome = this;
+		_data = this;
+		_end = this;
+		_fone = this;
 	}
 	
 	protected Idioma(Builder b) {
 		// TODO
+		_despedida = b._despedida;
+		_vocativo = b._vocativo;
+		_pronome = b._pronome;
+		_data = b._data;
+		_end = b._end;
+		_fone = b._fone;
 	}
 	
 	static public Idioma getInstance() {
 		return instance;
 	}
 	
-	public abstract String despedidaFormato();
+	protected abstract String despedidaFormato();
 	
 	public final String despedida() {
-		return _despedida.despedida();
+		return _despedida.despedidaFormato();
 	}
-	/*
+	protected abstract String vocativoFormato();
+	
+	
 	public  String vocativo() {
-		return _vocativo.vocativo();
+		return _vocativo.vocativoFormato();
 	}
-	public String vocativo(FormatoVocativo format) {
-		_vocativo = format;
-		return vocativo();
-	}
+	
+	protected abstract String pronomeFormato();
+	
 	public  String pronome() {
-		return _pronome.pronome();
+		return _pronome.pronomeFormato();
 	}
-	public String pronome(FormatoPronome format) {
-		_pronome = format;
-		return pronome();
+	
+	protected abstract String dataFormato(String dia,String mes,String ano);
+	
+	public String data(String dia, String mes, String ano) {
+		return _data.dataFormato(dia,mes,ano);
 	}
-	public String data(Data data) {
-		return _data.data(data.getDia(),data.getMes(),data.getAno());
+	
+	protected abstract String enderecoFormato(String rua, String cidade, String estado,String pais);
+	
+	public String endereco(String rua, String cidade, String estado, String pais) {
+		return _end.enderecoFormato(rua,cidade, estado,pais);
 	}
-	public String data(Data data,FormatoData format) {
-		_data = format;
-		return data(data);
+	
+	protected abstract String foneFormato(String DDI,String cc,String lc,String tel);
+	public String fone(String DDI,String cc,String lc,String tel) {
+		return _fone.foneFormato(DDI, cc,lc,tel);
 	}
-	public String endereco(Endereco end) {
-		return _end.endereco(end.getRua(),end.getCidade(), end.getEstado(), end.getPais());
-	}
-	public String endereco(Endereco end,FormatoEndereco format) {
-		_end = format;
-		return endereco(end);
-	}
-	public String fone(Telefone fone) {
-		return _fone.fone(fone.getDDI(), fone.getCC(),fone.getLC(),fone.getTel());
-	}
-	public String fone(Telefone fone,FormatoFone format) {
-		_fone = format;
-		return fone(fone);
-	}
-	*/
 	protected abstract static class Builder {
-		protected Idioma principal;
-		protected Idioma despedida;
+		private Idioma _despedida;
+		private Idioma _vocativo;
+		private Idioma _pronome;
+		private Idioma _data;
+		private Idioma _end;
+		private Idioma _fone;
+		private Idioma _principal;
 		
 		public Builder(Idioma idioma) {
-			principal = idioma;
-			despedida = idioma;
+			_principal = idioma;
+			_despedida = idioma;
+			_pronome = idioma;
+			_data = idioma;
+			_end = idioma;
+			_fone = idioma;
 			// TODO
 		}
 		
-		public Builder despedida(Idioma depedida) {
-			this.despedida = despedida;
+		public Builder despedida(Idioma despedida) {
+			this._despedida = despedida;
 			return this;
 		}
-		
+		public Builder vocativo(Idioma vocativo) {
+			_vocativo = vocativo;
+			return this;
+		}
 		public Idioma build() {
-			return principal;
+			return _principal;
 		}
 	}
 }
