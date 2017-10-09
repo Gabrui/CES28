@@ -13,7 +13,7 @@ public abstract class Carta {
 	protected Pessoa _remetente;
 	protected Pessoa _destinatario;
 	protected Data _data;
-	private String vocativo = "Caro";
+	private String _vocativo = "Caro";
 	
 	
 	public Carta(Pessoa remetente, Pessoa destinatario, Data data) {
@@ -23,7 +23,7 @@ public abstract class Carta {
 	}
 	
 	protected final void setVocativo(String vocativo) {
-		this.vocativo = vocativo;
+		_vocativo = vocativo;
 	}
 	
 	protected String cabecalho() {
@@ -34,7 +34,7 @@ public abstract class Carta {
 	}
 	
 	protected String corpo() {
-		return vocativo + " " + _destinatario.getNome() + ",\n\n\n";
+		return _vocativo + " " + _destinatario.getNome() + ",\n\n\n";
 	}
 	
 	protected String conclusao() {

@@ -29,7 +29,7 @@ public class Ingles extends Idioma {
 	
 	@Override
 	public String endereco(Endereco end) {
-		return end.rua() +", "+end.cidade() + "   "+end.estado() +" "+ end.pais() ;
+		return end.getRua() +", "+end.getCidade() + "   "+end.getEstado() +" "+ end.getPais() ;
 	}
 	@Override
 	public String fone(Telefone fone) {

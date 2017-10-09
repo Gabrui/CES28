@@ -21,7 +21,7 @@ public abstract class Idioma {
 	}
 	
 	public String endereco(Endereco end) {
-		return end.rua()   +", "+ end.cidade() + ", " + end.estado() + ", " + end.pais();
+		return end.getRua()   +", "+ end.getCidade() + ", " + end.getEstado() + ", " + end.getPais();
 	}
 	
 	public String fone(Telefone fone) {
