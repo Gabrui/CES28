@@ -13,7 +13,7 @@ public class ModeloArgumentativaBR extends ModeloArgumentativa{
 	@Override
 	public String cabecario(Pessoa remetente, Pessoa destinatario, Data data, Idioma idioma) {
 		return remetente.getEndereco(idioma) + ", "+
-				idioma.data(data)
+				idioma.data(data.getDia(),data.getMes(),data.getAno())
 				+ "\n\n";
 	}
 

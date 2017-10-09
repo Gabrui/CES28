@@ -16,7 +16,7 @@ public class ModeloComercialBR extends ModeloComercial{
 		return remetente.getNomeEmpresa() + "\n"
 				+ remetente.getDepartamento() + "\n"
 				+ remetente.getEndereco(idioma) + ", "
-				+ idioma.data(data)
+				+ idioma.data(data.getDia(),data.getMes(),data.getAno())
 				+ "\n"
 				+ "Assunto: " + "\n\n";
 	}

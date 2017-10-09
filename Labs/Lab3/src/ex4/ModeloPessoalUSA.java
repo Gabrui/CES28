@@ -13,7 +13,7 @@ public class ModeloPessoalUSA extends ModeloPessoal{
 	
 	@Override
 	public String cabecario(Pessoa remetente, Pessoa destinatario,Data data, Idioma idioma) {
-		return  idioma.data(data) + "\n"
+		return  idioma.data(data.getDia(),data.getMes(),data.getAno()) + "\n"
 				+remetente.getNome()+", "+remetente.getEndereco(idioma) + "."
 				+ "\n\n";
 	}

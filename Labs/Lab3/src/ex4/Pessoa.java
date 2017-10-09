@@ -40,7 +40,7 @@ public class Pessoa {
 	}
 	
 	public String getEndereco(Idioma idioma) {
-		return idioma.endereco(_endereco);
+		return idioma.endereco(_endereco.getRua(),_endereco.getCidade(),_endereco.getEstado(),_endereco.getPais());
 	}
 	
 	public String getEmail() {
@@ -48,7 +48,7 @@ public class Pessoa {
 	}
 	
 	public String getFone(Idioma idioma) {
-		return idioma.fone(_fone);
+		return idioma.fone(_fone.getDDI(),_fone.getCC(),_fone.getLC(),_fone.getTel());
 	}
 	
 	public String getDepartamento() {
