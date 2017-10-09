@@ -32,10 +32,12 @@ public class TesteIngles {
 	
 	@Test
 	public void testaSingleton() {
-		System.out.println(Idioma.getInstance());
-		System.out.println(Ingles.getInstance());
-		
-		assertFalse(Idioma.getInstance() == Ingles.getInstance());
+		assertNotNull(Ingles.INSTANCE);
+	}
+	
+	@Test
+	public void testa() {
+		Mockito.when(telefone.getCC()).thenReturn("23");
 	}
 	
 }

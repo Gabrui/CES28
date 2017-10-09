@@ -12,7 +12,7 @@ package ex4;
  */
 public class Ingles extends Idioma {
 	
-	protected static Idioma instance = new Ingles();
+	public static final Ingles INSTANCE = new Ingles();
 	
 	private Ingles() {
 		super();
@@ -31,6 +31,36 @@ public class Ingles extends Idioma {
 
 	@Override
 	public String despedidaFormato() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected String vocativoFormato() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected String pronomeFormato() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected String dataFormato(String dia, String mes, String ano) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected String enderecoFormato(String rua, String cidade, String estado, String pais) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected String foneFormato(String DDI, String cc, String lc, String tel) {
 		// TODO Auto-generated method stub
 		return null;
 	}

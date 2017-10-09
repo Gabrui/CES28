@@ -12,8 +12,6 @@ package ex4;
  */
 public abstract class Idioma {
 	
-	protected static Idioma instance;
-	
 	protected Idioma _despedida;
 	protected Idioma _vocativo;
 	protected Idioma _pronome;
@@ -46,10 +44,6 @@ public abstract class Idioma {
 		_data = b._data;
 		_end = b._end;
 		_fone = b._fone;
-	}
-	
-	static public Idioma getInstance() {
-		return instance;
 	}
 	
 	protected abstract String despedidaFormato();
