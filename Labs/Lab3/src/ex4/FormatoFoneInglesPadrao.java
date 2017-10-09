@@ -7,7 +7,7 @@ package ex4;
 
 /**
  * @author Dylan N. Sugimoto e Gabriel Adriano de Melo
- * Representao formato do telefone.
+ * Representao formato do telefone ingles padrao.
  *
  */
 public class FormatoFoneInglesPadrao extends FormatoFone{
