@@ -109,7 +109,7 @@ public class TesteIntegracao {
 				"            __________________\n" + 
 				"            Gabriel\n" + 
 				"            Desenvolvedor\n" + 
-				"            +55 (0)  (12) 394-77891\n" + 
+				"            +55 (0)  (12) 3947-7891\n" + 
 				"            email:gaadrime.melo@gmail.com",
 				comercial.modelo());
 	}

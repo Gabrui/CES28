@@ -33,6 +33,6 @@ public class Ingles extends Idioma {
 	}
 	@Override
 	public String fone(Telefone fone) {
-		return "+" +"("+ fone.DDI() + fone.cc() + fone.lc()+")" + fone.tel();
+		return "+" +"("+ fone.DDI() + fone.cc() + fone.lc()+")" + fone.tel(5);
 	}
 }

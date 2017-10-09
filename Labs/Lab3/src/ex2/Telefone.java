@@ -10,30 +10,36 @@ package ex2;
  *
  */
 public class Telefone {
-
 	private String _DDI; //
-	private String _cc; //Country Code
-	private String _lc; //Local Code
+	private String _cc;  // Country Code
+	private String _lc;  // Local Code
 	private String _tel; // Telefone
 	
 	public Telefone(int DDI, int cc, int lc, int tel) {
-		
 		_DDI = String.valueOf(DDI);
 		_cc = String.valueOf(cc);
 		_lc = String.valueOf(lc);
-		String telefone = String.valueOf(tel);
-		_tel = telefone.substring(0 ,telefone.length() - 5) + "-" +  telefone.substring(telefone.length() - 5);
+		_tel = String.valueOf(tel);
 	}
+	
 	public String DDI() {
 		return _DDI;
 	}
+	
 	public String cc() {
 		return _cc;
 	}
+	
 	public String lc() {
 		return _lc;
 	}
+	
 	public String tel() {
 		return _tel;
+	}
+	
+	public String tel(int posicaoSeparador) {
+		return _tel.substring(0, _tel.length() - posicaoSeparador) + 
+				"-" +  _tel.substring(_tel.length() - posicaoSeparador);
 	}
 }
