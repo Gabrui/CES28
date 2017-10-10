@@ -1,0 +1,33 @@
+title Diagrama de Sequência Mercado
+
+Aplicação -> +FacadeCliente: new FacadeClient(nome, id)
+FacadeCliente -> +GerenciaCliente: new GerenciaCliente(nome, id)
+GerenciaCliente -> +Cliente: Cliente.create(nome, id)
+Cliente -> +Carrinho: Carrinho.create()
+Carrinho --> -Cliente: carrinho
+Cliente-->-GerenciaCliente: cliente
+GerenciaCliente -> BancoDeDados: registrarCliente(cliente)
+GerenciaCliente-->-FacadeCliente: gerente
+FacadeCliente -->- Aplicação: facade
+
+Aplicação -> FacadeCliente: adicionaProduto(id)
+FacadeCliente -> GerenciaCliente: adicionaProduto(id)
+GerenciaCliente -> +BancoDeDados: selectProduto(id)
+BancoDeDados --> -GerenciaCliente: produto
+GerenciaCliente -> Cliente: adicionaProduto(produto)
+Cliente -> Carrinho: adicionaProduto(produto)
+
+Aplicação -> +FacadeCliente: getTotal()
+FacadeCliente -> +GerenciaCliente: getTotal()
+GerenciaCliente -> +Cliente: getTotal()
+Cliente -> +Carrinho: getValor()
+Carrinho -->- Cliente: valor
+Cliente -->- GerenciaCliente: total
+GerenciaCliente -->- FacadeCliente: total
+FacadeCliente -->- Aplicação: total
+
+Aplicação -> FacadeCliente: processarPagamento(valor)
+FacadeCliente -> GerenciaCliente: processarPagamento(valor)
+GerenciaCliente -> BancoDeDados: processarPagamento(cliente, valor)
+BancoDeDados -> +Cliente: getID()
+Cliente --> - BancoDeDados: id
