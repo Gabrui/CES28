@@ -73,7 +73,8 @@ public abstract class Idioma {
 	public String fone(String DDI,String cc,String lc,String tel) {
 		return _fone.foneFormato(DDI, cc,lc,tel);
 	}
-	protected abstract static class Builder {
+	
+	public static class Builder {
 		private Idioma _despedida;
 		private Idioma _vocativo;
 		private Idioma _pronome;

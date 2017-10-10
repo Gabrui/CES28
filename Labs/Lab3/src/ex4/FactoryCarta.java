@@ -75,7 +75,7 @@ public class FactoryCarta {
 	}
 	public void configIdiomaData(String idioma) {
 		Idioma Idiomadata = _listIdioma.get(idioma);
-		Idioma.Builder builder = new _idioma.Builder(_idioma);
+		Idioma.Builder builder = new Idioma.Builder(_idioma);
 		builder.data(Idiomadata);
 		_idioma = builder.build();
 	}
