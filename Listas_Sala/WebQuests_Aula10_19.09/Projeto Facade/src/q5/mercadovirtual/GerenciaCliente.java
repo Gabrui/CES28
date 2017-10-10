@@ -23,7 +23,7 @@ public class GerenciaCliente {
 	}
 	
 	public void adicionaProduto(int i) {
-		Produto produto = banco.selectProduto(223);
+		Produto produto = banco.selectProduto(i);
 		car.adicionar(produto);
 	}
 	
