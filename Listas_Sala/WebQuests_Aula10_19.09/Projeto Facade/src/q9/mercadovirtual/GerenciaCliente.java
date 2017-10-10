@@ -8,10 +8,9 @@ public class GerenciaCliente {
 	private BancoDeDados banco;
 	private Cliente cliente;
 	private Produto ultimoProdutoAdicionado;
-	private static int ultimoClienteID = 0;
 	
-	public GerenciaCliente (String nome) {
-		cliente = Cliente.create(nome, ultimoClienteID++);
+	public GerenciaCliente (String nome, int id) {
+		cliente = Cliente.create(nome, id);
 		BancoDeDados banco = BancoDeDados.getInstance();
 		banco.registrarCliente(cliente);
 	}

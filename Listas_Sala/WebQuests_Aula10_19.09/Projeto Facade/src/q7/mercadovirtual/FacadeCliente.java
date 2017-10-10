@@ -1,4 +1,4 @@
-package q9.mercadovirtual;
+package q7.mercadovirtual;
 
 public class FacadeCliente {
 	private GerenciaCliente ger;

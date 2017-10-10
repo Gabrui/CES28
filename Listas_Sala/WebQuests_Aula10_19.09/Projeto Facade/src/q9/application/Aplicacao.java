@@ -1,6 +1,6 @@
-package q7.application;
+package q9.application;
 
-import q7.mercadovirtual.FacadeCliente;
+import q9.mercadovirtual.FacadeCliente;
 
 /**
  * O banco de dados agora é um singleton.
