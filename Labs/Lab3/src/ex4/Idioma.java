@@ -18,14 +18,7 @@ public abstract class Idioma {
 	protected Idioma _data;
 	protected Idioma _end;
 	protected Idioma _fone;
-	/*
-	protected FormatoVocativo _vocativo = this;
-	protected FormatoPronome _pronome;
-	protected FormatoData _data;
-	protected FormatoEndereco _end;
-	protected FormatoFone _fone;
-	*/
-	
+
 	protected Idioma() { // Construtor padrão
 		
 		_despedida = this;
@@ -96,7 +89,6 @@ public abstract class Idioma {
 			_data = idioma;
 			_end = idioma;
 			_fone = idioma;
-			// TODO
 		}
 		
 		public Builder despedida(Idioma despedida) {
@@ -105,6 +97,22 @@ public abstract class Idioma {
 		}
 		public Builder vocativo(Idioma vocativo) {
 			_vocativo = vocativo;
+			return this;
+		}
+		public Builder pronome(Idioma pronome) {
+			_pronome = pronome;
+			return this;
+		}
+		public Builder data(Idioma data) {
+			_data = data;
+			return this;
+		}
+		public Builder endereco(Idioma end) {
+			_end = end;
+			return this;
+		}
+		public Builder fone(Idioma fone) {
+			_fone = fone;
 			return this;
 		}
 		public Idioma build() {
