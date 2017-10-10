@@ -18,10 +18,12 @@ public class FactoryCarta {
 	private Idioma _idioma;
 	private Modelo _modelo;
 	private HashMap<String,Idioma> _listIdioma;
+	//private HashMap<Idioma,HashMap<Class<Modelo>,Class<Modelo>>> _idiomasModelos;
 	
 	public FactoryCarta(Pessoa remetente, Pessoa destinatario, Data data, String idioma) {
 		
 		_listIdioma = new HashMap<String, Idioma>();
+		//_idiomasModelos = new HashMap<>();
 		montarListIdioma();
 		_remetente = remetente;
 		_destinatario = destinatario;
@@ -31,8 +33,15 @@ public class FactoryCarta {
 		
 	}
 	private void montarListIdioma() {
-		_listIdioma.put("portugues",new Portugues.PortuguesBuilder().build());
-		_listIdioma.put("ingles", new Ingles.InglesBuilder().build());
+		_listIdioma.put("portugues", Portugues.INSTANCE);
+		_listIdioma.put("ingles", Ingles.INSTANCE);
+	}
+	private void montarIdiomasModelos() {
+		/*
+		HashMap<Class<Modelo>, Class<Modelo>> modelosComerciais = new HashMap<>();
+		modelosComerciais.put(ModeloComercial.class, ModeloComercialUSA.class);
+		_idiomasModelos.put(Ingles.INSTANCE, modelo)
+		*/
 	}
 	private void setIdioma(String idioma) {
 		

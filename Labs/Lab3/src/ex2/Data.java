@@ -2,7 +2,7 @@ package ex2;
 /**
  * Data da criacao: 29/09/2017
  * @author Dylan N. Sugimoto e Gabriel Adriano de Melo
- * Classe para armazenar datas e suas possiveis formatacoes.
+ * Classe para armazenar datas.
  */
 public class Data {
 	

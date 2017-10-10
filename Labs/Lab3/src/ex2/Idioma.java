@@ -9,6 +9,9 @@ package ex2;
  * @author Dylan N. Sugimoto e Gabriel Adriano de Melo
  * Data da criacao: 07/10/2017
  * Representacao  da traducao de alguns parametros da Carta.
+ * 
+ * COMENTÁRIO:
+ * 
  */
 public abstract class Idioma {
 	

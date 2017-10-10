@@ -6,8 +6,7 @@
 package ex2;
 
 /**
- * @author Dylan N. Sugimoto e Gabriel Adriano de Melo
- *
+ * Representação de um número de telefone com os seus códigos.
  */
 public class Telefone {
 	private String _DDI; //
