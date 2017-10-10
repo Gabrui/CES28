@@ -1,6 +1,7 @@
 package q2.application;
 
 import q2.mercadovirtual.GerenciaCliente;
+
 public class Aplicacao {
 	public static void main(String[] args) {
 		GerenciaCliente g = new GerenciaCliente("ZÉ", 123);

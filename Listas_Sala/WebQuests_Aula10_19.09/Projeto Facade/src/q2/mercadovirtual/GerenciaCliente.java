@@ -1,22 +1,31 @@
 package q2.mercadovirtual;
 
+import q1.mercadovirtual.*;
 
 public class GerenciaCliente {
 	BancoDeDados banco;
-	public GerenciaCliente (String string, int i) {
+	Carrinho car;
+	Cliente cliente;
+	
+	public GerenciaCliente (String nome, int id) {
+		cliente = Cliente.create(nome, id);
 		BancoDeDados banco = new BancoDeDados();
+		Carrinho car = Carrinho.create();
+		
+		cliente.adicionarCarrinho(car);
+		banco.registrarCliente(cliente);
 	}
 	
 	public void adicionaProduto(int i) {
-		// TODO Auto-generated method stub
-		
+		Produto produto = banco.selectProduto(223);
+		car.adicionar(produto);
 	}
+	
 	public double getTotal() {
-		// TODO Auto-generated method stub
-		return 0;
+		return car.getTotal();
 	}
+	
 	public void processarPagamento(double valor) {
-		// TODO Auto-generated method stub
-		
+		banco.processarPagamento(cliente, valor);
 	}
 }

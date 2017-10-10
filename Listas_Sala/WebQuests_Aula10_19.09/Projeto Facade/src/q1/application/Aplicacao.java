@@ -8,7 +8,7 @@ public class Aplicacao {
 	public static void main(String[] args) {
 		BancoDeDados banco = new BancoDeDados();
 		// registrar comprador
-		Cliente cliente = Cliente.create("ZÈ", 123);
+		Cliente cliente = Cliente.create("ZÉ", 123);
 		Carrinho car = Carrinho.create();
 		cliente.adicionarCarrinho(car);
 		banco.registrarCliente(cliente);
