@@ -1,6 +1,5 @@
-package q2.mercadovirtual;
+package q7.mercadovirtual;
 
-import q1.mercadovirtual.*;
 
 public class GerenciaCliente {
 	BancoDeDados banco;
@@ -9,7 +8,7 @@ public class GerenciaCliente {
 	
 	public GerenciaCliente (String nome, int id) {
 		cliente = Cliente.create(nome, id);
-		BancoDeDados banco = new BancoDeDados();
+		BancoDeDados banco = BancoDeDados.getInstance();
 		Carrinho car = Carrinho.create();
 		
 		cliente.adicionarCarrinho(car);

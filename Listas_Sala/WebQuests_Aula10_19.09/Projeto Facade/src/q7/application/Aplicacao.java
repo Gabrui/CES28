@@ -1,7 +1,10 @@
-package q2.application;
+package q7.application;
 
-import q2.mercadovirtual.GerenciaCliente;
+import q5.mercadovirtual.GerenciaCliente;
 
+/**
+ * O banco de dados agora é um singleton.
+ */
 public class Aplicacao {
 	public static void main(String[] args) {
 		GerenciaCliente g = new GerenciaCliente("ZÉ", 123);
