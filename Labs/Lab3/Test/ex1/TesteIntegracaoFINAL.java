@@ -5,6 +5,33 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+
+/**
+ * Realiza o teste de integração de todas as classes do Ex1.
+ * 
+ * COMENTÁRIOS: (PRESENTES EM SUAS RESPECTIVAS CLASSES)
+ * 
+ * => Pessoa: Utilizou-se um Fluent Builder, uma vez que havia muitos atributos
+ * do mesmo tipo e opcionais a serem preenchidos na sua construção.
+ * 
+ * Dessa forma há uma construção mais simplificada para a Pessoa.
+ * 
+ * 
+ * => Carta:  A classe Carta funciona como um builder de strings, fornencendo
+ * o contrato para a construção da string com os métodos cabecalho(),
+ * corpo(), conclusao() e assinatura().
+ * 
+ * Ela também atua como o Diretor, uma vez que também leva consigo o
+ * método de construção modelo(). Essa mistura de Diretor e Builder 
+ * se deu pelo fato de string ser um tipo primitivo, e a classe Diretor
+ * seria anêmica, com apenas um método que faz uma concatenação de strings.
+ * 
+ * Assim o Builder também é o Diretor, para esse tipo primitivo String, o
+ * que não viola o princípio da Single Responsability, uma vez que saber montar
+ * Strings já é uma responsabilidade da Carta.
+ * 
+ * As cartas podem ser facilmente extendidas e já veêm com muitos métodos default.
+ */
 public class TesteIntegracaoFINAL {
 	
 	private Carta comercial;

@@ -7,6 +7,13 @@ package ex1;
 /**
  * Classe que contém informações pessoais
  * Deve ser utilizado o PessoaBuilder para a sua construção.
+ * 
+ * COMENTÁRIO:
+ * 
+ * Utilizou-se um Fluent Builder, uma vez que havia muitos atributos
+ * do mesmo tipo e opcionais a serem preenchidos na sua construção.
+ * 
+ * Dessa forma há uma construção mais simplificada para a Pessoa.
  */
 public class Pessoa {
 
