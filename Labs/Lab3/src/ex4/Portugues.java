@@ -17,14 +17,19 @@ public class Portugues extends Idioma {
 		super();
 	}
 
-	protected Portugues (PortuguesBuilder b) {
+	protected Portugues (Builder b) {
 		super(b);
 	}
 	
 	public static class PortuguesBuilder extends Builder {
 		public PortuguesBuilder() {
-				super(new Portugues());
+			super(Portugues.INSTANCE);
 		}
+	}
+
+	@Override
+	protected Idioma rebuild(Builder b) {
+		return new Portugues(b);
 	}
 
 	@Override

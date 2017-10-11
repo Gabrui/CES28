@@ -17,15 +17,19 @@ public class Ingles extends Idioma {
 	private Ingles() {
 		super();
 	}
-
-	protected Ingles (InglesBuilder b) {
+	
+	private Ingles(Builder b) {
 		super(b);
 	}
+
+	@Override
+	protected Idioma rebuild(Builder b) {
+		return new Ingles(b);
+	}
 	
-	// Ingles.InglesBuilder().assinatura(Portugues.getInstance())).build()
 	public static class InglesBuilder extends Builder {
 		public InglesBuilder() {
-			super(new Ingles());
+			super(Ingles.INSTANCE);
 		}
 	}
 

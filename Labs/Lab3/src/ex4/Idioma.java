@@ -20,7 +20,6 @@ public abstract class Idioma {
 	protected Idioma _fone;
 
 	protected Idioma() { // Construtor padrão
-		
 		_despedida = this;
 		_vocativo = this;
 		_pronome = this;
@@ -30,7 +29,6 @@ public abstract class Idioma {
 	}
 	
 	protected Idioma(Builder b) {
-		
 		_despedida = b._despedida;
 		_vocativo = b._vocativo;
 		_pronome = b._pronome;
@@ -38,6 +36,8 @@ public abstract class Idioma {
 		_end = b._end;
 		_fone = b._fone;
 	}
+	
+	protected abstract Idioma rebuild(Builder b);
 	
 	protected abstract String despedidaFormato();
 	
@@ -117,7 +117,7 @@ public abstract class Idioma {
 			return this;
 		}
 		public Idioma build() {
-			return _principal;
+			return _principal.rebuild(this);
 		}
 	}
 }
