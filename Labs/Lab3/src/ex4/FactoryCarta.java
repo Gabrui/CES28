@@ -35,7 +35,7 @@ public class FactoryCarta {
 		
 		
 	}
-	private void montarListModelo() {
+	protected void montarListModelo() {
 		
 		//Colocando modelo da lingua Inglesa
 		_listModeloComercial.put(Ingles.INSTANCE, new ModeloComercialUSA());
@@ -50,7 +50,7 @@ public class FactoryCarta {
 		//Fim dos modelos brasileiros
 		
 	}
-	private Carta buildCarta() {
+	protected Carta buildCarta() {
 		return new Carta(_remetente, _destinatario, _data,_idioma,_modelo);
 	}
 	public Carta buildCartaComercial() {
