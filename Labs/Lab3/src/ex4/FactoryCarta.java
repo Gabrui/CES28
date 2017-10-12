@@ -18,13 +18,18 @@ public class FactoryCarta {
 	private Idioma _idioma;
 	private Modelo _modelo;
 	private HashMap<String,Idioma> _listIdioma;
-	//private HashMap<Idioma,HashMap<Class<Modelo>,Class<Modelo>>> _idiomasModelos;
+	private HashMap<Idioma,ModeloComercial> _listModeloComercial;
+	private HashMap<Idioma,ModeloPessoal> _listModeloPessoal;
+	private HashMap<Idioma,ModeloArgumentativa> _listModeloArgumentativa;
 	
 	public FactoryCarta(Pessoa remetente, Pessoa destinatario, Data data, String idioma) {
 		
 		_listIdioma = new HashMap<String, Idioma>();
-		//_idiomasModelos = new HashMap<>();
+		_listModeloComercial = new HashMap<Idioma,ModeloComercial>();
+		_listModeloPessoal = new HashMap<Idioma,ModeloPessoal>();
+		_listModeloArgumentativa = new HashMap<Idioma,ModeloArgumentativa>();
 		montarListIdioma();
+		montarListModelo();
 		_remetente = remetente;
 		_destinatario = destinatario;
 		_data = data;
@@ -36,12 +41,20 @@ public class FactoryCarta {
 		_listIdioma.put("portugues", Portugues.INSTANCE);
 		_listIdioma.put("ingles", Ingles.INSTANCE);
 	}
-	private void montarIdiomasModelos() {
-		/*
-		HashMap<Class<Modelo>, Class<Modelo>> modelosComerciais = new HashMap<>();
-		modelosComerciais.put(ModeloComercial.class, ModeloComercialUSA.class);
-		_idiomasModelos.put(Ingles.INSTANCE, modelo)
-		*/
+	private void montarListModelo() {
+		
+		//Colocando modelo da lingua Inglesa
+		_listModeloComercial.put(Ingles.INSTANCE, new ModeloComercialUSA());
+		_listModeloPessoal.put(Ingles.INSTANCE, new ModeloPessoalUSA());
+		_listModeloArgumentativa.put(Ingles.INSTANCE, new ModeloArgumentativaUSA());
+		//Fim dos modelos americanos
+		
+		//Colocando modelo da linga portuguesa
+		_listModeloComercial.put(Portugues.INSTANCE, new ModeloComercialBR());
+		_listModeloPessoal.put(Portugues.INSTANCE, new ModeloPessoalBR());
+		_listModeloArgumentativa.put(Portugues.INSTANCE, new ModeloArgumentativaBR());
+		//Fim dos modelos brasileiros
+		
 	}
 	private void setIdioma(String idioma) {
 		
@@ -56,36 +69,27 @@ public class FactoryCarta {
 	}
 	public Carta buildCartaComercial() {
 		
-		if(_idioma instanceof Ingles) {
-			_modelo = new ModeloComercialUSA();
-		}
-		else if(_idioma instanceof Portugues) {
-			_modelo = new ModeloComercialBR();
-		}
+		_modelo = _listModeloComercial.get(_idioma);
 		return buildCarta();
 	}
 	public Carta buildCartaPessoal() {
-		if(_idioma instanceof Ingles) {
-			_modelo = new ModeloPessoalUSA();
-		}
-		else if(_idioma instanceof Portugues) {
-			_modelo = new ModeloPessoalBR();
-		}
+		_modelo = _listModeloPessoal.get(_idioma);
 		return buildCarta();
 	}
 	public Carta buildCartaArgumentativa() {
-		if(_idioma instanceof Ingles) {
-			_modelo = new ModeloArgumentativaUSA();
-		}
-		else if(_idioma instanceof Portugues) {
-			_modelo = new ModeloArgumentativaBR();
-		}
+		_modelo = _listModeloArgumentativa.get(_idioma);
 		return buildCarta();
 	}
 	public void configIdiomaData(String idioma) {
-		Idioma Idiomadata = _listIdioma.get(idioma);
+		Idioma Idiomadata = _listIdioma.get(idioma.toLowerCase());
 		Idioma.Builder builder = new Idioma.Builder(_idioma);
 		builder.data(Idiomadata);
+		_idioma = builder.build();
+	}
+	public void configIdiomaDespedida(String idioma) {
+		Idioma IdiomaDespedida = _listIdioma.get(idioma.toLowerCase());
+		Idioma.Builder builder = new Idioma.Builder(_idioma);
+		builder.despedida(IdiomaDespedida);
 		_idioma = builder.build();
 	}
 }
