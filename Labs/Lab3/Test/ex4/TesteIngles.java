@@ -22,7 +22,7 @@ public class TesteIngles {
 	@Before
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
-		ingles = new Ingles.InglesBuilder().build();
+		ingles = new Idioma.Builder(Ingles.INSTANCE).build();
 	}
 
 	@Test
