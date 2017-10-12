@@ -18,24 +18,20 @@ public class TestePessoa {
 	@Mock private Telefone fone;
 	@Mock private Idioma idioma;
 	private Pessoa pessoa;
-	private Pessoa anom;
 
 	@Before
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
-		anom = new Pessoa.PessoaBuilder().build();
 		pessoa = new Pessoa.PessoaBuilder("Gabriel", endereco).idade(20).emprego("Dev").build();
 	}
 
 	@Test
 	public void testaInicializacao() {
-		assertNotNull(anom);
 		assertNotNull(pessoa);
 	}
 	
 	@Test
 	public void testaNome() {
-		assertEquals("Anônimo", anom.getNome());
 		assertEquals("Gabriel", pessoa.getNome());
 	}
 	

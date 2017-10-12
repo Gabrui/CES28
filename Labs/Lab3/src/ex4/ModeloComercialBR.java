@@ -17,9 +17,9 @@ public class ModeloComercialBR extends ModeloComercial{
 				+ remetente.getDepartamento() + "\n"
 				+ remetente.getEndereco(idioma) + ", "
 				+ idioma.data(data.getDia(), data.getMes(), data.getAno())
-				+ "\n"
-				+ "Assunto: " + "\n\n";
+				+ "\n\n";
 	}
+	
 	@Override
 	public String assinatura(Pessoa remetente, Idioma idioma) {
 		return  remetente.getNome() + "\n\n"

@@ -6,7 +6,8 @@ package ex2;
 public class CartaAnonima extends Carta {
 
 	public CartaAnonima(Pessoa destinatario, Data data, Idioma idioma) {
-		super(new Pessoa.PessoaBuilder().build(), destinatario, data, idioma);
+		super(new Pessoa.PessoaBuilder("Anônimo", new Endereco("", "", "", "")).build(), 
+				destinatario, data, idioma);
 	}
 	
 	@Override

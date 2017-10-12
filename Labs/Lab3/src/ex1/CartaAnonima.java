@@ -1,12 +1,14 @@
 package ex1;
 
+
 /**
  * Carta anônima muito diferente das demais
  */
 public class CartaAnonima extends Carta {
 
 	public CartaAnonima(Pessoa destinatario, Data data) {
-		super(new Pessoa.PessoaBuilder().build(), destinatario, data);
+		super(new Pessoa.PessoaBuilder("Anônimo", new Endereco("", "", "", "")).build(), 
+				destinatario, data);
 	}
 	
 	@Override

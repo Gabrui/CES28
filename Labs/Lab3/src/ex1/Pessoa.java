@@ -81,14 +81,6 @@ public class Pessoa {
 		private String emprego = "";
 		private String nomeEmpresa = "";
 		
-		/**
-		 * PessoaBuilder anônimo
-		 */
-		public PessoaBuilder() {
-			this.nome = "Anônimo";
-			this.endereco = new Endereco("", "", "", "");
-		}
-		
 		public PessoaBuilder(String nome, Endereco endereco) {
 			this.nome = nome;
 			this.endereco = endereco;
