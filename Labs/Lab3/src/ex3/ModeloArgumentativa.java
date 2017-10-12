@@ -9,12 +9,7 @@ package ex3;
  * @author Dylan N. Sugimoto e Gabriel Adriano de Melo
  * Classe abstrata que representa o modelo da carta argumentativa.
  */
-public abstract class ModeloArgumentativa extends Modelo{
-
-	@Override
-	public String despedida(Idioma idioma) {
-		return idioma.despedida() +"\n\n";
-	}
+public abstract class ModeloArgumentativa extends Modelo {
 
 	
 }

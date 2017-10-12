@@ -13,8 +13,8 @@ class CartaComercial extends Carta {
 	}
 	
 	@Override
-	public String modelo() {
-		return super.modelo() + informacoesFinais();
+	public String assinatura() {
+		return super.assinatura() + informacoesFinais();
 	}
 	
 	@Override

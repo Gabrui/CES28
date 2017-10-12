@@ -8,11 +8,17 @@ package ex3;
 /**
  * @author Dylan N. Sugimoto e Gabriel Adriano de Melo
  * Classe abstrata que representa o modelo da carta.
+ * 
+ * Ele agora é o Builder propriamente dito
  */
 public abstract class Modelo {
 	
-	public abstract String cabecario(Pessoa remetente, Pessoa destinatario,Data data, Idioma idioma);
+	public abstract String cabecario(Pessoa remetente, Pessoa destinatario, Data data, Idioma idioma);
 	public abstract String corpo(Idioma idioma, Pessoa destinatario);
-	public abstract String despedida(Idioma idioma);
-	public abstract String assinatura(Pessoa remetente,Idioma idioma);
+	
+	public String despedida(Idioma idioma) {
+		return idioma.despedida() +",\n\n";
+	}
+	
+	public abstract String assinatura(Pessoa remetente, Idioma idioma);
 }

@@ -1,13 +1,19 @@
 package ex3;
 
 import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
+
+/**
+ * Teste de Unidade da Carta.
+ * 
+ * A classe Carta agora é o Director do Builder Modelo.
+ *
+ */
 public class TesteCarta {
 	
 	@Mock private Pessoa remetente;

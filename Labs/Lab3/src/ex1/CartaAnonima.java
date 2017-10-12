@@ -10,8 +10,8 @@ public class CartaAnonima extends Carta {
 	}
 	
 	@Override
-	public String modelo() {
-		return cabecalho() + corpo() + conclusao();
+	public String assinatura() {
+		return "";
 	}
 	
 	@Override

@@ -5,11 +5,11 @@
 package ex3;
 
 /**
- * Classe Pai de todas os tipos de carta.
- *
+ * 
+ * A classe Carta agora é o Director do Builder Modelo
+ * 
  */
 public class Carta {
-
 
 	private Pessoa _remetente;
 	private Pessoa _destinatario;

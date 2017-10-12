@@ -62,7 +62,7 @@ public abstract class Carta {
 		return _remetente.getNome();
 	}
 	
-	public String modelo() {
+	public final String modelo() {
 		return cabecalho() + corpo() + conclusao() + assinatura();
 	}
 

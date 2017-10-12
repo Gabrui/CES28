@@ -14,4 +14,6 @@ public class CartaArgumentativa extends Carta {
 		super(remetente, destinatario, data);
 	}
 	
+	// Os métodos padrões da Carta já satisfazem a formatação da CartaArgumentativa
+	
 }

@@ -18,10 +18,4 @@ public abstract class ModeloComercial extends Modelo{
 			   +"\n\n";
 	}
 
-	@Override
-	public String despedida(Idioma idioma) {
-		// Idioma trata de traduzir a despedida
-		return idioma.despedida() +",\n\n";
-	}
-
 }
