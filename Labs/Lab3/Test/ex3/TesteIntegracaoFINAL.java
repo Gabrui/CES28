@@ -73,4 +73,16 @@ public class TesteIntegracaoFINAL {
 				, carta.lerCarta());
 	}
 
+
+	@Test
+	public void testaModeloComercialUSAIngles() {
+		modelo = new ModeloComercialUSA();
+		idioma = new Ingles();
+		carta = new Carta(remetente, destinatario, data, idioma, modelo);
+		System.out.println(carta.lerCarta());
+		assertEquals(
+				""
+				, carta.lerCarta());
+	}
+
 }
