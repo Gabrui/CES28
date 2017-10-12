@@ -13,69 +13,40 @@ import org.mockito.MockitoAnnotations;
  */
 public class TesteCartaComercialBR {
 	
-	@Mock private Pessoa reme;
-	@Mock private Pessoa dest;
-	@Mock private Data dia;
+	@Mock private Pessoa remetente;
+	@Mock private Pessoa destinatario;
+	@Mock private Data data;
 	@Mock private Idioma idioma;
 	
-	private CartaComercial carta;
+	private ModeloComercialBR modelo;
 	
 
 	@Before
 	public void setUp() throws Exception {
 		MockitoAnnotations.initMocks(this);
-		carta = new CartaComercial(reme, dest, dia, idioma);
+		modelo = new ModeloComercialBR();
 	}
 	
 
 	@Test
 	public void construcaoDaCarta() {
-		assertNotNull(carta);
+		assertNotNull(modelo);
 	}
 	
 	@Test
-	public void testaModelo() {
-		valoresPadroesMocks();
+	public void testaCabecario() {
+		Mockito.when(remetente.getEndereco(Mockito.any())).thenReturn("H8-B 241");
+		Mockito.when(remetente.getDepartamento()).thenReturn("Engenharia de Software");
+		Mockito.when(remetente.getNomeEmpresa()).thenReturn("ITA");
+		Mockito.when(idioma.data(Mockito.any())).thenReturn("01 de Outubro de 2017");
+		
 		assertEquals(
 				"ITA\n" + 
-				"Gabriel\n" + 
-				"H8-B 241\n" + 
-				"\n" + 
-				"01 de Outubro de 2017\n" + 
-				"\n" + 
-				"Dylan\n" + 
-				"H8-B 208\n" + 
-				"\n" + 
-				"\n" + 
-				"Senhor Dylan,\n" + 
-				"\n" + 
-				"\n" + 
-				"Atensiosamente,\n" + 
-				"Gabriel\n" + 
-				"\n" + 
-				"            __________________\n" + 
-				"            Gabriel\n" + 
-				"            Desenvolvedor\n" + 
-				"            3947-7891\n" + 
-				"            email:testes@ita.br"
-				, carta.modelo());
+				"Engenharia de Software\n" + 
+				"H8-B 241, 01 de Outubro de 2017\n" + 
+				"Assunto: \n\n"
+				, modelo.cabecalho(remetente, destinatario, data, idioma));
 	}
 	
-	private void valoresPadroesMocks() {
-		Mockito.when(reme.getEndereco(Mockito.any())).thenReturn("H8-B 241");
-		Mockito.when(reme.getNome()).thenReturn("Gabriel");
-		Mockito.when(reme.getEmprego()).thenReturn("Desenvolvedor");
-		Mockito.when(reme.getEmail()).thenReturn("testes@ita.br");
-		Mockito.when(reme.getFone(Mockito.any())).thenReturn("3947-7891");
-		Mockito.when(reme.getNomeEmpresa()).thenReturn("ITA");
-
-		Mockito.when(dest.getEndereco(Mockito.any())).thenReturn("H8-B 208");
-		Mockito.when(dest.getNome()).thenReturn("Dylan");
-		
-		Mockito.when(idioma.data(Mockito.any())).thenReturn("01 de Outubro de 2017");
-		Mockito.when(idioma.despedida()).thenReturn("Atensiosamente");
-		Mockito.when(idioma.pronome()).thenReturn("Senhor");
-		
-	}
 
 }

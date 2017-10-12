@@ -13,9 +13,9 @@ import org.mockito.MockitoAnnotations;
  */
 public class TesteCartaComercial {
 	
-	@Mock private Pessoa reme;
-	@Mock private Pessoa dest;
-	@Mock private Data dia;
+	@Mock private Pessoa remetente;
+	@Mock private Pessoa destinatario;
+	@Mock private Data data;
 	@Mock private Idioma idioma;
 	
 	private CartaComercial carta;
@@ -24,7 +24,7 @@ public class TesteCartaComercial {
 	@Before
 	public void setUp() throws Exception {
 		MockitoAnnotations.initMocks(this);
-		carta = new CartaComercial(reme, dest, dia, idioma);
+		carta = new CartaComercial(remetente, destinatario, data, idioma);
 	}
 	
 
@@ -62,15 +62,15 @@ public class TesteCartaComercial {
 	}
 	
 	private void valoresPadroesMocks() {
-		Mockito.when(reme.getEndereco(Mockito.any())).thenReturn("H8-B 241");
-		Mockito.when(reme.getNome()).thenReturn("Gabriel");
-		Mockito.when(reme.getEmprego()).thenReturn("Desenvolvedor");
-		Mockito.when(reme.getEmail()).thenReturn("testes@ita.br");
-		Mockito.when(reme.getFone(Mockito.any())).thenReturn("3947-7891");
-		Mockito.when(reme.getNomeEmpresa()).thenReturn("ITA");
+		Mockito.when(remetente.getEndereco(Mockito.any())).thenReturn("H8-B 241");
+		Mockito.when(remetente.getNome()).thenReturn("Gabriel");
+		Mockito.when(remetente.getEmprego()).thenReturn("Desenvolvedor");
+		Mockito.when(remetente.getEmail()).thenReturn("testes@ita.br");
+		Mockito.when(remetente.getFone(Mockito.any())).thenReturn("3947-7891");
+		Mockito.when(remetente.getNomeEmpresa()).thenReturn("ITA");
 
-		Mockito.when(dest.getEndereco(Mockito.any())).thenReturn("H8-B 208");
-		Mockito.when(dest.getNome()).thenReturn("Dylan");
+		Mockito.when(destinatario.getEndereco(Mockito.any())).thenReturn("H8-B 208");
+		Mockito.when(destinatario.getNome()).thenReturn("Dylan");
 		
 		Mockito.when(idioma.data(Mockito.any())).thenReturn("01 de Outubro de 2017");
 		Mockito.when(idioma.despedida()).thenReturn("Atensiosamente");

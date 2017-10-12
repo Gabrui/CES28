@@ -12,7 +12,7 @@ package ex3;
 public class ModeloArgumentativaUSA extends ModeloArgumentativa{
 
 	@Override
-	public String cabecario(Pessoa remetente, Pessoa destinatario, Data data, Idioma idioma) {
+	public String cabecalho(Pessoa remetente, Pessoa destinatario, Data data, Idioma idioma) {
 		return remetente.getFone(idioma)+ ", " +idioma.data(data) 
 		+ " - " + remetente.getEndereco(idioma) + "\n\n";
 	}

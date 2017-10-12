@@ -39,10 +39,10 @@ public class TesteCarta {
 	
 	@Test
 	public void testaModelo() {
-		Mockito.when(modelo.cabecario(remetente, destinatario, data, idioma))
+		Mockito.when(modelo.cabecalho(remetente, destinatario, data, idioma))
 			.thenReturn("01 de Outubro de 2017\n\n");
 		Mockito.when(modelo.corpo(idioma, destinatario)).thenReturn("Senhor Dylan,\n\n\n");
-		Mockito.when(modelo.despedida(idioma)).thenReturn("Atensiosamente,\n");
+		Mockito.when(modelo.conclusao(idioma)).thenReturn("Atensiosamente,\n");
 		Mockito.when(modelo.assinatura(remetente, idioma)).thenReturn("Gabriel");
 		assertEquals(
 				"01 de Outubro de 2017\n" + 

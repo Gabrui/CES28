@@ -11,7 +11,7 @@ package ex3;
 public class ModeloArgumentativaBR extends ModeloArgumentativa{
 
 	@Override
-	public String cabecario(Pessoa remetente, Pessoa destinatario, Data data, Idioma idioma) {
+	public String cabecalho(Pessoa remetente, Pessoa destinatario, Data data, Idioma idioma) {
 		return remetente.getEndereco(idioma) + ", "+
 				idioma.data(data)
 				+ "\n\n";

@@ -12,8 +12,8 @@ package ex4;
 public class ModeloArgumentativaUSA extends ModeloArgumentativa{
 
 	@Override
-	public String cabecario(Pessoa remetente, Pessoa destinatario, Data data, Idioma idioma) {
-		return remetente.getFone(idioma)+ ", " +idioma.data(data.getDia(),data.getMes(),data.getAno()) 
+	public String cabecalho(Pessoa remetente, Pessoa destinatario, Data data, Idioma idioma) {
+		return remetente.getFone(idioma)+ ", " +idioma.data(data.getDia(), data.getMes(), data.getAno())
 		+ " - " + remetente.getEndereco(idioma) + "\n\n";
 	}
 

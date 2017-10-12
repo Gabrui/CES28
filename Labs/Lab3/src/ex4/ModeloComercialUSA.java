@@ -12,7 +12,7 @@ package ex4;
 public class ModeloComercialUSA extends ModeloComercial{
 	
 	@Override
-	public String cabecario(Pessoa remetente, Pessoa destinatario, Data data, Idioma idioma) {
+	public String cabecalho(Pessoa remetente, Pessoa destinatario, Data data, Idioma idioma) {
 		return data.toString() + "\n\n" + remetente.getNome() + "\n" +
 				remetente.getEndereco(idioma) + "\n" + destinatario.getNome() + "\n" +
 				destinatario.getEndereco(idioma) + "\n\n\n";

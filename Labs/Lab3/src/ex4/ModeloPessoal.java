@@ -18,11 +18,6 @@ public abstract class ModeloPessoal extends Modelo{
 	}
 
 	@Override
-	public String despedida(Idioma idioma) {
-		return idioma.despedida() +",\n\n";
-	}
-
-	@Override
 	public String assinatura(Pessoa remetente, Idioma idioma) {
 		return  remetente.getNome()+"\n\n";
 	}

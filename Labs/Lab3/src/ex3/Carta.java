@@ -26,7 +26,7 @@ public class Carta {
 	}
 	
 	private String cabecalho() {
-		return _modelo.cabecario(_remetente, _destinatario, _data, _idioma);
+		return _modelo.cabecalho(_remetente, _destinatario, _data, _idioma);
 	}
 	
 	private String corpo() {
@@ -34,7 +34,7 @@ public class Carta {
 	}
 	
 	private String conclusao() {
-		return _modelo.despedida(_idioma);
+		return _modelo.conclusao(_idioma);
 	}
 	
 	private String assinatura() {

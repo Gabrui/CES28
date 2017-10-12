@@ -11,17 +11,10 @@ package ex4;
  */
 public abstract class ModeloComercial extends Modelo{
 
-
 	@Override
 	public String corpo(Idioma idioma, Pessoa destinatario) {
 		return idioma.vocativo() + destinatario.getNome()+": " +"\n\n"
 			   +"\n\n";
-	}
-
-	@Override
-	public String despedida(Idioma idioma) {
-		// Idioma trata de traduzir a despedida
-		return idioma.despedida() +",\n\n";
 	}
 
 }

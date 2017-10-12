@@ -13,12 +13,22 @@ package ex3;
  */
 public abstract class Modelo {
 	
-	public abstract String cabecario(Pessoa remetente, Pessoa destinatario, Data data, Idioma idioma);
-	public abstract String corpo(Idioma idioma, Pessoa destinatario);
-	
-	public String despedida(Idioma idioma) {
-		return idioma.despedida() +",\n\n";
+	public String cabecalho(Pessoa remetente, Pessoa destinatario, Data data, Idioma idioma) {
+		return remetente.getNome() + "\n" + remetente.getEndereco(idioma) + "\n\n"
+				+ idioma.data(data) + "\n\n"
+				+ destinatario.getNome() + "\n" + destinatario.getEndereco(idioma)
+				+ "\n\n\n";
 	}
 	
-	public abstract String assinatura(Pessoa remetente, Idioma idioma);
+	public String corpo(Idioma idioma, Pessoa destinatario) {
+		return idioma.pronome()+ " " + destinatario.getNome() + ",\n\n\n";
+	}
+	
+	public String conclusao(Idioma idioma) {
+		return idioma.despedida() +",\n";
+	}
+	
+	public String assinatura(Pessoa remetente, Idioma idioma) {
+		return remetente.getNome();
+	}
 }

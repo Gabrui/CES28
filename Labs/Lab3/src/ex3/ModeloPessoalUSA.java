@@ -12,7 +12,7 @@ package ex3;
 public class ModeloPessoalUSA extends ModeloPessoal{
 	
 	@Override
-	public String cabecario(Pessoa remetente, Pessoa destinatario,Data data, Idioma idioma) {
+	public String cabecalho(Pessoa remetente, Pessoa destinatario,Data data, Idioma idioma) {
 		return  idioma.data(data) + "\n"
 				+remetente.getNome()+", "+remetente.getEndereco(idioma) + "."
 				+ "\n\n";
