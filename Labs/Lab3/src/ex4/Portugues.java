@@ -20,13 +20,6 @@ public class Portugues extends Idioma {
 	protected Portugues (Builder b) {
 		super(b);
 	}
-	
-	public static class PortuguesBuilder extends Builder {
-		public PortuguesBuilder() {
-			super(Portugues.INSTANCE);
-		}
-	}
-
 	@Override
 	protected Idioma rebuild(Builder b) {
 		return new Portugues(b);

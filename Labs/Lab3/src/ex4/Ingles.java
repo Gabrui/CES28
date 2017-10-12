@@ -26,12 +26,6 @@ public class Ingles extends Idioma {
 	protected Idioma rebuild(Builder b) {
 		return new Ingles(b);
 	}
-	
-	public static class InglesBuilder extends Builder {
-		public InglesBuilder() {
-			super(Ingles.INSTANCE);
-		}
-	}
 
 	@Override
 	public String despedidaFormato() {
