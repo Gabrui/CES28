@@ -17,29 +17,23 @@ public class FactoryCarta {
 	private Data _data;
 	private Idioma _idioma;
 	private Modelo _modelo;
-	private HashMap<String,Idioma> _listIdioma;
 	private HashMap<Idioma,ModeloComercial> _listModeloComercial;
 	private HashMap<Idioma,ModeloPessoal> _listModeloPessoal;
 	private HashMap<Idioma,ModeloArgumentativa> _listModeloArgumentativa;
 	
-	public FactoryCarta(Pessoa remetente, Pessoa destinatario, Data data, String idioma) {
+	public FactoryCarta(Pessoa remetente, Pessoa destinatario, Data data, Idioma idioma) {
 		
-		_listIdioma = new HashMap<String, Idioma>();
+
 		_listModeloComercial = new HashMap<Idioma,ModeloComercial>();
 		_listModeloPessoal = new HashMap<Idioma,ModeloPessoal>();
 		_listModeloArgumentativa = new HashMap<Idioma,ModeloArgumentativa>();
-		montarListIdioma();
 		montarListModelo();
 		_remetente = remetente;
 		_destinatario = destinatario;
 		_data = data;
-		setIdioma(idioma);
+		_idioma = idioma;
 		
 		
-	}
-	private void montarListIdioma() {
-		_listIdioma.put("portugues", Portugues.INSTANCE);
-		_listIdioma.put("ingles", Ingles.INSTANCE);
 	}
 	private void montarListModelo() {
 		
@@ -56,14 +50,6 @@ public class FactoryCarta {
 		//Fim dos modelos brasileiros
 		
 	}
-	private void setIdioma(String idioma) {
-		
-		_idioma = _listIdioma.get(idioma.toLowerCase());
-		if(_idioma == null) {
-			
-			throw new IllegalArgumentException();
-		}
-	}
 	private Carta buildCarta() {
 		return new Carta(_remetente, _destinatario, _data,_idioma,_modelo);
 	}
@@ -79,17 +65,5 @@ public class FactoryCarta {
 	public Carta buildCartaArgumentativa() {
 		_modelo = _listModeloArgumentativa.get(_idioma);
 		return buildCarta();
-	}
-	public void configIdiomaData(String idioma) {
-		Idioma Idiomadata = _listIdioma.get(idioma.toLowerCase());
-		Idioma.Builder builder = new Idioma.Builder(_idioma);
-		builder.data(Idiomadata);
-		_idioma = builder.build();
-	}
-	public void configIdiomaDespedida(String idioma) {
-		Idioma IdiomaDespedida = _listIdioma.get(idioma.toLowerCase());
-		Idioma.Builder builder = new Idioma.Builder(_idioma);
-		builder.despedida(IdiomaDespedida);
-		_idioma = builder.build();
 	}
 }
