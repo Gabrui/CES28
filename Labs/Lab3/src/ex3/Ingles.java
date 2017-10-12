@@ -31,8 +31,5 @@ public class Ingles extends Idioma {
 	public String endereco(Endereco end) {
 		return end.getRua() +", "+end.getCidade() + "   "+end.getEstado() +" "+ end.getPais() ;
 	}
-	@Override
-	public String fone(Telefone fone) {
-		return "+" +"("+ fone.getDDI() + fone.getCC() + fone.getLC()+")" + fone.getTel();
-	}
+	
 }

@@ -30,5 +30,9 @@ public class Portugues extends Idioma {
 	public String data(Data data) {
 		return data.getDia() + " de " + data.getMes() + " de " + data.getAno();
 	}
-	
+
+	@Override
+	public String fone(Telefone fone) {
+		return "+" +"("+ fone.getDDI() + ") " +"("+fone.getCC() + fone.getLC()+") " + fone.getTel(4);
+	}
 }
