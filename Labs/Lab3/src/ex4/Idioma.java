@@ -90,6 +90,7 @@ public abstract class Idioma {
 			_data = idioma;
 			_end = idioma;
 			_fone = idioma;
+			_vocativo = idioma;
 		}
 		
 		public Builder despedida(Idioma despedida) {

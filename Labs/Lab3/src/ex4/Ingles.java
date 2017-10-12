@@ -57,6 +57,6 @@ public class Ingles extends Idioma {
 	@Override
 	protected String foneFormato(String DDI, String cc, String lc, String tel) {
 		// cc: codigo do pais / lc: codigo local.
-				return DDI+" - "+cc+" - "+"("+lc+") "+tel;
+				return "+"+DDI+" ("+cc+") "+"("+lc+") "+tel;
 	}
 }
