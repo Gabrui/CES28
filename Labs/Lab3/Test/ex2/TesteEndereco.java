@@ -5,6 +5,9 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Teste de unidade do Endereco
+ */
 public class TesteEndereco {
 	
 	private Endereco endereco;

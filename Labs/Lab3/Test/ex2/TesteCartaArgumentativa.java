@@ -8,6 +8,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
+/**
+ * Teste de unidade da CartaArgumentativa
+ */
 public class TesteCartaArgumentativa {
 	
 	@Mock private Pessoa reme;

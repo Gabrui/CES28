@@ -5,6 +5,37 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Testa a integração de todas as classes concretas do Ex2
+ * 
+ * COMENTÁRIOS:
+ * 
+ * A carta agora também recebe um Idioma na sua construção. Esse idioma é responsável
+ * por formatar cada campo da forma solicitada.
+ * 
+ * 
+ * => Idioma: Essa classe é responsável pela formação de cada campo da carta.
+ * 
+ * É extremamente fácil de ser extendida, bastando o programador criar
+ * uma nova classe que a extenda ou uma de suas subclasses, sem a necessidade
+ * de se alterar nenhuma outra classe.
+ * 
+ * Ou seja, o código está aberto para extensão mas fechado para modificação, 
+ * digamos, se fosse necessário alterar o código interno de alguma classe concreta
+ * já existente.
+ * 
+ * Uma atenção especial foi dada também ao fato de não existirem classes anêmicas, 
+ * com apenas um método, o que é um mal-cheiro, dessa forma as traduções dos campos
+ * foram agrupados nessa classe idioma, em vez de existirem várias classes pequenas
+ * para cada campo.
+ * 
+ * Assim, nesse primeiro momento, utilizou-se apenas uma simples herança de idiomas
+ * e injeção de dependência em carta para se obter o requisito de cartas em diferentes
+ * idiomas, pois esse foi a forma mais simples para extensão encontrada. Em uma 
+ * AbstractFactory convencional o usuário precisaria extender tanto os produtos (campos)
+ * quanto a factory (Idioma), o que seria mais trabalhoso, e ainda poderiam existir
+ * classes anêmicas.
+ */
 public class TesteIntegracaoFINAL {
 	
 	private Carta comercial;

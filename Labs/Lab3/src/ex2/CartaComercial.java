@@ -1,5 +1,10 @@
 package ex2;
 
+/**
+ * 
+ * Classe que representa o formato de uma Carta Comercial.
+ *
+ */
 class CartaComercial extends Carta {
 	
 	public CartaComercial(Pessoa remetente, Pessoa destinatario, Data data, Idioma idioma) {

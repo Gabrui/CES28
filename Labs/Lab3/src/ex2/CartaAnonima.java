@@ -1,5 +1,8 @@
 package ex2;
 
+/**
+ * Carta anônima muito diferente das demais
+ */
 public class CartaAnonima extends Carta {
 
 	public CartaAnonima(Pessoa destinatario, Data data, Idioma idioma) {

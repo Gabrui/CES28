@@ -1,4 +1,4 @@
-package ex2;
+package ex3;
 
 import static org.junit.Assert.*;
 
@@ -9,7 +9,7 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 /**
- * Teste de unidade do Portugues, com stubs.
+ * Teste de unidade, com stubs.
  *
  */
 public class TestePortugues {
