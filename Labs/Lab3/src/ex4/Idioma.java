@@ -12,12 +12,12 @@ package ex4;
  */
 public abstract class Idioma {
 	
-	protected Idioma _despedida;
-	protected Idioma _vocativo;
-	protected Idioma _pronome;
-	protected Idioma _data;
-	protected Idioma _end;
-	protected Idioma _fone;
+	private Idioma _despedida;
+	private Idioma _vocativo;
+	private Idioma _pronome;
+	private Idioma _data;
+	private Idioma _end;
+	private Idioma _fone;
 
 	protected Idioma() { // Construtor padrão
 		_despedida = this;
@@ -47,30 +47,30 @@ public abstract class Idioma {
 	protected abstract String vocativoFormato();
 	
 	
-	public  String vocativo() {
+	public final String vocativo() {
 		return _vocativo.vocativoFormato();
 	}
 	
 	protected abstract String pronomeFormato();
 	
-	public  String pronome() {
+	public final String pronome() {
 		return _pronome.pronomeFormato();
 	}
 	
 	protected abstract String dataFormato(String dia,String mes,String ano);
 	
-	public String data(String dia, String mes, String ano) {
+	public final String data(String dia, String mes, String ano) {
 		return _data.dataFormato(dia,mes,ano);
 	}
 	
 	protected abstract String enderecoFormato(String rua, String cidade, String estado,String pais);
 	
-	public String endereco(String rua, String cidade, String estado, String pais) {
+	public final String endereco(String rua, String cidade, String estado, String pais) {
 		return _end.enderecoFormato(rua,cidade, estado,pais);
 	}
 	
 	protected abstract String foneFormato(String DDI,String cc,String lc,String tel);
-	public String fone(String DDI,String cc,String lc,String tel) {
+	public final String fone(String DDI,String cc,String lc,String tel) {
 		return _fone.foneFormato(DDI, cc,lc,tel);
 	}
 	
