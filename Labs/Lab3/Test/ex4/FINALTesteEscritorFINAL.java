@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
-import static ex4.*;
 
 public class FINALTesteEscritorFINAL {
 
@@ -38,13 +37,8 @@ public class FINALTesteEscritorFINAL {
 	 * Verificar se é possível instanciar um objeto Escritor.  
 	 */
 	@Test
-<<<<<<< HEAD
 	public void EhPossivelInstanciarEscritor() {
 		assertNotNull(_veja);
-=======
-	public void test() {
-		//fail("Not yet implemented");
->>>>>>> Teste Pessoa Ex4
 	}
 
 }
