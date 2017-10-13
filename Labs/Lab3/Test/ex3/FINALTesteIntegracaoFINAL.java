@@ -5,7 +5,14 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-
+/*
+ * Ao escolher uma língua, automaticamente, sem nenhuma outra configuração,
+ * todas as partes do modelo serão geradas já traduzidas e no formato
+ * correto para a língua escolhida.
+ * 
+ * COMENTÁRIOS: Utilizou-se a classe Modelo responsável pelo layout e a classe
+ * Idioma responsável pela tradução de cada campo.
+ */
 public class FINALTesteIntegracaoFINAL {
 	
 	private Carta carta;

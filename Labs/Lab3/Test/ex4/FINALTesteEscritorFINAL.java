@@ -4,9 +4,12 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+<<<<<<< HEAD
 import org.mockito.Mockito;
 
 import static ex4.*;
+=======
+>>>>>>> origin/master
 
 public class FINALTesteEscritorFINAL {
 

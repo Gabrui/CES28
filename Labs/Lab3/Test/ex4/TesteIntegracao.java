@@ -58,7 +58,7 @@ public class TesteIntegracao {
 	public void testaModeloComercialBRMistureba() {
 		modelo = new ModeloComercialBR();
 		idioma = new Idioma.Builder(Ingles.INSTANCE).endereco(Portugues.INSTANCE).build();
-		
+		// Formato do campo endereço é em Português.
 		carta = new Carta(remetente, destinatario, data, idioma, modelo);
 
 		assertEquals(
