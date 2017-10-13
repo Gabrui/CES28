@@ -43,8 +43,7 @@ public class TesteCartaComercialBR {
 		assertEquals(
 				"ITA\n" + 
 				"Engenharia de Software\n" + 
-				"H8-B 241, 01 de Outubro de 2017\n" + 
-				"Assunto: \n\n"
+				"H8-B 241, 01 de Outubro de 2017\n\n"
 				, modelo.cabecalho(remetente, destinatario, data, idioma));
 	}
 	

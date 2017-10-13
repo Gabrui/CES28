@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-public class FINALTesteFactoryFinal {
+public class FINALTesteEscritorFINAL {
 
 	@Before
 	public void setUp() throws Exception {

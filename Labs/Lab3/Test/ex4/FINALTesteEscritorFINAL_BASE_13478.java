@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-public class FINALTesteFactoryFinal {
+public class FINALTesteEscritorFINAL {
 
 	@Before
 	public void setUp() throws Exception {
@@ -13,7 +13,7 @@ public class FINALTesteFactoryFinal {
 
 	@Test
 	public void test() {
-		//fail("Not yet implemented");
+		fail("Not yet implemented");
 	}
 
 }
