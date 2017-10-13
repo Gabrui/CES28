@@ -15,55 +15,90 @@ public class FactoryCarta {
 	private Pessoa _remetente;
 	private Pessoa _destinatario;
 	private Data _data;
-	private Idioma _idioma;
-	private Modelo _modelo;
-	private HashMap<Idioma,ModeloComercial> _listModeloComercial;
-	private HashMap<Idioma,ModeloPessoal> _listModeloPessoal;
-	private HashMap<Idioma,ModeloArgumentativa> _listModeloArgumentativa;
+	protected String idioma;
+	private Idioma novo;
+	private HashMap<String, ModeloComercial> _listModeloComercial;
+	private HashMap<String, ModeloPessoal> _listModeloPessoal;
+	private HashMap<String, ModeloArgumentativa> _listModeloArgumentativa;
+	private HashMap<String, Idioma> stringIdioma;
 	
-	public FactoryCarta(Pessoa remetente, Pessoa destinatario, Data data, Idioma idioma) {
+	public FactoryCarta(Pessoa remetente, Pessoa destinatario, Data data, String idiomaModelo) {
+		_listModeloComercial = new HashMap<String, ModeloComercial>();
+		_listModeloPessoal = new HashMap<String,ModeloPessoal>();
+		_listModeloArgumentativa = new HashMap<String, ModeloArgumentativa>();
+		stringIdioma = new HashMap<>();
 		
-
-		_listModeloComercial = new HashMap<Idioma,ModeloComercial>();
-		_listModeloPessoal = new HashMap<Idioma,ModeloPessoal>();
-		_listModeloArgumentativa = new HashMap<Idioma,ModeloArgumentativa>();
 		montarListModelo();
 		_remetente = remetente;
 		_destinatario = destinatario;
 		_data = data;
-		_idioma = idioma;
-		
-		
+		idioma = idiomaModelo;
 	}
+	
+	public FactoryCarta(Pessoa remetente, Pessoa destinatario, Data data, String idiomaModelo, Idioma novo) {
+		this(remetente, destinatario, data, idiomaModelo);
+		this.novo = novo;
+	}
+	
+	
 	protected void montarListModelo() {
-		
 		//Colocando modelo da lingua Inglesa
-		_listModeloComercial.put(Ingles.INSTANCE, new ModeloComercialUSA());
-		_listModeloPessoal.put(Ingles.INSTANCE, new ModeloPessoalUSA());
-		_listModeloArgumentativa.put(Ingles.INSTANCE, new ModeloArgumentativaUSA());
+		_listModeloComercial.put("en_US", new ModeloComercialUSA());
+		_listModeloPessoal.put("en_US", new ModeloPessoalUSA());
+		_listModeloArgumentativa.put("en_US", new ModeloArgumentativaUSA());
 		//Fim dos modelos americanos
 		
 		//Colocando modelo da linga portuguesa
-		_listModeloComercial.put(Portugues.INSTANCE, new ModeloComercialBR());
-		_listModeloPessoal.put(Portugues.INSTANCE, new ModeloPessoalBR());
-		_listModeloArgumentativa.put(Portugues.INSTANCE, new ModeloArgumentativaBR());
+		_listModeloComercial.put("pt_BR", new ModeloComercialBR());
+		_listModeloPessoal.put("pt_BR", new ModeloPessoalBR());
+		_listModeloArgumentativa.put("pt_BR", new ModeloArgumentativaBR());
 		//Fim dos modelos brasileiros
 		
+		addStringIdioma("en_US", Ingles.INSTANCE);
+		addStringIdioma("pt_BR", Portugues.INSTANCE);
 	}
-	protected Carta buildCarta() {
-		return new Carta(_remetente, _destinatario, _data,_idioma,_modelo);
+	
+	protected ModeloArgumentativa getModeloArgumentativo(String idioma) {
+		return _listModeloArgumentativa.get(idioma);
 	}
+	
+	protected ModeloComercial getModeloComercial(String idioma) {
+		return _listModeloComercial.get(idioma);
+	}
+	
+	protected ModeloPessoal getModeloPessoal(String idioma) {
+		return _listModeloPessoal.get(idioma);
+	}
+	
+	protected void addStringIdioma(String nome, Idioma idioma) {
+		this.stringIdioma.put(nome, idioma);
+	}
+	
+	protected void addModeloArgumentativo(String idioma, ModeloArgumentativa modelo) {
+		this._listModeloArgumentativa.put(idioma, modelo);
+	}
+	
+	protected void addModeloComercial(String idioma, ModeloComercial modelo) {
+		this._listModeloComercial.put(idioma, modelo);
+	}
+	
+	protected void addModeloPessoal(String idioma, ModeloPessoal modelo) {
+		this._listModeloPessoal.put(idioma, modelo);
+	}
+	
+	protected Carta buildCarta(Modelo modelo) {
+		if (novo != null)
+			return new Carta(_remetente, _destinatario, _data,novo, modelo);
+		return new Carta(_remetente, _destinatario, _data,stringIdioma.get(idioma), modelo);
+	}
+	
 	public Carta buildCartaComercial() {
-		
-		_modelo = _listModeloComercial.get(_idioma);
-		return buildCarta();
+		return buildCarta(getModeloComercial(idioma));
 	}
 	public Carta buildCartaPessoal() {
-		_modelo = _listModeloPessoal.get(_idioma);
-		return buildCarta();
+		return buildCarta(getModeloPessoal(idioma));
 	}
 	public Carta buildCartaArgumentativa() {
-		_modelo = _listModeloArgumentativa.get(_idioma);
-		return buildCarta();
+		return buildCarta(getModeloArgumentativo(idioma));
 	}
 }

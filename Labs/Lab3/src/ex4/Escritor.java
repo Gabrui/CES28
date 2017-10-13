@@ -15,24 +15,33 @@ public class Escritor {
 	private Pessoa _destinatario;
 	private Data _data;
 	private Idioma.Builder _builder;
+	private String modelo;
+	private FactoryCarta fabrica;
 	
 	public Escritor(Pessoa remetente, Pessoa destinatario, Data data) {
 		_remetente = remetente;
 		_destinatario = destinatario;
 		_data = data;
+		fabrica = new FactoryCarta(remetente, destinatario, data, "pt_BR");
+		this.Portugues();
 	}
+	
+	
 	protected Idioma getIdioma() {
 		if(_builder == null)
 			throw new RuntimeException("variable Idioma not especified! "
 				+ "\nPlease use Ingles or Portugues before use write method.");
 		return _builder.build();
 	}
+	
 	//Ao escolher um idioma para carta
 	//todos os formato dos campos sao daquele idioma escolhido.
-	private void definePrincipalIdioma(Idioma idioma) {
+	protected void definePrincipalIdioma(Idioma idioma) {
 		_builder = new Idioma.Builder(idioma);
 	}
 	// fim dos metodos facilitadores de extensao
+	
+	
 	public void Ingles() {
 		definePrincipalIdioma(Ingles.INSTANCE);
 	}
@@ -75,6 +84,7 @@ public class Escritor {
 	public void configIdiomaVocativo2Portugues() {
 		_builder.vocativo(Portugues.INSTANCE);
 	}
+	
 	
 	public Carta writeCartaComercial() {
 		FactoryCarta fCarta = new FactoryCarta(_remetente,_destinatario,_data, getIdioma());

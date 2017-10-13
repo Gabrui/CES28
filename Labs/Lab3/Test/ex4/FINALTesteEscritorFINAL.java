@@ -6,34 +6,46 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-
+/**
+ * Teste de Integração Final do Escritor.
+ * 
+ * O escritor encapsula o Idioma, ele é opcional na solução do Ex4 e Ex5, 
+ * pois a Factory já realiza as especificações do Ex5.
+ * 
+ * O Escritor foi desenvolvimento pensando em facilitar a configuração do
+ * idioma, deixando o Idioma invisível ao usuário.
+ *
+ */
 public class FINALTesteEscritorFINAL {
 
 	
-	private Escritor _veja;
-	private Pessoa _send;
-	private Pessoa _leitor;
-	private Data _hoje;
-	private Endereco _end;
-	private Telefone _fone;
+	private Escritor escritor;
+	private Pessoa remetente;
+	private Pessoa destinatario;
+	private Data data;
+	private Endereco enderecoRemetente;
+	private Endereco enderecoDestinatario;
+	private Telefone fone;
 	
 	@Before
 	public void setUp() {
 		
-		_hoje = new Data(13,"Outubro",2017);
-		_end = new Endereco("FazendaDourada","LugarNenhum","Livre","SemFronteiras");
-		_fone = new Telefone(99,00,109, 800);
-		_send = new Pessoa.PessoaBuilder("Leitor",_end)
+		data = new Data(13,"Outubro",2017);
+		
+		enderecoRemetente = new Endereco("FazendaDourada","LugarNenhum","Livre","SemFronteiras");
+		fone = new Telefone(99,00,109, 800);
+		remetente = new Pessoa.PessoaBuilder("Leitor",enderecoRemetente)
 				.departamento("RecursosHumanos").email("Leitor@FazendaMimosa.RecursosHumanos.com")
-				.emprego("comunicacaoSocial").fone(_fone).idade(40).nomeEmpresa("FazendMimosa")
+				.emprego("comunicacaoSocial").fone(fone).idade(22).nomeEmpresa("FazendMimosa")
 				.build();
-		_end = new Endereco("CentralVeja","CidadeCentralVeja","VejaStateLiberty","Observadores");
-		_fone = new Telefone(1,77,89,4000);
-		_leitor = new Pessoa.PessoaBuilder("Redator",_end)
+		
+		enderecoDestinatario = new Endereco("CentralVeja","CidadeCentralVeja","VejaStateLiberty","Observadores");
+		destinatario = new Pessoa.PessoaBuilder("Redator",enderecoDestinatario)
 				.departamento("Jornalistas").email("Redator@jonarlista.veja.com")
-				.emprego("jornalista").fone(_fone).idade(40).nomeEmpresa("Veja")
+				.emprego("jornalista").idade(40).nomeEmpresa("Veja")
 				.build();
-		_veja = new Escritor(_send,_leitor,_hoje);
+		
+		escritor = new Escritor(remetente,destinatario,data);
 	
 	}
 	
@@ -42,33 +54,17 @@ public class FINALTesteEscritorFINAL {
 	 */
 	@Test
 	public void EhPossivelInstanciarEscritor() {
-		assertNotNull(_veja);
+		assertNotNull(escritor);
 	}
 	
 	@Test
-	public void PedidoDeCartaComercialUSARecebeCartaComercialUSA() {
+	public void PedidoDeCartaComercialUSAPortugues() {
+		// Cria o Escritor
+		escritor = new Escritor(remetente, destinatario, data);
 		
-		Escritor teste = Mockito.spy(_veja); 
-		Carta cartaTst = teste.writeCartaComercialUSA();
-		Ingles idiomaTst = Ingles.INSTANCE;
-		String resposta = _hoje.toString() + "\n\n" + _send.getNome() + "\n" +
-				_send.getEndereco(idiomaTst) + "\n" + _leitor.getNome() + "\n" +
-				_leitor.getEndereco(idiomaTst) + "\n\n\n"
-				+
-				idiomaTst.vocativo() + " " + _leitor.getNome()+": " +"\n\n"
-				   +"\n\n"
-				+
-				idiomaTst.despedida() +",\n"
-				+
-				"\n\n            __________________\n            "
-				+ _send.getNome() + "\n            " + _send.getFone(idiomaTst)
-				+ "\n            email:" + _send.getEmail();
-		assertTrue(  cartaTst instanceof Carta);
-		Mockito.verify(teste, Mockito.times(1)).writeCartaComercial();
-		Mockito.verify(teste, Mockito.times(1)).Ingles();
-		Mockito.verify(teste, Mockito.times(1)).writeCartaComercial();
+		escritor.Portugues();
 		
-		assertTrue(resposta == cartaTst.lerCarta());
+		System.out.println(escritor.writeCartaComercialUSA().lerCarta());
 		
 	}
 
