@@ -4,12 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
-<<<<<<< HEAD
 import org.mockito.Mockito;
 
-import static ex4.*;
-=======
->>>>>>> origin/master
 
 public class FINALTesteEscritorFINAL {
 
@@ -20,8 +16,10 @@ public class FINALTesteEscritorFINAL {
 	private Data _hoje;
 	private Endereco _end;
 	private Telefone _fone;
+	
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
+		
 		_hoje = new Data(13,"Outubro",2017);
 		_end = new Endereco("FazendaDourada","LugarNenhum","Livre","SemFronteiras");
 		_fone = new Telefone(99,00,109, 800);
