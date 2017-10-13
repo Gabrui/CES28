@@ -24,7 +24,6 @@ public class FINALTesteFactoryFinal {
 	}
 
 	@Test
-<<<<<<< HEAD
 	public void EhPossivelInstanciarFactoryCarta() {
 		assertNotNull(_caneta);
 	}
@@ -34,10 +33,10 @@ public class FINALTesteFactoryFinal {
 		assertTrue(_caneta.buildCartaComercial() instanceof Carta);
 		assertTrue(_caneta.buildCartaPessoal() instanceof Carta);
 		assertTrue(_caneta.buildCartaArgumentativa() instanceof Carta);
-=======
+	}
+	
 	public void test() {
 		//fail("Not yet implemented");
->>>>>>> origin/master
 	}
 
 }
