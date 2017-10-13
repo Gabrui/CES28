@@ -36,7 +36,7 @@ import org.junit.Test;
  * quanto a factory (Idioma), o que seria mais trabalhoso, e ainda poderiam existir
  * classes anêmicas.
  */
-public class TesteIntegracaoFINAL {
+public class FINALTesteIntegracaoFINAL {
 	
 	private Carta comercial;
 	private Carta pessoal;

@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 
-public class TesteIntegracaoFINAL {
+public class FINALTesteIntegracaoFINAL {
 	
 	private Carta carta;
 	private Modelo modelo;
@@ -34,7 +34,9 @@ public class TesteIntegracaoFINAL {
 	public void testaModeloComercialBRPortugues() {
 		modelo = new ModeloComercialBR();
 		idioma = new Portugues();
+		
 		carta = new Carta(remetente, destinatario, data, idioma, modelo);
+		
 		assertEquals(
 				"ITA\n" + 
 				"Engenharia de Software\n" + 
@@ -56,7 +58,9 @@ public class TesteIntegracaoFINAL {
 	public void testaModeloComercialBRIngles() {
 		modelo = new ModeloComercialBR();
 		idioma = new Ingles();
+		
 		carta = new Carta(remetente, destinatario, data, idioma, modelo);
+		
 		assertEquals(
 				"ITA\n" + 
 				"Engenharia de Software\n" + 
@@ -78,10 +82,32 @@ public class TesteIntegracaoFINAL {
 	public void testaModeloComercialUSAIngles() {
 		modelo = new ModeloComercialUSA();
 		idioma = new Ingles();
+		
 		carta = new Carta(remetente, destinatario, data, idioma, modelo);
-		System.out.println(carta.lerCarta());
+		
 		assertEquals(
-				""
+				"10/1/2017\n" + 
+				"\n" + 
+				"Gabriel\n" + 
+				"H8B 241, São José dos Campos   SP Brasil\n" + 
+				"\n" + 
+				"Dylan\n" + 
+				"H8B 205, São José   SP Brasil\n" + 
+				"\n" + 
+				"\n" + 
+				"Dear Dylan: \n" + 
+				"\n" + 
+				"\n" + 
+				"\n" + 
+				"Gratefully,\n" + 
+				"\n" + 
+				"\n" + 
+				"Gabriel\n" + 
+				"\n" + 
+				"            __________________\n" + 
+				"            \n" + 
+				"            +55 (0) (12) 394-77891\n" + 
+				"            email: gaadrime.melo@gmail.com"
 				, carta.lerCarta());
 	}
 

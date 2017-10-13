@@ -32,7 +32,7 @@ import org.junit.Test;
  * 
  * As cartas podem ser facilmente extendidas e já veêm com muitos métodos default.
  */
-public class TesteIntegracaoFINAL {
+public class FINALTesteIntegracaoFINAL {
 	
 	private Carta comercial;
 	private Carta pessoal;
