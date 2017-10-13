@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
+
 import static ex4.*;
 
 public class FINALTesteEscritorFINAL {
@@ -40,6 +42,33 @@ public class FINALTesteEscritorFINAL {
 	@Test
 	public void EhPossivelInstanciarEscritor() {
 		assertNotNull(_veja);
+	}
+	
+	@Test
+	public void PedidoDeCartaComercialUSARecebeCartaComercialUSA() {
+		
+		Escritor teste = Mockito.spy(_veja); 
+		Carta cartaTst = teste.writeCartaComercialUSA();
+		Ingles idiomaTst = Ingles.INSTANCE;
+		String resposta = _hoje.toString() + "\n\n" + _send.getNome() + "\n" +
+				_send.getEndereco(idiomaTst) + "\n" + _leitor.getNome() + "\n" +
+				_leitor.getEndereco(idiomaTst) + "\n\n\n"
+				+
+				idiomaTst.vocativo() + " " + _leitor.getNome()+": " +"\n\n"
+				   +"\n\n"
+				+
+				idiomaTst.despedida() +",\n"
+				+
+				"\n\n            __________________\n            "
+				+ _send.getNome() + "\n            " + _send.getFone(idiomaTst)
+				+ "\n            email:" + _send.getEmail();
+		assertTrue(  cartaTst instanceof Carta);
+		Mockito.verify(teste, Mockito.times(1)).writeCartaComercial();
+		Mockito.verify(teste, Mockito.times(1)).Ingles();
+		Mockito.verify(teste, Mockito.times(1)).writeCartaComercial();
+		
+		assertTrue(resposta == cartaTst.lerCarta());
+		
 	}
 
 }
