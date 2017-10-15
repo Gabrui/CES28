@@ -1,4 +1,4 @@
-package ex4;
+package ex4e5;
 
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -6,6 +6,12 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+
+import ex4e5.Carta;
+import ex4e5.Data;
+import ex4e5.Idioma;
+import ex4e5.Modelo;
+import ex4e5.Pessoa;
 
 
 /**

@@ -3,7 +3,7 @@
  * @author Dylan N. Sugimoto e Gabriel Adriano de Melo
  * Data da criação: 10/10/2017
  */
-package ex4;
+package ex4e5;
 import java.util.HashMap;
 
 /**

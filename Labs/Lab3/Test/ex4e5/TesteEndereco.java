@@ -1,9 +1,11 @@
-package ex4;
+package ex4e5;
 
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import ex4e5.Endereco;
 
 public class TesteEndereco {
 	

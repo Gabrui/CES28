@@ -2,7 +2,7 @@
  * @author Dylan N. Sugimoto e Gabriel Adriano de Melo
  * Data da criação: 29/09/2017
  */
-package ex4;
+package ex4e5;
 
 /**
  * Classe Pai de todas os tipos de carta.

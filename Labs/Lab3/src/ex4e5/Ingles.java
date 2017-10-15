@@ -1,60 +1,62 @@
 /**
+ * LAB-3 / CES-28
  * @author Dylan N. Sugimoto e Gabriel Adriano de Melo
  * Data da Criacao: 07/10/2017
  */
-package ex4;
+package ex4e5;
 
 /**
  * @author Dylan N. Sugimoto e Gabriel Adriano de Melo
  * Data da Criacao: 07/10/2017
- * Classe Portugues guarda alguns parametros da carta em portugues
+ * Classe Ingles guarda alguns parametros da carta em ingles
  */
-public class Portugues extends Idioma {
+public class Ingles extends Idioma {
 	
-	public static final Portugues INSTANCE = new Portugues();
-		
-	private Portugues() {
+	public static final Ingles INSTANCE = new Ingles();
+	
+	private Ingles() {
 		super();
 	}
-
-	protected Portugues (Builder b) {
+	
+	private Ingles(Builder b) {
 		super(b);
 	}
+
 	@Override
 	protected Idioma rebuild(Builder b) {
-		return new Portugues(b);
+		return new Ingles(b);
 	}
 
 	@Override
-	protected String despedidaFormato() {
-		return "Atensiosamente";
+	public String despedidaFormato() {
+		return "Gratefully";
 	}
 
 	@Override
 	protected String vocativoFormato() {
-		return "Caro";
+		return "Dear";
 	}
 
 	@Override
 	protected String pronomeFormato() {
-		return "Senhor";
+		return "Mr.";
 	}
 
 	@Override
 	protected String dataFormato(String dia, String mes, String ano) {
-		// Formato da Data: "dia de mes de ano"
-		return dia + " de " + mes + " de " + ano;
+		// Date's Format: Month/Day/Year
+				return mes+"/"+dia+"/"+ano;
 	}
 
 	@Override
 	protected String enderecoFormato(String rua, String cidade, String estado, String pais) {
-		return rua +", "+ cidade +", "+estado+" - " + pais;
+		return rua +", "+cidade 
+				+ "   "+estado +" "+ pais ;
 	}
 
 	@Override
 	protected String foneFormato(String DDI, String cc, String lc, String tel) {
 		// cc: codigo do pais / lc: codigo local.
-		return "+"+DDI+" - "+cc+" - "+"("+lc+") "+tel;
+				return "+"+DDI+" ("+cc+") "+"("+lc+") "+tel;
 	}
-	
 }

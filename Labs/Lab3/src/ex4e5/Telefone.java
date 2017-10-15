@@ -3,7 +3,7 @@
  * @author Dylan N. Sugimoto e Gabriel Adriano de Melo
  * Data da criacao: 07/10/2017
  */
-package ex4;
+package ex4e5;
 
 /**
  * @author Dylan N. Sugimoto e Gabriel Adriano de Melo

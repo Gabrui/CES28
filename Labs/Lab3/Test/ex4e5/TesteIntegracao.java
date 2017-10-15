@@ -1,9 +1,20 @@
-package ex4;
+package ex4e5;
 
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import ex4e5.Carta;
+import ex4e5.Data;
+import ex4e5.Endereco;
+import ex4e5.Idioma;
+import ex4e5.Ingles;
+import ex4e5.Modelo;
+import ex4e5.ModeloComercialBR;
+import ex4e5.Pessoa;
+import ex4e5.Portugues;
+import ex4e5.Telefone;
 
 
 public class TesteIntegracao {

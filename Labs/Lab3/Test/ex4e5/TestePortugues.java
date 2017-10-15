@@ -1,4 +1,4 @@
-package ex4;
+package ex4e5;
 
 import static org.junit.Assert.*;
 
@@ -7,6 +7,12 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+
+import ex4e5.Data;
+import ex4e5.Endereco;
+import ex4e5.Idioma;
+import ex4e5.Portugues;
+import ex4e5.Telefone;
 
 /**
  * Teste de unidade, com stubs.
