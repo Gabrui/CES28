@@ -9,6 +9,12 @@ import java.util.HashMap;
 /**
  * @author Dylan N. Sugimoto e Gabriel Adriano de Melo
  * Representa a classe de criacao de cartas.
+ * 
+ * Ao escolher uma língua, o usuário das classes automaticamente receberá 
+ * uma carta comercial no formato correspondente à língua escolhida, não 
+ * apenas considerando o formato dos campos (Idioma), mas também a ordenação e 
+ * disposição dos campos na página (Modelo). 
+
  */
 public class FactoryCarta {
 
@@ -41,23 +47,20 @@ public class FactoryCarta {
 	}
 	
 	
-	protected void montarListModelo() {
-		//Colocando modelo da lingua Inglesa
-		_listModeloComercial.put("en_US", new ModeloComercialUSA());
-		_listModeloPessoal.put("en_US", new ModeloPessoalUSA());
-		_listModeloArgumentativa.put("en_US", new ModeloArgumentativaUSA());
-		//Fim dos modelos americanos
+	private void montarListModelo() {
+		addModeloComercial("en_US", new ModeloComercialUSA());
+		addModeloPessoal("en_US", new ModeloPessoalUSA());
+		addModeloArgumentativo("en_US", new ModeloArgumentativaUSA());
 		
-		//Colocando modelo da linga portuguesa
-		_listModeloComercial.put("pt_BR", new ModeloComercialBR());
-		_listModeloPessoal.put("pt_BR", new ModeloPessoalBR());
-		_listModeloArgumentativa.put("pt_BR", new ModeloArgumentativaBR());
-		//Fim dos modelos brasileiros
+		addModeloComercial("pt_BR", new ModeloComercialBR());
+		addModeloPessoal("pt_BR", new ModeloPessoalBR());
+		addModeloArgumentativo("pt_BR", new ModeloArgumentativaBR());
 		
 		addStringIdioma("en_US", Ingles.INSTANCE);
 		addStringIdioma("pt_BR", Portugues.INSTANCE);
 	}
 	
+	// Métodos Protected para facilitar a extensão da Factory
 	protected ModeloArgumentativa getModeloArgumentativo(String idioma) {
 		return _listModeloArgumentativa.get(idioma);
 	}
@@ -86,7 +89,12 @@ public class FactoryCarta {
 		this._listModeloPessoal.put(idioma, modelo);
 	}
 	
-	protected Carta buildCarta(Modelo modelo) {
+	/**
+	 * Método extra caso se queira passa um modelo explicitamente.
+	 * @param modelo
+	 * @return
+	 */
+	public Carta buildCarta(Modelo modelo) {
 		if (novo != null)
 			return new Carta(_remetente, _destinatario, _data,novo, modelo);
 		return new Carta(_remetente, _destinatario, _data,stringIdioma.get(idioma), modelo);

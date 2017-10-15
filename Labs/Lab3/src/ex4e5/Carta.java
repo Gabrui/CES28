@@ -5,8 +5,7 @@
 package ex4e5;
 
 /**
- * Classe Pai de todas os tipos de carta.
- *
+ * Classe Diretora do Builder Modelo.
  */
 public class Carta {
 

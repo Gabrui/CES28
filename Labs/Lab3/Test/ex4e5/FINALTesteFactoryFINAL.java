@@ -14,9 +14,20 @@ import ex4e5.Pessoa;
 import ex4e5.Portugues;
 import ex4e5.Telefone;
 
-
-public class FINALTesteFactoryFinal {
-	
+/**
+ * 
+ * Ao escolher uma língua, o usuário das classes automaticamente receberá 
+ * uma carta comercial no formato correspondente à língua escolhida, não 
+ * apenas considerando o formato dos campos (Idioma), mas também a ordenação e 
+ * disposição dos campos na página (Modelo).
+ * 
+ * Utilizou-se uma Factory com dicionários, relacionando a string passada, com um Modelo
+ * padrão e um Idioma padrão. Sua extensão é relativamente fácil, sendo necessário apenas
+ * a chamada das funções addModelo para associar uma string a um Modelo.
+ * 
+ * Para a configuração das subpartes dinâmicas, ver o outro teste.
+ */
+public class FINALTesteFactoryFINAL { // Teste de Integração
 
 	private FactoryCarta fabrica;
 	
@@ -39,6 +50,12 @@ public class FINALTesteFactoryFinal {
 		destinatario = new Pessoa.PessoaBuilder("Dylan", enderecoDestinatario).build();
 	}
 	
+	
+	/**
+	 * Ao escolher a língua portuguesa para uma carta comercial, por default, 
+	 * automaticamente o modelo comercial brasileiro será o usado para gerar 
+	 * uma carta comercial com todas as subpartes traduzidas para o portugues. 
+	 */
 	@Test
 	public void testaModeloAutomaticoAoSelecionarIdioma() {
 		// A string pt_BR seleciona tanto o idioma quanto o modelo da carta
@@ -63,7 +80,10 @@ public class FINALTesteFactoryFinal {
 	}
 	
 
-	
+	/**
+	 * Se o programador usuário das classes escolher explicitamente uma língua para o 
+	 * modelo é possível gerar o modelo comercial brasileira traduzido para inglês.
+	 */
 	@Test
 	public void testaModeloDiferenteDoIdioma() {
 		// A string pt_BR seleciona apenas o modelo, já os campos serão em Inglês
@@ -88,7 +108,10 @@ public class FINALTesteFactoryFinal {
 	}
 	
 	
-
+	/**
+	 * Pode-se produzir outras combinações de modelos de layout e subpartes 
+	 * associados a outras línguas, se indicado explicitamente.
+	 */
 	@Test
 	public void testaModeloDiferenteDoIdiomaNovo() {
 		// A string pt_BR seleciona apenas o modelo, já os campos serão uma mistureba
@@ -105,7 +128,7 @@ public class FINALTesteFactoryFinal {
 				"\n" + 
 				"\n" + 
 				"\n" + 
-				"Atensiosamente,\n" + // Aqui está a mudança da despedida
+				"Atensiosamente,\n" + // Aqui está a mudança da despedida, em português!
 				"Gabriel\n" + 
 				"\n" + 
 				"Engenharia de Software\n" + 

@@ -9,6 +9,38 @@ package ex4e5;
  * @author Dylan N. Sugimoto e Gabriel Adriano de Melo
  * Data da criacao: 07/10/2017
  * Representacao  da traducao de alguns parametros da Carta.
+ * 
+ * 
+ * COMENTÁRIO:
+ * 
+ * Essa classe é responsável pela formação de cada campo da carta.
+ * 
+ * É extremamente fácil de ser extendida, bastando o programador criar
+ * uma nova classe que a extenda ou uma de suas subclasses, sem a necessidade
+ * de se alterar nenhuma outra classe.
+ * 
+ * Ou seja, o código está aberto para extensão mas fechado para modificação, 
+ * digamos, se fosse necessário alterar o código interno de alguma classe concreta
+ * já existente.
+ * 
+ * Uma atenção especial foi dada também ao fato de não existirem classes anêmicas, 
+ * com apenas um método, o que é um mal-cheiro, dessa forma as traduções dos campos
+ * foram agrupados nessa classe idioma, em vez de existirem várias classes pequenas
+ * para cada campo.
+ * 
+ * Para que seja possível o uso de subpartes dinâmicas, utilizou-se o padrão 
+ * Fluent Builder para a construção de novos Idiomas (agregação dos já existentes),
+ * e uma espécie de Strategy para a delegação entre idiomas. Dessa forma, evitou-se
+ * o uso de classes anêmicas, que inclusive, havia sido a primeira solução nossa, 
+ * valendo-se de uma factory, porém, haveria 19 classes anêmicas com um método cada.
+ * Assim, a estratégia utilizada pareceu uma solução mais elegante.
+ * 
+ * O Builder faz uso de um Factory Method, chamado rebuild.
+ * 
+ * Para o uso dos Idioma padrões, utilizou-se o padrão Singleton, uma
+ * vez que, uma vez construídos, os idiomas são imutáveis.
+ *
+ * 
  */
 public abstract class Idioma {
 	
@@ -19,7 +51,7 @@ public abstract class Idioma {
 	private Idioma _end;
 	private Idioma _fone;
 
-	protected Idioma() { // Construtor padrão
+	protected Idioma() { // Construtor padrão utilizado para o Singleton
 		_despedida = this;
 		_vocativo = this;
 		_pronome = this;
@@ -37,6 +69,11 @@ public abstract class Idioma {
 		_fone = b._fone;
 	}
 	
+	/**
+	 * É um Factory Method.
+	 * @param b Builder a ser utilizado para construção do novo Idioma
+	 * @return Novo idioma representado pelo builder.
+	 */
 	protected abstract Idioma rebuild(Builder b);
 	
 	protected abstract String despedidaFormato();
@@ -83,14 +120,14 @@ public abstract class Idioma {
 		private Idioma _fone;
 		private Idioma _principal;
 		
-		public Builder(Idioma idioma) {
-			_principal = idioma;
-			_despedida = idioma;
-			_pronome = idioma;
-			_data = idioma;
-			_end = idioma;
-			_fone = idioma;
-			_vocativo = idioma;
+		public Builder(Idioma idiomaPrincipal) {
+			_principal = idiomaPrincipal;
+			_despedida = idiomaPrincipal;
+			_pronome = idiomaPrincipal;
+			_data = idiomaPrincipal;
+			_end = idiomaPrincipal;
+			_fone = idiomaPrincipal;
+			_vocativo = idiomaPrincipal;
 		}
 		
 		public Builder despedida(Idioma despedida) {
