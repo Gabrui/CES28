@@ -9,7 +9,7 @@ public class Subject extends Observable {
 	public void setEstado(String s) {
 		this.estado = s;
 		this.setChanged();
-		this.notifyObservers();
+		this.notifyObservers(getEstado());
 	}
 	
 	public String getEstado() {

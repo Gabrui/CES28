@@ -13,7 +13,7 @@ public class Observador implements Observer {
 	
 	@Override
 	public void update(Observable o, Object arg) {
-		System.out.println(id+" recebi:\n"+arg+"\n");
+		System.out.println(id+": recebi: \""+arg+"\"");
 	}
 
 }
