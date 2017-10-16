@@ -1,4 +1,4 @@
-package aula11;
+package questao12;
 
 public class SOSistemaCliente {
 	
@@ -23,7 +23,7 @@ public class SOSistemaCliente {
 				"---------------------");
 		regrasDeNegocio.setEstado("Olá, como vai?");
 		
-		regrasDeNegocio.detach(tela1);
+		regrasDeNegocio.deleteObserver(tela1);
 		
 		System.out.println("\nGerar segundo evento\n" + 
 				"---------------------");
