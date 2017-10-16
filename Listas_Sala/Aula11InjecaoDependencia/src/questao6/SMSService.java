@@ -1,12 +1,12 @@
-package questao4;
+package questao6;
 
-public class EmailService {
+public class SMSService implements MessageService {
 
+	@Override
 	public void sendEmail(String message, String receiver) {
-        // Logic to send email
-		System.out.println("Email sent to "+ receiver);
+		System.out.println("SMS sent to "+ receiver);
 		System.out.println("----------------------------------");
 		System.out.println("Message: " + message);
 	}
-	
+
 }

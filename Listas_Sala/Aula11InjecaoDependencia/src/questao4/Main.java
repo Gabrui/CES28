@@ -4,7 +4,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		EmailService email = new EmailService();
-		new MyApplication().processMessages(email, "mensagem", "destinatário");
+		new MyApplication(email).processMessages("mensagem", "destinatário");
 	}
 
 }

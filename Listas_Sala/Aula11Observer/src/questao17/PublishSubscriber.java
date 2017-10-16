@@ -13,8 +13,10 @@ public class PublishSubscriber implements Observer {
 
 	@Override
 	public void update(Observable publisher, Object arg) {
-		for (Observer subscriber : assuntoSubscribers.get(publisherAssunto.get(publisher)))
-			subscriber.update(null, arg);
+		List<Observer> lista = assuntoSubscribers.get(publisherAssunto.get(publisher));
+		if (lista != null)
+			for (Observer subscriber : lista)
+				subscriber.update(null, arg);
 	}
 	
 	public void adiconaPublisher(Observable publisher, String assunto) {
