@@ -1,16 +1,17 @@
 package bancoDados;
 
-public abstract class ProdutoAbstrato {
+public abstract class ProdutoServico {
 	
 	private String nome;
 	private String descricao;
 	private int preco;
 	
-	public ProdutoAbstrato(String nome, int preco, String descricao) {
+	public ProdutoServico(String nome, int preco, String descricao) {
 		this.nome = nome;
 		this.preco = preco;
 		this.descricao = descricao;
 	}
+	
 	
 	public int getPreco() {
 		return preco;
