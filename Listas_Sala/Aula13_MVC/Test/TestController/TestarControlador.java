@@ -7,6 +7,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import ref0.controller.*;
 
@@ -17,12 +19,14 @@ import ref0.controller.*;
 public class TestarControlador {
 
 	private PersonDetailControllerImpl control;
-	private mockPerson;
+	//@Mock Person teste;
+	//@Mock private mockPerson;
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
+		MockitoAnnotations.initMocks(this);
 	}
 
 	@Test
