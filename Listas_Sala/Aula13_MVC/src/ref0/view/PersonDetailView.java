@@ -1,6 +1,7 @@
 package ref0.view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -52,8 +53,17 @@ public class PersonDetailView extends JPanel implements PersonListener, WindowLi
 	}
 	
 	private void populateView() {
-		if (nameIsNonNullAndNonVoidString())
+		Color cor;
+		String classificacao = this.getPerson().getClassificacao();
+		if (classificacao.equals("curto"))
+			cor = Color.RED;
+		else if (classificacao.equals("medio"))
+			cor = Color.GREEN;
+		else cor = Color.YELLOW;
+		if (nameIsNonNullAndNonVoidString()) {
 			this.label.setText(LABEL + this.getPerson().getName());
+			this.label.setForeground(cor);
+		}
 		else this.label.setText(LABEL + "...");
 	}
 	

@@ -23,11 +23,21 @@ public class Person {
 		return _name;
 	}
 	
+	public String getClassificacao() {
+		return _classificacao;
+	}
+	
 	public void setName(String name)
 	{
 		System.out.println("setName");
 		name = name.replaceAll("[^A-Za-z ]", "").replaceAll("( )+", " ");
 		_name = name.substring(0, 1).toUpperCase() + name.substring(1);
+		int tamanho = _name.length();
+		if (tamanho < 5)
+			_classificacao = "curto";
+		else if (tamanho < 10)
+			_classificacao = "medio";
+		else _classificacao = "longo";
 		fireOnNameChanged();
 	}
 
