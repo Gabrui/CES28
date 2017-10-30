@@ -11,6 +11,8 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import ref0.controller.*;
+import ref0.model.Person;
+import ref0.view.PersonDetailView;
 
 /**
  * @author Dylan N. Sugimoto e Gabriel Adriano de Melo
@@ -18,9 +20,9 @@ import ref0.controller.*;
  */
 public class TestarControlador {
 
-	private PersonDetailControllerImpl control;
-	//@Mock Person teste;
-	//@Mock private mockPerson;
+	private PersonDetailControllerImpl _control;
+	@Mock private Person mockPerson;
+	@Mock private PersonDetailView mockView;
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -30,8 +32,8 @@ public class TestarControlador {
 	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void EhPossivelInstanciarController() {
+		_control = new PersonDetailControllerImpl(mockPerson);
 	}
 
 }
