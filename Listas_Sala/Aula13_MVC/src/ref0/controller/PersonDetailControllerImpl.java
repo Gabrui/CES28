@@ -14,7 +14,9 @@ public class PersonDetailControllerImpl implements PersonDetailViewListener {
 
 	@Override
 	public void changedButtonPressed() {
+		System.out.println("changedButtonPressed");
 		final String newName = _view.getNameFromTextField();
+		
 		if (isNotEmpty(newName))
 		{	
 			this.getModel().setName(newName);

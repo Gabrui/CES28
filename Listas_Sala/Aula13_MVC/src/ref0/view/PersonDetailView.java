@@ -59,6 +59,7 @@ public class PersonDetailView extends JPanel implements PersonListener, WindowLi
 	
 	public String getNameFromTextField()
 	{
+		System.out.println("\ngetNameFromTextField");
 		return nameTextField.getText();
 	}
 

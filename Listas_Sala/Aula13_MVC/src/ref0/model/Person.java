@@ -20,11 +20,13 @@ public class Person {
 
 	public String getName()
 	{
+		System.out.println("\ngetName");
 		return _name;
 	}
 	
 	public void setName(String name)
 	{
+		System.out.println("\nsetName");
 		_name = name;
 		fireOnNameChanged();
 	}
