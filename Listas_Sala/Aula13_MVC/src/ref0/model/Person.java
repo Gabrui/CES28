@@ -8,8 +8,7 @@ public class Person {
 		void onPersonNameChanged();
 	}
 	
-	public Person()
-	{
+	public Person() {
 	
 	}
 	
@@ -20,14 +19,15 @@ public class Person {
 
 	public String getName()
 	{
-		System.out.println("\ngetName");
+		System.out.println("getName");
 		return _name;
 	}
 	
 	public void setName(String name)
 	{
-		System.out.println("\nsetName");
-		_name = name;
+		System.out.println("setName");
+		name = name.replaceAll("[^A-Za-z ]", "").replaceAll("( )+", " ");
+		_name = name.substring(0, 1).toUpperCase() + name.substring(1);
 		fireOnNameChanged();
 	}
 
@@ -49,5 +49,6 @@ public class Person {
 	}
 	
 	private String _name;
+	private String _classificacao;
 	private List<PersonListener> listeners = new ArrayList<PersonListener>();
 }
