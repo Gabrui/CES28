@@ -7,7 +7,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import ref0.controller.*;
@@ -20,7 +22,7 @@ import ref0.view.PersonDetailView;
  */
 public class TestarControlador {
 
-	private PersonDetailControllerImpl _control;
+	@InjectMocks private PersonDetailControllerImpl _control;
 	@Mock private Person mockPerson;
 	@Mock private PersonDetailView mockView;
 	/**
@@ -35,5 +37,14 @@ public class TestarControlador {
 	public void EhPossivelInstanciarController() {
 		_control = new PersonDetailControllerImpl(mockPerson);
 	}
-
+	
+	@Test
+	public void TestarButtonPressed() {
+		
+		Mockito.when(mockView.getNameFromTextField()).thenReturn("NewName");
+		_control = new PersonDetailControllerImpl(mockPerson);
+		_control.changedButtonPressed();
+		
+		Mockito.verify(mockView, Mockito.times(1)).getNameFromTextField();
+	}
 }
