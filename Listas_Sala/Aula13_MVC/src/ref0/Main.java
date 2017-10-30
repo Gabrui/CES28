@@ -1,6 +1,7 @@
+package ref0;
 
-import controller.PersonDetailControllerImpl;
-import model.Person;
+import ref0.controller.PersonDetailControllerImpl;
+import ref0.model.Person;
 
 public class Main {
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package view;
+package ref0.view;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -13,8 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import model.Person;
-import model.Person.PersonListener;
+import ref0.model.Person;
+import ref0.model.Person.PersonListener;
 
 @SuppressWarnings("serial")
 public class PersonDetailView extends JPanel implements PersonListener, WindowListener{

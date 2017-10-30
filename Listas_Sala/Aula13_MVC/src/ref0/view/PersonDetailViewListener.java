@@ -1,4 +1,4 @@
-package view;
+package ref0.view;
 
 public interface PersonDetailViewListener {
 

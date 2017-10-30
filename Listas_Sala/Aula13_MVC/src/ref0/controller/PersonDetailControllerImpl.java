@@ -1,8 +1,8 @@
-package controller;
+package ref0.controller;
 
-import model.Person;
-import view.PersonDetailView;
-import view.PersonDetailViewListener;
+import ref0.model.Person;
+import ref0.view.PersonDetailView;
+import ref0.view.PersonDetailViewListener;
 
 public class PersonDetailControllerImpl implements PersonDetailViewListener {
 
