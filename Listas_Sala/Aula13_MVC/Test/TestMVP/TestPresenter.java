@@ -8,7 +8,12 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
+import mvp.IPersonDetailView;
+import mvp.Person;
+import mvp.PersonPresenter;
 
 /**
  * @author Dylan N. Sugimoto e Gabriel Adriano de Melo
@@ -16,18 +21,21 @@ import org.mockito.MockitoAnnotations;
  */
 public class TestPresenter {
 
-	private Person _mockPerson;
+	@Mock private Person _mockPerson;
+	@Mock private IPersonDetailView _mockView;
+	private PersonPresenter _presenter;
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
 		MockitoAnnotations.initMocks(this);
+		_presenter = new PersonPresenter(_mockPerson,_mockView);
 	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void EhPossivelInstanciarPresenter() {
+		assertNotNull(_presenter);
 	}
 
 }
