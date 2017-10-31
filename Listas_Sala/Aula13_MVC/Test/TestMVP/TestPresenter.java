@@ -6,9 +6,12 @@ package TestMVP;
 
 import static org.junit.Assert.*;
 
+import java.awt.Color;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import mvp.IPersonDetailView;
@@ -36,6 +39,36 @@ public class TestPresenter {
 	@Test
 	public void EhPossivelInstanciarPresenter() {
 		assertNotNull(_presenter);
+	}
+	@Test
+	public void TestPresenterUpdate() {
+		Mockito.when(_mockPerson.getClassificacao()).thenReturn("curto");
+		Mockito.when(_mockPerson.getName()).thenReturn("NewName");
+		_presenter.update(_mockView, "NewName");
+		
+		Mockito.verify(_mockPerson, Mockito.times(1)).setName("NewName");
+		Mockito.verify(_mockView, Mockito.times(1)).updateView(Color.RED,"NewName");
+		
+		Mockito.when(_mockPerson.getClassificacao()).thenReturn("medio");
+		Mockito.when(_mockPerson.getName()).thenReturn("NewName");
+		_presenter.update(_mockView, "NewName");
+		
+		Mockito.verify(_mockPerson, Mockito.times(2)).setName("NewName");
+		Mockito.verify(_mockView, Mockito.times(1)).updateView(Color.GREEN,"NewName");
+		
+		Mockito.when(_mockPerson.getClassificacao()).thenReturn("longo");
+		Mockito.when(_mockPerson.getName()).thenReturn("NewName");
+		_presenter.update(_mockView, "NewName");
+		
+		Mockito.verify(_mockPerson, Mockito.times(3)).setName("NewName");
+		Mockito.verify(_mockView, Mockito.times(1)).updateView(Color.YELLOW,"NewName");
+		
+		Mockito.when(_mockPerson.getClassificacao()).thenReturn("longo");
+		Mockito.when(_mockPerson.getName()).thenReturn("NewName");
+		_presenter.update(_mockView, "");
+		
+		Mockito.verify(_mockPerson, Mockito.times(1)).setName("");
+		Mockito.verify(_mockView, Mockito.times(2)).updateView(Color.YELLOW,"NewName");
 	}
 
 }
