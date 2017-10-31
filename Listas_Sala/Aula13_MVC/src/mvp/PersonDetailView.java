@@ -14,66 +14,47 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import ref0.model.Person;
-import ref0.model.Person.PersonListener;
-
 @SuppressWarnings("serial")
-public class PersonDetailView extends JPanel implements WindowListener, IPersonDetailView {
+public class PersonDetailView extends IPersonDetailView implements WindowListener {
 
 	public PersonDetailView() {
 		this.createUI();
 		this.bindUI();
-		this.populateView();
 	}
 
 	private void createUI() {
-		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		pannel.setLayout(new BoxLayout(pannel, BoxLayout.Y_AXIS));
 		
 		this.label = new JLabel();
-		add(label, BorderLayout.NORTH);
+		pannel.add(label, BorderLayout.NORTH);
 	
 		this.nameTextField = new JTextField();
-		add(nameTextField);
+		pannel.add(nameTextField);
 		
 		this.changeButton = new JButton(LABEL_CHANGE_BUTTON);
-		add(changeButton);
+		pannel.add(changeButton);
 	}
 	
 	private void bindUI() {
-		this.getPerson().addListener(this);
 		this.changeButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				_controller.changedButtonPressed();
+				PersonDetailView.this.setChanged();
+				PersonDetailView.this.notifyObservers(PersonDetailView.this.getNameFromTextField());
 			}
 		});
 	}
 	
-	private void populateView() {
-		Color cor;
-		String classificacao = this.getPerson().getClassificacao();
-		if (classificacao.equals("curto"))
-			cor = Color.RED;
-		else if (classificacao.equals("medio"))
-			cor = Color.GREEN;
-		else cor = Color.YELLOW;
-		if (nameIsNonNullAndNonVoidString()) {
-			this.label.setText(LABEL + this.getPerson().getName());
-			this.label.setForeground(cor);
-		}
-		else this.label.setText(LABEL + "...");
+	@Override
+	public void updateView(Color cor, String nome) {
+		this.label.setText(LABEL + nome);
+		this.label.setForeground(cor);
 	}
 	
 	@Override
-	public String getNameFromTextField()
-	{
-		System.out.println("\ngetNameFromTextField");
+	public String getNameFromTextField() {
+		System.out.println("getNameFromTextField");
 		return nameTextField.getText();
-	}
-
-	@Override
-	public void onPersonNameChanged() {
-		this.populateView();
 	}
 	
 	@Override
@@ -83,7 +64,7 @@ public class PersonDetailView extends JPanel implements WindowListener, IPersonD
 				{
 					setTitle(FRAME_TITLE );
 					setLocationRelativeTo(null);
-					setContentPane(PersonDetailView.this);
+					setContentPane(PersonDetailView.this.pannel);
 					setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 					addWindowListener(PersonDetailView.this);
 					pack();
@@ -96,7 +77,8 @@ public class PersonDetailView extends JPanel implements WindowListener, IPersonD
 
 	@Override
 	public void windowClosed(WindowEvent arg0) {
-		this.getController().windowClosed();
+		PersonDetailView.this.setChanged();
+		this.notifyObservers();
 	}
 	
 	@Override
@@ -122,41 +104,16 @@ public class PersonDetailView extends JPanel implements WindowListener, IPersonD
 	@Override
 	public void windowOpened(WindowEvent arg0) {
 	}
-	
-	protected Person getPerson() {
-		return _person;
-	}
-
-	protected void setPerson(Person person) {
-		_person = person;
-	}
-
-	protected PersonDetailViewListener getController() {
-		return _controller;
-	}
-
-	@Override
-	public void setController(PersonDetailViewListener controller) {
-		_controller = controller;
-	}
-
-	protected Boolean nameIsNonNullAndNonVoidString()
-	{	if ((this.getPerson().getName() != null) & (this.getPerson().getName() != ""))
-				return true;
-		return false;
-	}
 
 	private static final String LABEL = "The person name is ";
 	private static final String LABEL_CHANGE_BUTTON = "Change";
 	private static final String FRAME_TITLE = null;
 	
-	private JPannel pannel;
-	
-	private Person _person;
-	private PersonDetailViewListener _controller;
+	private JPanel pannel = new JPanel();
 
 	private JLabel label;
 	private JTextField nameTextField;
 	private JButton changeButton;
 	private JFrame frame;
+	
 }

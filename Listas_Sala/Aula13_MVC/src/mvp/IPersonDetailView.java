@@ -1,10 +1,10 @@
 package mvp;
 
+import java.awt.Color;
 import java.util.Observable;
-import java.util.Observer;
 
-public interface IPersonDetailView {
+public abstract class IPersonDetailView extends Observable {
 	public abstract String getNameFromTextField();
 	public abstract void display();
-	public abstract void setPresenter(Observer controller);
+	public abstract void updateView(Color cor, String nome);
 }
