@@ -138,7 +138,8 @@ public class PersonDetailView extends JPanel implements PersonListener, WindowLi
 		return _controller;
 	}
 
-	protected void setController(PersonDetailViewListener controller) {
+	@Override
+	public void setController(PersonDetailViewListener controller) {
 		_controller = controller;
 	}
 
