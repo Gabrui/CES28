@@ -22,9 +22,11 @@ import ref0.view.PersonDetailView;
  */
 public class TestarControlador {
 
-	@InjectMocks private PersonDetailControllerImpl _control;
-	@Mock private Person mockPerson;
 	@Mock private PersonDetailView mockView;
+	@Mock private Person mockPerson;
+	@InjectMocks private PersonDetailControllerImpl _control = new PersonDetailControllerImpl(mockPerson);
+	
+	
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -35,14 +37,15 @@ public class TestarControlador {
 
 	@Test
 	public void EhPossivelInstanciarController() {
-		_control = new PersonDetailControllerImpl(mockPerson);
+		
+		assertNotNull(_control);
+		Mockito.verify(mockView, Mockito.times(1)).display();
 	}
 	
 	@Test
 	public void TestarButtonPressed() {
 		
 		Mockito.when(mockView.getNameFromTextField()).thenReturn("NewName");
-		_control = new PersonDetailControllerImpl(mockPerson);
 		_control.changedButtonPressed();
 		
 		Mockito.verify(mockView, Mockito.times(1)).getNameFromTextField();
