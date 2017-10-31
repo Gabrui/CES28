@@ -1,6 +1,7 @@
 package ref0.controller;
 
 import ref0.model.Person;
+import ref0.view.IPersonDetailView;
 import ref0.view.PersonDetailView;
 import ref0.view.PersonDetailViewListener;
 
@@ -10,6 +11,12 @@ public class PersonDetailControllerImpl implements PersonDetailViewListener {
 	{
 		this.setModel(person);
 		this.setView(person); 
+	}
+	
+	public PersonDetailControllerImpl(Person person, IPersonDetailView view)
+	{
+		this.setModel(person);
+		this.setView(person, view); 
 	}
 
 	@Override
@@ -28,12 +35,17 @@ public class PersonDetailControllerImpl implements PersonDetailViewListener {
 		System.exit(0);
 	}
 	
-	protected PersonDetailView getView() {
+	protected IPersonDetailView getView() {
 		return _view;
 	}
 	
 	protected void setView(Person person){
 		_view = new PersonDetailView(person, this);
+		this.getView().display();
+	}
+	
+	protected void setView(Person person, IPersonDetailView view){
+		_view = view;
 		this.getView().display();
 	}
 	
@@ -50,5 +62,5 @@ public class PersonDetailControllerImpl implements PersonDetailViewListener {
 	}
 
 	private Person _model;
-	private PersonDetailView _view;
+	private IPersonDetailView _view;
 }

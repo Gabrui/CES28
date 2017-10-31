@@ -18,7 +18,7 @@ import ref0.model.Person;
 import ref0.model.Person.PersonListener;
 
 @SuppressWarnings("serial")
-public class PersonDetailView extends JPanel implements PersonListener, WindowListener{
+public class PersonDetailView extends JPanel implements PersonListener, WindowListener, IPersonDetailView {
 
 	public PersonDetailView(Person person,
 			PersonDetailViewListener personDetailController) {
@@ -67,6 +67,7 @@ public class PersonDetailView extends JPanel implements PersonListener, WindowLi
 		else this.label.setText(LABEL + "...");
 	}
 	
+	@Override
 	public String getNameFromTextField()
 	{
 		System.out.println("\ngetNameFromTextField");
@@ -78,6 +79,7 @@ public class PersonDetailView extends JPanel implements PersonListener, WindowLi
 		this.populateView();
 	}
 	
+	@Override
 	public void display() {
 		if (this.frame == null) {
 			this.frame = new JFrame() {
@@ -132,15 +134,15 @@ public class PersonDetailView extends JPanel implements PersonListener, WindowLi
 		_person = person;
 	}
 
-	public PersonDetailViewListener getController() {
+	protected PersonDetailViewListener getController() {
 		return _controller;
 	}
 
-	public void setController(PersonDetailViewListener controller) {
+	protected void setController(PersonDetailViewListener controller) {
 		_controller = controller;
 	}
 
-	public Boolean nameIsNonNullAndNonVoidString()
+	protected Boolean nameIsNonNullAndNonVoidString()
 	{	if ((this.getPerson().getName() != null) & (this.getPerson().getName() != ""))
 				return true;
 		return false;
