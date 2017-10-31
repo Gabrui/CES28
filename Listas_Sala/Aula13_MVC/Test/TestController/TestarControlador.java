@@ -51,5 +51,11 @@ public class TestarControlador {
 		
 		Mockito.verify(mockView, Mockito.times(1)).getNameFromTextField();
 		Mockito.verify(mockPerson, Mockito.times(1)).setName("NewName");
+		
+		Mockito.when(mockView.getNameFromTextField()).thenReturn("");
+		_control.changedButtonPressed();
+		
+		Mockito.verify(mockView, Mockito.times(2)).getNameFromTextField();
+		Mockito.verify(mockPerson, Mockito.times(1)).setName("NewName");
 	}
 }
