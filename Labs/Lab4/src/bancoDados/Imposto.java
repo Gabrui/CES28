@@ -13,4 +13,5 @@ public interface Imposto {
 	//no BD. Assim podem existir diferentes implementacoes do Imposto que sao usados
 	//pelo BD e definidos a tempo de execucao. DP Strategy. (Requisito 9)
 	public int taxar(ProdutoServico analisado, int quant);
+	public int accept();//DP Visitor Requisito 10.
 }
