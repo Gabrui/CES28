@@ -38,7 +38,7 @@ public class ItemVenda {
 		return false;
 	}
 	
-	public int visit(Imposto imp) {//DP visitor Requisito 10
-			return (produto.visit(imp));
+	public void visit(Imposto imp) {//DP visitor Requisito 10
+			produto.visit(imp,quantidade);
 	}
 }

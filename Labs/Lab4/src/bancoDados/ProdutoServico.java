@@ -31,5 +31,5 @@ public abstract class ProdutoServico {
 	public String descricao() {
 		return descricao;
 	}
-	abstract public int visit(Imposto imp);//DP visitor Requisito 10
+	abstract public void visit(Imposto imp, int quant);//DP visitor Requisito 10
 }

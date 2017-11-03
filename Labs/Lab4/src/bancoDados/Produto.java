@@ -9,4 +9,11 @@ public class Produto extends ProdutoServico {
 	protected Produto(String produto, int preco, String descricao) {
 		super(produto, preco, descricao);
 	}
+
+	@Override
+	public void visit(Imposto imp, int quant) {
+		// TODO Auto-generated method stub
+		imp.taxar(this, quant);//DP visitor Requisito 10
+	}
+	
 }

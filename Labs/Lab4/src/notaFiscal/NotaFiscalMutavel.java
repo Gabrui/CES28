@@ -4,6 +4,7 @@
 package notaFiscal;
 
 import bancoDados.BD;
+import bancoDados.Imposto;
 import bancoDados.VerificadorCPF;
 
 /**
@@ -39,6 +40,12 @@ public class NotaFiscalMutavel extends NotaFiscal{
 			if (listaItens.size() == 1)
 				throw new IllegalArgumentException("A lista não pode ficar vazia.");
 			listaItens.remove(item);
+		}
+	}
+	
+	public void visit(Imposto imp) {//DP visitor Requisito 10
+		for(ItemVenda i:listaItens) {
+			i.visit(imp);
 		}
 	}
 }

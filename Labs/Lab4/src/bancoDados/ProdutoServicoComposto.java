@@ -29,5 +29,11 @@ public class ProdutoServicoComposto extends ProdutoServico {
 	protected void adicionaComponente(ProdutoServico componente) {
 		componentes.add(componente);
 	}
+	@Override
+	public void visit(Imposto imp,int quant) {//DP visitor Requisito 10
+		// TODO Auto-generated method stub
+		for (ProdutoServico i : componentes)
+			i.visit(imp,quant);
+	}
 
 }
