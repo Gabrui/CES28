@@ -13,7 +13,7 @@ public class NotaFiscal {
 	
 	private LinkedList<ItemVenda> listaItens;
 	private BD bancoRemoto;
-	private Cliente comprador;
+	private Cliente comprador; //NotaFiscal tem os dados do cliente
 	
 	public NotaFiscal(BD bancoRemoto, VerificadorCPF verificador, 
 			String CPF, String item, int quant) {
