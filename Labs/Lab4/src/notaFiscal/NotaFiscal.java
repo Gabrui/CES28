@@ -30,7 +30,8 @@ public class NotaFiscal {
 	public void adicionaItem(String item, int quant) {
 		if (quant <= 0)
 			throw new IllegalArgumentException("A quantidade não pode ser nula ou negativa.");
-		listaItens.add(new ItemVenda(bancoRemoto, item, quant));
+		listaItens.add(new ItemVenda(bancoRemoto, item, quant)); //Se o P/S nao existir o BD deve lancar uma excecao.
+		//Logo, NotaFiscal sempre tem pelo menos um item de venda (Requisito 1).
 	}
 	
 	public int getValor() {
