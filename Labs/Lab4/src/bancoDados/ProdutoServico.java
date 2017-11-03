@@ -5,6 +5,7 @@ public abstract class ProdutoServico {
 	private String nome;
 	private String descricao;
 	private int preco;
+	protected String _categoriaTributaria;
 	
 	//Só BD pode criar P/S
 	//Logo, o construtor de P/S deve ser protected para apenas as classes do pkg de P/S
