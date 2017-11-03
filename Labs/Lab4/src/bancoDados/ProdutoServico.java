@@ -11,7 +11,9 @@ public abstract class ProdutoServico {
 		this.preco = preco;
 		this.descricao = descricao;
 	}
-	
+	protected void setPreco(int valor) {
+		this.preco = valor;
+	}
 	
 	public int getPreco() {
 		return preco;
