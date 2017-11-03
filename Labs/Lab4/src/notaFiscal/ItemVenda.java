@@ -3,7 +3,7 @@ import bancoDados.*;
 
 public class ItemVenda {
 	private BD bancoDadosRemoto;
-	private ProdutoServico produto;
+	private ProdutoServico produto;//Cada Item de venda se refere apenas um P/S
 	private String nome;
 	private int quantidade;
 	
