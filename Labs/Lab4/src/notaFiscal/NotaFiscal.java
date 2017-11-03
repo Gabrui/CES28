@@ -14,6 +14,8 @@ public class NotaFiscal {
 	private LinkedList<ItemVenda> listaItens;
 	private BD bancoRemoto;
 	private Cliente comprador; //NotaFiscal tem os dados do cliente
+	private String _dataEntrega; //NotaFiscal sabe a data de entrega
+	private String _cEntrada; //NotaFiscal sabe as condicoes de entrega
 	
 	public NotaFiscal(BD bancoRemoto, VerificadorCPF verificador, 
 			String CPF, String item, int quant) {
