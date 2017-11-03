@@ -6,7 +6,11 @@ public abstract class ProdutoServico {
 	private String descricao;
 	private int preco;
 	
-	public ProdutoServico(String nome, int preco, String descricao) {
+	//Só BD pode criar P/S
+	//Logo, o construtor de P/S deve ser protected para apenas as classes do pkg de P/S
+	//poderem construir P/S, ou seja, poder criar uma relacao de composicao com BD.
+	//Requisito 5.
+	protected ProdutoServico(String nome, int preco, String descricao) {
 		this.nome = nome;
 		this.preco = preco;
 		this.descricao = descricao;
