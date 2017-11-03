@@ -11,11 +11,11 @@ import bancoDados.*;
 
 public class NotaFiscal {
 	
-	private LinkedList<ItemVenda> listaItens;
-	private BD bancoRemoto;
-	private Cliente comprador; //NotaFiscal tem os dados do cliente
-	private String _dataEntrega; //NotaFiscal sabe a data de entrega
-	private String _cEntrada; //NotaFiscal sabe as condicoes de entrega
+	protected LinkedList<ItemVenda> listaItens;
+	protected BD bancoRemoto;
+	protected Cliente comprador; //NotaFiscal tem os dados do cliente
+	protected String _dataEntrega; //NotaFiscal sabe a data de entrega
+	protected String _cEntrada; //NotaFiscal sabe as condicoes de entrega
 	
 	public NotaFiscal(BD bancoRemoto, VerificadorCPF verificador, 
 			String CPF, String item, int quant) {
@@ -28,8 +28,8 @@ public class NotaFiscal {
 		listaItens = new LinkedList<>();
 		adicionaItem(item, quant);
 	}
-	
-	public void adicionaItem(String item, int quant) {
+	//Requisito 6. Somente NotaFiscal em elaboracao pode alterar lista de ItemVenda
+	protected void adicionaItem(String item, int quant) {
 		if (quant <= 0)
 			throw new IllegalArgumentException("A quantidade não pode ser nula ou negativa.");
 		listaItens.add(new ItemVenda(bancoRemoto, item, quant)); 
@@ -40,7 +40,6 @@ public class NotaFiscal {
 		//E o construtor de Item de Venda é protected compartilhando a mesma pkg que NotaFiscal
 		//Logo, Cada Item de venda pertence apenas a uma NotaFiscal.
 	}
-	
 	public int getValor() {
 		int valor = 0;
 		for (ItemVenda i : listaItens)
@@ -48,21 +47,21 @@ public class NotaFiscal {
 		return valor;
 	}
 	
-	public void deletaItem(String nomeItem) {
+	/*public void deletaItem(String nomeItem) {
 		ItemVenda item = new ItemVenda(bancoRemoto, nomeItem, 0);
 		if (listaItens.contains(item)) {
 			if (listaItens.size() == 1)
 				throw new IllegalArgumentException("A lista não pode ficar vazia.");
 			listaItens.remove(item);
 		}
-	}
+	}*/
 	
 	/**
 	 * Retorna a quantidade de um item
 	 * @param nomeItem
 	 * @return A quantidade de produtos de um item
 	 */
-	public int getItem(String nomeItem) {
+	public int getQuantidade(String nomeItem) {
 		ItemVenda item = new ItemVenda(bancoRemoto, nomeItem, 0);
 		for (ItemVenda i : listaItens)
 			if (i.equals(item))
