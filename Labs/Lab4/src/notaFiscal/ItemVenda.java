@@ -7,7 +7,11 @@ public class ItemVenda {
 	private String nome;
 	private int quantidade;
 	
-	public ItemVenda (BD bancoRemoto, String nome, int quantidade) {
+	//Construtor protected Requisito 2. 
+	//ItemVenda só pode ser criado por classes da mesma pkg.
+	//Só NotaFiscal é da mesma pkg que ItemVenda.
+	//Logo, só NotaFiscal cria ItemVenda.
+	protected ItemVenda (BD bancoRemoto, String nome, int quantidade) {
 		this.bancoDadosRemoto = bancoRemoto;
 		this.quantidade = quantidade;
 		this.nome = nome;

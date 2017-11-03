@@ -37,6 +37,7 @@ public class NotaFiscal {
 		//Logo, NotaFiscal sempre tem pelo menos um item de venda (Requisito 1).
 		//ItemVenda recebe P/S do BD. Só o BD cria P/S.
 		//Todo Item de Venda é criado dentro da NotaFiscal na hora de adicionar
+		//E o construtor de Item de Venda é protected compartilhando a mesma pkg que NotaFiscal
 		//Logo, Cada Item de venda pertence apenas a uma NotaFiscal.
 	}
 	
