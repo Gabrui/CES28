@@ -12,6 +12,7 @@ public class ItemVenda {
 		this.quantidade = quantidade;
 		this.nome = nome;
 		produto = bancoDadosRemoto.getProdutoServico(nome);
+		//ItemVenda recebe P/S do BD. Só o BD cria P/S (Requisito 5).
 		if (produto == null)
 			throw new IllegalArgumentException("O produto não existe!");
 			
