@@ -16,6 +16,11 @@ public interface Imposto {
 	//no BD. Assim podem existir diferentes implementacoes do Imposto que sao usados
 	//pelo BD e definidos a tempo de execucao. DP Strategy. (Requisito 9)
 	//DP Visitor Requisito 10. taxar é o visit
+	//Requisito 18. O overload no metodo taxar permite que o imposto tenha total
+	//liberdade para dedicir qual a regra aplicar em cada nó da árvore.
+	//E todo imposto tem acesso a todos os nós da árvore, por causa da implementacao 
+	//do metodo accept que há na NotaFiscalMutavel,ItemVenda,ProdutoServico,ProdutoServicoComposto
+	//Produto e Servico.
 	public void taxar(ProdutoServico analisado);
 	public void taxar(Produto analisado);
 	public void taxar(NotaFiscalMutavel notaFiscalMutavel);
