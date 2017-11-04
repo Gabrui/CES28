@@ -14,7 +14,6 @@ public class Produto extends ProdutoServico {
 
 	@Override
 	public void visit(Imposto imp, int quant) {
-		// TODO Auto-generated method stub
 		imp.taxar(this, quant);//DP visitor Requisito 10
 	}
 	
