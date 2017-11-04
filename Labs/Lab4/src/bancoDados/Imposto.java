@@ -21,4 +21,5 @@ public interface Imposto {
 	public void taxar(NotaFiscalMutavel notaFiscalMutavel);
 	public void taxar(ItemVenda itemVenda);
 	public void taxar(Servico analisado);
+	public void taxar(ProdutoServicoComposto analisado);
 }
