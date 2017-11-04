@@ -1,5 +1,7 @@
 package bancoDados;
 
+//Requisito 16. A classe Produto nao possui metodos publicos de modificacao
+//de seus atributos, pois é um imutable object.
 public class Produto extends ProdutoServico {
 	
 	//Só BD pode criar P/S

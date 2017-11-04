@@ -4,6 +4,8 @@ import java.util.List;
 
 import notaFiscal.ItemVenda;
 
+//Requisito 16. A classe ProdutoServicoComposto nao possui metodos publicos de modificacao
+//de seus atributos, pois é um imutable object.
 public class ProdutoServicoComposto extends ProdutoServico {
 	
 
@@ -26,6 +28,7 @@ public class ProdutoServicoComposto extends ProdutoServico {
 		return valor;
 	}
 
+	//Requisito 16. Só o BD e as classes podem modificar os atributos de P/S. Imutable Object.
 	protected void adicionaComponente(ProdutoServico componente) {
 		componentes.add(componente);
 	}

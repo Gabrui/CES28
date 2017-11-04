@@ -1,5 +1,7 @@
 package bancoDados;
 
+//Requisito 16. A classe ProdutoServico nao tem metodo publicos para modificacao de seus
+//atributos, pois é uma classe imutavel.
 public abstract class ProdutoServico {
 	
 	private String nome;
@@ -16,6 +18,8 @@ public abstract class ProdutoServico {
 		this.preco = preco;
 		this.descricao = descricao;
 	}
+	
+	//Requisito 16. Objecto Imutavel. Apenas o BD e as classes filhas podem mudar o preco
 	protected void setPreco(int valor) {
 		this.preco = valor;
 	}
