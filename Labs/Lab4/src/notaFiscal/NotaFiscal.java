@@ -75,4 +75,12 @@ public class NotaFiscal {
 				nomeSet += i.nome();
 		return nomeSet;
 	}
+	
+	//Requisito 21. Imprimir
+	public String imprimir() {
+		String impressao = "";
+		for (ItemVenda i : listaItens)
+				impressao += i.imprimir() + "\n";
+		return impressao;
+	}
 }

@@ -52,4 +52,9 @@ public class NotaFiscalMutavel extends NotaFiscal{
 		}
 		imp.taxar(this);
 	}
+	
+	@Override
+	public String imprimir() {
+		return _estado + "\n\n" + super.imprimir();
+	}
 }

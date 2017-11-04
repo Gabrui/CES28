@@ -49,4 +49,9 @@ public class ItemVenda {
 		produto.accept(imp);
 		imp.taxar(this);
 	}
+
+	public String imprimir() {
+		String impressao = produto.imprimir() + ": " + quantidade;
+		return impressao;
+	}
 }

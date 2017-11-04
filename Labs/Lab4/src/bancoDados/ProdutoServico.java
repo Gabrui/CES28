@@ -33,4 +33,8 @@ public abstract class ProdutoServico {
 		return descricao;
 	}
 	abstract public void accept(Imposto imp);//DP visitor Requisito 10
+
+	public String imprimir() {
+		return nome;
+	}
 }

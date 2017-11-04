@@ -28,10 +28,11 @@ public class NotaFiscalImutavel extends NotaFiscal{
 		return _taxasCobradas.get(nomeImposto);
 	}
 	//Requisito 8. NotaFiscal sabe dos impostos cobrados e sabe imprimir eles.
-	public void imprimirImpostoCobrado() {
-		
-		System.out.println("Impostos cobrados: ");
+	public String imprimirImpostoCobrado() {
+		String impressao = "";
+		impressao = "Impostos cobrados: ";
 		for (String key : _taxasCobradas.keySet())
-			System.out.print("\n     "+key+_taxasCobradas.get(key).toString());
+			impressao = "\n     "+key+_taxasCobradas.get(key).toString();
+		return impressao;
 	}
 }
