@@ -7,6 +7,8 @@ import notaFiscal.ItemVenda;
 
 //Requisito 16. A classe ProdutoServicoComposto nao possui metodos publicos de modificacao
 //de seus atributos, pois é um imutable object.
+//Requisito 17. DP Composite ProdutoServicoComposto é o Composite.
+//Que sabe somar todos os nós. E está acoplado com o DP visitor pelo metodo accept.
 public class ProdutoServicoComposto extends ProdutoServico {
 	
 

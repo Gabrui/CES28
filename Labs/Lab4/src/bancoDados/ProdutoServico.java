@@ -13,6 +13,7 @@ public abstract class ProdutoServico {
 	//Logo, o construtor de P/S deve ser protected para apenas as classes do pkg de P/S
 	//poderem construir P/S, ou seja, poder criar uma relacao de composicao com BD.
 	//Requisito 5.
+	//Requisito 17. DP Composite. Servico é uma Component.
 	protected ProdutoServico(String nome, int preco, String descricao) {
 		this.nome = nome;
 		this.preco = preco;

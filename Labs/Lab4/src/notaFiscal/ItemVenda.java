@@ -3,6 +3,7 @@ import bancoDados.*;
 
 public class ItemVenda {
 	private BD bancoDadosRemoto;
+	//Requisito 17. ItemVenda tem um ProdutoServico que é um Component.
 	private ProdutoServico produto;//Cada Item de venda se refere apenas um P/S
 	private String nome;
 	private int quantidade;

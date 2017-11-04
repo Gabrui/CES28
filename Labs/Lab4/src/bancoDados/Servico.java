@@ -9,6 +9,7 @@ public class Servico extends ProdutoServico {
 	//Logo, o construtor de P/S deve ser protected para apenas as classes do pkg de P/S
 	//poderem construir P/S, ou seja, poder criar uma relacao de composicao com BD.
 	//Requisito 5.
+	//Requisito 17. DP Composite. Servico é uma leaf.
 	protected Servico(String servico, int preco, String descricao) {
 		super(servico, preco, descricao);
 	}
