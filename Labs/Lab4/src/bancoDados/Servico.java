@@ -13,9 +13,9 @@ public class Servico extends ProdutoServico {
 		super(servico, preco, descricao);
 	}
 
+	//DP visitor Requisito 10
 	@Override
 	public void accept(Imposto imp) {
-		// TODO Auto-generated method stub
-		imp.taxar(this);
+		imp.taxar(this); 
 	}
 }

@@ -12,9 +12,10 @@ public class Produto extends ProdutoServico {
 		super(produto, preco, descricao);
 	}
 
+	//DP visitor Requisito 10
 	@Override
 	public void accept(Imposto imp) {
-		imp.taxar(this);//DP visitor Requisito 10
+		imp.taxar(this);
 	}
 	
 }
