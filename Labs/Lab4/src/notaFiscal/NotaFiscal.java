@@ -28,6 +28,8 @@ public class NotaFiscal {
 		listaItens = new LinkedList<>();
 		adicionaItem(item, quant);
 	}
+	
+	
 	//Requisito 6. Somente NotaFiscal em elaboracao pode alterar lista de ItemVenda
 	protected void adicionaItem(String item, int quant) {
 		if (quant <= 0)
@@ -40,6 +42,8 @@ public class NotaFiscal {
 		//E o construtor de Item de Venda é protected compartilhando a mesma pkg que NotaFiscal
 		//Logo, Cada Item de venda pertence apenas a uma NotaFiscal.
 	}
+	
+	//Requisito 13. Metodo apropriado de acesso da lista
 	public int getValor() {
 		int valor = 0;
 		for (ItemVenda i : listaItens)
@@ -47,15 +51,8 @@ public class NotaFiscal {
 		return valor;
 	}
 	
-	/*public void deletaItem(String nomeItem) {
-		ItemVenda item = new ItemVenda(bancoRemoto, nomeItem, 0);
-		if (listaItens.contains(item)) {
-			if (listaItens.size() == 1)
-				throw new IllegalArgumentException("A lista não pode ficar vazia.");
-			listaItens.remove(item);
-		}
-	}*/
 	
+	//Requisito 13. Metodo apropriado de acesso da quantidade de um item
 	/**
 	 * Retorna a quantidade de um item
 	 * @param nomeItem
@@ -67,5 +64,13 @@ public class NotaFiscal {
 			if (i.equals(item))
 				return i.getQuantidade();
 		return 0;
+	}
+	
+	//Requisito 13. Metodo apropriado de acesso aos nomes dos itens
+	public String nomeItens() {
+		String nomeSet ="";
+		for (ItemVenda i : listaItens)
+				nomeSet += i.nome();
+		return nomeSet;
 	}
 }

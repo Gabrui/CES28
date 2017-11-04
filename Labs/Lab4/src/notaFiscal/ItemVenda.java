@@ -30,6 +30,10 @@ public class ItemVenda {
 		return quantidade;
 	}
 	
+	public String nome() {
+		return nome;
+	}
+	
 	@Override
 	public boolean equals(Object o) {
 		if (o instanceof ItemVenda) {

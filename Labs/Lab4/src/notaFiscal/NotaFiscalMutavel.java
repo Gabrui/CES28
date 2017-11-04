@@ -21,7 +21,7 @@ public class NotaFiscalMutavel extends NotaFiscal{
 	}
     
 	@Override //Requisito 6. Somente NotaFiscal em elaboracao pode alterar lista de ItemVenda
-	public void adicionaItem(String item, int quant) {
+	public void adicionaItem(String item, int quant) {//Requisito 13. Metodo apropriado de modificacao da lista
 		if (quant <= 0)
 			throw new IllegalArgumentException("A quantidade não pode ser nula ou negativa.");
 		listaItens.add(new ItemVenda(bancoRemoto, item, quant)); 
@@ -34,6 +34,7 @@ public class NotaFiscalMutavel extends NotaFiscal{
 	}
 	
 	//Requisito 6. Somente NotaFiscal em elaboracao pode alterar lista de ItemVenda
+	//Requisito 13. Metodo apropriado de modificacao da lista
 	public void deletaItem(String nomeItem) {
 		ItemVenda item = new ItemVenda(bancoRemoto, nomeItem, 0);
 		if (listaItens.contains(item)) {
@@ -43,7 +44,8 @@ public class NotaFiscalMutavel extends NotaFiscal{
 		}
 	}
 	
-	public void visit(Imposto imp) {//DP visitor Requisito 10
+	//DP visitor Requisito 10
+	public void visit(Imposto imp) {
 		for(ItemVenda i:listaItens) {
 			i.visit(imp);
 		}
