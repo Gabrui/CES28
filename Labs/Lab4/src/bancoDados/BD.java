@@ -2,7 +2,6 @@ package bancoDados;
 
 
 import notaFiscal.NotaFiscalMutavel;
-import notaFiscal.NotaFiscalImutavel;
 
 public interface BD {
 	public static BD getInstance() {

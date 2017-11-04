@@ -1,9 +1,8 @@
-package notaFiscal;
+package bancoDados;
 
 import java.util.HashMap;
 
-import bancoDados.BD;
-import bancoDados.VerificadorCPF;
+import notaFiscal.NotaFiscal;
 
 //Requisito 16. NotaFiscalImutavel não possui metodos publicos de modificacao de seus
 //atributos. Imutable Object.
@@ -12,9 +11,8 @@ public class NotaFiscalImutavel extends NotaFiscal{
 	private int _ID; //Possui um id unico que é um inteiro sequencial dado pelo BD (Requisito 7).
 	private HashMap<String, Integer> _taxasCobradas;//Requisito 8. NotaFiscal sabe dos impostos cobrados.
 	
-	public NotaFiscalImutavel(BD bancoRemoto, VerificadorCPF verificador, String CPF, String item, int quant,int id,HashMap<String, Integer> ImpostosCobrados) {
+	protected NotaFiscalImutavel(BD bancoRemoto, VerificadorCPF verificador, String CPF, String item, int quant,int id,HashMap<String, Integer> ImpostosCobrados) {
 		super(bancoRemoto, verificador, CPF, item, quant);
-		// TODO Auto-generated constructor stub
 		_ID = id;//id unico que é um inteiro sequencial dado pelo BD (Requisito 7).
 		_taxasCobradas = ImpostosCobrados;//BD passa para NotaFiscal quais impostos e seus valores foram cobrados. (Requisito 8)
 	}
