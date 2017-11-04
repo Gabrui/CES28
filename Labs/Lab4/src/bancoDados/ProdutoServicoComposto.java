@@ -33,7 +33,8 @@ public class ProdutoServicoComposto extends ProdutoServico {
 	public void visit(Imposto imp,int quant) {//DP visitor Requisito 10
 		// TODO Auto-generated method stub
 		for (ProdutoServico i : componentes)
-			i.visit(imp,quant);
+			i.visit(imp,1);
+		imp.taxar(this, quant);
 	}
 
 }
