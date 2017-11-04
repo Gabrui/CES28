@@ -5,7 +5,9 @@ import notaFiscal.NotaFiscalMutavel;
 import notaFiscal.NotaFiscalImutavel;
 
 public interface BD {
-	
+	public static BD getInstance() {
+		return null;
+	}
 	public ProdutoServico getProdutoServico(String nome);
 	public Cliente getCliente(String CPF);
 	
