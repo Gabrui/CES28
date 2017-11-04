@@ -22,6 +22,7 @@ public class ProdutoServicoComposto extends ProdutoServico {
 		componentes.add(componente);
 	}
 	
+	//Requisito 17. calcula o preco somando o preco das camadas de baixo com o seu preco.
 	public int getPreco() {
 		int valor = super.getPreco();
 		for (ProdutoServico i : componentes)

@@ -44,6 +44,8 @@ public class NotaFiscal {
 	}
 	
 	//Requisito 13. Metodo apropriado de acesso da lista
+	//Requisito 17. calcula o preco percorrendo a arvore de todos itens de venda e 
+	//soma todos os nós.
 	public int getValor() {
 		int valor = 0;
 		for (ItemVenda i : listaItens)

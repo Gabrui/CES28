@@ -19,6 +19,7 @@ public abstract class ProdutoServico {
 		this.descricao = descricao;
 	}
 	
+	//Requisito 17. Todas as camadas sabem dizer qual o seu preco.
 	public int getPreco() {
 		return preco;
 	}
