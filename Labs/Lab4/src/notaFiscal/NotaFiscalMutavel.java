@@ -15,7 +15,6 @@ public class NotaFiscalMutavel extends NotaFiscal{
 	private String _estado;
 	public NotaFiscalMutavel(BD bancoRemoto, String item, int quant) {
 		super(bancoRemoto, item, quant);
-		// TODO Auto-generated constructor stub
 		_estado = "Em elaboracao";//Requisito 6
 	}
     

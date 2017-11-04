@@ -9,17 +9,18 @@ package notaFiscal;
 import java.util.LinkedList;
 import bancoDados.*;
 
-public class NotaFiscal {
+public abstract class NotaFiscal {
 	
 	protected LinkedList<ItemVenda> listaItens;
 	protected BD bancoRemoto;
 	protected String _dataEntrega; //NotaFiscal sabe a data de entrega
 	protected String _cEntrada; //NotaFiscal sabe as condicoes de entrega
 	
-	public NotaFiscal(BD bancoRemoto, String item, int quant) {
-		this.bancoRemoto = bancoRemoto;
+	private NotaFiscal(NotaFiscalBuilder b) {
+		this.bancoRemoto = b.bancoRemoto;
 		listaItens = new LinkedList<>();
-		adicionaItem(item, quant);//Requisito 1. NotaFiscal tem pelo menos 1 Item de Venda.
+		for (ItemVenda i : b.listaItens)
+			listaItens.add(i);
 	}
 	
 	
@@ -75,5 +76,30 @@ public class NotaFiscal {
 		for (ItemVenda i : listaItens)
 				impressao += i.imprimir() + "\n";
 		return impressao;
+	}
+	
+	
+	protected static class NotaFiscalBuilder {
+
+		protected LinkedList<ItemVenda> listaItens;
+		protected BD bancoRemoto;
+		
+		public NotaFiscalBuilder(BD bancoRemoto) {
+			this.bancoRemoto = bancoRemoto;
+			this.listaItens = new LinkedList<>();
+		}
+		
+		public NotaFiscalBuilder adicionaItem(String item, int quant) {
+			if (quant <= 0)
+				throw new IllegalArgumentException("A quantidade não pode ser nula ou negativa.");
+			listaItens.add(new ItemVenda(bancoRemoto, item, quant));
+			return this;
+		}
+		
+		public NotaFiscal build() {
+			if (listaItens.isEmpty())
+				throw new IllegalArgumentException("Não pode haver Nota Fiscal Vazia");
+			return null;
+		}
 	}
 }
