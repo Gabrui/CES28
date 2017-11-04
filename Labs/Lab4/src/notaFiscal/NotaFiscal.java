@@ -26,13 +26,13 @@ public class NotaFiscal {
 		if (!verificador.validaCPF(comprador.getCPF()))
 			throw new IllegalArgumentException("CPF não é válido!");
 		listaItens = new LinkedList<>();
-		adicionaItem(item, quant);
+		adicionaItem(item, quant);//Requisito 1. NotaFiscal tem pelo menos 1 Item de Venda.
 	}
 	
 	
 	//Requisito 6. Somente NotaFiscal em elaboracao pode alterar lista de ItemVenda
 	protected void adicionaItem(String item, int quant) {
-		if (quant <= 0)
+		if (quant <= 0)//Requisito 1. NotaFiscal tem pelo menos 1 Item de Venda.
 			throw new IllegalArgumentException("A quantidade não pode ser nula ou negativa.");
 		listaItens.add(new ItemVenda(bancoRemoto, item, quant)); 
 		//Se o P/S nao existir o BD deve lancar uma excecao.

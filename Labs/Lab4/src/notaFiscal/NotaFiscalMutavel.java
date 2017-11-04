@@ -20,8 +20,9 @@ public class NotaFiscalMutavel extends NotaFiscal{
 		_estado = "Em elaboracao";//Requisito 6
 	}
     
+	//Requisito 13. Metodo apropriado de modificacao da lista
 	@Override //Requisito 6. Somente NotaFiscal em elaboracao pode alterar lista de ItemVenda
-	public void adicionaItem(String item, int quant) {//Requisito 13. Metodo apropriado de modificacao da lista
+	public void adicionaItem(String item, int quant) {
 		if (quant <= 0)
 			throw new IllegalArgumentException("A quantidade não pode ser nula ou negativa.");
 		listaItens.add(new ItemVenda(bancoRemoto, item, quant)); 
