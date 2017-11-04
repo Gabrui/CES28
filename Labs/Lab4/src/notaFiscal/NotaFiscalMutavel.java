@@ -36,19 +36,20 @@ public class NotaFiscalMutavel extends NotaFiscal{
 	
 	//Requisito 6. Somente NotaFiscal em elaboracao pode alterar lista de ItemVenda
 	//Requisito 13. Metodo apropriado de modificacao da lista
+	@SuppressWarnings("unlikely-arg-type")
 	public void deletaItem(String nomeItem) {
-		ItemVenda item = new ItemVenda(bancoRemoto, nomeItem, 0);
-		if (listaItens.contains(item)) {
+		if (listaItens.contains(nomeItem)) {
 			if (listaItens.size() == 1)
 				throw new IllegalArgumentException("A lista não pode ficar vazia.");
-			listaItens.remove(item);
+			listaItens.remove(nomeItem);
 		}
 	}
 	
 	//DP visitor Requisito 10
-	public void visit(Imposto imp) {
+	public void accept(Imposto imp) {
 		for(ItemVenda i:listaItens) {
-			i.visit(imp);
+			i.accept(imp);
 		}
+		imp.taxar(this);
 	}
 }

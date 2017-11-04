@@ -38,11 +38,14 @@ public class ItemVenda {
 	public boolean equals(Object o) {
 		if (o instanceof ItemVenda) {
 			return ((ItemVenda) o).nome.equals(nome);
+		} else if (o instanceof String) {
+			return ((String) o).equals(this.nome);
 		}
 		return false;
 	}
 	
-	public void visit(Imposto imp) {//DP visitor Requisito 10
-			produto.visit(imp,quantidade);
+	public void accept(Imposto imp) {//DP visitor Requisito 10
+		produto.accept(imp);
+		imp.taxar(this);
 	}
 }

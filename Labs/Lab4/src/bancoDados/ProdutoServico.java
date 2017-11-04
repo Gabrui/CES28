@@ -19,11 +19,6 @@ public abstract class ProdutoServico {
 		this.descricao = descricao;
 	}
 	
-	//Requisito 16. Objecto Imutavel. Apenas o BD e as classes filhas podem mudar o preco
-	protected void setPreco(int valor) {
-		this.preco = valor;
-	}
-	
 	public int getPreco() {
 		return preco;
 	}
@@ -35,5 +30,5 @@ public abstract class ProdutoServico {
 	public String descricao() {
 		return descricao;
 	}
-	abstract public void visit(Imposto imp, int quant);//DP visitor Requisito 10
+	abstract public void accept(Imposto imp);//DP visitor Requisito 10
 }

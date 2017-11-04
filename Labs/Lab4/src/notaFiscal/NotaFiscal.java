@@ -58,10 +58,10 @@ public class NotaFiscal {
 	 * @param nomeItem
 	 * @return A quantidade de produtos de um item
 	 */
+	@SuppressWarnings("unlikely-arg-type")
 	public int getQuantidade(String nomeItem) {
-		ItemVenda item = new ItemVenda(bancoRemoto, nomeItem, 0);
 		for (ItemVenda i : listaItens)
-			if (i.equals(item))
+			if (i.equals(nomeItem))
 				return i.getQuantidade();
 		return 0;
 	}

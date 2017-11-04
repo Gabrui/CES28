@@ -13,8 +13,8 @@ public class Produto extends ProdutoServico {
 	}
 
 	@Override
-	public void visit(Imposto imp, int quant) {
-		imp.taxar(this, quant);//DP visitor Requisito 10
+	public void accept(Imposto imp) {
+		imp.taxar(this);//DP visitor Requisito 10
 	}
 	
 }
