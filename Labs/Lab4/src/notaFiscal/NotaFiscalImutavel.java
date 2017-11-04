@@ -5,6 +5,8 @@ import java.util.HashMap;
 import bancoDados.BD;
 import bancoDados.VerificadorCPF;
 
+//Requisito 16. NotaFiscalImutavel não possui metodos publicos de modificacao de seus
+//atributos. Imutable Object.
 public class NotaFiscalImutavel extends NotaFiscal{
 
 	private int _ID; //Possui um id unico que é um inteiro sequencial dado pelo BD (Requisito 7).
@@ -16,6 +18,12 @@ public class NotaFiscalImutavel extends NotaFiscal{
 		_ID = id;//id unico que é um inteiro sequencial dado pelo BD (Requisito 7).
 		_taxasCobradas = ImpostosCobrados;//BD passa para NotaFiscal quais impostos e seus valores foram cobrados. (Requisito 8)
 	}
+	
+    //Metodo de acesso para o id. Como é um int nao há risco de modificacao por agente externo.
+	public int id() {
+		return _ID;
+	}
+	
 	//Requisito 8. NotaFiscal sabe dos impostos cobrados e sabe o valor deles.
 	public int valorCobradoImposto(String nomeImposto) {
 		
