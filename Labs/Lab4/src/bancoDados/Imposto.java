@@ -3,6 +3,8 @@
  */
 package bancoDados;
 
+import java.util.HashMap;
+
 import notaFiscal.ItemVenda;
 import notaFiscal.NotaFiscalMutavel;
 
@@ -27,4 +29,6 @@ public interface Imposto {
 	public void taxar(ItemVenda itemVenda);
 	public void taxar(Servico analisado);
 	public void taxar(ProdutoServicoComposto analisado);
+	public HashMap<String, Integer> getImpostoCalculado();
+	public int getImpostoTotal();
 }

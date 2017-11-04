@@ -13,18 +13,11 @@ public class NotaFiscal {
 	
 	protected LinkedList<ItemVenda> listaItens;
 	protected BD bancoRemoto;
-	protected Cliente comprador; //NotaFiscal tem os dados do cliente
 	protected String _dataEntrega; //NotaFiscal sabe a data de entrega
 	protected String _cEntrada; //NotaFiscal sabe as condicoes de entrega
 	
-	public NotaFiscal(BD bancoRemoto, VerificadorCPF verificador, 
-			String CPF, String item, int quant) {
+	public NotaFiscal(BD bancoRemoto, String item, int quant) {
 		this.bancoRemoto = bancoRemoto;
-		this.comprador = bancoRemoto.getCliente(CPF);
-		if (comprador == null)
-			throw new IllegalArgumentException("Cliente não cadastrado no sistema.");
-		if (!verificador.validaCPF(comprador.getCPF()))
-			throw new IllegalArgumentException("CPF não é válido!");
 		listaItens = new LinkedList<>();
 		adicionaItem(item, quant);//Requisito 1. NotaFiscal tem pelo menos 1 Item de Venda.
 	}

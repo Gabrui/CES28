@@ -11,8 +11,8 @@ public class NotaFiscalImutavel extends NotaFiscal{
 	private int _ID; //Possui um id unico que é um inteiro sequencial dado pelo BD (Requisito 7).
 	private HashMap<String, Integer> _taxasCobradas;//Requisito 8. NotaFiscal sabe dos impostos cobrados.
 	
-	protected NotaFiscalImutavel(BD bancoRemoto, VerificadorCPF verificador, String CPF, String item, int quant,int id,HashMap<String, Integer> ImpostosCobrados) {
-		super(bancoRemoto, verificador, CPF, item, quant);
+	protected NotaFiscalImutavel(BD bancoRemoto, String item, int quant,int id,HashMap<String, Integer> ImpostosCobrados) {
+		super(bancoRemoto, item, quant);
 		_ID = id;//id unico que é um inteiro sequencial dado pelo BD (Requisito 7).
 		_taxasCobradas = ImpostosCobrados;//BD passa para NotaFiscal quais impostos e seus valores foram cobrados. (Requisito 8)
 	}
@@ -34,5 +34,10 @@ public class NotaFiscalImutavel extends NotaFiscal{
 		for (String key : _taxasCobradas.keySet())
 			impressao = "\n     "+key+_taxasCobradas.get(key).toString();
 		return impressao;
+	}
+	
+	@Override
+	public String imprimir() {
+		return _ID + "\n\n" + imprimir();
 	}
 }

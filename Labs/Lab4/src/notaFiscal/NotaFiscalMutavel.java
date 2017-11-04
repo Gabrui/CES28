@@ -5,7 +5,6 @@ package notaFiscal;
 
 import bancoDados.BD;
 import bancoDados.Imposto;
-import bancoDados.VerificadorCPF;
 
 /**
  * @author Dylan N. Sugimoto
@@ -14,8 +13,8 @@ import bancoDados.VerificadorCPF;
 public class NotaFiscalMutavel extends NotaFiscal{
 
 	private String _estado;
-	public NotaFiscalMutavel(BD bancoRemoto, VerificadorCPF verificador, String CPF, String item, int quant) {
-		super(bancoRemoto, verificador, CPF, item, quant);
+	public NotaFiscalMutavel(BD bancoRemoto, String item, int quant) {
+		super(bancoRemoto, item, quant);
 		// TODO Auto-generated constructor stub
 		_estado = "Em elaboracao";//Requisito 6
 	}

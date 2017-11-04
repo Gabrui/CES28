@@ -8,7 +8,6 @@ public interface BD {
 		return null;
 	}
 	public ProdutoServico getProdutoServico(String nome);
-	public Cliente getCliente(String CPF);
 	
     String categoriaPS(ProdutoServico ps);//BD sabe a categoria de cada P/S (Requisito 5)
     
