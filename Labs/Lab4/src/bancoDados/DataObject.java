@@ -3,7 +3,6 @@
  */
 package bancoDados;
 
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -11,14 +10,26 @@ import java.util.List;
  *
  * Classe que guarda estados para calculo do imposto.
  */
-public abstract class  DataObject {
+/**
+ * Requisito 19.
+ * O construtor de cada implementação do DataObject
+ * deve criar uma lista de impostos que usam em comum certos
+ * conjunto de dados historicos, e deve criar essas implementacoes
+ * de Imposto e adicioná-los na lista.
+ * Quando BD precisar de usar uma dessas implementações de Imposto
+ * ele pede para o DataObject por meio de numero (NA) e pega pelo
+ * metodo imposto da implementação do DataObject, que já pode tomar
+ * o cuidado de atualizar o imposto com os dados historicos necessários
+ * para realizar a taxação, ou seja, executar o updateImposto da implementação
+ * do DataObject que pode ser complexa.
+ * Assim, a implementação do DataObject pode conter atributos para guardar os dados
+ * historicos, e métodos de atualização desses dados adequados usados pelo BD, para
+ * depois realimentar o Imposto com esses dados no updateImposto. 
+ * E como é uma interface podemos ter diversas lógicas de realimentação de dados.
+ * */
+public interface DataObject {
 
-	protected String _estado;
-	protected List<Imposto> _regraAplicavel;
-	protected DataObject(){
-		_regraAplicavel = new LinkedList<>();
-		loadRegraAplicavel();
-	}
-	abstract protected void loadRegraAplicavel();
-	abstract protected void storeEstado();
+	public List<Imposto> getAllImposto();
+	public Imposto imposto(int NA);
+	public void updateImposto(Imposto imp);
 }
