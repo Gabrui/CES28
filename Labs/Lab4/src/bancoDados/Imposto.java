@@ -6,7 +6,7 @@ package bancoDados;
 import java.util.HashMap;
 
 import notaFiscal.ItemVenda;
-import notaFiscal.NotaFiscalMutavel;
+import notaFiscal.NotaFiscal;
 
 /**
  * @author Dylan N. Sugimoto, Gabriel Adriano de Melo e André Marcello Soto Riva Figueira.
@@ -25,7 +25,7 @@ public interface Imposto {
 	//Produto e Servico.
 	public void taxar(ProdutoServico analisado);
 	public void taxar(Produto analisado);
-	public void taxar(NotaFiscalMutavel notaFiscalMutavel);
+	public void taxar(NotaFiscal notaFiscal);
 	public void taxar(ItemVenda itemVenda);
 	public void taxar(Servico analisado);
 	public void taxar(ProdutoServicoComposto analisado);

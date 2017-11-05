@@ -6,35 +6,48 @@
 
 package notaFiscal;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import bancoDados.*;
+//Requisito 16. NotaFiscalImutavel não possui metodos publicos de modificacao de seus
+//atributos. Imutable Object.
+public class NotaFiscal {
 
-public abstract class NotaFiscal {
+	private int _ID; //Possui um id unico que é um inteiro sequencial dado pelo BD (Requisito 7).
+	private HashMap<String, Integer> _taxasCobradas;//Requisito 8. NotaFiscal sabe dos impostos cobrados.
 	
-	protected LinkedList<ItemVenda> listaItens;
-	protected BD bancoRemoto;
-	protected String _dataEntrega; //NotaFiscal sabe a data de entrega
-	protected String _cEntrada; //NotaFiscal sabe as condicoes de entrega
+	private boolean _validada;
+	private LinkedList<ItemVenda> _listaItens;
+	private String _outros; //NotaFiscal sabe as condicoes de entrega ...
 	
-	private NotaFiscal(NotaFiscalBuilder b) {
-		this.bancoRemoto = b.bancoRemoto;
-		listaItens = new LinkedList<>();
-		for (ItemVenda i : b.listaItens)
-			listaItens.add(i);
+
+	public NotaFiscal(NotaFiscalBuilder b) {
+		_validada = b.isValidada();
+		_outros = b.getOutros();
+		_listaItens = b.getListaItens();
+		_ID = b.getID();//id unico que é um inteiro sequencial dado pelo BD (Requisito 7).
+		_taxasCobradas = b.getTaxasCobradas();//BD passa para NotaFiscal quais impostos e seus valores foram cobrados. (Requisito 8)
 	}
 	
+	public String getOutros() {
+		return _outros;
+	}
 	
-	//Requisito 6. Somente NotaFiscal em elaboracao pode alterar lista de ItemVenda
-	protected void adicionaItem(String item, int quant) {
-		if (quant <= 0)//Requisito 1. NotaFiscal tem pelo menos 1 Item de Venda.
-			throw new IllegalArgumentException("A quantidade não pode ser nula ou negativa.");
-		listaItens.add(new ItemVenda(bancoRemoto, item, quant)); 
-		//Se o P/S nao existir o BD deve lancar uma excecao.
-		//Logo, NotaFiscal sempre tem pelo menos um item de venda (Requisito 1).
-		//ItemVenda recebe P/S do BD. Só o BD cria P/S.
-		//Todo Item de Venda é criado dentro da NotaFiscal na hora de adicionar
-		//E o construtor de Item de Venda é protected compartilhando a mesma pkg que NotaFiscal
-		//Logo, Cada Item de venda pertence apenas a uma NotaFiscal.
+	//DP visitor Requisito 10
+	public void accept(Imposto imp) {
+		for(ItemVenda i:_listaItens) {
+			i.accept(imp);
+		}
+		imp.taxar(this);
+	}
+	
+	//Requisito 8. NotaFiscal sabe dos impostos cobrados e sabe imprimir eles.
+	public String imprimirImpostoCobrado() {
+		String impressao = "";
+		impressao = "Impostos cobrados: ";
+		for (String key : _taxasCobradas.keySet())
+			impressao = "\n     "+key+_taxasCobradas.get(key).toString();
+		return impressao;
 	}
 	
 	//Requisito 13. Metodo apropriado de acesso da lista
@@ -42,7 +55,7 @@ public abstract class NotaFiscal {
 	//soma todos os nós.
 	public int getValor() {
 		int valor = 0;
-		for (ItemVenda i : listaItens)
+		for (ItemVenda i : _listaItens)
 			valor += i.getValor();
 		return valor;
 	}
@@ -56,7 +69,7 @@ public abstract class NotaFiscal {
 	 */
 	@SuppressWarnings("unlikely-arg-type")
 	public int getQuantidade(String nomeItem) {
-		for (ItemVenda i : listaItens)
+		for (ItemVenda i : _listaItens)
 			if (i.equals(nomeItem))
 				return i.getQuantidade();
 		return 0;
@@ -65,7 +78,7 @@ public abstract class NotaFiscal {
 	//Requisito 13. Metodo apropriado de acesso aos nomes dos itens
 	public String nomeItens() {
 		String nomeSet ="";
-		for (ItemVenda i : listaItens)
+		for (ItemVenda i : _listaItens)
 				nomeSet += i.nome();
 		return nomeSet;
 	}
@@ -73,33 +86,13 @@ public abstract class NotaFiscal {
 	//Requisito 21. Imprimir
 	public String imprimir() {
 		String impressao = "";
-		for (ItemVenda i : listaItens)
-				impressao += i.imprimir() + "\n";
+		if (_validada)
+			impressao += _ID;
+		else
+			impressao += "Em construção";
+		for (ItemVenda i : _listaItens)
+				impressao += "\n" + i.imprimir();
 		return impressao;
 	}
 	
-	
-	protected static class NotaFiscalBuilder {
-
-		protected LinkedList<ItemVenda> listaItens;
-		protected BD bancoRemoto;
-		
-		public NotaFiscalBuilder(BD bancoRemoto) {
-			this.bancoRemoto = bancoRemoto;
-			this.listaItens = new LinkedList<>();
-		}
-		
-		public NotaFiscalBuilder adicionaItem(String item, int quant) {
-			if (quant <= 0)
-				throw new IllegalArgumentException("A quantidade não pode ser nula ou negativa.");
-			listaItens.add(new ItemVenda(bancoRemoto, item, quant));
-			return this;
-		}
-		
-		public NotaFiscal build() {
-			if (listaItens.isEmpty())
-				throw new IllegalArgumentException("Não pode haver Nota Fiscal Vazia");
-			return null;
-		}
-	}
 }

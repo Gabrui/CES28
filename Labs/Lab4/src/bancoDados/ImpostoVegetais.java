@@ -3,7 +3,7 @@ package bancoDados;
 import java.util.HashMap;
 
 import notaFiscal.ItemVenda;
-import notaFiscal.NotaFiscalMutavel;
+import notaFiscal.NotaFiscal;
 
 public class ImpostoVegetais implements Imposto {
 
@@ -24,7 +24,7 @@ public class ImpostoVegetais implements Imposto {
 	}
 
 	@Override
-	public void taxar(NotaFiscalMutavel notaFiscalMutavel) {
+	public void taxar(NotaFiscal notaFiscal) {
 		// TODO Auto-generated method stub
 		
 	}

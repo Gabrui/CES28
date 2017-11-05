@@ -1,7 +1,6 @@
 package bancoDados;
 
-
-import notaFiscal.NotaFiscalMutavel;
+import notaFiscal.NotaFiscalBuilder;
 
 public interface BD {
 	public static BD getInstance() {
@@ -15,7 +14,7 @@ public interface BD {
     
     DataObject getDadosPS(ProdutoServico ps);//BD guarda os dados de todos P/S. (Requisito 5)
     
-    NotaFiscalImutavel validaNotaFiscal(NotaFiscalMutavel nota);//BD valida NotaFiscal
+    public NotaFiscalBuilderValidado validaNotaFiscal(NotaFiscalBuilder nota);//BD valida NotaFiscal
     //e submete na prefeitura, e se validada retorna NotaFiscalImutavel (Requisito 6)
     
     int calculaImposto(ProdutoServico ps);//BD calcula o imposto de cada P/S (Requisito 8)

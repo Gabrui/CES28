@@ -3,7 +3,7 @@ package bancoDados;
 import java.util.HashMap;
 
 import notaFiscal.ItemVenda;
-import notaFiscal.NotaFiscalMutavel;
+import notaFiscal.NotaFiscal;
 
 public class ImpostoPao implements Imposto {
 	private int _NumeroDeProdutosTaxados = 0;
@@ -23,7 +23,7 @@ public class ImpostoPao implements Imposto {
 	}
 
 	@Override
-	public void taxar(NotaFiscalMutavel notaFiscalMutavel) {
+	public void taxar(NotaFiscal notaFiscal) {
 		// TODO Auto-generated method stub
 		
 	}
