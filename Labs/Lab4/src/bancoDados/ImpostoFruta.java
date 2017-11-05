@@ -17,7 +17,7 @@ public class ImpostoFruta implements Imposto{
 
 	@Override
 	public void taxar(Produto analisado) {
-		if(analisado.getNome().toLowerCase()=="fruta") {
+		if(analisado.getCategoria().toLowerCase()=="fruta") {
 			_NumeroDeProdutosTaxados +=1;
 		}
 		

@@ -21,8 +21,8 @@ public class ProdutoServicoComposto extends ProdutoServico {
 	//Logo, o construtor de P/S deve ser protected para apenas as classes do pkg de P/S
 	//poderem construir P/S, ou seja, poder criar uma relacao de composicao com BD.
 	//Requisito 5.
-	protected ProdutoServicoComposto(String nome, int preco, String descricao, ProdutoServico componente) {
-		super(nome, preco, descricao);
+	protected ProdutoServicoComposto(String nome, int preco, String descricao,String categoria, ProdutoServico componente) {
+		super(nome, preco, descricao,categoria);
 		this.componentes = new LinkedList<>();
 		componentes.add(componente);
 	}
@@ -46,5 +46,6 @@ public class ProdutoServicoComposto extends ProdutoServico {
 			i.accept(imp);
 		imp.taxar(this);
 	}
+	
+	}
 
-}

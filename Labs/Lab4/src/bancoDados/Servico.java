@@ -10,8 +10,8 @@ public class Servico extends ProdutoServico {
 	//poderem construir P/S, ou seja, poder criar uma relacao de composicao com BD.
 	//Requisito 5.
 	//Requisito 17. DP Composite. Servico é uma leaf.
-	protected Servico(String servico, int preco, String descricao) {
-		super(servico, preco, descricao);
+	protected Servico(String servico, int preco, String descricao,String categoria) {
+		super(servico, preco, descricao,categoria);
 	}
 
 	//DP visitor Requisito 10

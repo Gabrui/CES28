@@ -12,7 +12,7 @@ public class DataObjectNumeroDeProdutos implements DataObject{
 		Imposto impf = new ImpostoFruta();
 		Imposto impp = new ImpostoPao();
 		Imposto impv = new ImpostoVegetais();
-		_listImpostos.put(impf.id(),impf);
+		_listImpostos.put(impf.id(), impf);
 		_listImpostos.put(impp.id(), impp);
 		_listImpostos.put(impv.id(), impv);
 	}

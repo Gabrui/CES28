@@ -79,7 +79,7 @@ public class NotaFiscal {
 	public String nomeItens() {
 		String nomeSet ="";
 		for (ItemVenda i : _listaItens)
-				nomeSet += i.nome();
+				nomeSet += i.nome()+"\n";
 		return nomeSet;
 	}
 	

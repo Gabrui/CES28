@@ -17,6 +17,7 @@ public class NotaFiscalBuilder {
 	
 	public NotaFiscalBuilder(BD bd) {
 		this.bd = bd;
+		listaItens = new LinkedList<ItemVenda>();
 	}
 	
 	public void setOutros(String outros) {
@@ -105,6 +106,7 @@ public class NotaFiscalBuilder {
 		if (listaItens.contains(nomeItem)) {
 			if (listaItens.size() == 1)
 				throw new IllegalArgumentException("A lista não pode ficar vazia.");
+			
 			listaItens.remove(nomeItem);
 		}
 	}
