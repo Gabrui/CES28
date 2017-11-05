@@ -30,6 +30,6 @@ import java.util.List;
 public interface DataObject {
 
 	public List<Imposto> getAllImposto();
-	public Imposto imposto(int NA);
+	public Imposto imposto(String NA);
 	public void updateImposto(Imposto imp);
 }

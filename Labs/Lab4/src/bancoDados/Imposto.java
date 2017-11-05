@@ -31,4 +31,7 @@ public interface Imposto {
 	public void taxar(ProdutoServicoComposto analisado);
 	public HashMap<String, Integer> getImpostoCalculado();
 	public int getImpostoTotal();
+	public String id();
+	public int getRealimentacao();
+	public void setRealimentacao(int dado);
 }
