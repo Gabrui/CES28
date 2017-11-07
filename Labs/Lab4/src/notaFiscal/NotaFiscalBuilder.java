@@ -11,6 +11,7 @@ public class NotaFiscalBuilder {
 	private BD bd;
 	private boolean validada; //Requisito 6
 	private HashMap<String, Integer> _taxasCobradas;
+	private int _TaxaTotal;
 	private String outros;
 	private int _ID;
 	
@@ -33,6 +34,9 @@ public class NotaFiscalBuilder {
 	}
 	protected void setTaxasCobradas(HashMap<String, Integer> taxasCobradas) {
 		this._taxasCobradas = taxasCobradas;
+	}
+	protected void setTaxaTotal(int taxa) {
+		this._TaxaTotal = taxa;
 	}
 	public BD getBD() {
 		return bd;
