@@ -29,17 +29,22 @@ public class ViewConsole implements IBoardView {
 			
 			public void run() {
 			    Scanner in = new Scanner(System.in);
-			    System.out.println("Instruções: comandos reconheciveis 'next', 'mudar x y estado'");
+			    System.out.println("Instruções: comandos reconheciveis 'next', 'mudar x y estado' ou CTRL+Z");
 				while(in.hasNextLine()) {
 					String entrada = in.nextLine();
 					if (entrada.equals("next"))
 						p.nextClicked();
 					else if (entrada.startsWith("mudar")) {
 						String[] valores = entrada.split(" ");
-						p.changeAutomatCellState(Integer.valueOf(valores[1]), Integer.valueOf(valores[2]), Integer.valueOf(valores[3]));
+						if (valores.length != 4)
+							System.out.println("Entrada não reconhecida, digite devem ser separados por um espaço");
+						else
+							p.changeAutomatCellState(Integer.valueOf(valores[1]), Integer.valueOf(valores[2]), Integer.valueOf(valores[3]));
+					} else {
+						System.out.println("Comando não reconhecido");
 					}
 				}
-				System.out.println("Thread Morreu");
+				System.out.println("Fim do programa");
 				in.close();
 			}
 		}).start();
