@@ -27,6 +27,10 @@ public class ItemVenda {
 		return produto.getPreco()*quantidade;
 	}
 	
+	public ProdutoServico getProduto() {
+		return bancoDadosRemoto.getProdutoServico(produto.getNome());//bad
+	}
+	
 	public int getQuantidade() {
 		return quantidade;
 	}

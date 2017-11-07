@@ -98,7 +98,7 @@ public class BDfake implements BD {
 			}
 			TaxaFinal += imposto.getImpostoTotal();
 		}
-		//NFB.setTaxa()
+		//NFB.setTaxa() //TODO AQUI!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		return null;
 	}
 
