@@ -26,8 +26,8 @@ public class Library {
 				Automat automat = new Automat(15,15);
 				Presenter presenter = new Presenter(automat);
 				frame.init(presenter);
+				
 				/*
-				frame.init(presenter);
 				frame.addComponentListener(new ComponentListener() {
  
 					@Override

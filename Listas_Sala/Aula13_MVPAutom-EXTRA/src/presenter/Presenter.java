@@ -28,9 +28,8 @@ public class Presenter extends Observable {
 	// Primeira sugestão de observer que pede para o presenter modificá-lo
 	public void updateView(IBoardView view) {
 		view.resizeBoardSizeInCellsTo(currentAutomat.width(), currentAutomat.height());
-		for(Cell c : currentAutomat) {
+		for(Cell c : currentAutomat)
 			view.changeCell(c.x,c.y,c.state);
-		}
 	}
 	
 	// Método opcional para a implementação da segunda sugestão
