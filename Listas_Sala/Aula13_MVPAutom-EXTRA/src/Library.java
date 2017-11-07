@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 
 import model.Automat;
 import presenter.Presenter;
+import view.ViewConsole;
 import view.MainWindow;
 
 /*
@@ -20,9 +21,12 @@ public class Library {
     	EventQueue.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				MainWindow frame = new MainWindow();
+				//MainWindow frame = new MainWindow();
+				ViewConsole frame = new ViewConsole();
 				Automat automat = new Automat(15,15);
 				Presenter presenter = new Presenter(automat);
+				frame.init(presenter);
+				/*
 				frame.init(presenter);
 				frame.addComponentListener(new ComponentListener() {
  
@@ -48,6 +52,7 @@ public class Library {
 				});
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				frame.setVisible(true);
+				*/
 			}
 		});
     }

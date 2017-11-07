@@ -15,12 +15,13 @@ import presenter.IBoardView;
 import presenter.Presenter;
 import view.Board;
 
-public class MainWindow extends JFrame implements IBoardView, Observer {
+public class MainWindow extends JFrame implements IBoardView {
 	
 	private static final long serialVersionUID = 1L;
 	private JButton next;
 	private Board board;
-	
+
+	@Override
 	public void init(Presenter p) {
 		this.setTitle("Okno");
 		this.setSize(400, 300);
@@ -46,7 +47,6 @@ public class MainWindow extends JFrame implements IBoardView, Observer {
 	/* (non-Javadoc)
 	 * @see view.IBoardView#bindTo(presenter.Presenter)
 	 */
-	@Override
 	public void bindTo(final Presenter p) {
 		next.addActionListener(new ActionListener() {
 			@Override

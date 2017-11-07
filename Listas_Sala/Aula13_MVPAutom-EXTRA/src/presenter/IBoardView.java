@@ -1,10 +1,11 @@
 package presenter;
 
+import java.util.Observer;
 
-public interface IBoardView {
+public interface IBoardView extends Observer {
 
 	// binds the view to the Presenter p
-	public abstract void bindTo(Presenter p);
+	public abstract void init(Presenter p);
 
 	// the view must change its board size
 	public abstract void resizeBoardSizeInCellsTo(int xCells, int yCells);

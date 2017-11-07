@@ -25,11 +25,20 @@ public class Presenter extends Observable {
 		this.notifyObservers();
 	}
 
+	// Primeira sugestão de observer que pede para o presenter modificá-lo
 	public void updateView(IBoardView view) {
 		view.resizeBoardSizeInCellsTo(currentAutomat.width(), currentAutomat.height());
 		for(Cell c : currentAutomat) {
 			view.changeCell(c.x,c.y,c.state);
 		}
+	}
+	
+	// Método opcional para a implementação da segunda sugestão
+	public int[][] getEstados() {
+		int[][] estados = new int[currentAutomat.width()][currentAutomat.height()];
+		for(Cell c : currentAutomat)
+			estados[c.x][c.y] = c.state;
+		return estados;
 	}
 
 }
