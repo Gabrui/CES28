@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,8 +15,9 @@ import presenter.IBoardView;
 import presenter.Presenter;
 import view.Board;
 
-public class MainWindow extends JFrame implements IBoardView {
+public class MainWindow extends JFrame implements IBoardView, Observer {
 	
+	private static final long serialVersionUID = 1L;
 	private JButton next;
 	private Board board;
 	
@@ -22,6 +25,7 @@ public class MainWindow extends JFrame implements IBoardView {
 		this.setTitle("Okno");
 		this.setSize(400, 300);
 		createControlls();
+		p.addObserver(this);
 		bindTo(p);
 		
 		JPanel panel = new JPanel();
@@ -50,7 +54,7 @@ public class MainWindow extends JFrame implements IBoardView {
 				p.nextClicked();
 			}
 		});
-		board.addMouseListener(board.createMouseListner(p));
+		board.addMouseListener(board.createMouseListener(p));
 	}
 	
 	/* (non-Javadoc)
@@ -68,6 +72,11 @@ public class MainWindow extends JFrame implements IBoardView {
 	public void changeCell(int x, int y, int state) {
 		board.setCellTo(x, y, state);
 		board.repaint();
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		((Presenter) o).updateView(this);
 	}
 
 }

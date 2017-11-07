@@ -1,28 +1,31 @@
 package presenter;
 
+import java.util.Observable;
+
 import model.Automat;
 import model.Automat.Cell;
 
-public class Presenter {
+public class Presenter extends Observable {
 	
-	IBoardView view;
 	Automat currentAutomat;
 	
-	public Presenter(IBoardView view, Automat automat) {
-		this.view = view;
+	public Presenter(Automat automat) {
 		currentAutomat = automat;
 	}
 
 	public void nextClicked() {
 		currentAutomat = currentAutomat.nextState();
-		updateView();
+		this.setChanged();
+		this.notifyObservers();
 	}
 	
 	public void changeAutomatCellState(int xCell,int yCell,int state) {
 		currentAutomat.changeCellState(xCell,yCell,state);
+		this.setChanged();
+		this.notifyObservers();
 	}
 
-	private void updateView() {
+	public void updateView(IBoardView view) {
 		view.resizeBoardSizeInCellsTo(currentAutomat.width(), currentAutomat.height());
 		for(Cell c : currentAutomat) {
 			view.changeCell(c.x,c.y,c.state);

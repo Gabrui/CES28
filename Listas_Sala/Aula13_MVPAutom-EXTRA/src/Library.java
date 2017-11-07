@@ -22,7 +22,7 @@ public class Library {
 			public void run() {
 				MainWindow frame = new MainWindow();
 				Automat automat = new Automat(15,15);
-				Presenter presenter = new Presenter(frame,automat);
+				Presenter presenter = new Presenter(automat);
 				frame.init(presenter);
 				frame.addComponentListener(new ComponentListener() {
  

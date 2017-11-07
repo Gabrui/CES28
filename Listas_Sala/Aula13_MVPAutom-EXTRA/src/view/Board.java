@@ -15,6 +15,7 @@ import presenter.Presenter;
 
 public class Board extends JPanel {
 	
+	private static final long serialVersionUID = 1L;
 	private static final int MAXIMAL_STATE = 2;
 	private int[][] cells;
 	private int xCells;
@@ -76,7 +77,7 @@ public class Board extends JPanel {
 	}
 
 	
-	public MouseListener createMouseListner(final Presenter p) {
+	public MouseListener createMouseListener(final Presenter p) {
 		return new MouseAdapter() {
 			@Override
 		    public void mouseClicked(MouseEvent event) {
