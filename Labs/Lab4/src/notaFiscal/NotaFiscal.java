@@ -15,7 +15,7 @@ public class NotaFiscal {
 
 	private int _ID; //Possui um id unico que é um inteiro sequencial dado pelo BD (Requisito 7).
 	private HashMap<String, Integer> _taxasCobradas;//Requisito 8. NotaFiscal sabe dos impostos cobrados.
-	
+	private int _TotalTax;
 	private boolean _validada;
 	private LinkedList<ItemVenda> _listaItens;
 	private String _outros; //NotaFiscal sabe as condicoes de entrega ...
@@ -27,6 +27,8 @@ public class NotaFiscal {
 		_listaItens = b.getListaItens();
 		_ID = b.getID();//id unico que é um inteiro sequencial dado pelo BD (Requisito 7).
 		_taxasCobradas = b.getTaxasCobradas();//BD passa para NotaFiscal quais impostos e seus valores foram cobrados. (Requisito 8)
+		_TotalTax = b.getTaxaTotal();
+		System.out.println("Taxa total NF creator " + _TotalTax);
 	}
 	
 	public String getOutros() {
@@ -95,4 +97,7 @@ public class NotaFiscal {
 		return impressao;
 	}
 	
+	public int getTaxaTotal() {
+		return _TotalTax;
+	}
 }

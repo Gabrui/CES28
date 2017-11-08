@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 import bancoDados.BD;
+import bancoDados.Imposto;
 
 public class NotaFiscalBuilder {
 
@@ -11,7 +12,7 @@ public class NotaFiscalBuilder {
 	private BD bd;
 	private boolean validada; //Requisito 6
 	private HashMap<String, Integer> _taxasCobradas;
-	private int _TaxaTotal;
+	private int _TaxaTotal = 0;
 	private String outros;
 	private int _ID;
 	
@@ -38,6 +39,11 @@ public class NotaFiscalBuilder {
 	protected void setTaxaTotal(int taxa) {
 		this._TaxaTotal = taxa;
 	}
+	
+	public int getTaxaTotal() {
+		return this._TaxaTotal;
+	}
+	
 	public BD getBD() {
 		return bd;
 	}
@@ -51,6 +57,7 @@ public class NotaFiscalBuilder {
 	public NotaFiscal valida() {
 		if (listaItens.isEmpty())
 			throw new IllegalArgumentException("Nota fiscal vazia!");
+		this.setTaxaTotal(0);
 		return new NotaFiscal(bd.validaNotaFiscal(this));
 	}
 
@@ -87,6 +94,15 @@ public class NotaFiscalBuilder {
 	public String getOutros() {
 		return outros;
 	}
+	
+	//DP visitor Requisito 10
+		public void accept(Imposto imp) {
+			for(ItemVenda i:listaItens) {
+				i.accept(imp);
+			}
+			_TaxaTotal += imp.getImpostoTotal();
+		}
+		
 	
     
 	//Requisito 13. Metodo apropriado de modificacao da lista

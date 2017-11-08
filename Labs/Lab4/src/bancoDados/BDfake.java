@@ -16,6 +16,7 @@ public class BDfake implements BD {
 	private HashMap<String,String> _DescricaoProdutos;
 	private HashMap<String,List<String>> _ComposicaoProdutos;
 	private DataObjectNumeroDeProdutos _DON;
+	private int _IDMaker = 1;
 	//List<MyType> myList = new ArrayList<MyType>();
 	public BDfake(){
 		_CategoriaProdutos  = new HashMap<String,String>();
@@ -89,17 +90,14 @@ public class BDfake implements BD {
 
 	@Override
 	public NotaFiscalBuilderValidado validaNotaFiscal(NotaFiscalBuilder NFB) {
-		int TaxaFinal = 0;
 		List<Imposto> impostos = _DON.getAllImposto();
-		List<ItemVenda> produtos = NFB.getListaItens();
 		for (Imposto imposto : impostos) {
-			for(ItemVenda item : produtos) {
-				imposto.taxar(item);
-			}
-			TaxaFinal += imposto.getImpostoTotal();
+			NFB.accept(imposto);
 		}
-		//NFB.setTaxa() //TODO AQUI!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		return null;
+		
+		NotaFiscalBuilderValidado NFBv = new NotaFiscalBuilderValidado(NFB, _IDMaker);
+		_IDMaker +=1;
+		return NFBv;
 	}
 
 	@Override
