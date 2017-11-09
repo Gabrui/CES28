@@ -50,7 +50,7 @@ public class NotaFiscalValidacaoTest {
 	}
 	
 	@Test
-	public void TestingTaxationgUponFruitsSimpleItems() {
+	public void TestingTaxatingUponFruitsSimpleItems() {
 		NFB.adicionaItem("banana", 1);
 		NFB.adicionaItem("pera", 3);
 		NFB.adicionaItem("laranja", 1);
@@ -75,6 +75,24 @@ public class NotaFiscalValidacaoTest {
 		
 		assertEquals(90,NF.getTaxaTotal());
 		assertEquals(180,NF2.getTaxaTotal());
+	}
+	@Test
+	public void TestingTaxatingUponFruitsSimpleCompositeItem() {
+		/*
+		 * aliquota = 5
+		 * banana = 1
+		 * pera = 2
+		 * laranja = 3
+		 * cesta_de_frutas = 1 pera + 1 banana + 1 laranja = 6
+		 * 
+		 * Taxa de NF = aliquota*(Preço total dos produtos)*(Numero atual de IVs taxados + Numero de IVs taxados anteriormente)
+		 * NF2.taxa = 5*(1 + 2 + 3 + 6 )*(4 + 0) = 240
+		 * 
+		 * Detalhe que a cesta de frutas, apesar de conter 3 frutas, conta como um único IV
+		 */
+		NFB2.adicionaItem("cesta_de_frutas",1);
+		NF2 = NFB2.valida();
+		assertEquals(240,NF2.getTaxaTotal());
 	}
 	
 	
