@@ -90,7 +90,7 @@ public class NotaFiscalValidacaoTest {
 		 * 
 		 * Detalhe que a cesta de frutas, apesar de conter 3 frutas, conta como um único IV
 		 */
-		NFB2.adicionaItem("cesta_de_frutas",1);
+		NFB2.adicionaItem("cesta de frutas",1);
 		NF2 = NFB2.valida();
 		assertEquals(240,NF2.getTaxaTotal());
 	}

@@ -24,36 +24,44 @@ public class BDfake implements BD {
 		_DescricaoProdutos  = new HashMap<String,String>();
 		_ComposicaoProdutos = new HashMap<String,List<String>>();
 		_DON                = new DataObjectNumeroDeProdutos();
+		
 		/**
-		 * Categorias
+		 * Frutas
 		 */
-		_CategoriaProdutos.put("banana", "fruta");
-		_CategoriaProdutos.put("pera", "fruta");
-		_CategoriaProdutos.put("laranja", "fruta");
-		_CategoriaProdutos.put("cesta_de_frutas", "nao-taxavel");
+		addProduto("banana",1,"uma fruta amarela","fruta");
+		addProduto("pera",2,"uma fruta verde","fruta");
+		addProduto("laranja",3,"uma fruta laranja ","fruta");
+		addComposto("cesta de frutas",2,"uma cesta de frutas","nao-taxavel",Arrays.asList("pera", "laranja", "banana"));
 		/**
-		 *Preços
+		 * Eletronicos
 		 */
-		_PrecoProdutos.put("banana", 1);
-		_PrecoProdutos.put("pera", 2);
-		_PrecoProdutos.put("laranja", 3);
-		_PrecoProdutos.put("cesta_de_frutas", 2);
-		/**
-		 * Descrições
-		 */
-		_DescricaoProdutos.put("banana", "uma fruta amarela");
-		_DescricaoProdutos.put("pera", "uma fruta verde");
-		_DescricaoProdutos.put("laranja", "uma fruta laranja ;D");
-		_DescricaoProdutos.put("cesta_de_frutas", "uma cesta com frutas");
-		/**
-		 * Composições
-		 */
-		_ComposicaoProdutos.put("cesta_de_frutas", Arrays.asList("pera", "laranja", "banana") );
+		addProduto("GPU ATX",2500,"gpu top de linha","eletronicos");
+		addProduto("Final Fantasy 19",199,"jogo de rpg","jogos eletronicos");
+		addComposto("Pacote ATX",0,"ATX + FF19","nao-taxavel",Arrays.asList("GPU ATX","Final Fantasy 19"));
+		addProduto("Motherboard MOTHER",1000,"placa mae","eletronicos");
+		addProduto("Fonte NRG",1200,"fonte","eletronicos");
+		addProduto("Gabinete PIRATE",500,"gabinete","eletronicos");
+		addProduto("Mao de obra",400,"mao de obra","nao-taxavel");
+		addComposto("PC Gamer",0,"pc gamer top de linha","nao-taxavel",Arrays.asList("Pacote ATX","Motherboard MOTHER","Fonte NRG","Gabinete PIRATE","Mao de obra"));
+		
 
 	}
 	@Override
 	public ProdutoServico getProdutoServico(String nome) {
 		return buildProduto(nome);
+	}
+	
+	private void addProduto(String name,int preco, String descricao, String categoria) {
+		_CategoriaProdutos.put(name, categoria);
+		_PrecoProdutos.put(name, preco);
+		_DescricaoProdutos.put(name, descricao);
+	}
+	
+	private void addComposto(String name,int preco, String descricao, String categoria, List<String> compostos) {
+		_CategoriaProdutos.put(name, categoria);
+		_PrecoProdutos.put(name, preco);
+		_DescricaoProdutos.put(name, descricao);
+		_ComposicaoProdutos.put(name, compostos );
 	}
 	
 	
