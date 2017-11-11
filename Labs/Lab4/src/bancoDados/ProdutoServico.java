@@ -39,6 +39,7 @@ public abstract class ProdutoServico {
 	abstract public void accept(Imposto imp);//DP visitor Requisito 10
 
 	public String imprimir() {
-		return nome;
+		String linha = nome + "\t" + getPreco();
+		return linha;
 	}
 }

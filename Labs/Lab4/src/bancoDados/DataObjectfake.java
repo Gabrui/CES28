@@ -4,13 +4,14 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
-public class DataObjectNumeroDeProdutos implements DataObject{
+public class DataObjectfake implements DataObject{
 
 	 HashMap<String,Imposto> _listImpostos;
-	protected DataObjectNumeroDeProdutos() {
+	 
+	protected DataObjectfake() {
 		_listImpostos = new HashMap<String,Imposto>();
 		Imposto impf = new ImpostoFruta();
-		Imposto impp = new ImpostoPao();
+		Imposto impp = new ImpostoEletronicos();
 		Imposto impv = new ImpostoVegetais();
 		_listImpostos.put(impf.id(), impf);
 		_listImpostos.put(impp.id(), impp);

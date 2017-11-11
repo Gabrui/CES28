@@ -8,7 +8,7 @@ import bancoDados.BDfake;
 import notaFiscal.NotaFiscal;
 import notaFiscal.NotaFiscalBuilder;
 
-public class NotaFiscalSimpleTest {
+public class NotaFiscalTest1 {
 	
 	BDfake bd;
 	NotaFiscalBuilder NFB;

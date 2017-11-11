@@ -8,11 +8,12 @@ import bancoDados.BDfake;
 import notaFiscal.NotaFiscal;
 import notaFiscal.NotaFiscalBuilder;
 
-public class NotaFiscalValidacaoTest {
+public class NotaFiscalTest2 {
 	
 	BDfake bd;
 	NotaFiscalBuilder NFB;
 	NotaFiscalBuilder NFB2;
+	NotaFiscalBuilder NFB3;
 	NotaFiscal NF;
 	NotaFiscal NF2;
 	
@@ -21,9 +22,17 @@ public class NotaFiscalValidacaoTest {
 		bd = new BDfake();
 		NFB = new NotaFiscalBuilder(bd);
 		NFB2 = new NotaFiscalBuilder(bd);
+		/*
+		 * Nota Fiscal Builder 2 inicializa com alguns items de frutas
+		 */
 		NFB2.adicionaItem("banana", 1);
 		NFB2.adicionaItem("pera", 1);
 		NFB2.adicionaItem("laranja",1);
+		/*
+		 * Nota Fiscal Builder 3 inicializa com  eletronicos
+		 */
+		NFB3.adicionaItem("PC Gamer", 1);
+		
 		
 	}
 	@Test
@@ -77,7 +86,7 @@ public class NotaFiscalValidacaoTest {
 		assertEquals(180,NF2.getTaxaTotal());
 	}
 	@Test
-	public void TestingTaxatingUponFruitsSimpleCompositeItem() {
+	public void TestingTaxatingUponSimpleCompositeItem() {
 		/*
 		 * aliquota = 5
 		 * banana = 1
@@ -93,6 +102,11 @@ public class NotaFiscalValidacaoTest {
 		NFB2.adicionaItem("cesta de frutas",1);
 		NF2 = NFB2.valida();
 		assertEquals(240,NF2.getTaxaTotal());
+	}
+	
+	@Test
+	public void TestingTaxatingUponCompositeItemContainingCompositeItem() {
+		
 	}
 	
 	

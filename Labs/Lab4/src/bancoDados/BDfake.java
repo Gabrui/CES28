@@ -15,7 +15,7 @@ public class BDfake implements BD {
 	private HashMap<String,Integer> _PrecoProdutos;
 	private HashMap<String,String> _DescricaoProdutos;
 	private HashMap<String,List<String>> _ComposicaoProdutos;
-	private DataObjectNumeroDeProdutos _DON;
+	private DataObjectfake _DON;
 	private int _IDMaker = 1;
 	//List<MyType> myList = new ArrayList<MyType>();
 	public BDfake(){
@@ -23,7 +23,7 @@ public class BDfake implements BD {
 		_PrecoProdutos      = new HashMap<String,Integer>();
 		_DescricaoProdutos  = new HashMap<String,String>();
 		_ComposicaoProdutos = new HashMap<String,List<String>>();
-		_DON                = new DataObjectNumeroDeProdutos();
+		_DON                = new DataObjectfake();
 		
 		/**
 		 * Frutas
@@ -106,18 +106,6 @@ public class BDfake implements BD {
 		NotaFiscalBuilderValidado NFBv = new NotaFiscalBuilderValidado(NFB, _IDMaker);
 		_IDMaker +=1;
 		return NFBv;
-	}
-
-	@Override
-	public int calculaImposto(ProdutoServico ps) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public Imposto getRegra(String categoria) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

@@ -5,12 +5,17 @@ import java.util.HashMap;
 import notaFiscal.ItemVenda;
 import notaFiscal.NotaFiscal;
 
-public class ImpostoFruta implements Imposto{
+public class ImpostoEletronicos implements Imposto{
 
 	private int _NumeroDeProdutosTaxados = 0;
 	private int _NewNumeroDeProdutosTaxados = 0;
 	private int _taxaTotal=0;
-	private int _aliquota = 5;
+	private int _aliquota = 10;
+	private HashMap<String, Integer> _CadernoImpostos;
+	
+	protected ImpostoEletronicos() {
+		_CadernoImpostos = new HashMap<String, Integer>();
+	}
 	@Override
 	public void taxar(ProdutoServico analisado) {
 		// TODO Auto-generated method stub
@@ -19,8 +24,10 @@ public class ImpostoFruta implements Imposto{
 
 	@Override
 	public void taxar(Produto analisado) {
-		if(analisado.getCategoria().toLowerCase()=="fruta") {
-			_taxaTotal+=analisado.getPreco()*_aliquota;
+		if(analisado.getCategoria().toLowerCase()=="eletronicos") {
+			int gold = analisado.getPreco()/_aliquota;
+			_taxaTotal+=gold;
+			_CadernoImpostos.put(analisado.getNome(), gold);
 		}
 		
 	}
@@ -33,8 +40,6 @@ public class ImpostoFruta implements Imposto{
 
 	@Override
 	public void taxar(ItemVenda itemVenda) {
-		
-		_NewNumeroDeProdutosTaxados +=itemVenda.getQuantidade();
 		taxar(itemVenda.getProduto());
 	}
 
@@ -52,22 +57,19 @@ public class ImpostoFruta implements Imposto{
 
 	@Override
 	public HashMap<String, Integer> getImpostoCalculado() {
-		// TODO Auto-generated method stub
-		return null;
+		return _CadernoImpostos; //bad, substituir por copia
 	}
 
 	@Override
 	public int getImpostoTotal() {
-		int taxa_final = _taxaTotal*(_NumeroDeProdutosTaxados + _NewNumeroDeProdutosTaxados);
-		_NumeroDeProdutosTaxados = _NewNumeroDeProdutosTaxados;
-		_NewNumeroDeProdutosTaxados = 0;
+		int taxa_final = _taxaTotal;
 		_taxaTotal = 0;
 		return taxa_final;
 	}
 
 	@Override
 	public String id() {
-		return "ImpostoFruta";
+		return "ImpostoEletronicos";
 	}
 
 	@Override
