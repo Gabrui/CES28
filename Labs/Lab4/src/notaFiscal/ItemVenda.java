@@ -58,4 +58,8 @@ public class ItemVenda {
 		String impressao = produto.imprimir() + "\t" + quantidade + "\t" + this.getQuantidade() + "\t" + this.getValor() ;
 		return impressao;
 	}
+	
+	public ItemVenda clonar() {
+		return new ItemVenda(bancoDadosRemoto, nome, quantidade);
+	}
 }

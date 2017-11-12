@@ -6,7 +6,7 @@ public interface BD {
 	public static BD getInstance() {
 		return null;
 	}
-	public ProdutoServico getProdutoServico(String nome);
+	public ProdutoServico getProdutoServico(String nome); //BD sabe a categoria de cada P/S (Requisito 5)
 	
     public NotaFiscalBuilderValidado validaNotaFiscal(NotaFiscalBuilder nota);//BD valida NotaFiscal
     //e submete na prefeitura, e se validada retorna NotaFiscalImutavel (Requisito 6)
