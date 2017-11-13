@@ -9,7 +9,7 @@ public class Produto extends ProdutoServico {
 	//poderem construir P/S, ou seja, poder criar uma relacao de composicao com BD.
 	//Requisito 5.
 	//Requisito 17. DP Composite. Produto é uma leaf.
-	protected Produto(String produto, int preco, String descricao, String categoria) {
+	Produto(String produto, int preco, String descricao, String categoria) {
 		super(produto, preco, descricao,categoria);
 	}
 

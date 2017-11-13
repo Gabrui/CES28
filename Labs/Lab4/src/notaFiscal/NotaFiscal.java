@@ -22,10 +22,15 @@ public class NotaFiscal {
 	private String _outros; //NotaFiscal sabe as condicoes de entrega ...
 	
 
-	public NotaFiscal(NotaFiscalBuilder b) {
+	protected NotaFiscal(NotaFiscalBuilder b) {
 		_validada = b.isValidada();
 		_outros = b.getOutros();
-		_listaItens = b.getListaItens();
+		_listaItens = new LinkedList<>();
+		LinkedList<ItemVenda> listaClonada =  b.getListaItens();
+		if (listaClonada.isEmpty()) // Nota fiscal não pode ser vazia (Requisito 1);
+			throw new IllegalArgumentException("Nota fiscal não pode ser vazia!");
+		for (ItemVenda i: listaClonada) // NF cria seus próprios IV (Requisito 2)
+			_listaItens.add(i.clonar());
 		_ID = b.getID();//id unico que é um inteiro sequencial dado pelo BD (Requisito 7).
 		_taxasCobradas = b.getTaxasCobradas();//BD passa para NotaFiscal quais impostos e seus valores foram cobrados. (Requisito 8)
 		_TotalTax = b.getTaxaTotal();

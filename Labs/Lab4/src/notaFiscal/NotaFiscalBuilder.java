@@ -50,13 +50,13 @@ public class NotaFiscalBuilder {
 	
 	public NotaFiscal buildEsboco() {
 		if (listaItens.isEmpty())
-			throw new IllegalArgumentException("Nota fiscal vazia!");
+			throw new IllegalArgumentException("Nota fiscal não pode ser vazia!");
 		return new NotaFiscal(this);
 	}
 	
 	public NotaFiscal valida() {
 		if (listaItens.isEmpty())
-			throw new IllegalArgumentException("Nota fiscal vazia!");
+			throw new IllegalArgumentException("Nota fiscal não pode ser vazia!");
 		this.setTaxaTotal(0);
 		return new NotaFiscal(bd.validaNotaFiscal(this));
 	}

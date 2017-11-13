@@ -14,7 +14,7 @@ public abstract class ProdutoServico {
 	//poderem construir P/S, ou seja, poder criar uma relacao de composicao com BD.
 	//Requisito 5.
 	//Requisito 17. DP Composite. Servico é uma Component.
-	protected ProdutoServico(String nome, int preco, String descricao, String categoria) {
+	ProdutoServico(String nome, int preco, String descricao, String categoria) {
 		this.nome = nome;
 		this.preco = preco;
 		this.descricao = descricao;
