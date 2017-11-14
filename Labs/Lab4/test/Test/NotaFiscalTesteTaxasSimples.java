@@ -1,7 +1,6 @@
 package Test;
 
 import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,7 +8,7 @@ import bancoDados.BDfake;
 import notaFiscal.NotaFiscal;
 import notaFiscal.NotaFiscalBuilder;
 
-public class NotaFiscalTest3 {
+public class NotaFiscalTesteTaxasSimples {
 	
 	BDfake bd;
 	NotaFiscalBuilder NFB;
@@ -108,47 +107,13 @@ public class NotaFiscalTest3 {
 	
 	@Test
 	public void TestingTaxatingUponCompositeItemContainingCompositeItem() {
-		/*
-		 * PC Gamer = Pacote ATX + Motherboard + Fonte NRG + Gabinete PIRATE + mao de obra
-		 * Pacote ATX = GPU ATX + Final Fantasy 19(nao taxavel por imposto eletronico) = 2500 + 0
-		 * Motherboard MOTHER = 1000
-		 * Fonte NRG = 1200
-		 * Gabinete PIRATE = 500
-		 * Mao de obra(nao taxavel) = 0
-		 * 
-		 * Taxa = aliquota*(Soma dos preços) = 0.1*(2500+1000+1200+500+ = 520
-		 * 
-		 * 
-		 */
-		NF = NFB3.valida();
-		assertEquals(520,NF.getTaxaTotal());
-	}
-	
-	@Test
-	public void TestingNotaFiscalID() {
-		NF = NFB3.valida();
-		NF2 = NFB2.valida();
 		
-		assertEquals(1,NF.getID());
-		assertEquals(2,NF2.getID());
 	}
+	
 	@Test
-	public void TestingNotaFiscalImpressionAfterValidation() {
-		NF = NFB2.valida();
-		assertEquals("Nome	Preço por unidade	Qtd		Total\n" + 
-				"\n" + 
-				"ID: 1\n" + 
-				"banana		1		1		1\n" + 
-				"pera		2		1		2\n" + 
-				"laranja		3		1		3\n" + 
-				"\n" + 
-				"Total sem impostos = 6\n" + 
-				"Impostos cobrados: 90\n" + 
-				"     Imposto sobre Eletrônicos: 0\n" + 
-				"     Imposto sobre Vegetais: 0\n" + 
-				"     Imposto sobre Frutas: 90", NF.imprimir());
+	public void CantCreateProtectedObjects() {
+		// Fail in compilation
+		// Produto p = new Produto();
 	}
-	
-	
 
 }
