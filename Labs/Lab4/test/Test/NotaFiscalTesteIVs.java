@@ -8,7 +8,7 @@ import bancoDados.BDfake;
 import notaFiscal.NotaFiscal;
 import notaFiscal.NotaFiscalBuilder;
 
-public class NotaFiscalTest1 {
+public class NotaFiscalTesteIVs {
 	
 	BDfake bd;
 	NotaFiscalBuilder NFB;
@@ -48,10 +48,6 @@ public class NotaFiscalTest1 {
 		NF = NFB.valida();
 	}
 	
-	//Metodo de deletar não está funcionando porque o metodo remove recebe uma string mas a lista eh uma lista de produtos
-	// então ele procurar uma string para remover da lista o que não funciona pois a lista eh de produtos.
-	// Sugestão: usar a string, construir um objeto igual ao objeto que se quer remover e passar este objeto como argumento para remove,
-	// talvez seja necessário implementar o étodo equals para os produtos.
 	@Test
 	public void TestingDeletingOnBuilderIfNUmberOfProductsAreHighterThanOne() {
 		NFB2.deletaItem("pera");

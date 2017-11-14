@@ -22,6 +22,7 @@ public class NotaFiscalTest2 {
 		bd = new BDfake();
 		NFB = new NotaFiscalBuilder(bd);
 		NFB2 = new NotaFiscalBuilder(bd);
+		NFB3 = new NotaFiscalBuilder(bd);
 		/*
 		 * Nota Fiscal Builder 2 inicializa com alguns items de frutas
 		 */

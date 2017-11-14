@@ -53,6 +53,8 @@ public class NotaFiscal {
 	public String imprimirImpostoCobrado() {
 		String impressao = "";
 		impressao = "Impostos cobrados: ";
+		if (_taxasCobradas == null)
+			return "\nNão foram cobrados impostos.\n";
 		for (String key : _taxasCobradas.keySet())
 			impressao = "\n     "+key+_taxasCobradas.get(key).toString();
 		return impressao;

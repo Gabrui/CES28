@@ -123,13 +123,12 @@ public class NotaFiscalBuilder {
 	
 	//Requisito 6. Somente NotaFiscal em elaboracao pode alterar lista de ItemVenda
 	//Requisito 13. Metodo apropriado de modificacao da lista
-	@SuppressWarnings("unlikely-arg-type")
 	public void deletaItem(String nomeItem) {
-		if (listaItens.contains(nomeItem)) {
+		ItemVenda item = new ItemVenda(bd, nomeItem, 0);
+		if (listaItens.contains(item)) {
 			if (listaItens.size() == 1)
 				throw new IllegalArgumentException("A lista não pode ficar vazia.");
-			
-			listaItens.remove(nomeItem);
+			listaItens.remove(item);
 		}
 	}
 }

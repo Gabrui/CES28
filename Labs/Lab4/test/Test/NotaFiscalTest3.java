@@ -135,8 +135,16 @@ public class NotaFiscalTest3 {
 	@Test
 	public void TestingNotaFiscalImpressionAfterValidation() {
 		NF = NFB2.valida();
-		
-		assertEquals("lala",NF.imprimir());
+		assertEquals("Nome	Preço por unidade	Qtd		Total\n" + 
+				"\n" + 
+				"ID: 1\n" + 
+				"banana	1	1	1	1\n" + 
+				"pera	2	1	1	2\n" + 
+				"laranja	3	1	1	3\n" + 
+				"\n" + 
+				"Total sem impostos = 0\n" + 
+				"\n" + 
+				"Não foram cobrados impostos.\n", NF.imprimir());
 	}
 	
 	
