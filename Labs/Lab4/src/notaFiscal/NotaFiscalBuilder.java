@@ -11,7 +11,7 @@ public class NotaFiscalBuilder {
 	protected LinkedList<ItemVenda> listaItens;
 	private BD bd;
 	private boolean validada; //Requisito 6
-	private HashMap<String, Integer> _taxasCobradas;
+	protected HashMap<String, Integer> _taxasCobradas;
 	private int _TaxaTotal = 0;
 	private String outros;
 	private int _ID;
@@ -20,6 +20,7 @@ public class NotaFiscalBuilder {
 	public NotaFiscalBuilder(BD bd) {
 		this.bd = bd;
 		listaItens = new LinkedList<ItemVenda>();
+		_taxasCobradas = new HashMap<>();
 	}
 	
 	public void setOutros(String outros) {
@@ -33,8 +34,8 @@ public class NotaFiscalBuilder {
 	protected void validacaoAceita() {
 		this.validada = true;
 	}
-	protected void setTaxasCobradas(HashMap<String, Integer> taxasCobradas) {
-		this._taxasCobradas = taxasCobradas;
+	public void apagaImpostos() {
+		this._taxasCobradas.clear();
 	}
 	protected void setTaxaTotal(int taxa) {
 		this._TaxaTotal = taxa;
@@ -98,12 +99,14 @@ public class NotaFiscalBuilder {
 	}
 	
 	//DP visitor Requisito 10
-		public void accept(Imposto imp) {
-			for(ItemVenda i:listaItens) {
-				i.accept(imp);
-			}
-			_TaxaTotal += imp.getImpostoTotal();
+	public void accept(Imposto imp) {
+		for(ItemVenda i:listaItens) {
+			i.accept(imp);
 		}
+		int calculado = imp.getImpostoTotal();
+		_TaxaTotal += calculado;
+		_taxasCobradas.put(imp.toString(), calculado);
+	}
 		
 	
     

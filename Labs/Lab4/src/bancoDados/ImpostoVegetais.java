@@ -73,4 +73,9 @@ public class ImpostoVegetais implements Imposto {
 		_NumeroDeProdutosTaxados = dado;
 		_taxaTotal = 0;
 	}
+	
+	@Override
+	public String toString() {
+		return "Imposto sobre Vegetais";
+	}
 }

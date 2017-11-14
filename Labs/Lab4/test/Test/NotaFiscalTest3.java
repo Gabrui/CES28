@@ -138,13 +138,15 @@ public class NotaFiscalTest3 {
 		assertEquals("Nome	Preço por unidade	Qtd		Total\n" + 
 				"\n" + 
 				"ID: 1\n" + 
-				"banana	1	1	1	1\n" + 
-				"pera	2	1	1	2\n" + 
-				"laranja	3	1	1	3\n" + 
+				"banana		1		1		1\n" + 
+				"pera		2		1		2\n" + 
+				"laranja		3		1		3\n" + 
 				"\n" + 
-				"Total sem impostos = 0\n" + 
-				"\n" + 
-				"Não foram cobrados impostos.\n", NF.imprimir());
+				"Total sem impostos = 6\n" + 
+				"Impostos cobrados: 90\n" + 
+				"     Imposto sobre Eletrônicos: 0\n" + 
+				"     Imposto sobre Vegetais: 0\n" + 
+				"     Imposto sobre Frutas: 90", NF.imprimir());
 	}
 	
 	

@@ -8,13 +8,11 @@ package notaFiscal;
 
 import java.util.HashMap;
 import java.util.LinkedList;
-import bancoDados.*;
 //Requisito 16. NotaFiscalImutavel não possui metodos publicos de modificacao de seus
 //atributos. Imutable Object.
 public class NotaFiscal {
 
 	private int _ID; //Possui um id unico que é um inteiro sequencial dado pelo BD (Requisito 7).
-	private int _ValorTotal = 0;
 	private HashMap<String, Integer> _taxasCobradas;//Requisito 8. NotaFiscal sabe dos impostos cobrados.
 	private int _TotalTax;
 	private boolean _validada;
@@ -40,23 +38,14 @@ public class NotaFiscal {
 		return _outros;
 	}
 	
-	//DP visitor Requisito 10
-	public void accept(Imposto imp) {
-		for(ItemVenda i:_listaItens) {
-			_ValorTotal += i.getValor();
-			i.accept(imp);
-		}
-		imp.taxar(this);
-	}
-	
 	//Requisito 8. NotaFiscal sabe dos impostos cobrados e sabe imprimir eles.
 	public String imprimirImpostoCobrado() {
 		String impressao = "";
-		impressao = "Impostos cobrados: ";
-		if (_taxasCobradas == null)
+		impressao += "Impostos cobrados: " + getTaxaTotal();
+		if (_taxasCobradas == null || _taxasCobradas.isEmpty())
 			return "\nNão foram cobrados impostos.\n";
 		for (String key : _taxasCobradas.keySet())
-			impressao = "\n     "+key+_taxasCobradas.get(key).toString();
+			impressao += "\n     "+key+": "+_taxasCobradas.get(key).toString();
 		return impressao;
 	}
 	
@@ -102,7 +91,7 @@ public class NotaFiscal {
 			impressao += "Em construção";
 		for (ItemVenda i : _listaItens)
 				impressao += "\n" + i.imprimir();
-		impressao += "\n\nTotal sem impostos = " + _ValorTotal +"\n";
+		impressao += "\n\nTotal sem impostos = " + getValor() +"\n";
 		impressao += imprimirImpostoCobrado();
 		return impressao;
 	}

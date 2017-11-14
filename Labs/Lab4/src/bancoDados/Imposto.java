@@ -34,4 +34,5 @@ public interface Imposto {
 	public String id();
 	public int getRealimentacao();
 	public void setRealimentacao(int dado);
+	public String toString();
 }

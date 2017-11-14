@@ -8,6 +8,7 @@ public class NotaFiscalBuilderValidado extends NotaFiscalBuilder {
 		super(b.getBD());
 		super.listaItens = b.getListaItens();
 		super.setTaxaTotal(b.getTaxaTotal());
+		super._taxasCobradas = b.getTaxasCobradas();
 		super.validacaoAceita();
 		super.setID(ID);
 	}

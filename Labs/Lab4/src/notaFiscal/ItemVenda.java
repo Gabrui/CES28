@@ -55,7 +55,7 @@ public class ItemVenda {
 	}
 
 	public String imprimir() {
-		String impressao = produto.imprimir() + "\t" + quantidade + "\t" + this.getQuantidade() + "\t" + this.getValor() ;
+		String impressao = produto.imprimir() + "\t\t" + this.getQuantidade() + "\t\t" + this.getValor() ;
 		return impressao;
 	}
 	

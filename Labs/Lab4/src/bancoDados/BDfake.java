@@ -100,6 +100,7 @@ public class BDfake implements BD {
 		List<Imposto> impostos = _DON.getAllImposto();
 		for (Imposto imposto : impostos) {
 			NFB.accept(imposto);
+			_DON.updateImposto(imposto);
 		}
 		
 		NotaFiscalBuilderValidado NFBv = new NotaFiscalBuilderValidado(NFB, _IDMaker);
