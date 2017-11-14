@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-import notaFiscal.ItemVenda;
 import notaFiscal.NotaFiscalBuilder;
 
 public class BDfake implements BD {

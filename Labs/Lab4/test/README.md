@@ -1,5 +1,7 @@
 # REQUISITOS:
 
+OBS: Considerei o usuario-programador como cliente do package e não só cliente da classe, para que métodos e construtores protected não fossem acessados de forma indevida, satisfazendo os requisitos.
+
 1. *NF não pode ter zero IV. Deve ter 1 ou mais*: Isso foi implementado com o Builder, que não aceita construir uma NF com zero IV. Para garantir a sua construção correta, a NF tem seu construtor protected e também verifica isso.
 
 2. *Todo IV deve pertencer a exatamente uma NF*: Os IVs são criados pelo Builder e Clonados para cada nova NF criada pelo builder. Assim, não há como existirem IVs em mais de uma NF ou órfãos. A NF também cria (clonando) seus próprios IV (composição).
@@ -32,11 +34,17 @@
 
 16. *Todas as entidades armazenados em BD devem corresponder a entidades imutáveis uma vez retirados do BD*: Todos os objetos retornados de BD são imutáveis (não há setters, apenas getters de valores primitivos) e têm a sua criação protegida (Package Protected).
 
-17. ** Cada produto ou serviço (P/S) pode ser subdividido em outros produtos e/ou serviços**: Há a classe ProdutoServicoComposto, que comtém ProdutosServico (Composite), ele sabe calcular e passar imposto pela árvores, de tamanho ilimitado.
+17. **Cada produto ou serviço (P/S) pode ser subdividido em outros produtos e/ou serviços**: Há a classe ProdutoServicoComposto, que comtém ProdutosServico (Composite), ele sabe calcular e passar imposto pela árvores, de tamanho ilimitado.
 
 18. **Cada imposto deve percorrer toda a hierarquia de subdivisões de um P/S**: Utiliza-se a pré-ordem para isso, o pai chama o cálculo do imposto dos seus filhos e só depois chama o seu próprio cálculo do imposto, é um visitor-composite.
 
-19. *O cálculo de um imposto pode depender não apenas dos IV e P/S de uma nota fiscal, mas também do conjunto e valores de NFs anteriores ao longo do tempo*: Há o padrão de DataObject 
+19. *O cálculo de um imposto pode depender não apenas dos IV e P/S de uma nota fiscal, mas também do conjunto e valores de NFs anteriores ao longo do tempo*: Há o padrão de DataObject, no qual o BD armazena e atualiza um objeto com dados específicos a um imposto. No caso mais simples, esse dado é só um inteiro (que já é comtemplado na interface do imposto em getRealimentacao() e setRealimentacao()). Em um caso mais complexo, esse seria um objeto com multiplos atributos que seria armazenado no BD e repassado ao imposto por meio do setRealimentacao, e depois do seu cálculo, atualizado por meio do getRealimentacao.
+
+20. *Suponha que a NF pode ter outras partes além de lista de IV e estado/ID, mesmo que nesse trabalho basta preencher um atributo “outros”*: Basta extender a NF e os seus respectivos builders, adicionando os atributos necessários, uma vez que se utilizou o padrão criacional Builder. Assim, bastaria extender o construtor da nota fiscal para que ele utilizasse novos getters do novo Builder.
+
+21. *Deve permitir imprimir explicitamente a NF, com ID, IVs e PS*: A impressão é realizada pelo método imprimir() da NF, que retorna uma String, para que o código possa ser testado automaticamente.
+
+
 
 
 

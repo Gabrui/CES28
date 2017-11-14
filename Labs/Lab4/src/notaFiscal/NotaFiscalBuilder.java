@@ -73,7 +73,7 @@ public class NotaFiscalBuilder {
 	//Requisito 6. Somente NotaFiscal em elaboracao pode alterar lista de ItemVenda
 	//Requisito 13. Metodo apropriado de modificacao da lista
 	//A lista retornada é clonada, e os itens de venda também, assim Todo IV pertence a exatamente uma NF. 
-	protected LinkedList<ItemVenda> getListaItens() {
+	public LinkedList<ItemVenda> getListaItens() {
 		LinkedList<ItemVenda> listaClonada = new LinkedList<>();
 		for (ItemVenda i: listaItens)
 			listaClonada.add(i.clonar());

@@ -8,7 +8,7 @@ import notaFiscal.NotaFiscal;
 public class ImpostoEletronicos implements Imposto{
 
 	private int _NumeroDeProdutosTaxados = 0;
-	private int _NewNumeroDeProdutosTaxados = 0;
+	//private int _NewNumeroDeProdutosTaxados = 0;
 	private int _taxaTotal=0;
 	private int _aliquota = 10;
 	private HashMap<String, Integer> _CadernoImpostos;

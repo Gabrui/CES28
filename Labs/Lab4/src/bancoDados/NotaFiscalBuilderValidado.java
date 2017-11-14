@@ -1,7 +1,5 @@
 package bancoDados;
 
-import java.util.HashMap;
-
 import notaFiscal.NotaFiscalBuilder;
 
 public class NotaFiscalBuilderValidado extends NotaFiscalBuilder {
