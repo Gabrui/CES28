@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import presenter.Presenter;
+import view.ConsoleView;
 
 public class TestePresenterIntegrado {
 	
@@ -34,6 +35,14 @@ public class TestePresenterIntegrado {
 		p.calculaInterpolacao(10.3f);
 		assertEquals(11.3, p.getUltimoResultado(), 0.01);
 		assertTrue(p.isResultadoValido());
+	}
+	
+	@Test
+	public void testaMultiplosViews() {
+		p.addObserver(new ConsoleView());
+		p.addObserver(new ConsoleView());
+		p.addObserver(new ConsoleView());
+		assertEquals(3, p.countObservers());
 	}
 
 }
