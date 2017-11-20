@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
+// Objeto imutável
 @SuppressWarnings("unchecked") // Por causa do casting do método clone.
 public class DataPoints {
 
@@ -15,6 +16,10 @@ public class DataPoints {
     private FileReader input;
     private BufferedReader bufRead;
     private StringTokenizer xy;
+    
+    public DataPoints(String arquivo) {
+    	buildDataPoints(arquivo);
+    }
     
 	public Vector<Double> getX() {
     	return (Vector<Double>) x.clone();
@@ -25,10 +30,8 @@ public class DataPoints {
     }
     
     // RESPONSABILITY: LER ARQUIVO DE DADOS
-	public void buildDataPoints(File file) {
-        if(file == null)
-           return;
-        else _file = file;
+	private void buildDataPoints(String StringFile) {
+        _file = new File(StringFile);
 
         x = new Vector<Double>();
         y = new Vector<Double>();

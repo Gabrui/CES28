@@ -1,52 +1,53 @@
 package presenter;
 
-import java.io.File;
+import java.util.Observable;
 
-import model.CubicSpline;
 import model.DataPoints;
 import model.InterpolationMethod;
-import model.Lagrange;
 
-public class Presenter {
+public class Presenter extends Observable {
 
-    private final String CS_METHOD = "Cubic Spline";
-    private final String L_METHOD = "Lagrange";
-    private final String DEFAULT_METHOD = CS_METHOD;
+    private final String DEFAULT_METHOD = InterpolationFactory.CS_METHOD;
     private InterpolationMethod interpolationModel;
-    private IView view;
     private DataPoints model;
+    private InterpolationFactory fabrica;
+    private boolean valido;
+    private double resultado;
     
     public Presenter() {
+    	fabrica = InterpolationFactory.getInstance();
     	bind();
     }
 
     // RESPONSABILITY: ESCOLHER O METODO DE INTERPOLACAO DESEJADO E CRIAR O OBJETO CORRESPONDENTE
-    public void bind() { interpolationModel = (InterpolationMethod) getMethod(DEFAULT_METHOD);}
-    public InterpolationMethod getMethod() { return interpolationModel; }
-    public InterpolationMethod getMethod(String method) {
-        switch (method) {
-            case L_METHOD:
-                interpolationModel = new Lagrange();
-                break;
-            case CS_METHOD:
-                interpolationModel = new CubicSpline();
-                break;
-            default:
-            	System.out.println("Unknown method " + method);
-        }
-
-        return interpolationModel;
+    public void bind() { 
+    	interpolationModel = fabrica.getMethod(DEFAULT_METHOD);
     }
-
-    
+	public void setMetodoInterpolacao(String interpolacao) {
+		this.interpolationModel = fabrica.getMethod(interpolacao);
+	}
+	
     // RESPONSABILITY: DADO O VALOR DE X, EFETIVAMENTE LER O ARQUIVO E CHAMAR O CALCULO. 
-    public void calculateResult(float value, File file) {
-        model.buildDataPoints(file);
-        if(getMethod() != null) {
-            double result = getMethod().calculateResult(value, model.getX(), model.getY());
-            view.printResult(result);
+	public void calculaInterpolacao(double valor) {
+        if(interpolationModel != null && model!=null) {
+            resultado = interpolationModel.calculateResult(valor, model.getX(), model.getY());
+            valido = true;
         } else {
-            System.out.println("It is not defined an interpolation method.");
+        	valido = false;
         }
-    }
+		this.setChanged();
+		this.notifyObservers(resultado);
+	}
+
+	public void setArquivoDados(String arquivoDados) {
+		this.model = new DataPoints(arquivoDados);
+	}
+	
+	public double getUltimoResultado() {
+		return resultado;
+	}
+
+	public boolean isResultadoValido() {
+		return valido;
+	}
 }
