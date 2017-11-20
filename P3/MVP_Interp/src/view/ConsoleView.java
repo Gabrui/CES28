@@ -24,6 +24,8 @@ public class ConsoleView implements IView {
     	presenter.addObserver(this);
     }
     
+    /*Se o usuário humano deveria digitar um inteiro,
+    basta haver um método set(int value).*/
     // ENTRADA DE USUARIO HUMANO: ESCOLHA DO METODO DE INTERPOLACAO
     // RESPONSABILITY: LEITURA DO NOME DO METODO DE INTERPOLACAO
 	public void setMetodoInterpolacao(String interpolacao) {
