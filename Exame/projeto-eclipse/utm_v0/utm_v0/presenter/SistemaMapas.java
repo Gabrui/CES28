@@ -22,4 +22,11 @@ public class SistemaMapas {
 	public String getOutros() {
 		return outros;
 	}
+	
+	@Override
+	public String toString() {
+		return "Sistema de mapa\n"
+				+ "Clima: "+clima
+				+ "\nLocal: "+mapa +"\n" + outros;
+	}
 }

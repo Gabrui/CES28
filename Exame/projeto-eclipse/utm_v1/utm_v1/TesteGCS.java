@@ -19,7 +19,7 @@ class TesteGCS {
 	@Before
 	void iniciaTeste() {
 		MockitoAnnotations.initMocks(this);
-		gcs = new GCSConcreta(utm);
+		gcs = new GCSConcreta(utm, "Teste");
 	}
 
 	@Test
