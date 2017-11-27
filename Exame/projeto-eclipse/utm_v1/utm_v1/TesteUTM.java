@@ -4,6 +4,8 @@ package utm_v1;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.Observer;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -55,6 +57,15 @@ public class TesteUTM {
 		utm.atualizaInformacoes();
 		s = utm.getSistemaMapas();
 		assertEquals("Há 1 drones registrados.", s.getOutros());
+	}
+	
+	@Test
+	public void testaEnvioInformacoes() {
+		Observer o = Mockito.mock(Observer.class);
+		utm.addObserver(o);
+		utm.enviaInformacoes();
+		SistemaMapas s = utm.getSistemaMapas();
+		Mockito.verify(o).update(utm, s);
 	}
 
 }

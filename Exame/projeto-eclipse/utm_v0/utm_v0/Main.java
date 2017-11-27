@@ -18,11 +18,14 @@ public class Main {
 		DroneAbstrato d1 = new DroneConcreto(utm, 1, "Drone 1");
 		DroneAbstrato d2 = new DroneConcreto(utm, 5, "Drone 2");
 		DroneAbstrato d3 = new DroneConcreto(utm, 13, "Drone 3");
+		// A cada 3 segundos os drones enviam informações para UTM
 		
 		// Crio os 3 GCS
 		GCSAbstrata g1 = new GCSConcreta(utm, "Estação 1");
 		GCSAbstrata g2 = new GCSConcreta(utm, "Estação 2");
 		GCSAbstrata g3 = new GCSConcreta(utm, "Estação 3");
+		// A UTM imprimi que recebeu e a cada 4 segundo envia para as GCS
+		// Cada GCS imprime as informações que recebeu também.
 	}
 
 }
