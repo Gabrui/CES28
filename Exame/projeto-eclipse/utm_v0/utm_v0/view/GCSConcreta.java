@@ -15,6 +15,7 @@ public class GCSConcreta extends GCSAbstrata {
 	@Override
 	public void update(Observable utm, Object mapa) {
 		super.update(utm, mapa);
+		System.out.println("---------------------------");
 		System.out.println(nome+" recebi mapa: "+this.mapasAtualizados);
 	}
 

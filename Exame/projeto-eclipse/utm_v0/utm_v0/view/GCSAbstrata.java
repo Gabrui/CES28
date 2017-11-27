@@ -12,11 +12,16 @@ public class GCSAbstrata implements Observer {
 
 	public GCSAbstrata(UTMAbstrata utm) {
 		this.utm = utm;
+		utm.addObserver(this);
 	}
 
 	@Override
 	public void update(Observable utm, Object mapa) {
 		mapasAtualizados = (SistemaMapas) mapa;
+	}
+	
+	public SistemaMapas getMapasAtualizados() {
+		return mapasAtualizados;
 	}
 
 }

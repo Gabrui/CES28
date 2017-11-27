@@ -1,5 +1,7 @@
 package utm_v0.presenter;
 
+import utm_v0.model.DroneAbstrato;
+import utm_v0.model.InformacaoVoo;
 
 /**
  * O padrão de design Singleton satisfaz o problema 5.C
@@ -19,7 +21,7 @@ public class UTMConcreta extends UTMAbstrata {
 					atualizaInformacoes();
 					enviaInformacoes();
 					try {
-						Thread.sleep(10000);
+						Thread.sleep(4000); // A cada 4 segundos
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -32,6 +34,12 @@ public class UTMConcreta extends UTMAbstrata {
 		if (INSTANCE == null)
 			INSTANCE = new UTMConcreta();
 		return INSTANCE;
+	}
+	
+	@Override
+	public void recebeAtualizacao(DroneAbstrato d, InformacaoVoo info) {
+		super.recebeAtualizacao(d, info);
+		System.out.println("UTM: Recebi informações do "+d+" na altitude "+info.getAltitude());
 	}
 
 }

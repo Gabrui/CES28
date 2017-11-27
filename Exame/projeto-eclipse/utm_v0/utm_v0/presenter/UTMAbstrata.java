@@ -47,7 +47,7 @@ public abstract class UTMAbstrata extends Observable implements EscutadorDrones 
 	
 	public void atualizaInformacoes() {
 		this.info = new SistemaMapas(info.getClima(), info.getMapa(), 
-				"Há " + informacoesDrones.size() + "drones registrados.");
+				"Há " + informacoesDrones.size() + " drones registrados.");
 	}
 
 }

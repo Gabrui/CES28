@@ -6,10 +6,11 @@ package utm_v0.model;
  *
  */
 public class DroneConcreto extends DroneAbstrato {
+	private String nome;
 
-	public DroneConcreto(EscutadorDrones escutador) {
+	public DroneConcreto(EscutadorDrones escutador, double velo, String nome) {
 		super(escutador);
-		double velo = 10;
+		this.nome = nome;
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -17,7 +18,7 @@ public class DroneConcreto extends DroneAbstrato {
 					move(velo, velo, velo);
 					enviaInformacoesVoo();
 					try {
-						Thread.sleep(10000);
+						Thread.sleep(3000); // A cada 3 segundos envia informação
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -25,4 +26,10 @@ public class DroneConcreto extends DroneAbstrato {
 			}
 		}).start();;
 	}
+	
+	@Override
+	public String toString() {
+		return nome;
+	}
+	
 }

@@ -7,6 +7,7 @@ public abstract class DroneAbstrato {
 	public DroneAbstrato(EscutadorDrones escutador) {
 		this.escutador = escutador;
 		this.escutador.registraDrone(this);
+		this.info = new InformacaoVoo(0, 0, 0);
 	}
 	
 	/**
